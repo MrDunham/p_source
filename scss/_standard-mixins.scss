@@ -1,0 +1,97 @@
+/*standards*/
+@mixin text_shadow($shdw_color: rgba(0,0,0,.6)){
+    $shdw: 0 2px 0 $shdw_color;
+    text-shadow: $shdw;
+    -moz-text-shadow: $shdw;
+    -webkit-text-shadow: $shdw;
+}
+
+@mixin text_shadow_open($shadow: 0 2px 0 rgba(0,0,0,.6)){
+    text-shadow: $shadow;
+    -moz-text-shadow: $shadow;
+    -webkit-text-shadow: $shadow;
+}
+/*The two text shadows should be merged asap*/
+
+
+@mixin text_shadow_lt($shdw_color:rgba(0,0,0,.3)){
+    $shdw: 0 1px 0 $shdw_color;
+    text-shadow: $shdw;
+    -moz-text-shadow: $shdw;
+    -webkit-text-shadow: $shdw;
+}
+
+
+@mixin box_shadow($shadow1: 0 2px 1px rgba(0,0,0,0.3), $shadow2:false, $shadow3:false, $shadow4:false, $shadow5:false) {
+ $params: $shadow1;
+  @if $shadow2 
+    { $params: $shadow1, $shadow2; }
+    @if $shadow3 != false
+      { $params: $shadow1, $shadow2, $shadow3; }
+      @if $shadow4 != false
+        { $params: $shadow1, $shadow2, $shadow3, $shadow4; }
+        @if $shadow5 != false
+          { $params: $shadow1, $shadow2, $shadow3, $shadow4, $shadow5; }
+
+  -webkit-box-shadow: $params;
+  -moz-box-shadow: $params;
+  box-shadow: $params;
+}
+
+/*for backwards compatibility only, deprecated*/
+@mixin box_shdw($color: rgba(0,0,0,0.3), $x: 0px, $y: 1px, $s: 2px, $inset:""){
+    @include box_shadow($x $y $s $color #{$inset})
+}
+
+@mixin modal_bg_blk{
+    background: rgba(30,30,30,0.75);
+    @include box_shadow(inset 0 1px 1px rgba(255,255,255,.1), 0px 1px 2px #000);
+}
+
+
+@mixin border_radius($radius){
+    -o-border-radius: $radius;
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin border_radius_4($tl:0, $tr:0, $br:0, $bl:0){
+    -o-border-radius: $tl $tr $br $bl;
+    -webkit-border-radius: $tl $tr $br $bl;
+    -moz-border-radius: $tl $tr $br $bl;
+    border-radius: $tl $tr $br $bl;
+}
+
+@mixin big_button($colr, $btn_pad){
+    $btn_z_dist: 1px; // Controls 'z-height' (out of page) of button
+    padding: $btn_pad 10px $btn_pad - $btn_pad * 0.1;
+    box-shadow: 0 $btn_z_dist $colr - 40, inset 0 1px rgba(255,255,255,.4), 0 $btn_z_dist + $btn_z_dist * 0.3 2px rgba(0,0,0,.4); // Pretty's up the button.  Big shadow as button 'side', top white shadow and bottom black shadow for lighting effects.
+    border-radius: 0;
+    &:active{
+        top: $btn_z_dist;
+        box-shadow: 0 -1px rgba(0,0,0,.4);
+    }
+        p{
+            @include text_shadow_lt;
+        }
+        p:first-child{
+            font-size: 24px;
+            font-weight: bold;
+        }
+}
+
+@mixin gradient{
+    background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(25,25,25,.01)), to(rgba(25,25,25,.25)));
+    background-image: -webkit-linear-gradient(top, rgba(25,25,25,0.01), rgba(25,25,25,0.25));
+    background-image:    -moz-linear-gradient(top, rgba(25,25,25,0.01), rgba(25,25,25,0.25));
+    background-image:     -ms-linear-gradient(top, rgba(25,25,25,0.01), rgba(25,25,25,0.25));
+    background-image:      -o-linear-gradient(top, rgba(25,25,25,0.01), rgba(25,25,25,0.25));
+}
+
+@mixin box-sizing{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}

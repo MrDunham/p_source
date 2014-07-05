@@ -1,0 +1,220 @@
+{% extends 'homepage_base.html' %}
+
+{% block styles %}
+  <link rel="stylesheet" href="css/pages.css" media="screen" type="text/css"/>
+    
+{% endblock %}
+
+{%block sub_link_bar%}
+    {%include 'partials/sublinkbar_accelerate.html'%}    
+{%endblock%}
+
+{%block color_scheme%}default{%endblock%}
+
+{% block upper_info%}
+
+<h1 class="small-12 columns">Mentors and Friends</h1>
+<p class="small-12 large-8 end columns">We love to work with great people.</p>
+
+
+    
+{% endblock %}
+
+{%block upper_bg%}<!--<img src="images/headerimg2.jpg" id="headerImg" alt="Hackers starting a startup">-->{% endblock%}
+
+{% block middle_info%}
+<div id="team_page">
+
+{% if team_asdf%} <!--temporarily disabled team.  Images aren't working and it needs a makeover anyways-->
+<h3>Team</h3>
+
+{% for t in team %} 
+
+<div class="team_member_container col_1 alpha omega">
+    
+    <div class="team_member_img partner grid_4 alpha">
+        <img src="images/{{t.pic}}" alt="{{t.name}} Headshot" class=""/>  
+    </div>
+    <div class="team_text">
+        <p class="headline">{{t.name}} {%if t.title%}<span class="title">{{t.title}}</span>{%endif%}</p>
+        {%if t.bio%}<p class="">{{t.bio}}</p>{%endif%}
+    </div>
+    
+    <br class="clear"/>
+    
+    {%if t.link%}<a href="{{t.link}}" target="_blank">{%endif%}
+    
+    {%if t.link%}</a>{%endif%}
+</div>
+{%endfor%}
+
+
+{%endif%}
+
+
+{% if mentors%}
+<div id="mentors" class="main_section">
+    <div id="mentors_inner" class=" inner_container">
+            {% for b in big_list%}  
+                <div class="row">
+                  
+                    {%with forloop.counter as big_counter%}
+                    <script type="text/javascript">
+                        //initialize variables for mentors.  Mentor and mentors will store backend data
+                        var mentor_{{big_counter}} = {};
+                        var mentors_{{big_counter}} = {};
+                    </script>
+                    
+                    <h2 class="small-12 columns">{{b.0}}</h2>
+                    <div class="small-12 columns">
+                    {% for m in b.1 %}
+                        {% with forloop.counter as counter %}
+                        
+                        
+                            <div id="mentor_{{big_counter}}00{{counter}}" class="mentor small-6 medium-3 large-3 columns">
+                                <a href="#{{m.id}}_{{big_counter}}" onclick="mentor_detail('mentor_{{m.id}}_{{big_counter}}')">
+                                    <img src="img?mentor_id={{m.mentor_id}}" alt="{{m.name}} headshot" />
+                                    <span>
+                                        <p class="mentor_name">{{m.name}}</p>
+                                        <p class="mentor_employer">{%if m.title%}{{m.title}}{%endif%}{%if m.title and m.company%}: {%endif%}{%if m.company%}{{m.company}}{%endif%}</p>
+                                    </span>
+                                </a>
+                            </div>
+                        
+
+                        <script type="text/javascript">
+                            //Saves variables out of python and into javascript
+                            mentor = {"id":"{{m.id}}", "name":"{{m.name}}", "title":"{%if m.title%}{{m.title}}{%endif%}{%if m.title and m.company%}: {%endif%}{%if m.company%}{{m.company}}{%endif%}", "bio":"{{m.bio|safe}}", "tags":"{{m.tags}}", "img":"{{m.img}}", "homepage":"{{m.homepage}}", "twitter":"{{m.twitter}}", "linkedin":"{{m.linkedin}}", "order":"{{counter}}", "group":"{{big_counter}}"};
+                            mentors["mentor_{{m.id}}_{{big_counter}}"] = mentor;
+                        </script>
+                        
+                    
+                    {% if forloop.counter|divisibleby:4 or forloop.last %}
+                    <!--Special div to add the full mentor info-->
+                    <div class="row">
+                        <!--withratio is a hack for dividing.  Added 1 so it rounds up at 1, 5, etc.  Dynamically sets div number-->
+                        <div id="full_mentor_div_{{big_counter}}00{% widthratio forloop.counter|add:1 4 1%}" class="full_mentor_details " style="display: none; overflow: auto;">
+                            <div class="small-12 medium-4 large-4 columns">
+                                <img class="mentor_img"/>
+                            </div>
+                            <div class="small-12 medium-8 large-8 columns mentor_details_info ">
+                                <h4 class="name"></h4>
+                                <p class="bio"></p>
+                                <div class="tags_wrapper">
+                                    <h5> I can help with:</h5>
+                                    <div class="tags"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+         
+                    {%endwith%}
+                    {% endfor %}
+
+                    </div>
+                    <br class"clear"/>
+                </div>
+                {%endwith%}
+                {% endfor %}
+                
+
+
+                
+                
+                <br class="clear"/>
+            
+        
+    </div>
+</div>
+
+<script type="text/javascript">
+        function mentor_detail(this_mentor){
+
+
+            var active_mentor = mentors[this_mentor];
+            var group = active_mentor["group"]
+            var small_div_num = Math.ceil(active_mentor["order"]/4)
+            //logic for picking active .full_mentor_details div (div to be filled with mentor info)
+            if(small_div_num > 9){
+                group_num = group * 10000;
+            }else{
+                group_num = group * 1000;
+            }
+            var div_num = group_num + small_div_num; //coordinates to the ID of full_mentor_details. Had to ghettoify due to django and lack of skill
+            
+            var info_div = "#full_mentor_div_" + div_num;
+            var mentor_id = "#mentor_" + (active_mentor["group"] * 100) + active_mentor["order"] //selects the div surrounding the small mentor image.
+
+            console.log("mentor_id = " + mentor_id)
+            
+            //First, check if they clicked the same picture that is active.
+            //If they did, hide the info_div, if not, show details.
+            if($(mentor_id).hasClass('active')) {
+                $(".full_mentor_details").slideUp();  //let's try some sliding action
+                $(".full_mentor_details").removeClass('active');
+                $(mentor_id).removeClass('active');
+            } else{
+                $(".mentor").removeClass('active'); //strips all 'active' labels
+                $(mentor_id).addClass('active');  //adds 'active' to current mentor
+                // Check if the specific full mentor details div is already active.
+                // If so, don't animate (just replace data).
+                // If it doesn't have the active class, smoothly transition to the new div.
+                // It's for a smoother animation
+                if ($(info_div).hasClass('active')) {}else{
+                    $(".full_mentor_details").slideUp();  //let's try some sliding action
+                    $(".full_mentor_details").removeClass('active');
+                    $(info_div).addClass('active')
+                }
+                
+                
+                //Setup data to be injected into the #full_mentor_div_
+                var the_img = "img?mentor_id=" + active_mentor["id"]
+                var the_name = active_mentor["name"];
+                
+                var the_bio = active_mentor["bio"];
+                if (the_bio.toLowerCase() == "none" || the_bio == ""){
+                    the_bio = "My bio is still on the way, stay tuned..."
+                }
+                    
+                var the_tags = ""
+                var active_mentor_tags = active_mentor["tags"].split(';');
+                for (var i=0;i<active_mentor_tags.length;i++){
+                    var string = active_mentor_tags[i].charAt(0).slice()
+                    the_tags = the_tags + '<span class="tag_wrap"><span class="tag">' + active_mentor_tags[i] + '</span></span>'
+                }
+                
+                if (the_tags.toLowerCase() == '<span class="tag_wrap"><span class="tag">none</span></span>' || the_tags.toLowerCase() == '<span class="tag_wrap"><span class="tag"></span></span>'){
+                    $('.tags_wrapper').hide();
+                } else {
+                    $('.tags_wrapper').show();
+                }
+                
+                // Craete a variable for streamlined CSS selecting
+                var more_info_div = info_div + ' .mentor_details_info';
+                
+                //injects data into prebuilt HTML within active div
+                $(info_div + ' img').attr("src",the_img);
+                $(more_info_div + ' .name').html(the_name);
+                $(more_info_div + ' .bio').html(the_bio);
+                $(more_info_div + ' .tags').html(the_tags);
+                
+                //shows active div
+                $(info_div).fadeIn();
+            }
+        };
+    </script>
+{%endif%} <!--keeps mentors block blank if no content-->
+
+
+    
+
+
+
+
+</div>
+
+
+
+{% endblock %}
+

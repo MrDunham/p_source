@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset= "utf-8">
+    <title>Medhack: Corporate Sponsorship</title>
+    
+    <!-- Set the width of the browser's viewport to the width of a device's screen -->
+    <meta name= "viewport" content="initial-scale=1.0, width=device-width" />
+
+    <!-- Set syndicate url for global access to the python database -->
+    
+    {%if url != "/"%}
+      <link rel="canonical" href="http://prebacked.com/medhack">
+    {%endif%}
+
+<!--      Stylesheets  -->
+    <link rel="stylesheet" href="../css/premier.css">
+
+    <!--Open Graph (facebook) Properties-->
+    <meta property="og:site_name" content="MedHack, by Prebacked"/>
+    <meta property="og:url" content="http://prebacked.com/medhack/{{url}}"/>
+    <meta property="og:description" content="A 24 hour healthcare hackathon."/>
+    <meta property="og:title" content="A 24 Hour Health Hackathons | MedHack"/>
+
+  </head>
+  
+  <body>
+    
+    <div id="container">      
+      
+      <header id="banner">
+        
+       <nav>
+          <div class="nav-inner">
+            <a href="/">MedHack</a>
+            <ul class="nav-list">
+              <a class="nav-link" href="/sponsor"><li>sponsors</li></a>
+            </ul>
+          </div>
+        </nav> 
+
+        <div class="content">
+          <div id="logo" alt="MedHack Logo">
+            <img src="/images/medhack/medhack-logo.png" alt="MedHack Logo">
+          </div>
+          <h1>Build awesome stuff that changes lives</h1>
+          <p>MedHack is a competitive hackathon series that brings developers and medical experts together to share ideas and build awesome new healthcare technology</p>
+          
+          <a class="twitter" href="#">twitter</a>
+
+          <a class="facebook" href="#">facebook</a></span>
+        </div>
+          
+      </header> <!-- end  banner -->
+      
+<!-- Upcoming Events ====================== -->
+
+      <section id="Cities" class="silver">
+        <div class="content centered">
+          
+          <header><h3>Upcoming events</h3></header>
+            
+          {%for e in upcoming_events%}
+            <div class="event">
+              <img src="/images/icons/medhack-event-location.png" alt="MedHack Event Location">
+
+              <h3>{{e.city}}</h3>
+            
+              <b>{{e.full_date|date:'M dS'}} - {{e.full_date|add_a_day|date:'M dS'}}</b>
+            
+              <a href="{{e.link}}" class="btn">Register Here</a>
+            
+            </div>
+          {%endfor%}
+       
+          <div id="mc_embed_signup">
+            
+            <form action="http://prebacked.us5.list-manage.com/subscribe/post?u=3572fa1f9d829a0cc324cce2a&amp;id=f29adcde57" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+
+            <input type="email" value="" name="EMAIL" class="input-email left" id="mce-EMAIL" placeholder="Email address" required>
+                          
+            <input type="submit" value="Subscribe to event announcemenets" name="subscribe" id="mc-embedded-subscribe" class="subscribe right">
+
+            <div class="clear"></div>
+
+            </form>
+
+          </div> <!-- end mc_embed_signup -->
+
+        </div> <!-- end content --> 
+
+      </section>
+
+
+<!-- Sponsors ======================== -->
+    {% if featured_sponsors or other_sponsors%}
+
+      <section class="white">
+
+        <header><h3>Sponsors</h3></header>
+        
+        <div class="content centered">
+            
+          {%for s in featured_sponsors %}
+                      
+            <div class ="featured-sponsor">
+              
+              <img src="/partners?partner_id={{s.sponsor.sponsor_id}}" alt="{{s.sponsor.name}}, a featured partner of MedHack"/>
+
+              <p>{{s.sponsor.blurb}}</p>
+
+              <div class="clear"></div>
+
+            </div> <!-- end featured sponsor -->
+            
+          {% endfor %}
+
+          {%for s in other_sponsors %}
+
+            <div class="sponsor">
+
+              <img src="/partners?partner_id={{s.sponsor.sponsor_id}}" alt="{{s.sponsor.name}}, a partner of MedHack"/> 
+
+            </div> <!-- end sponsor -->
+
+          {% endfor %}          
+
+          <strong><p>Interested in sponsoring a medhack event?</p></strong>
+          
+          <a href="../sponsors.html" class="learn-more">Learn more about our sponsorship programs</a>
+
+        </div> <!-- end content -->
+      
+      </section> <!-- end sponsors  -->
+
+    {% endif %}  
+
+    </div><!-- end container -->
+    
+    <footer>
+
+      <div class="content">
+        
+        <div id="company-info" class="left">
+        
+          <p>Medhack: Healthcare Hackathon Events</p>
+          <p>&copy; 2014 Prebacked</p>
+        
+        </div>
+      
+          <a class="right" href="mailto:medhack@prebacked.com">medhack@prebacked.com</a>
+          
+          <div class="clear"></div>
+
+        </div>
+        
+      </div>
+    
+    </footer>
+
+    <script src="../js/jquery-1.6.1.min.js" type="text/javascript" ></script>
+    
+        <script src="../js/jquery-1.6.1.min.js" type="text/javascript" ></script>
+    
+    <script type="text/javascript">
+      $(document).ready(function(){
+        console.log("featured_sponsors variable is {{featured_sponsors}}");
+        {% for f in featured_sponsors%}
+
+        console.log("featured_sponsors_line by line variable is {{f.sponsor.name}}");
+        {%endfor%}
+
+        console.log("number of duplicate sponsors is {{duplicate_sponsors_counter}}");
+      
+      });     
+    </script>
+
+  </body>
+

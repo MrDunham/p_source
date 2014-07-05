@@ -1,0 +1,43 @@
+
+/*CSS Preload*/
+@import "reset";
+@import "960_12_col";
+
+
+/*Mixins*/
+@import "standard-mixins";
+
+body{
+    background: white;
+    margin: 25px;
+    width: 600px;
+}
+
+div {
+    box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}
+
+h1{
+    color: black;
+}
+
+.judge_nametag{
+    -webkit-print-color-adjust: exact;
+    padding: 20px;
+    height: 216px;
+    width: 288px;
+    background: #025d8c;
+    margin: 10px;
+    color: white;
+    font:Helvetica, Arial,sans-serif;
+    display: inline-table;
+    
+    h2{
+        font-size: 42px;
+        margin: 0;
+    }
+    p{
+        font-size: 18px;
+    }
+}

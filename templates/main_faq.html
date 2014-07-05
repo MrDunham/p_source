@@ -1,0 +1,23 @@
+{% extends 'homepage_base.html' %}
+
+{% block styles %}
+  <link rel="stylesheet" href="css/pages.css" media="screen" type="text/css"/>
+    
+{% endblock %}
+
+{%block color_scheme%}blue_green{%endblock%}
+
+{% block upper_info%}
+
+<h1>FAQ</h1>
+    
+{% endblock %}
+
+{%block upper_bg%}<!--<img src="images/headerimg2.jpg" id="headerImg" alt="Hackers starting a startup">-->{% endblock%}
+
+{% block middle_info%}
+<div id="new_faq">
+    {% include 'faqs.html'%}
+</div>
+{% endblock %}
+

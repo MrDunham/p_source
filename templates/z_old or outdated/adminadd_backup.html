@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link rel="stylesheet" href="../css/homepage.css" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="../css/admin.css" media="screen" type="text/css"/>
+</head>
+
+<body>
+    <div class="container_12">
+        <a href="/admin_add/faq_add">FAQ Add</a> <br/>
+        <a href="/admin_add/event_add">Event Add</a> <br/><br/><br/>
+        
+        {%if message%}{{message}}{%endif%}
+        <h1>Mentor / Judge add</h1>
+        <br/><br/><br/>
+        <form action="/admin_add" method="post" id="mentor_add">
+            <h2>Add Current Mentor</h2>
+            
+            <h4>Vertical:</h4> Health<input type="radio" name="vert" value="health"> <b style="color:#f00">CLICKING THIS MAKES IT LIVE ON SITE.</b><br/>
+            
+            <h4>Event</h4>
+            {%for e in events%}
+                {{e.event_id}}<input type="radio" name="event" value="{{e.event_id}}" {% if forloop.last %}checked="true"{%endif%} ><br/>
+            {% endfor %}
+            
+            <!--BCBS Spring 2013 (don't use in production)<input type="radio" name="event" value="BCBS Spring 2013" checked="true"><br/>-->
+            
+            <h4>Mentors</h4>
+            {%for m in mentors %}
+                <span class="radio grid_3"><input type="radio" name="id" value="{{m.id}}">{{m.name}}</span>
+            {%endfor%}
+            
+            <br/><br/>
+            <input type="submit" class="orange button">
+        </form>
+        
+        <br/><br/><br/><br/><br/>
+        
+        <h2>Add new mentor</h2>
+        <form action="/admin_add" method="post" id="mentor_add">
+            <h3>Event Categories</h3>
+            <h4>Vertical:</h4> Health<input type="radio" name="vert" value="health"> <b style="color:#f00">CLICKING THIS MAKES IT LIVE ON SITE.</b><br/>
+            <h4>Event</h4>
+            {%for e in events%}
+                {{e.event_id}}<input type="radio" name="event" value="{{e.event_id}}" {% if forloop.last %}checked="true"{%endif%}><br/>
+            {% endfor %}
+            
+            <h3>New Mentor</h3>
+            Name <input type="text" name="name"><br/>
+            Title <input type="text" name="title"><br/>
+            Bio <br/><textarea rows="5" cols="90" name="bio"></textarea>(not used yet, but will be someday. Keep to 3 sentences or less.)<br/>
+            <!--Img file <input type="text" name="img">firstname_lastname.jpg<br/>-->
+            ID <input type="text" name="id">firstname_lastname<br/>
+            Order <input type="text" name="order">Numbers only. EX: 1-5 - corporate sponsors, 6-10 - mega names, 10+ all else<br/>
+            <input type="submit" class="orange button">
+        </form>
+    </div>
+</body>

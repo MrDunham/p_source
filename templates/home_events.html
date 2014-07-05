@@ -1,0 +1,79 @@
+{% extends 'homepage_base.html' %}
+
+{% block styles %}
+  <link rel="stylesheet" href="css/pages.css" media="screen" type="text/css"/>
+{% endblock %}
+
+{%block color_scheme%}default{%endblock%}
+
+
+
+{% block upper_info%}
+    <div class="small-12 medium-8 columns end">
+        <h1>Bringing communities together</h1>
+        <p>
+            We were founded on events and pride ourselves with being part of, and creating, events that bring together members from disparate  communities.
+        </p>
+    </div>
+
+{% endblock %}
+
+{%block upper_bg%}<img class="show-for-medium-up" src="images/bgs/ignition_kickoff.jpg" id="headerImg" alt="Startup Conversations Event">{% endblock%}
+
+{% block middle_info%}
+<div class="row">
+    <h2 class="small-12 columns">Flagship events</h2>
+</div>
+
+<div class="row">
+    <div class="small-12 medium-6 large-4 columns end">
+        <a href="/medhack">
+            <img src="images/medhack_logo.png" alt="MedHack, a health hackathon series."/>
+
+        </a>
+    </div>
+</div>
+
+<!-- <div class="row">
+
+    <div class="small-10 columns end">
+        <a href="/event_board"> Event board</a>
+        <p>There’s lots of great events out there. Here’s our updated list of upcoming ones worth attending.</p>
+    </div>
+</div> -->
+
+{%if upcoming_events%}
+    <div class="row">
+        <h2 class="small-12 columns">Upcoming events</h2>
+        <p class="small-12 medium-10 end columns">There’s lots of great events out there, here’s upcoming ones worth attending.</p>
+    </div>
+    {%include '_event_list.html'%}
+{%endif%}
+
+<div id="stay_connected" class="">
+    <div id="stay_connected_inner" class="row">
+        <div id="connected_text" class="small-12 large-7 columns">
+            <h2>Stay in the loop</h2>
+            <p>Learn about future Prebacked events before your friends. Expect about an email a month.</p>
+        </div>
+        
+        <div id="connected_form" class="small-12 medium-7 large-5 end columns">
+            
+                <form action="http://prebacked.us5.list-manage.com/subscribe/post?u=3572fa1f9d829a0cc324cce2a&amp;id=f29adcde57" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                        <!------Auto loads the Explicit group tag.  Tested on Chrome and FF 11 ------>
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <input type="checkbox" checked="checked" id="group_1" name="group[7405][1]" value="1" style="-webkit-appearance: checkbox;display: inline !important;margin: 0;padding: 5px;border: 0;background: none;width: auto !important;font-family: Helvetica;font-size: 18;color: #F5F5F5;">
+                            <label for="group_1" style="float: none;clear: none;display: inline;width: auto;margin-top: 8px;text-align: left;font-weight: normal;position: relative;line-height: 150%;font-family: Helvetica;font-size: 14px;color: #333333;padding: 0 30px 0 3px;">Explicit Signups</label>
+                        </li>
+                        <!------/Load tag-------->
+                        <input id="" class="email large-12" type="email" value="" style="" name="EMAIL"  placeholder="email address" required>
+                        <input id="" class=" button large-8 end" type="submit" style="" value="Stay in the loop" name="subscribe"/>
+                </form>
+            
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+           

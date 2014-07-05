@@ -1,0 +1,500 @@
+/*Styles for the other pages*/
+/****************************************************************/
+/*******************     Applies to all      ********************/
+/****************************************************************/
+#signup_header {
+  text-align: center;
+  padding-bottom: 40px; }
+
+#middleInfoInner {
+  /*&>div:last-child{   //not needed if doing all "data" elements have a built-in padding-bottom
+      padding-bottom: 4rem;
+  }*/ }
+  #middleInfoInner .data {
+    padding-bottom: 4rem; }
+    #middleInfoInner .data h3 {
+      text-align: center; }
+      #middleInfoInner .data h3 + p {
+        text-align: center; }
+  #middleInfoInner > div.middle_headline {
+    text-align: center;
+    padding: 4rem 0 1.5rem;
+    font-size: 1.125em; }
+  #middleInfoInner h2, #middleInfoInner h3 {
+    font-weight: 500;
+    color: #414a59; }
+    #middleInfoInner h2 + p, #middleInfoInner h3 + p {
+      font-size: 1.3rem;
+      font-size: 1.125em;
+      line-height: 1.3em;
+      color: #777; }
+  #middleInfoInner h4 {
+    color: #414a59;
+    font-weight: 500; }
+  #middleInfoInner .button {
+    margin-bottom: 0;
+    padding: 0.5625rem 2rem 0.5rem;
+    background-color: #556677; }
+    #middleInfoInner .button:hover {
+      border-bottom: none; }
+
+p.quote {
+  padding: 2rem;
+  background: #fff;
+  font-weight: 400;
+  display: inline-block;
+  padding: 1rem; }
+  p.quote span {
+    float: right;
+    font-weight: 200;
+    font-style: italic; }
+
+/****************************************************************/
+/*******************        More Info        ********************/
+/****************************************************************/
+#list_sponsors {
+  float: right; }
+
+.listed_sponsor {
+  margin: 20px 0; }
+
+.listed_sponsor a {
+  border-bottom: none; }
+
+.listed_sponsor img {
+  max-width: 160px; }
+
+#homepage_about #middleInfoInner h3 {
+  text-align: left; }
+  #homepage_about #middleInfoInner h3 + p {
+    font-size: 1rem;
+    color: #000;
+    text-align: left; }
+
+/****************************************************************/
+/*******************     Home_Accelerate     ********************/
+/****************************************************************/
+#middleInfoInner #industry_partners li, #middleInfoInner #investors li {
+  text-align: center;
+  height: 5rem;
+  line-height: 5rem; }
+  #middleInfoInner #industry_partners li img, #middleInfoInner #investors li img {
+    max-height: 4rem;
+    max-width: 9rem;
+    vertical-align: middle; }
+    #middleInfoInner #industry_partners li img.partner_company, #middleInfoInner #investors li img.partner_company {
+      max-height: 3rem;
+      max-width: 12rem; }
+#middleInfoInner .program_grid > div {
+  margin-bottom: 1rem;
+  padding: 0.825rem;
+  background: #556677; }
+  #middleInfoInner .program_grid > div > p {
+    margin-bottom: 0;
+    color: #fff; }
+    #middleInfoInner .program_grid > div > p:last-child {
+      text-align: right; }
+#middleInfoInner #investors {
+  text-align: center; }
+#middleInfoInner #stay_connected {
+  padding: 0; }
+
+/****************************************************************/
+/*******************  Attendee registration  ********************/
+/****************************************************************/
+#register_buttons {
+  margin: 20px 0 40px; }
+
+#register_or p {
+  font-size: 28px;
+  padding-top: 10px; }
+
+#register_buttons .register_button {
+  border-bottom: none !important; }
+
+#invite {
+  padding: 10px;
+  background: #858585;
+  background: rgba(0, 0, 0, 0.3); }
+
+.important_list h2, .important_list h4 {
+  text-align: center; }
+
+.important_list h2 {
+  padding-bottom: 10px; }
+
+.important_list h4 {
+  padding-top: 10px; }
+
+.important_list li {
+  color: white;
+  font-size: 20px;
+  margin: 10px 15px;
+  padding: 10px;
+  background: rgba(12, 12, 12, 0.13);
+  text-align: center; }
+
+#saveForm.submit {
+  margin-bottom: 0;
+  padding: 0.5625rem 2rem 0.5rem;
+  background-color: #556677;
+  color: white;
+  border: none; }
+  #saveForm.submit:hover {
+    border-bottom: none; }
+
+#wufoo-outer-container {
+  padding: 0px;
+  margin: 0px;
+  background: #fff; }
+
+/****************************************************************/
+/*******************        Sponsors         ********************/
+/****************************************************************/
+#sponsorships_page {
+  padding: 40px 0 20px; }
+
+.sponsorships_info {
+  margin-bottom: 50px; }
+
+.sponsorships_info h1, .sponsorships_info h2 {
+  margin-bottom: 10px; }
+
+/*.sponsorships_info h2{*/
+/*    margin-top:40px;*/
+/*}*/
+.active .sponsor_grid {
+  background: #dEd9bD;
+  /*background: rgba(100,100,100,0.2);*/
+  transition: background 0.4s;
+  -moz-transition: background 0.4s;
+  /* Firefox 4 */
+  -webkit-transition: background 0.4s;
+  /* Safari and Chrome */
+  -o-transition: background 0.4s;
+  /* Opera */ }
+
+.sponsor_grid {
+  background: #CEC9AD;
+  padding: 10px;
+  /*border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px;*/ }
+
+.sponsor_grid h2 {
+  border-bottom: solid whitesmoke 1px;
+  margin-bottom: 10px;
+  font-size: 14px; }
+
+.sponsor_grid h3 {
+  font-size: 22px; }
+
+.sponsor_grid .link {
+  margin-top: 20px;
+  color: #f5f5f5; }
+
+#sponsor_bottom {
+  /*background: #EEEEEE url("/images/bg_linen_dark.png") repeat;*/
+  border-top: 2px solid #e2e5cf; }
+
+.more_sponsor {
+  margin: 30px 0 30px 5px;
+  padding: 10px;
+  background: #CEC9AD;
+  min-height: 400px;
+  min-width: 620px; }
+
+.learn_more_inner ul li {
+  padding-left: 20px;
+  list-style-type: disc;
+  list-style-position: inside; }
+
+.faq_answer .negspace {
+  top: -60px; }
+
+/***************** Large Banner ****************/
+lg_banner.left, .lg_banner_right {
+  margin: 0 auto 0;
+  line-height: 130px;
+  width: 845px; }
+
+.lg_banner.left {
+  text-align: right; }
+
+.lg_banner.left:before, .lg_banner.right:after {
+  content: "";
+  float: left;
+  display: block;
+  width: 0;
+  height: 0;
+  border-bottom: 65px solid #c1c1c1;
+  border-top: 65px solid #c1c1c1; }
+
+.lg_banner.left:before {
+  border-right: 15px solid #c1c1c1;
+  border-left: 65px solid transparent;
+  margin-right: -5px; }
+
+.lg_banner.left::after {
+  border: 2px dotted rgba(15, 15, 15, 0.8);
+  content: "";
+  float: left;
+  display: block;
+  line-height: 134px;
+  height: 131px;
+  top: -3px;
+  position: relative;
+  left: -2px;
+  z-index: 3; }
+
+.lg_banner.right::before {
+  border: 5px solid #191919;
+  content: "";
+  float: left;
+  display: block;
+  line-height: 134px;
+  height: 131px;
+  top: -5px;
+  position: relative;
+  left: 5px;
+  z-index: 1;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  -webkit-border-radius: 6px;
+  -o-border-radius: 6px; }
+
+.lg_banner.right:after {
+  border-right: 65px solid transparent;
+  border-left: 15px solid #c1c1c1;
+  margin-left: -5px; }
+
+/*box-shadow: -4px 0 5px -1px rgba(195,195,195,.6);*/
+.lg_banner_content {
+  display: block;
+  background: #c1c1c1;
+  float: left;
+  padding: 6px 20px;
+  position: relative;
+  z-index: 2; }
+
+.lg_banner_content a, .lg_banner_content h2 {
+  display: inline-block;
+  position: relative; }
+
+.lg_banner h1 {
+  color: #151515; }
+
+.lg_banner p {
+  color: #252525;
+  margin-bottom: 5px; }
+
+/****************************************************************/
+/*******************        Ignition         ********************/
+/****************************************************************/
+.color_scheme_blue h1, .color_scheme_blue h2, .color_scheme_blue h3, .color_scheme_blue h4, .color_scheme_blue p, .color_scheme_blue ul li, .color_scheme_blue ul, .color_scheme_blue #links li a {
+  color: #000;
+  text-shadow: 0 1px rgba(255, 255, 255, 0.1); }
+
+#event_home > h4, #event_home > p {
+  display: inline-block; }
+#event_home h4 {
+  width: 120px;
+  float: left; }
+#event_home > p {
+  width: 85%;
+  margin-bottom: 15px; }
+#event_home #programs {
+  margin-bottom: 15px; }
+
+/****************************************************************/
+/*******************            FAQ          ********************/
+/****************************************************************/
+.faq_col.top {
+  margin-top: 0px; }
+
+.faq_col {
+  margin-top: 25px; }
+
+.faq_col li {
+  margin-left: 10px; }
+
+#faq_answers > h3, #faq_answers > h4 {
+  margin-top: 30px;
+  margin-left: 10px; }
+
+.faq_answer.top {
+  margin-top: 0; }
+
+.faq_answer {
+  margin-top: 20px;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.07);
+  border-radius: 6px; }
+
+#new_faq .faq_col li {
+  margin-left: 0;
+  margin-top: 10px; }
+
+#new_faq .faq_answer {
+  margin-top: 0;
+  padding: 0;
+  background: transparent;
+  border-radius: 0; }
+
+/****************************************************************/
+/************  Conversations / speaker panel event  *************/
+/****************************************************************/
+.boxed_info {
+  box-sizing: border-box; }
+  .boxed_info > p {
+    padding: 3px 10px;
+    background-color: #556677;
+    color: #f8f8f8; }
+
+.speaker_list span {
+  background: #556677;
+  /*top: -4px;*/
+  padding-top: 5px;
+  padding-bottom: 5px; }
+.speaker_list p:first-child {
+  margin: 0.875rem 0; }
+.speaker_list p {
+  color: #f8f8f8;
+  line-height: 1.2; }
+
+#upcoming_event {
+  padding: 2em 0 2.5rem; }
+  #upcoming_event .event_info {
+    font-size: 1.15rem; }
+
+#stay_connected {
+  background: #e4e6e6; }
+  #stay_connected #stay_connected_inner {
+    padding: 2.5rem 0; }
+  #stay_connected form, #stay_connected p, #stay_connected .button {
+    margin-bottom: 0; }
+  #stay_connected #connected_form, #stay_connected .wufoo-form-container, #stay_connected #wufoo-outer-container {
+    margin-top: 1rem; }
+    #stay_connected #connected_form .button, #stay_connected .wufoo-form-container .button, #stay_connected #wufoo-outer-container .button {
+      padding: 0.5625rem 2rem 0.5rem;
+      background-color: #556677; }
+
+/********   Size specific   ********/
+@media (max-width: 40em) {
+  #header_text > :first-child {
+    padding-top: 0rem; }
+  #header_text > :last-child {
+    padding-bottom: 0.8rem; }
+  #header_text h1 {
+    font-size: 1.5rem;
+    font-weight: 300; }
+  #header_text p {
+    font-size: 1.2rem; }
+
+  .speaker_list h3 {
+    font-size: 1rem; }
+  .speaker_list p {
+    font-size: 0.8rem; }
+
+  .boxed_info p {
+    font-size: 1rem; } }
+@media (min-width: 40.063em) {
+  #header_text > :first-child {
+    padding-top: 60px; }
+  #header_text > :last-child {
+    padding-bottom: 40px; }
+
+  .speaker_list h3 {
+    font-size: 1rem; }
+  .speaker_list p {
+    font-size: 0.8rem; }
+
+  .boxed_info p {
+    font-size: 1.4rem; } }
+@media (min-width: 64.063em) {
+  #header_text > :first-child {
+    padding-top: 3rem; }
+  #header_text > :last-child {
+    padding-bottom: 2.9rem; }
+
+  .speaker_list {
+    /*p {font-size: 1rem}*/ }
+    .speaker_list p:first-child {
+      font-size: 1.2rem; }
+
+  .boxed_info p {
+    font-size: 1.6rem; } }
+/****************************************************************/
+/*****************        Home Engage          ******************/
+/****************************************************************/
+#entrepreneur_innovation p.quote {
+  margin-top: 1rem; }
+
+#demographics table {
+  width: 100%; }
+#demographics span {
+  float: left;
+  width: 3rem;
+  text-align: right;
+  padding-right: .5rem;
+  font-weight: 500; }
+#demographics th {
+  font-size: 2.125rem;
+  line-height: inherit;
+  font-weight: 200; }
+  #demographics th span {
+    /*font-weight: 400;*/ }
+#demographics td {
+  font-size: 1.125rem; }
+
+/****************************************************************/
+/*****************        Events List          ******************/
+/****************************************************************/
+#events_page .event_block {
+  padding-bottom: 1.2rem; }
+#events_page h2:first-child {
+  color: #414a59; }
+#events_page .event {
+  padding-bottom: 1.2rem;
+  /*.event_date{width: 9%;padding-left: 0.9375rem}*/
+  /*.event_location{width: 18%}*/
+  /*.event_description_link{width: 12%;}*/ }
+  #events_page .event > div {
+    /*display: inline-block;*/
+    /*box-sizing: border-box;*/ }
+  #events_page .event div.event_name {
+    font-weight: 500;
+    /*width: 48.5%;*/ }
+  #events_page .event .event_link {
+    /*width: 9%;*/ }
+    #events_page .event .event_link.register {
+      /*width:21%;*/
+      /*padding-right: 0.9375rem;*/ }
+  #events_page .event .event_description > div {
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem; }
+  #events_page .event .event_description .register_description {
+    box-sizing: border-box;
+    /*margin-top: 0.8rem;*/ }
+    #events_page .event .event_description .register_description p:first-child {
+      font-size: 1.3rem;
+      font-weight: 100;
+      color: #414a59; }
+  #events_page .event .event_description .register_tickets {
+    /*width: 60%;
+    float: right;
+    margin: 10px 0 15px;*/
+    /*margin-top: 0.8rem;*/ }
+  #events_page .event .arrow_down {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #2f2f2f;
+    font-size: 0;
+    line-height: 0;
+    top: -2px;
+    position: relative;
+    margin-left: 2px; }

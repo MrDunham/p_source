@@ -1,0 +1,31 @@
+<a name="faq_top"></a>
+<div id="faq_columns" class="section grid_24 top">
+
+<!--Note double variables (f.header and f.question) due to old styling vs new.  header and content should be removed on update-->
+    {% for c in faqs %}
+        <!-- c.0 = list, c.1 = identifier (unique to each list), c.2 = header-->
+        
+        {%if c.0 %} 
+            <ul id="faq_{{c.1}}" class="faq_col grid_20 alpha omega {% if forloop.first %}top{%endif%}">
+                {% if c.2 %}<h4>{{c.2}}</h4>{% endif %}
+                {%for f in c.0 %}
+                <li class="{% if forloop.first %}top{%endif%}">
+                    <p><a onclick="toggle_this('.{{f.link}}')" href="javascript:void(0);" class="faq_link">{{f.header}}{{f.question}}</a></p>
+                </li>
+                <div class="{{f.link}} faq_answer " style="display:none; min-width:100%;">
+                    <p>{{f.content}}{{f.answer}}</p>
+                </div>
+                {%endfor%}
+            </ul>
+        {%endif%}
+    {%endfor%}
+    
+    <br class="clear"/>
+</div><!--end of faq answers-->
+
+<script type="text/javascript">
+    function toggle_this(this_class){
+        //$('.faq_answer').hide('fast');
+        $(this_class).toggle('fast')
+     };
+</script>

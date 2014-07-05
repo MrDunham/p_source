@@ -1,0 +1,727 @@
+/*Medhack SCSS*/
+/*****Variables*****/
+/*BG colors*/
+/*Imports*/
+/*CSS Preload*/
+/*
+ * Web Fonts from fontspring.com
+ *
+ * All OpenType features and all extended glyphs have been removed.
+ * Fully installable fonts can be purchased at http://www.fontspring.com
+ *
+ * The fonts included in this stylesheet are subject to the End User License you purchased
+ * from Fontspring. The fonts are protected under domestic and international trademark and 
+ * copyright law. You are prohibited from modifying, reverse engineering, duplicating, or
+ * distributing this font software.
+ *
+ * (c) 2010-2011 Fontspring
+ *
+ *
+ *
+ *
+ * The fonts included are copyrighted by the vendor listed below.
+ *
+ * Vendor:      exljbris
+ * License URL: http://www.fontspring.com/fflicense/exljbris
+ *
+ *
+ */
+@font-face {
+  font-family: 'MuseoSlab500';
+  src: url("/fonts/Museo_Slab_500-webfont.eot");
+  src: url("/fonts/Museo_Slab_500-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/Museo_Slab_500-webfont.woff") format("woff"), url("/fonts/Museo_Slab_500-webfont.ttf") format("truetype"), url("/fonts/Museo_Slab_500-webfont.svg#MuseoSlab500") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+@font-face {
+  font-family: 'MuseoSans500';
+  src: url("/fonts/MuseoSans_500-webfont.eot");
+  src: url("/fonts/MuseoSans_500-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/MuseoSans_500-webfont.woff") format("woff"), url("/fonts/MuseoSans_500-webfont.ttf") format("truetype"), url("/fonts/MuseoSans_500-webfont.svg#MuseoSans500") format("svg");
+  font-weight: normal;
+  font-style: normal; }
+
+/*@import "reset";*/
+/*@import "960_12_col";*/
+/*no longer using 960 grid*/
+/*@import "foundation";*/
+/*@import "buttons";*/
+/*Mixins*/
+/*standards*/
+/*The two text shadows should be merged asap*/
+/*for backwards compatibility only, deprecated*/
+/* MailChimp Form Embed Code - Slim - 08/17/2011 */
+#mc_embed_signup form {
+  display: block;
+  position: relative;
+  text-align: left;
+  padding: 10px 0 10px; }
+
+#mc_embed_signup h2 {
+  font-weight: bold;
+  padding: 0;
+  margin: 15px 0;
+  font-size: 1.4em; }
+
+#mc_embed_signup input {
+  border: 1px solid #999999;
+  -webkit-appearance: none; }
+
+#mc_embed_signup input[type=checkbox] {
+  -webkit-appearance: checkbox; }
+
+#mc_embed_signup input[type=radio] {
+  -webkit-appearance: radio; }
+
+#mc_embed_signup input:focus {
+  border-color: #333; }
+
+#mc_embed_signup .button {
+  clear: both;
+  background-color: #aaa;
+  border: 0 none;
+  border-radius: 4px;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: normal;
+  height: 32px;
+  line-height: 32px;
+  margin: 0 5px 10px 0;
+  padding: 0;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: top;
+  white-space: nowrap;
+  width: auto; }
+
+#mc_embed_signup .button:hover {
+  background-color: #777; }
+
+#mc_embed_signup .small-meta {
+  font-size: 11px; }
+
+#mc_embed_signup .nowrap {
+  white-space: nowrap; }
+
+#mc_embed_signup .clear {
+  clear: none;
+  display: inline; }
+
+#mc_embed_signup label {
+  display: block;
+  font-size: 16px;
+  padding-bottom: 10px;
+  font-weight: bold; }
+
+#mc_embed_signup input.email {
+  display: block;
+  padding: 8px 0;
+  margin: 0 4% 10px 0;
+  text-indent: 5px;
+  width: 58%;
+  min-width: 130px; }
+
+#mc_embed_signup input.button {
+  display: block;
+  width: 35%;
+  margin: 0 0 10px 0;
+  min-width: 90px; }
+
+#mc_embed_signup div#mce-responses {
+  float: left;
+  top: -1.4em;
+  padding: 0em 0.5em 0em 0.5em;
+  overflow: hidden;
+  width: 90%;
+  margin: 0 5%;
+  clear: both; }
+
+#mc_embed_signup div.response {
+  margin: 1em 0;
+  padding: 1em 0.5em 0.5em 0;
+  font-weight: bold;
+  float: left;
+  top: -1.5em;
+  z-index: 1;
+  width: 80%; }
+
+#mc_embed_signup #mce-error-response {
+  display: none; }
+
+#mc_embed_signup #mce-success-response {
+  color: #529214;
+  display: none; }
+
+#mc_embed_signup label.error {
+  display: block;
+  float: none;
+  width: auto;
+  margin-left: 1.05em;
+  text-align: left;
+  padding: 0.5em 0; }
+
+/*Mixins*/
+div {
+  box-sizing: border-box; }
+
+/*****Table of contents****/
+/*Main styles*/
+/*Above Fold*/
+h1, h2, h3, h4, h5, h6, h7, h8, p, li, ul, div, sub, sup, input {
+  font-family: "helvetica neue", helvetica, ariel, sans-serif; }
+
+h1, h2, h3, #head_links li {
+  /*font-family: EngraversMT, DollarRegular, LegalTender;*/
+  /*font-family: MuseoSlab500, serif;*/
+  font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+  text-shadow: 0 1px 1px #e3e5cf;
+  text-shadow: 0 1px 1px rgba(200, 200, 200, 0.6); }
+
+h1, h2, h3, h4, h5, h6, h7 {
+  color: #252525;
+  /*color: #f5f5f5;*/
+  line-height: 1.3em; }
+
+p, ul, ol, li, label {
+  color: #353535;
+  /*color: #e5e5e5;*/
+  line-height: 1.2em; }
+
+/*Sizes for museo slab*/
+h1 {
+  font-size: 30px; }
+
+h2 {
+  font-size: 24px; }
+
+h3 {
+  font-size: 20px; }
+
+h4 {
+  font-size: 18px; }
+
+h5 {
+  font-size: 16px; }
+
+h6 {
+  font-size: 16px; }
+
+p {
+  font-size: 16px; }
+
+#medhack h1 {
+  font-size: 24px; }
+
+#medhack h2 {
+  font-size: 20px; }
+
+#medhack h3 {
+  font-size: 18px; }
+
+#medhack h4 {
+  font-size: 20px; }
+
+#medhack h5 {
+  font-size: 16px; }
+
+#medhack h6 {
+  font-size: 16px; }
+
+#medhack p {
+  font-size: 16px; }
+
+/*********************************************/
+/*********       Main Styles         *********/
+body {
+  background-color: #202740; }
+
+.inner_container {
+  padding-bottom: 60px; }
+  .inner_container h3 {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 60px; }
+
+h1, h2, h3, h4, h5, h6, p, div, ul, li, span {
+  color: white;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.6);
+  -moz-text-shadow: 0 2px 3px rgba(0, 0, 0, 0.6);
+  -webkit-text-shadow: 0 2px 3px rgba(0, 0, 0, 0.6); }
+
+.main_section {
+  -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+  position: relative; }
+
+.pic_bg {
+  background-size: cover; }
+
+/*********************************************/
+/*********       Above Fold         *********/
+#above_fold {
+  background-image: url("/images/medhack/stanford_palm_drive_2.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  /*background-size: cover;*/
+  z-index: 15; }
+  #above_fold #above_fold_inner {
+    text-align: center; }
+    #above_fold #above_fold_inner h1 {
+      font-size: 64px;
+      margin: 40px auto 10px; }
+    #above_fold #above_fold_inner h2 {
+      font-size: 32px;
+      margin-bottom: 10px; }
+    #above_fold #above_fold_inner #header_info_boxes {
+      margin-top: 10px;
+      margin-bottom: 200px; }
+    #above_fold #above_fold_inner .large.button {
+      padding-top: 8px;
+      /*box-shadow: 0 $button-z $green - 80, inset 0 1px rgba(255,255,255,.4), 0 $button-z + $button-z * 0.2 2px rgba(0,0,0,.6); // Pretty's up the button.  Big shadow as button 'side', top white shadow and bottom black shadow for lighting effects.*/ }
+      #above_fold #above_fold_inner .large.button:active {
+        /*top: 3px;*/
+        box-shadow: 0 -1px rgba(0, 0, 0, 0.4); }
+      #above_fold #above_fold_inner .large.button p {
+        text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+        -moz-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+        -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3); }
+      #above_fold #above_fold_inner .large.button p:first-child {
+        font-size: 30px;
+        font-weight: bold; }
+    #above_fold #above_fold_inner .header_info_box {
+      background: rgba(30, 30, 30, 0.75);
+      -webkit-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0px 1px 2px black;
+      -moz-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0px 1px 2px black;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0px 1px 2px black;
+      padding: 10px;
+      text-align: left;
+      padding-left: 50px; }
+      #above_fold #above_fold_inner .header_info_box p {
+        font-size: 24px; }
+      #above_fold #above_fold_inner .header_info_box#header_date {
+        background-image: url(/images/medhack/images/calendar.png);
+        background-repeat: no-repeat;
+        background-position: 5px center;
+        padding-left: 60px; }
+      #above_fold #above_fold_inner .header_info_box#header_location {
+        background-image: url(/images/medhack/images/pin.png);
+        background-repeat: no-repeat;
+        background-position: left center; }
+        #above_fold #above_fold_inner .header_info_box#header_location a, #above_fold #above_fold_inner .header_info_box#header_location a:visited, #above_fold #above_fold_inner .header_info_box#header_location a:hover, #above_fold #above_fold_inner .header_info_box#header_location a:active {
+          color: whitesmoke; }
+  #above_fold .inner_container {
+    padding-bottom: 60px; }
+
+/*********************************************/
+/********* Sponsors (above fold)     *********/
+#top_sponsors {
+  z-index: 14;
+  background: whitesmoke url("/images/bg_crosshatch_trans.png") repeat; }
+  #top_sponsors #top_sponsors_inner #sponsorFold {
+    margin: 0; }
+  #top_sponsors #top_sponsors_inner h3 {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    text-align: left;
+    font-size: 18px;
+    color: black;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+    -moz-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+    -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3); }
+  #top_sponsors #top_sponsors_inner.inner_container {
+    padding-bottom: 20px; }
+
+/*********************************************/
+/********* Selling points   *********/
+#selling_points {
+  z-index: 13;
+  background-image: url("/images/medhack/medhack_daniel_keynote.jpg");
+  background-repeat: no-repeat;
+  background-position: center bottom; }
+  #selling_points #selling_points_inner {
+    /*padding-top: 40px;*/
+    min-height: 500px; }
+    #selling_points #selling_points_inner .selling_point {
+      background: rgba(30, 30, 30, 0.75);
+      -webkit-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0px 1px 2px black;
+      -moz-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0px 1px 2px black;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0px 1px 2px black;
+      padding: 10px; }
+      #selling_points #selling_points_inner .selling_point h4 {
+        font-size: 24px;
+        font-family: MuseoSans500; }
+      #selling_points #selling_points_inner .selling_point a, #selling_points #selling_points_inner .selling_point a:active, #selling_points #selling_points_inner .selling_point a:visited, #selling_points #selling_points_inner .selling_point a:hover {
+        color: whitesmoke; }
+      #selling_points #selling_points_inner .selling_point p {
+        padding-top: 10px; }
+
+/*********************************************/
+/********* mentors   *********/
+#mentors {
+  z-index: 12; }
+  #mentors #key_outer {
+    margin-bottom: 10px; }
+    #mentors #key_outer #mentor_key {
+      background-color: rgba(30, 132, 52, 0.6); }
+    #mentors #key_outer #judge_key {
+      background-color: rgba(30, 52, 132, 0.6); }
+    #mentors #key_outer #both_key {
+      background-color: rgba(30, 185, 185, 0.6); }
+    #mentors #key_outer .key {
+      padding: 8px 10px;
+      text-align: center; }
+  #mentors #mentors_inner .mentor {
+    position: relative;
+    padding: 5px;
+    background: #b1beef;
+    margin-bottom: 20px; }
+    #mentors #mentors_inner .mentor img {
+      width: 100%; }
+    #mentors #mentors_inner .mentor span {
+      position: absolute;
+      bottom: 5px;
+      left: 0px;
+      padding: 5px 10px;
+      background: rgba(30, 30, 30, 0.75);
+      -webkit-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0px 1px 2px black;
+      -moz-box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0px 1px 2px black;
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1), 0px 1px 2px black; }
+      #mentors #mentors_inner .mentor span.type_1 {
+        /*mentor only*/
+        background-color: rgba(30, 132, 52, 0.6); }
+      #mentors #mentors_inner .mentor span.type_2 {
+        /*judge only*/
+        background-color: rgba(30, 52, 132, 0.6); }
+      #mentors #mentors_inner .mentor span.type_3 {
+        /*both mentor and judge*/
+        background-color: rgba(30, 185, 185, 0.6); }
+      #mentors #mentors_inner .mentor span .mentor_name {
+        font-size: 20px; }
+      #mentors #mentors_inner .mentor span .mentor_employer {
+        font-size: 14px; }
+  #mentors #mentors_inner .full_mentor_details {
+    margin-bottom: 20px;
+    min-width: 100%; }
+    #mentors #mentors_inner .full_mentor_details img {
+      background: #b1beef;
+      padding: 5px; }
+    #mentors #mentors_inner .full_mentor_details .mentor_details_info .name {
+      font-size: 36px; }
+    #mentors #mentors_inner .full_mentor_details .mentor_details_info .bio {
+      font-size: 16px; }
+    #mentors #mentors_inner .full_mentor_details .mentor_details_info h5 {
+      margin-top: 20px;
+      font-size: 24px; }
+    #mentors #mentors_inner .full_mentor_details .mentor_details_info .tags {
+      margin-top: 10px; }
+      #mentors #mentors_inner .full_mentor_details .mentor_details_info .tags .tag_wrap {
+        margin-left: 26px;
+        position: relative;
+        display: inline-block; }
+        #mentors #mentors_inner .full_mentor_details .mentor_details_info .tags .tag_wrap .tag {
+          padding: 8px;
+          padding-left: 8px;
+          display: inline-block;
+          background: whitesmoke;
+          color: black;
+          text-shadow: none;
+          -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+          -moz-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+          margin-bottom: 5px; }
+        #mentors #mentors_inner .full_mentor_details .mentor_details_info .tags .tag_wrap:before {
+          content: "";
+          /*float:left;*/
+          display: inline-block;
+          position: absolute;
+          left: -16px;
+          width: 0;
+          height: 0;
+          border-color: transparent whitesmoke transparent transparent;
+          border-style: solid;
+          border-width: 16px 16px 16px 0; }
+        #mentors #mentors_inner .full_mentor_details .mentor_details_info .tags .tag_wrap:after {
+          content: "";
+          position: absolute;
+          top: 15px;
+          left: 0;
+          float: left;
+          width: 4px;
+          height: 4px;
+          -moz-border-radius: 2px;
+          -webkit-border-radius: 2px;
+          border-radius: 2px;
+          background: #fff;
+          -moz-box-shadow: -1px -1px 2px #004977;
+          -webkit-box-shadow: -1px -1px 2px #004977;
+          box-shadow: -1px -1px 2px #004977;
+          display: inline-block; }
+  #mentors #mentors_inner .button {
+    padding-top: 8px;
+    /*box-shadow: 0 $button-z $green - 80, inset 0 1px rgba(255,255,255,.4), 0 $button-z + $button-z * 0.2 2px rgba(0,0,0,.6); // Pretty's up the button.  Big shadow as button 'side', top white shadow and bottom black shadow for lighting effects.*/
+    margin-top: 40px; }
+    #mentors #mentors_inner .button:active {
+      /*top: 3px;*/
+      box-shadow: 0 -1px rgba(0, 0, 0, 0.4); }
+    #mentors #mentors_inner .button p {
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      -moz-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3); }
+    #mentors #mentors_inner .button p:first-child {
+      font-size: 30px;
+      font-weight: bold; }
+
+/*********************************************/
+/*********   Venue   *********/
+#venue {
+  background-color: #37467d;
+  text-align: center;
+  z-index: 11;
+  display: relative; }
+  #venue p {
+    /*color:black;*/
+    /*text-shadow: none;*/
+    font-size: 20px;
+    font-weight: bold; }
+  #venue img {
+    margin-top: 20px; }
+  #venue a {
+    color: whitesmoke; }
+
+/*********************************************/
+/********* Sponsors   *********/
+#sponsor_list {
+  z-index: 10;
+  text-align: center; }
+  #sponsor_list .sponsor {
+    text-align: center;
+    background: whitesmoke; }
+    #sponsor_list .sponsor a, #sponsor_list .sponsor a:visited, #sponsor_list .sponsor a:active, #sponsor_list .sponsor a:hover {
+      border-bottom: none !important;
+      text-decoration: none; }
+    #sponsor_list .sponsor p {
+      color: black;
+      text-shadow: none; }
+    #sponsor_list .sponsor img {
+      max-width: 200px;
+      max-height: 110px;
+      margin: auto;
+      padding: 5px 0; }
+
+.wraptocenter {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  width: 140px;
+  height: 60px; }
+  .wraptocenter img {
+    text-align: center;
+    display: inline-block;
+    width: 99%%;
+    max-height: 60px; }
+
+.wraptocenter * {
+  vertical-align: middle; }
+
+.wraptocenter {
+  display: inline-block; }
+
+.wraptocenter span {
+  display: inline-block;
+  height: 100%;
+  width: 1px; }
+
+/*********************************************/
+/********* FAQ   *********/
+#faq {
+  z-index: 9;
+  display: relative;
+  background-color: #37467d; }
+  #faq #faq_container {
+    background: #b1beef;
+    padding: 40px; }
+    #faq #faq_container .faq_col {
+      margin-top: 40px; }
+      #faq #faq_container .faq_col.top {
+        margin-top: 0; }
+    #faq #faq_container h4 {
+      font-size: 24px;
+      color: black;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      -moz-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      margin-bottom: 20px; }
+    #faq #faq_container a, #faq #faq_container a:hover, #faq #faq_container a:active, #faq #faq_container a:visited {
+      color: #1e8b36;
+      text-shadow: none; }
+    #faq #faq_container .question {
+      font-weight: bold;
+      margin-top: 20px; }
+    #faq #faq_container .answer p {
+      color: black;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      -moz-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      margin-top: 10px; }
+
+/*********************************************/
+/********* Apply   *********/
+#apply {
+  /*background-color: $mid_bg_color;*/ }
+  #apply #apply_inner #application_form {
+    background-color: #b1beef;
+    padding: 25px 15px 0; }
+
+/*********************************************/
+/********* Footer   *********/
+#footer {
+  padding: 20px 0 0;
+  background: #111;
+  text-align: left;
+  position: relative;
+  line-height: 40px; }
+  #footer p, #footer label, #footer a {
+    padding-bottom: 10px;
+    color: #f5f5f5; }
+  #footer .inner_container {
+    padding-bottom: 40px; }
+
+/********************************************************/
+/*	 		Footer	 			*/
+/********************************************************/
+/*All MC items refer to embedded Mail Chimp form*/
+#mc_embed_signup {
+  background: transparent;
+  clear: left;
+  font-size: 14px;
+  color: #aaa;
+  line-height: 1.2em; }
+
+#mc_embed_signup form {
+  padding: 0;
+  margin-bottom: 0; }
+
+#mc_embed_signup input.button {
+  background-color: #060;
+  background-color: #1E8B36;
+  margin-bottom: 0;
+  padding: 0 10px; }
+
+#mc_embed_signup input.button:hover {
+  background-color: #007600;
+  background-color: #25A258; }
+
+#mc_embed_signup input.email {
+  margin-bottom: 0; }
+
+#mc_embed_signup span {
+  background: url("/images/lock.png") no-repeat center left;
+  float: left;
+  padding-left: 20px;
+  margin-top: 5px; }
+
+/*********************************************/
+/********* Modal   *********/
+#modal {
+  visibility: hidden;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.8); }
+  #modal > div {
+    background-color: #f8f8f8;
+    border: 1px solid black;
+    padding: 15px;
+    border-radius: 6px;
+    position: relative;
+    min-width: 160px;
+    color: black; }
+    @media only screen and (max-device-width: 480px) {
+      #modal > div {
+        left: 5%;
+        width: 90%;
+        top: 5%; }
+        #modal > div a:first-of-type, #modal > div a:active:first-of-type, #modal > div a:hover:first-of-type, #modal > div a:active:first-of-type {
+          font-size: 20px; }
+        #modal > div h1 {
+          font-size: 48px; }
+        #modal > div h2 {
+          font-size: 40px; }
+        #modal > div h3 {
+          font-size: 34px; }
+        #modal > div h4 {
+          font-size: 28px; }
+        #modal > div p, #modal > div div, #modal > div span {
+          font-size: 20px; }
+        #modal > div #eventbrite_tix h1 {
+          font-size: 48px; }
+        #modal > div #eventbrite_tix h2 {
+          font-size: 40px; }
+        #modal > div #eventbrite_tix h3 {
+          font-size: 34px; }
+        #modal > div #eventbrite_tix h4 {
+          font-size: 28px; }
+        #modal > div #eventbrite_tix p, #modal > div #eventbrite_tix div, #modal > div #eventbrite_tix span {
+          font-size: 20px; } }
+    @media only screen and (min-device-width: 481px) {
+      #modal > div {
+        left: 15%;
+        width: 70%;
+        top: 20%; }
+        #modal > div a:first-of-type {
+          font-size: 12px; } }
+    #modal > div p, #modal > div h1, #modal > div h2, #modal > div h3, #modal > div h4, #modal > div a, #modal > div a:active, #modal > div a:hover, #modal > div a:active {
+      color: black;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      -moz-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+      -webkit-text-shadow: 0 1px 0 rgba(0, 0, 0, 0.3); }
+    #modal > div #eventbrite_tix {
+      margin-top: 20px; }
+      #modal > div #eventbrite_tix a, #modal > div #eventbrite_tix a:visited, #modal > div #eventbrite_tix a:active, #modal > div #eventbrite_tix a:hover, #modal > div #eventbrite_tix p, #modal > div #eventbrite_tix span {
+        color: black !important;
+        text-shadow: none; }
+
+.modal_close a {
+  color: #999;
+  font-size: 14px;
+  text-align: right;
+  border-bottom: none;
+  position: absolute;
+  right: 10px;
+  top: 5px; }
+
+/************* Info Bar *************/
+#info_bar {
+  background: #EB593C;
+  /*background: #006295;*/
+  position: relative;
+  z-index: 4;
+  text-align: center;
+  padding: 8px 0 11px;
+  /*border-bottom: solid 2px #fff;*/
+  -webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 2px 1px rgba(0, 0, 0, 0.3);
+  min-width: 100%;
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(25, 25, 25, 0.01)), to(rgba(25, 25, 25, 0.25)));
+  background-image: -webkit-linear-gradient(top, rgba(25, 25, 25, 0.01), rgba(25, 25, 25, 0.25));
+  background-image: -moz-linear-gradient(top, rgba(25, 25, 25, 0.01), rgba(25, 25, 25, 0.25));
+  background-image: -ms-linear-gradient(top, rgba(25, 25, 25, 0.01), rgba(25, 25, 25, 0.25));
+  background-image: -o-linear-gradient(top, rgba(25, 25, 25, 0.01), rgba(25, 25, 25, 0.25)); }
+  #info_bar span, #info_bar a {
+    display: inline-block;
+    font-size: 18px; }
+  #info_bar span {
+    color: #fff;
+    margin-right: 15px; }
+  #info_bar a {
+    font-weight: bold;
+    color: #ffffff; }
+    #info_bar a.button {
+      padding: 5px 10px; }

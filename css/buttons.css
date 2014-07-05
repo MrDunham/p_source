@@ -1,0 +1,231 @@
+/*----------------------*/
+/*	Buttons		*/
+/*----------------------*/
+
+.buttonSpacer{
+	padding: 15px 0 0 0;
+}
+.tan.button{
+	background-color: #D6BF77;
+	color: #151515;
+	text-shadow: 0 1px #aaa;
+}
+.tan.button:active{
+	background-color: #D6BF77;
+}
+.green.button{
+	background-color: #060;
+	background-color: #1E8B36;
+	color: #f5f5f5;
+	text-shadow: 0 1px #666;
+	font-weight: lighter;
+}
+.green.button:active{
+	background-color: #070;
+	
+}
+/*.fat:before{*/
+
+/*~~~~~ NOT READY FOR PRIMETIME ~~~~~~*/
+	/*content:"";*/
+	/*position: absolute;*/
+	/*min-height:105%;*/
+	/*background: inherit;*/
+	/*box-shadow: 0 6px 1px rgba(33, 33, 33, .75);*/
+	/**/
+	/*position: absolute;*/
+	/*top: 0;*/
+	/*left: -15px;*/
+	/*margin: 0 0 0 10px;*/
+	/*padding: 8px;*/
+	/*height: 55px;*/
+	/*min-width: 230px;*/
+	/*z-index: 1;*/
+/*}*/
+
+/*.fat:active{*/
+/*	top:6px;*/
+/*}*/
+.orange.button{
+	background-color: #f15f20;
+	color: #f5f5f5;
+	text-shadow: 0 1px #666;	
+}
+
+.orange.button:active, .orange.button:hover{
+	background-color: #f36330;
+}
+
+.hunter_green.button{
+	background-color: #2C542C;
+	color: #f5f5f5;
+	text-shadow: 0 1px #666;	
+}
+
+.hunter_green.button:active, .hunter_green.button:hover{
+	background-color: #2C702C;
+}
+.red.button{
+	background-color: #ff0000;
+	color: #f5f5f5;
+	text-shadow: 0 1px #666;	
+}
+
+.red.button:active, .red.button:hover{
+	background-color: #ff2020;
+}
+
+.purple.button, .purple.button:active{
+	background-color: #8B78A5;
+	color: #f5f5f5;
+	text-shadow: 0 1px #656565;
+}
+
+.blue.button{
+	background-color: #44AACF;
+	color: #f5f5f5;
+	text-shadow: 0 1px #666;
+}
+.blue.button:active, .blue.button:hover{
+	background-color: #55bbd3;
+}
+.lt_gray.button{
+	background-color: #EEE;
+	color: #252525;
+	text-shadow: 0 1px #333;
+}
+.lt_gray.button:active, .lt_grey.button:hover{
+	background-color: #FFF;
+}
+.gray.button{
+	background-color: #666;
+	color: whiteSmoke;
+	text-shadow: 0 1px #333;
+}
+.gray.button:active, .gray.button:hover{
+	background-color: #797979;
+}
+.button{
+	color: #e5e5e5;
+	text-shadow: 0 -1px #000;
+	position: relative;
+	z-index: 2;
+	/*-moz-border-radius: 6px;*/
+	/*-webkit-border-radius: 6px;*/
+	/*border-radius: 6px;*/
+}
+.button:active{
+	background-image: url("/images/button-gradient-overlay-big-bottom.png");
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(25,25,25,.25), to(rgba(25,25,25,.01))));
+	background-image: -webkit-linear-gradient(top, rgba(25,25,25,0.25), rgba(25,25,25,0.01));
+	background-image:    -moz-linear-gradient(top, rgba(25,25,25,0.25), rgba(25,25,25,0.01));
+	background-image:     -ms-linear-gradient(top, rgba(25,25,25,0.25), rgba(25,25,25,0.01));
+	background-image:      -o-linear-gradient(top, rgba(25,25,25,0.25), rgba(25,25,25,0.01));
+	top: 1px;
+	/*HEX box shadows*/
+	-moz-box-shadow: inset 0 1px 4px 1px #222;
+	-webkit-box-shadow: inset 0 1px 4px 1px #222;
+	box-shadow: inset 0 1px 4px 1px #222;
+	/*Rgba box shadows*/
+	-moz-box-shadow: inset 0 1px 4px 1px rgba(33,33,33,.65);
+	-webkit-box-shadow: inset 0 1px 4px 1px rgba(33,33,33,.65);
+	box-shadow: inset 0 1px 4px 1px rgba(33,33,33,.65), 0 0 0 #000;
+	border-bottom: 1px solid rgba(0,0,0,.00);
+}
+.button, .button:visited{
+	background-image: url("/images/button-gradient-overlay-big-top.png");
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(25,25,25,.01)), to(rgba(25,25,25,.25)));
+	background-image: -webkit-linear-gradient(top, rgba(25,25,25,0.01), rgba(25,25,25,0.25));
+	background-image:    -moz-linear-gradient(top, rgba(25,25,25,0.01), rgba(25,25,25,0.25));
+	background-image:     -ms-linear-gradient(top, rgba(25,25,25,0.01), rgba(25,25,25,0.25));
+	background-image:      -o-linear-gradient(top, rgba(25,25,25,0.01), rgba(25,25,25,0.25));
+	display: block;
+	padding: 8px 13px 4px 10px;
+	text-decoration: none;
+	line-height: 1;
+	box-shadow: 0 1px 1px #333;
+	-moz-box-shadow: 0 1px 1px #333;
+	-webkit-box-shadow: 0 1px 1px #333;
+	-moz-box-shadow: 0 1px 1px rgba(33,33,33,.75);
+	-webkit-box-shadow: 0 1px 1px rgba(33,33,33,.75);
+	box-shadow: 0 1px 1px rgba(33,33,33,.75);
+	/*border-bottom: 1px solid #222;*/
+	border-bottom: none !important;
+	position:relative;
+	cursor: pointer;
+}
+
+a.button, a:hover.button, a:active.button, a:visited.button{
+	text-decoration: none !important;
+}
+
+a:hover.button{
+	/*border-bottom: 1px solid #222 !important;*/
+	border-bottom: none !important;
+}
+
+.submitButton.button{
+	width: 197px;
+	font-size: 16px;
+	padding: 12px 14px 7px 10px;
+	border-bottom: none !important;
+	margin: 10px 0 10px 0;
+}
+
+/****** INSET ******/
+
+/*~~~~~~~~~~NOT READY FOR PRIMETIME~~~~~~~~~~*/
+/*.button.large.inset:before{*/
+/*	content: '';*/
+/*	position: absolute;*/
+/*	top: -5px !important;*/
+/*	left: -15px;*/
+/*	margin: 0 0 0 10px;*/
+/*	padding: 8px;*/
+/*	height: 55px;*/
+/*	min-width: 230px;*/
+/*	width: 98%;*/
+/*	border-radius: 8px;*/
+/*	-moz-border-radius: 8px;*/
+/*	-webkit-border-radius: 8px;*/
+/*	box-shadow: inset 0px 1px 2px rgba(50, 50, 50, 0.5);*/
+/*	-moz-box-shadow: inset 0px 1px 2px rgba(50, 50, 50, 0.5);*/
+/*	-webkit-box-shadow: inset 0px 1px 2px rgba(50, 50, 50, 0.5);*/
+/*}*/
+
+/****************************************/
+/***********   Button sizes   ***********/
+/****************************************/
+.tiny.button{
+	width: 80px;
+	font-size: 12px;
+}
+
+.small.button, .medium.button{
+	padding: 8px 18px 6px 18px;
+	text-align: center;
+}
+.small.button{
+	font-size: 14px;
+	width: 180px;
+}
+.medium.button{
+	font-size: 16px;
+	width: 220px;
+}
+.medium_large.button{
+	font-size: 22px;
+	padding: 13px 8px 11px 8px;
+	text-align: center;
+}
+.large.button{
+	font-size: 24px;
+	padding: 18px 8px 16px 8px;
+	text-align: center;
+}
+.excessive.button{
+	font-size: 26px;
+	padding: 20px 18px 16px 18px;
+	text-align: center;
+	width: 320px;
+}

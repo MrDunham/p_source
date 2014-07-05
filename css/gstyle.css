@@ -1,0 +1,80 @@
+/*====================*/
+/*=== Other Styles ===*/
+/*====================*/
+.megaSpacer{
+    min-height:800px;
+}
+.flr{
+    float: right;
+}
+.fll{
+    float: left;
+}
+.twoCol{
+    width: 45%;
+    margin: 0 10px 0 0;
+}
+.third{
+    width: 32%;
+}
+.twoThird{
+    width: 64%;
+}
+.tac{
+    text-align:center;
+}
+.divCenter, .centered{
+    margin: auto;
+}
+.line{
+    min-height: 1px;
+    background-color: #11161C;
+}
+.lineThick{
+    min-height: 2px;
+    background-color: #11161C;
+}
+.spacerSM{
+    min-height:1px;
+}
+.spacer{
+    min-height:10px;
+}
+.hr{
+    border:none;
+    height: 1px;
+    border-bottom: 1px solid rgba(220,220,220,0.4);
+    margin-bottom: 5px;
+}
+.round3{
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.round6{
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+    border-radius: 6px;
+}
+.lowZ{
+    z-index:1;
+}
+.vAlign-mid{
+    vertical-align:middle;
+}
+sup{
+    color: #f00;
+}
+.box_shadow{
+    box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+    -moz-box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+    -webkit-box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+    -o-box-shadow: 1px 1px 2px rgba(0,0,0,.3);
+}
+.negspace3{
+    position: relative;
+    top: -30px;
+}
+.div_center{
+    margin: auto;
+}

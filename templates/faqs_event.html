@@ -1,0 +1,34 @@
+
+    <div class="container_12 inner_container">
+        <a name="faq"></a>
+        <h3>FAQ</h3>
+        <div id="faq_container" class="grid_12">
+        
+        <!--Note double variables (f.header and f.question) due to old styling vs new.  header and content should be removed on update-->
+            {% for c in faqs %}
+                <!-- c.0 = list, c.1 = identifier (unique to each list), c.2 = header-->
+                
+                {%if c.0 %} 
+                    <ul id="faq_{{c.1}}" class="faq_col {% if forloop.first %}top{%endif%}">
+                        {% if c.2 %}<h4>{{c.2}}</h4>{% endif %}
+                        {%for f in c.0 %}
+                        <li class="{% if forloop.first %}top{%endif%}">
+                            <p class="question"><a onclick="toggle_this('.{{f.link}}')" href="javascript:void(0);" class="faq_link">{{f.question}}</a></p>
+                        </li>
+                        <div class="{{f.link}} faq_answer answer" style="display:none; min-width:100%;">
+                            <p>{{f.answer}}</p>
+                        </div>
+                        {%endfor%}
+                    </ul>
+                {%endif%}
+            {%endfor%}
+            
+            <br class="clear"/>
+        </div><!--end of faq answers-->
+        
+        <script type="text/javascript">
+            function toggle_this(this_class){
+                $(this_class).toggle('fast')
+             };
+        </script>
+    </div>

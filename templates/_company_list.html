@@ -1,0 +1,1 @@
+{%for c in corporate_sponsors%}{%if forloop.counter = 2 and forloop.last%} and {%endif%}{%if forloop.counter > 2%},{%if forloop.last%} and{%endif%}{%endif%}{{c.sponsor.name}}{%endfor%}

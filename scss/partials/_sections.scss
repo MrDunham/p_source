@@ -1,0 +1,17 @@
+// Sections - section( $bg_color $text_color $h_color $i_color )
+
+.silver { 
+  @include section($silver, $purple-dark, $purple-dark, $purple_mid)
+  
+}
+
+
+.purp-dark { @include section($purple_dark, white, white, $silver) 
+}
+
+.purp-black { @include section($purple_black, $silver, $silver, $purple_mid)
+}
+
+.white { @include section(white, $purple_dark, $purple_dark, $purple_mid) 
+}
+

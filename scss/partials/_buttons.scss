@@ -1,0 +1,58 @@
+
+// color_primary | color_secondary
+.btn { 
+  @include button( $action_red ); 
+  width: 50%; //= 150px / 300px
+  padding: 2.66666667% 1.3333333%; //= 40px, 20px / 150px 
+  margin: 12% auto; //= 36px / 300px
+
+}
+
+.subscribe, .learn-more { 
+  @include button( $action_blue ); 
+  
+  display: inline-block;
+  
+  padding: 1.66666667% 0; //= 50px / 300px 
+  margin: 0 auto;
+  font-weight:bold;
+}
+
+.subscribe {
+  width: 31.9148936%; //= 300px / 940px
+}
+
+.learn-more {
+  width: 36.1702128%; //= 320px / 940px
+}
+
+%social { 
+  display: inline-block;
+  position: relative;
+
+  // width / height relative to render surface, not  display area
+  width: 3.125em; //= 50px / 16px
+  height: 3.125em; //= 50px / 16px
+  margin: 0 0 0 1.25em; //= 20px / 16px
+  border:solid 1px $purple-light; 
+  border-radius: 100px; 
+  background-repeat: no-repeat;
+  background-position: center center;
+  text-indent: -900em;
+
+  @include transition(all, 0.2s, linear);
+  
+  &:hover { border-color:white; }
+  
+}
+
+
+.facebook {
+  @extend %social;
+  background: url(../images/icons/facebook.png) center no-repeat;
+}
+
+.twitter {
+  @extend %social;
+  background: url(../images/icons/twitter.png) center no-repeat;
+}

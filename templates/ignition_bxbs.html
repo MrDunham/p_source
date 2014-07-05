@@ -1,0 +1,500 @@
+{% extends 'old_ignition_base.html' %}
+
+{% block title %} Start a startup: preincubator program kicked off with a health hackathon | Prebacked Ignition Health {% endblock %}
+{% block page %}ignition_bcbs{% endblock %}
+{% block header_alt %}Start a startup at Prebacked with Blue Cross, Blue Shield as your first client{%endblock%}
+
+{% block styles %}
+    <!-- CrazyEgg Code -->
+    <script type="text/javascript">
+        setTimeout(function(){var a=document.createElement("script");
+        var b=document.getElementsByTagName("script")[0];
+        a.src=document.location.protocol+"//dnn506yrbagrg.cloudfront.net/pages/scripts/0015/4651.js?"+Math.floor(new Date().getTime()/3600000);
+        a.async=true;a.type="text/javascript";b.parentNode.insertBefore(a,b)}, 1);
+    </script>
+{%endblock%}
+
+{%block content%}
+    
+
+
+<!--Main blurbs, everything centered between header and more info areas-->
+<div id="upper_content" class="">
+    <!--<img src="/images/seal.png" id="seal">-->
+    <div id="top_blurb" class="main_blurbs grid_12">        
+        
+        <h2>Start a startup and make real impact.<br/>
+        A $2.2BN company wants to be your first client.</h2>
+        
+    </div><!--end of top_blurb-->
+    <!--New style teaser-->
+    <div id="teaser" class="">
+        <div id="problem_teasers" class="grid_5 push_1 alpha">
+            <div id="my-slideshow" class=" alpha">
+                <ul class="bjqs">
+                    {% for p in problems%}
+                        <li class="problem_teaser_outer">
+                            <div class="problem_teaser">
+                                <h3 class="problem_header"><p>Problem: </p>{{p.header}}</h3>
+                                <p class="problem_statement">{{p.statement}}</p>
+                                <!--<p class="value">{{p.value}}</p><img src="/images/ignition/pricetag.png" class="pricetag" alt="What we might pay as your first client">-->
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        
+        <div id="details" class="grid_5 push_2 omega ">
+            <div id="corporate_partner" class=""><h3>Corporate Partner:</h3><img src="/images/partner_companies/wellmark.png"></div>
+            <div id="date" class="date_loc "><p>May 4th, 5th. Judging: 5/11</p></div>
+            <div id="location" class="date_loc "><p>Campbell, CA (updated)</p></div>
+        </div>
+        
+        
+        <!--<div class="register_button grid_4 push_4"><a href="#info" class="orange button">Learn More</a></div>-->
+        
+        <div class="grid_11 push_1 spacer value_disclaimer"><p>*Ballpark estimate depending on your solution. Could be worth more or less.  Not bad for your first client though, right?</p></div>
+        <div class="clear"></div>
+    </div><!--end #teaser-->
+    
+    
+    
+    
+<!--    <div id="bottom_blurb" class="main_blurbs grid_12">
+       
+        <p>Join a three day <a href="http://en.wikipedia.org/wiki/Hackathon" target='_blank'>hackathon</a>
+        for startup teams to build technologies to address healthcare's pressing challenges.
+        Health experts and investors will present these problems, observe each team, and
+        potentially fund the solutions. <a href="/info">Learn more</a> </p>
+    </div>-->
+    <!--end of bottom_blurb-->
+    
+    <div class="clear"></div>
+</div><!--end of upper content and container 12-->
+
+
+
+
+{% endblock %}
+
+
+
+
+
+{%block mid_content%}
+      
+    <div id="sponsorFold" class="">
+        <h2>Weekend Sponsors:</h2>
+        <div id="sponsor-fold-inner">
+            <div class="viewport">
+                <ul class="bjqs">
+                    <li>	
+                        <ul>
+                        {%for s in sponsor_lists %}
+                            {% if forloop.counter|divisibleby:7%} </ul></li><li style="display:none"><ul>{%endif%}
+                            <li class=""><a href="{{s.link}}"><img src="/images/{{s.img1}}" alt="{{s.alt1}}"></a></li>
+                        {%endfor%}
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+	</div>
+    </div>
+{% endblock %}
+
+
+
+
+
+{% block lowerContent %}
+
+    <a name="info" class="negspace"></a>
+    <div id="info" class="">
+        <div class="container_12 section top">
+            <div class="grid_12">
+                <div id="info_1" class="info_block left_block grid_10 alpha top">
+                    <img src="/images/ignition/hacker_room.jpg" alt="a room full of hackers" class="grid_4 alpha"/>
+                    <div class="grid_6 omega info_text">
+                        <h4>Not your Grandma's hackathon.</h4>
+                        <p>
+                            Wellmark wants your startup to be successful.  Leverage a hackathon to prove how awesome you are. 
+                            <br/>
+                            If you kill it in one week they will sign a letter of intent to buy your future product, assign an executive
+                            to iterate with you, and we'll invite you to the preincubaton program.
+                        </p>
+                    </div>
+                </div>
+                
+                <div id="info_2" class="info_block right_block grid_10 push_2 alpha">
+                    <div class="grid_6 alpha info_text">
+                        <h4>Preincubation, it's a good thing.</h4>
+                        <p>
+                            Teams leaving the hackathon with a LOI are invited to weekly private events, dinners,
+                            and mixers with top industry and VC executives.
+                            <br/>
+                            After 90 days, you will demo your concept to BCBS executives and (hopefully) win a contract.
+                            We might ask for equity, but only if you land a major client because of us.
+                        </p>
+                    </div>
+                    <img src="/images/ignition/iteration_weekend.jpg" alt="Hacking and building" class="grid_4 omega"/>
+                </div>
+                
+                <div id="info_3" class="info_block left_block grid_10 alpha">
+                    <img src="/images/ignition/bcbs_scale.jpg" alt="Blue Cross Blue Shield, at scale" class="grid_4 alpha"/>
+                    <div class="grid_6 omega info_text">
+                        <h4>Scale? We can do that.</h4>
+                        <p>
+                            Think a $50,000 client sounds good?  How about 38 of them?  That's how many companies are under the Blue Cross umbrella.
+                            4 Blues will be attending and assessing whether your startup can be scaled to their organizations as well.
+                        </p>
+                    </div>
+                </div>
+                
+                <div id="info_4" class="info_block right_block grid_10 push_2 alpha">
+                    <div class="grid_6 alpha info_text">
+                        <h4>Free lunches, not free lunch</h4>
+                        <p>
+                            Typical programs make you pay up front. We're different. <br/>
+    
+                            Land your first major client because of us, we'll ask for 3-5% equity.  No obligations, but our goal is to land you <em> many </em> clients - so keep us aligned and fighting for you.<br/>
+    
+                            Unlike typical programs, you only pay <em>after</em> you see value.
+                        </p>
+                    </div>
+                    <img src="/images/ignition/not_a_free_lunch_but_close.jpg" alt="Jonathan Nelson helping mentor" class="grid_4 omega"/>
+                </div>
+                
+            </div>
+        </div>
+        <br class="clear"/>
+    </div>
+    
+    <a name="problems" class=""></a>
+    <div id="problems" class=" section">
+        <div class="container_12">
+            <h3>
+                Problems
+                <p>Here's a taste of problems to be pitched</p>
+            </h3>
+            
+            {% for p in problems%}
+                {% if forloop.counter|add:2|divisibleby:3 %}<br class="clear"/>{% endif %}
+                <div class="problem_outer grid_4 {%if forloop.first%}alpha{%endif%} {% if forloop.counter|divisibleby:3 %}omega{% endif %}">
+                    
+                    <div class="problem_teaser">
+                        <p class="problem_number">Problem #{{ forloop.counter }}</p>
+                        <h4>{{p.header}}</h4>
+                        <p class="problem_statement">{{p.statement_long}}</p>
+                        <p class="value">(We'd pay)*: <span class="tag_wrap"><span class="tag">{{p.value}}</span></span></p>
+                    </div>
+                </div>
+            {% endfor %}
+            
+            <div class="grid_12 value_disclaimer"><p>*Ballpark estimate depending on your solution. Could be worth more or less.  Not bad for your first client though, right?</p></div>
+            <br class="clear"/>
+            <div class="register_button grid_6 push_3"><a href="#apply" class="orange button">Submit your application! <br/><span>Takes less than 10 minutes</span></a></div>
+        </div>
+        <br class="clear"/>
+    </div>
+    
+    <a name="schedule" class=""></a>
+    <div id="schedule" class=" section">
+        <div class="container_12">
+            <h3>Schedule</h3>
+            <img src="/images/ignition/timeline.png" class="grid_12" alt="Timeline of Ignition: Saturday, kickoff; Saturday and Sunday: Iteration Weekend; Sunday to Sunday: Build week; Sunday (2): letter of intent day"/>
+            <div id="schedules_container" class="grid_12">
+                {% include 'schedule.html'%}
+            </div>
+        </div>
+    </div>
+    
+    {%if corporate_sponsors_asdf or service_sponsors or api_sponsors_asdf%}
+        <div id="sponsors" class="">
+            <div id="sponsors_inner" class="section container_12">
+                <h3>Sponsors</h3>
+                {%if corporate_sponsors%}
+                    <div id="corporate_sponsors" class="sponsorBlock">
+                        {%if service_sponsors or api_sponsors_asdf%}<h4>Corporate Sponsors:</h4>{%endif%}<!--if there's more than one category of sponsor, show header-->
+                        
+                            <div id="corporate_sponsor_container" class="sponsor_container">
+                                {%for s in corporate_sponsors%}
+                                <div class="sponsor tile grid_3 alpha omega">
+                                    <a href="{{s.link}}" target="_blank" class="sponsor_big_link">
+                                        <!--<h4>{{s.header}}</h4>-->
+                                        <img src="/images/{{s.img1}}" alt="{{s.alt1}}">
+                                        <p>{{s.content}}</p>
+                                    </a>
+                                </div>
+                                {%endfor%}
+                            </div>
+                        <br class="clear"/>
+                    </div><!--end of corporate sponsors-->
+                {%endif%}
+                
+                {%if service_sponsors%}
+                    <div id="service_sponsors" class="sponsorBlock ">
+                        {%if corporate_sponsors_asdf or api_sponsors_asdf%}
+                            <h4>Professional Services Sponsors:</h4>
+                        {%endif%}<!--if there's more than one category of sponsor, show header, otherwise hide-->
+                            <div id="service_sponsor_container" class="sponsor_container">
+                                {%for s in service_sponsors%}
+                                <div class="sponsor tile">
+                                    <a href="{{s.link}}" target="_blank" class="sponsor_big_link">
+                                        <!--<h4>{{s.header}}</h4>-->
+                                        <img src="/images/{{s.img1}}" alt="{{s.alt1}}">
+                                        <p>{{s.content}}</p>
+                                    </a>
+                                </div>
+                            {%endfor%}
+                            <br class="clear"/>    
+                            </div>
+                        <br class="clear"/>    
+                    </div><!--end of service providers-->
+                {%endif%}
+                
+                {%if api_sponsors%}
+                    <div id="api_sponsors" class="sponsorBlock">
+                        <h2>API and Hardware Sponsors:</h2>
+                        <p><a href="/sponsor">Be a sponsor, market your API</a></p>
+                            <div id="api_sponsor_container" class="sponsor_container">
+                                {%for s in api_sponsors%}
+                                <div class="sponsor tile grid_3 alpha omega">
+                                    <a href="{{s.link}}" target=:"_blank" class="sponsor_big_link">
+                                        <!--<h4>{{s.header}}</h4>-->
+                                        <img src="/images/{{s.img1}}" alt="{{s.alt1}}">
+                                        <p>{{s.content}}</p>
+                                    </a>
+                                </div>
+                                {%endfor%}
+                            </div>
+                        <br class="clear"/>
+                    </div><!--end of api sponsors-->
+                {%endif%}
+            </div>
+        </div><!--end of sponsors-->
+    {% endif %} 
+<!--judges-->
+    <!--{%if judges %}-->
+    <!--<div id="judges" class="section">-->
+    <!--    <div id="judges_inner" class="container_12">-->
+    <!--        <h3>Judges</h3>-->
+    <!--        -->
+    <!--       -->
+    <!--        -->
+    <!--        {% for m in judges %}-->
+    <!--            {% with forloop.counter as counter %}-->
+    <!--            -->
+    <!--            -->
+    <!--            <div id="mentor_{{counter}}" class="mentor grid_3">-->
+    <!--                -->
+    <!--                <img src="/img?mentor_id={{m.mentor.mentor_id}}" alt="{{m.mentor.name}} headshot" />-->
+    <!--                -->
+    <!--                <span class="type_{{m.mentor_type}}">-->
+    <!--                    <p class="judge_name">{{m.mentor.name}}</p>-->
+    <!--                    <p class="judge_employer">{%if m.mentor.title%}{{m.mentor.title}}{%endif%}{%if m.mentor.title and m.mentor.company%}: {%endif%}{%if m.mentor.company%}{{m.mentor.company}}{%endif%}</p>-->
+    <!--                </span>-->
+    <!--                -->
+    <!--            </div>-->
+    <!--            {%endwith%}-->
+    <!--        {%endfor%}-->
+    <!--    </div>-->
+    <!--</div>-->
+    <!--{% endif %}-->
+    
+    <div id="faq" class="section">
+        {% include 'faqs_event.html'%}
+    </div>
+    
+    
+    <div id="apply" class="section">
+        <div class="container_12">
+            <h3>Apply</h3>
+            
+            <div id="wufoo-q7x3z9" class="">
+                    Fill out my <a href="http://eventsoriginate.wufoo.com/forms/q7x3z9">online form</a>.
+            </div>
+        </div>
+    </div>
+    
+    <script type="text/javascript">var q7x3z9;(function(d, t) {
+        var s = d.createElement(t), options = {
+        'userName':'eventsoriginate', 
+        'formHash':'q7x3z9', 
+        'autoResize':true,
+        'height':'1019',
+        'async':true,
+        'header':'show'};
+        s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'wufoo.com/scripts/embed/form.js';
+        s.onload = s.onreadystatechange = function() {
+        var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+        try { q7x3z9 = new WufooForm();q7x3z9.initialize(options);q7x3z9.display(); } catch (e) {}};
+        var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+        })(document, 'script');
+    
+    </script>
+    
+<!--------------------------------------------------------OLDDDDD ----------------------------------------->
+    
+        
+<!--    <div id="venue" class="section grid_4 push_2">
+        {% include 'venue.html' %}
+    </div>-->
+    
+    
+    {%if prizes_asdf%}
+    <div id="prizes" class="grid_12 section">
+        <h2>Prizes</h2>
+        {%for p in prizes%}
+        <div class="prize">
+            {% if p.img1%}<img src="/images/{{p.img1}}" alt="{{p.alt1}}">{%endif%}
+            {% if p.content%}<p>{{p.content}}</p>{%endif%}
+        </div>
+        {%endfor%}
+    <p class="prize">*Terms apply</p>
+    </div>
+    {%endif%}
+           
+        {%if media_partners_asdf %}
+            <div id="media_partners" class="sponsorBlock">
+                <h2>Media Partners:</h2>
+                <div id="media_partner_container" class="sponsor_container">
+                    {%for m in media_partners %}
+                    <div class="sponsor tile">
+                        <a href="{{m.link}}" target=:"_blank" class="sponsor_big_link">
+                            <!--<h4>{{s.header}}</h4>-->
+                            <img src="/images/{{m.img1}}" alt="{{m.alt1}}">
+                            <!--<p>{{s.content}}</p>-->
+                        </a>
+                    </div>
+                    {%endfor%}
+                </div>
+                <br class="clear"/>
+            </div><!--end of api sponsors-->
+        {%endif%}
+            
+        {% if team_asdf %} <!--intentionally screwed up, should be 'team', if we ever bring it back-->
+            <div id="team" class="grid_6 push_3 section">
+                <div class="div_center">
+                    <h2>Team</h2>
+                    {% for i in team %}
+                    {% if forloop.counter|divisibleby:4 %}<br class="clear"/>{% endif %}
+                    <div class="member grid_3
+                    {% if forloop.counter|divisibleby:"2" %}omega{% endif %}
+                    {% if forloop.counter|add:2|divisibleby:"3" or forloop.first %}alpha{% endif %}">
+                        
+                        {%if i.link%}<a href="{{i.link}}" target="_blank"> {%endif%}
+                            <span class="member_image">
+                                <img src="images/{{i.img1}}" alt="{{i.alt1}}"/>
+                            </span><!--end of .member_image (Team member's picture)-->
+                            <span class="member_tag"><!--tag below team member's image-->
+                                <h4>{{i.header}}</h4>
+                                {%if i.content%}
+                                    <p>{{i.content}}</p>
+                                {%endif%}
+                            </span><!--end of .member_tag-->
+                        {%if i.link%}</a>{%endif%}
+                    </div>
+                    {%endfor%}
+                </div>
+            </div><!--end of #team-->
+        {%endif%}
+        
+        {% if volunteers_asdf %} <!--intentionally screwed up, should be 'volunteers', if we ever bring it back-->
+            <div id="volunteers" class="grid_12 section">
+                <div class="div_center">
+                    <h2>Volunteers</h2>
+                   
+                    {% for v in volunteers %}
+                    {% if forloop.counter|divisibleby:7 %}<br class="clear"/><br/>{% endif %}
+                    <div class="member grid_2
+                    {% if forloop.counter|divisibleby:"6" %}omega{% endif %}
+                    {% if forloop.counter|add:5|divisibleby:"6" or forloop.first %}alpha{% endif %}">
+                        
+                        {%if v.link%}<a href="{{v.link}}" target="_blank"> {%endif%}
+                            <span class="member_image">
+                                <img src="images/volunteers/{{v.img1}}" alt="{{v.alt1}}"/>
+                            </span><!--end of .member_image (volunteer's picture)-->
+                            <span class="member_tag"><!--tag below team member's image-->
+                                <h4>{{v.header}}</h4>
+                            </span><!--end of .member_tag-->
+                        {%if v.link%}</a>{%endif%}
+                    </div>
+                    {%endfor%}
+                </div>
+            </div><!--end of #team-->
+        {% endif %}
+
+
+<script type="text/javascript" >
+    $(document).ready(function(){
+        $('#my-slideshow').bjqs({
+            'width' : 380,
+            'showMarkers' : false,
+            'showControls' : false,
+            'hoverPause' : false,
+            'centerMarkers' : false,
+            'rotationSpeed' : 10000
+        });
+    
+        $("#sponsor-fold-inner").bjqs({
+            'height' : 80,
+            'width' : 960,
+            'animationDuration' : 1000,
+            'showMarkers' : false,
+            'showControls' : false,
+            'hoverPause' : true,
+            'rotationSpeed' : 5500,
+            'keyboardNav' : true,
+            'showMarkers' : true,
+            'centerMarkers' : false,
+        });
+    
+        ////Masonry stuff (broke on some chome browsers)
+        
+        var $container1 = $('#corporate_sponsor_container');
+        var $container2 = $('#service_sponsor_container');
+        var $container3 = $('#api_sponsor_container');
+        var $container4 = $('#media_partner_container');
+    
+ 
+        $container1.imagesLoaded(function(){
+            $container1.masonry({
+              itemSelector : '.tile',
+              columnWidth : 230,
+              isFitWidth: true
+            }).resize();
+        });
+        
+        
+        $container2.imagesLoaded(function(){
+            $container2.masonry({
+              itemSelector : '.tile',
+              columnWidth : 230,
+              isFitWidth: true
+            }).resize();
+        });
+        
+        
+        $container3.imagesLoaded(function(){
+            $container3.masonry({
+              itemSelector : '.tile',
+              columnWidth : 230,
+              isFitWidth: true
+            }).resize();
+        });
+        
+        
+        $container4.imagesLoaded(function(){
+            $container4.masonry({
+              itemSelector : '.tile',
+              columnWidth : 230,
+              isFitWidth: true
+            }).resize();
+        });
+    
+    });
+</script>
+
+
+{%endblock%}

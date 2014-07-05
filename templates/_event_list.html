@@ -1,0 +1,47 @@
+<div id="events_page" class="">
+    <!-- <div class="row"><h2 class="small-12 columns">Upcoming Events</h2></div> -->
+    
+    <div id="" class="event_block">
+    {% if upcoming_events %}    
+        {% for e in upcoming_events%}
+            <div class="event row">
+            
+                <div class="event_date small-3 large-2 columns">{{e.full_date|date:'M dS, Y'}}</div>
+                <div class="event_name small-9 large-5 columns">{{e.name|capfirst}}</div>
+                
+                <div class="event_location small-9 small-offset-3 large-2 large-offset-0 columns {% if not e.link and not e.description%}end{%endif%} ">{{e.city}}, {{e.state}}</div>
+                
+                {% if e.link and not e.description%}
+                    <div class="event_link register small-9 small-offset-3 large-3 large-offset-0 columns "><a href="{{e.link}}" target="_blank">Learn More</a></div>
+                {%endif%}
+                
+                <!-- If this is a Prebacked specific event, a description should be included and the tickets can be purchased from the event board -->
+                {% if e.description%}
+                <div class="event_link descr register small-9 small-offset-3 large-3 large-offset-0 columns ">
+                    <a>Description and register <div class="arrow_down"></div></a>
+                </div>
+    
+                
+                <div class="event_description" style="display: none;">
+                    <div class="register_description small-12 large-5 columns">
+                        <p class="show-for-medium-up">Description</p>
+                        <p>
+                            {{e.description}}
+                        </p>
+                        <a href="{{e.link}}">More information</a>
+                    </div>
+                    
+                    <div class="small-12 large-7 register_tickets columns">
+                        <!--Below is pulled directly from eventbrite-->
+                        {%if e.ticketing%}
+                            {{e.ticketing}}
+                        {%endif%}
+                        <!--end info directly from eventbrite-->
+                    </div>
+                </div>
+                {% endif%}
+            </div>
+        {%endfor%}
+    {%endif%}
+        
+</div>

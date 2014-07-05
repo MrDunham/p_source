@@ -1,0 +1,101 @@
+{%extends 'adminadd.html'%}
+{%block content%}
+        <a href="/admin_add">Admin Home</a> <br/><br/>
+        
+        {%if message%}{{message}}{%endif%}
+        <h1>Problem add</h1>
+        
+        <form action="/admin_add/problem_add" method="post" id="problem_add">
+            <h2>Create new problem</h2>
+                Problem Title <input type="text" name="title" required="yes" id="problem_title" value="Price Transparency" style="color: #666" onfocus="if (this.value == 'Price Transparency') {this.style.color='#000'; this.value=''}"><br/>
+                Problem Statement <br/><textarea maxlen="200" rows="5" cols="90" name="statement"></textarea><strong><em id="count"></em> characters remaining</strong>
+                (3 sentences or less.)<br/><br/>
+                Company (companies) pitching <br/> <!--need to do a query for all companies and have it list here to be able to link-->
+                {%for c in companies%}
+                    <input type="checkbox" name="company" value = "{{c.name}}"/>{{c.name}} <br/>
+                {%endfor%}
+            <br/>
+                
+                <!--<input type="text" name="company" required="yes" id="company" value="Wellmark Blue Cross Blue Shield" style="color: #666" onfocus="if (this.value == 'Wellmark Blue Cross Blue Shield') {this.style.color='#000'; this.value=''}">Separate by commas<br/>-->
+                Value <input type="text" name="value" id="value"> <em>Estimated dollars a co would pay a vendor for a solution</em>
+                <input type="submit" class="orange button submit">
+                
+                <br class="clear"/>
+                
+        </form>
+        
+        <br/><br/>
+        <form action="/admin_add/problem_add" method="post" id="problem_link">    
+            <h2>Link problems to events</h2>
+            <h3>Events</h3>
+            {%for e in events%}
+                {{e.event_id}}<input type="radio" name="event_id" value="{{e.event_id}}" {% if forloop.last %}checked="true"{%endif%}/><br/>
+            {% endfor %}
+            <br/><br/>
+            
+            <h3>Problems</h3>
+            {% for p in problems %}
+                <input type="radio" name="problem_id" value="{{p.problem_id}}" {% if forloop.last %}checked = "true"{%endif%}/>{{p.title}}, {{p.company}}
+                <br/>
+            {%endfor%}
+            <input type="submit" class="orange button submit">
+        </form>
+        
+        <br/><br/>
+        <div id="problem_edit">
+            <h2>Problem edit</h2>
+        {% for p in problems %}
+            <div class="problem_edit">
+                <form action="/admin_add/problem_add" method="post" id="problem_edit">        
+                    <input type="text" name="problem_id" value="{{p.problem_id}}" class="" style ="display:none"/>
+                    <input type="text" name="title" value="{{p.title}}" class="" style ="display:none"/>
+                    Title: {{p.title}} | 
+                    Value: <input type="text" name="value" value="{{p.value}}" class=""/>
+                    <br/>
+                    Problem Statement:
+                    <textarea rows="3" cols="90" maxlen="350" id="problem_statement_{{forloop.counter}}" name="statement">{{p.statement}}</textarea>
+                    <input type="submit" class="orange button submit">
+                </form>
+            </div>
+        {%endfor%}
+        </div>
+        <br/><br/><br/>
+
+    </div>
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var page = "ignition";
+        var the_id = "#" + page + "_link";
+        $(the_id).addClass("active");
+    });
+</script>
+
+
+<script type="text/javascript">
+maxCharacters = 200;
+
+$('#count').text(maxCharacters);
+
+$('textarea').bind('keyup keydown', function() {
+    var count = $('#count');
+    //var submit = $('.submit');
+    var submit = $('input[type="submit"]');
+    var characters = $(this).val().length;
+
+    if (characters > maxCharacters) {
+        count.addClass('over');
+        //submit.hide();
+        submit.attr('disabled','disabled');
+        submit.addClass('disabled')
+    } else {
+        count.removeClass('over');
+        //submit.show();
+        submit.removeAttr('disabled');
+        submit.removeClass('disabled')
+    }
+
+    count.text(maxCharacters - characters);
+});
+</script>
+
+{%endblock%}

@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+
+{% block title %} Company sponsorship | Prebacked {% endblock %}
+
+
+
+{% block styles %}
+<link rel="stylesheet" href="css/pages.css" type="text/css" media="screen" />
+{% endblock %}
+
+
+
+{%block content%}
+
+<div id="sponsorships_page" class="container_12">
+    <div id="" class="sponsorships_info grid_10">
+        <div class=""><!--Classes for banner: lg_banner right-->
+            <div class="grid_8 alpha omega"><!--Classes for banner: lg_banner_content-->
+                <h1>What is Prebacked?</h1>
+                <p>
+                    Prebacked is a series of hackathons that reverses the traditional
+                    way startups get funded. Instead of startup teams pitching ideas to
+                    investors, we bring together a group of investors and experts to pitch
+                    fundable ideas to startup teams.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="" class=" sponsorships_info grid_10">
+        <div class=""><!--Classes for banner: lg_banner right-->
+            <div class="grid_8 alpha omega"><!--Classes for banner: lg_banner_content-->
+                <h1>What is Prebacked:Health?</h1>
+                <p>
+                    Prebacked:Health is our healthcare focused hackathon.
+                    A prominent group of health IT investors and industry experts will
+                    pitch problems they'd love to fund. Startup teams will have an opportunity
+                    to build a solution and immediately showcase it to investors.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>    
+{%endblock%}
+
+{%block lowerContent%}
+<div class="section"  >  
+    <div class="grid_12">
+        <h1>Three Sponsorship Categories:</h1>
+    </div>
+    <div id="company_sponsor" class="grid_4 sponsor">
+        <a name="sponsors_start"></a>
+        <div class="sponsor_grid">
+            <h2>Corporate Partner</h2>
+            <h4>Pitch to teams</h4>
+            <br/>
+            <p><em>Ex: Walgreens, United Health</em></p>
+            <br/>
+            <h5>Why sponsor?</h5>
+            <p>Influence high caliber Silicon Valley teams to work on your ideas.</p>
+            <div class="link1 link">
+                <a class="learn_more_link" href="javascript:void(0)"  onclick="javascript:show_corporate();">Learn More</a>
+                <br/>
+            </div>
+        </div>
+    </div>
+    
+    <div id="service_provider_sponsor" class="grid_4 sponsor">
+        <div class="sponsor_grid">
+            <h2>Professional Services Partner:</h2>
+            <h4>Exclusive connections</h4>
+            <br/>
+            <p><em>Ex: Web hosting, consulting firms</em></p>
+            <br/>
+            <h5>Why sponsor?</h5>
+            <p>Gain exclusive access to industry executives, investors and entrepreneurs.</p>
+            <div class="link2 link">
+                <a class="learn_more_link" href="javascript:void(0)"  onclick="javascript:show_service();">Learn More</a>
+                <br/>
+            </div>
+        </div>
+    </div>
+
+    <div id="api_sponsor" class="grid_4 sponsor">
+        <div class="sponsor_grid">
+            <h2>API Provider</h2>
+            <h4>Access future startups.</h4>
+            <br/>
+            <p><em>Ex: FitBit, Withings, Nike+</em></p>
+            <br/>
+            <h5>Why sponsor?</h5>
+            <p>Get first dibs on tomorrow's startups.<br/>&nbsp</p>
+            
+            <div class="link3 link">
+                <a class="learn_more_link" href="javascript:void(0)" onclick="javascript:show_api();">Learn More</a>
+            </div>
+        </div>
+    </div>
+    <br class="clear"/>
+</div>
+
+
+<div id="sponsor_bottom" >
+    <div id="sponsor_bottom_container" class="container_12">
+        
+        <div id="more_corporate" class="grid_8 more_corporate more_sponsor" style="display:none">
+            <div class="learn_more_inner">
+                <h3>Corporate Sponsorship Prospectus:</h3>
+                <br/>
+                <p>
+                    Your company has ideas, but no time (or resources) to build them.
+                    For less money than it takes to build a simple app, you will
+                    have access to some of Silicon Valley's best talent to build a product
+                    you could buy.
+                </p>
+                <br/><br/>
+                <h4>Benefits:</h4>
+                <br/>
+                <ul>
+                    <li>Opportunity to fund a team that can build a technology solution for your business (at orders of magnitude less cost)</li>
+                    <li>Network with some of Silicon Valley's top health VC and executives</li>
+                    <li>Access to the Silicon Valley's top IT talent</li>
+                    <li>Offer bounty for a solution</li>
+                    <li>Pre-event access to problem list</li>
+                    <li>Access to demo day (end of cycle) </li>
+                    <li>Above fold icon on our site</li>
+                </ul>
+                <br/><br/>
+                <h4>Ready to sponsor?</h4>
+                <br/>
+                <p>Contact <a href="mailto:sponsor@prebacked.com">sponsors@prebacked.com</a></p>
+            </div>
+        </div>
+        
+        <div id="more_service" class="grid_8 more_service more_sponsor" style="display:none">
+            <div class="learn_more_inner">
+                <h3>Professional Services Prospectus:</h3>
+                <br/>
+                <p>
+                    You support companies in the Silicon Valley - you keep the valley running.
+                    Get exclusive access to top industry executives, investors, and entrepreneurs.
+                </p>
+                <br/><br/>
+                <h4>Benefits:</h4>
+                <br/>
+                <ul>
+                    <li>Opportunity to mentor and advise top talent</li>
+                    <li>Visibility with industry executives, investors, and startup teams</li>
+                    <li>Logo on website and all materials</li>
+                    <li>Large banner placement at event</li>
+                    <li>First sponsorship rights to next event</li>
+                </ul>
+                <br/><br/>
+                <h4>Ready to sponsor?</h4>
+                <br/>
+                <p>Contact <a href="mailto:sponsor@prebacked.com">sponsors@prebacked.com</a></p>
+            </div>
+        </div>
+        
+        <div id="more_api" class="grid_8 more_api more_sponsor" style="display:none">
+            <div class="learn_more_inner">
+                <h3>API Sponsorship Prospectus:</h3>
+                <br/>
+                <p>
+                    No hackathon would be complete without a suite of APIs to accelerate
+                    teams towards victory.  Your API will drastically improve the lives
+                    of our teams over the weekend and beyond.
+                </p>
+                <br/><br/>
+                <h4>Benefits</h4>
+                <br/>
+                <ul>
+                    <li>Mentor teams - integrate your API</li>
+                    <li>30 minute API training session</li>
+                    <li>2 minute quick speech ("what our API does")</li>
+                    <li>Offer bounty/prize for best use of API</li>
+                    <li>One 12' x 2' banner (provided by sponsor)</li>
+                    <li>Icon on site</li>
+                </ul>
+                <br/><br/>
+                <h4>Ready to sponsor?</h4>
+                <br/>
+                <p>Contact <a href="mailto:sponsor@prebacked.com">sponsors@prebacked.com</a></p>
+            </div>
+        </div>
+    </div>
+    <a name="teh_bottom" id="teh_bottom"></a>
+</div>
+
+<script type="text/javascript" >
+    var show_corporate = function() {
+        $('.link').show();
+        $('.link1').hide('fast');
+        $('.sponsor').removeClass('active');
+        $('#company_sponsor').addClass('active');
+        
+        $('.more_sponsor').hide('fast');
+        $('.more_corporate').show('fast');
+        //setTimeout(function() {$('body').scrollTop($('#teh_bottom').offset().top);},150);
+    }
+    var show_service = function() {
+        $('.link').show();
+        $('.link2').hide('fast');
+        $('.sponsor').removeClass('active');
+        $('#service_provider_sponsor').addClass('active');
+        
+        $('.more_sponsor').hide('fast');
+        $('.more_service').show('fast');
+    }
+    var show_api = function() {
+        $('.link').show();
+        $('.link3').hide('fast');
+        $('.sponsor').removeClass('active');
+        $('#api_sponsor').addClass('active');
+        
+        $('.more_sponsor').hide('fast');
+        $('.more_api').show('fast');
+    }
+</script>
+
+
+{%endblock%}

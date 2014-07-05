@@ -1,0 +1,24 @@
+{% extends 'homepage_base.html' %}
+
+{% block upper_info%}
+<h1>404'd!</h1>
+<h2>(That's an error)</h2>
+{% endblock %}
+
+{% block middle_info%}
+
+
+<img class="sad_dog" src="/images/sad_abbey_dog.png" style="position: absolute; left:0; z-index:3; height:540px;">
+<div id="404" class="col_1" style="text-align: right;">
+    <div style="/*left: 240px;*/ position: relative">
+        <br/><br/>
+        <h3>I'm sorry, but I can't find that...</h3>
+        <br/><br/><br/><br/><br/>
+        <a href="/" class="large orange register button" style="display:inline-block">Take me home!</a>
+        <p style="padding-top: 15px; clear: both;">Or <a href="javascript:history.go(-1)">go back</a></p>
+        <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+    </div>
+</div>
+
+
+{% endblock %}

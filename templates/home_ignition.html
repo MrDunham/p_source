@@ -1,0 +1,151 @@
+{% extends 'homepage_base.html' %}
+
+{% block styles %}
+  <link rel="stylesheet" href="css/pages.css" media="screen" type="text/css"/>
+{% endblock %}
+
+
+
+{%block upper_bg%}<img src="/images/bgs/ignition_room.jpg" id="headerImg" alt="Hackers starting a startup" class="show-for-medium-up">{% endblock%}
+
+{%block page%}_ignition{%endblock%}
+
+{%block sub_link_bar%}
+    <!--{%include 'partials/sublinkbar_accelerate.html'%}    -->
+{%endblock%}
+
+{% block upper_info%}
+<h1 class="large-12 columns">Ignition</h1>
+<p class="large-8 end columns">Create a new startup with a built-in customer.</p>
+{% endblock %}
+
+
+{% block middle_info %}
+
+<div id="event_home">
+    <div class="row">
+        <h4 class="large-12 columns">Ignite</h4>
+        <p class="large-8 end columns">
+            Our ignition event is a post-team, pre-idea event to connect you to real industry problems.
+            Excel at Ignition and be invited into the Prebacked accelerator.
+        </p>
+    </div>
+    
+    <div class="row">
+        <h4 class="large-12 columns">Who?</h4>
+        <p class="large-8 end columns">
+            Corporate partners include two BlueCross BlueShield plans and Cambia Health Solutions - totaling nearly $10BN in market cap.
+        </p>
+    </div>
+    
+    {% if upcoming_events %}
+    <div class="row">
+    <div id="programs" class="small-12 columns grid_24 alpha omega">
+        <h4>When?</h4>
+        <div id="" name="upcomingPrograms" class="grid_20 alpha omega"> <!--rhs column-->
+            
+            
+            
+                {% for e in upcoming_events%}
+                
+                <div class="upcoming_event grid_6 alpha">
+                    <div class="upcoming_event_inner">
+                        <img src="/images/city_images/{{e.city.lower|cut:" "}}.jpg" alt="Gorgeous view of {{e.city}}"/>
+                        <p class="city_overlay">{{e.city}}</p>
+                        
+                        
+                        <p class="industry"><span class=""></span>{% if e.companies %}{{e.companies|safe}}{%else%}Announcing corporate partner soon{% endif %}</p>
+                        <p class="location"><span class=""></span>{{e.city}}</p>
+                        <p class="date"><span class=""></span><span>Starts:</span> {{e.month}}/{{e.day}}/{{e.year}}</p>
+                        {% if e.companies %}
+                            <a class="orange button" href="/ignition/{{e.event_id}}">Discover details</a>
+                        {%else%}
+                            
+                            <div id="mc_embed_signup">
+                                <form action="http://prebacked.us5.list-manage.com/subscribe/post?u=3572fa1f9d829a0cc324cce2a&amp;id=f29adcde57" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                                            <input type="checkbox" checked="checked" id="group_1" name="group[7405][1]" value="1" ><!--explicit-->
+                                        </li>                   
+                                        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+                                        <input type="submit" value="Be notified when it's live" name="subscribe" id="mc-embedded-subscribe" class="button">
+                                </form>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                
+                {%endfor%}
+            
+            
+                
+        
+            
+        </div>
+    </div>
+    </div>
+    {% endif %}
+    <!--<h4>What equity?</h4>-->
+
+    
+    
+    <!--<h4>Previously</h4>-->
+    <div class="row data">
+        <div class="small-12 columns">
+            {% for e in previous_events%}
+            {% if e.companies %}
+                <div class="upcoming_event small-12 large-3 columns alpha">
+                    <div class="upcoming_event_inner">
+                        <img src="/images/city_images/{{e.city.lower|cut:" "}}.jpg" alt="Gorgeous view of {{e.city}}"/>
+                        <p class="city_overlay">{{e.city}}</p>
+                        <p class="industry"><span class=""></span>{{e.companies|safe}}</p>
+                        <p class="location"><span class=""></span>{{e.city}}</p>
+                        <p class="date"><span class=""></span><span>Starts:</span> {{e.month}}/{{e.day}}/{{e.year}}</p>
+                        <a class="green button" href="/ignition/{{e.event_id}}">Learn More</a>
+                    </div>
+                </div>
+            {% endif %}
+            {%endfor%}
+        
+        
+            <div class="upcoming_event small-12 large-3 columns alpha">
+                <div class="upcoming_event_inner">
+                    <img src="/images/city_images/stanford_wellmark.jpg" alt="Silicon Valley"/>
+                    <p class="industry"><span class=""></span>Wellmark, Blue Cross Blue Shield</p>
+                    <p class="location"><span class=""></span>Silicon Valley</p>
+                    <p class="date"><span class=""></span><span>Starts:</span> May 4th, 2013</p>
+                    <a class="green button" href="/ignition/bcbs">Learn More</a>
+                </div>
+            </div>
+        </div>
+        <br class="clear"/>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{%block unrestricted_bottom%}
+
+
+
+<!--Bottom of page scripts go here-->
+
+<!--toggles show/hide of modal box-->
+<script type="text/javascript" >
+function overlay() {
+	el = document.getElementById("modal");
+	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+}
+</script>
+
+<!--keeps onlick from being triggered by the inner div-->
+<script type="text/javascript" >
+$(document).ready(function(){
+   $("#modal div").click(function(e) {
+        e.stopPropagation();
+   });
+});
+</script>
+
+{%endblock%}

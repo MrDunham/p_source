@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+<!--
+*****************************************************
+*                    Prebacked                      *
+*                                                   *
+* Thanks for checking out our source.  This was     *
+* designed and built by a rehabbing 'idea guy'.     *
+* You should contact me.                            *
+*                                                   *
+*               garrett@prebacked.com               *
+*                                                   *
+*****************************************************
+-->
+
+<head>
+
+    <title>{% block title %}Start a startup and land an enterprise client in one week | Prebacked{% endblock %}</title>
+    
+    
+    <meta name="description" content="{% block description %}Start a startup at Prebacked - an event to help entrepreneurial teams start a startup and land a Fortune 500 client in one week.{% endblock %}" />
+    <meta name="keywords" content="Prebacked, Prefunded, Tech, Event, entrepreneur, developer, problem, problems, solution, solutions, investor, startup, startups, code" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="keywords" content="Prebacked, Prefunded, Tech, Event, entrepreneur, developer, problem, problems, solution, solutions, investor, startup, startups, code"/>
+    <meta http-equiv="description" content=""/>
+    <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!--Open Graph Properties-->
+    <meta property="og:site_name" content="Prebacked"/>
+    <meta property="og:url" content="http://www.prebacked.com"/>
+    <meta property="og:description" content=""/>
+    <meta property="og:title" content="Start a startup and land a corporate client | Prebacked"/>
+    <meta property="og:image" content="http://www.prebacked.com/images/fb_prebacked_icon.png"/>
+    <meta property="og:image:width" content="1500" /> 
+    <meta property="og:image:height" content="1500" />
+    <!--End open graph properties-->
+    
+    <link rel="stylesheet" href="css/chosen.css" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="css/960_24_col.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/jquery_tabs.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/style.css" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="css/homepage.css" media="screen" type="text/css"/>
+    
+    
+    {% block styles %}{% endblock %}
+    
+    <!--Bing webmasters auth goes here -->
+    <!--Google webmasters auth goes here -->
+    
+    <script src="js/jquery-1.6.1.min.js" type="text/javascript" ></script>
+    <script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js" type="text/javascript"></script>
+    <script src="js/jquery.tools.min.js" type="text/javascript" ></script>
+    <script src="js/smoothScroll.js" type="text/javascript" ></script>
+    <script src="js/basic-jquery-slider.js" type="text/javascript" ></script>
+    <script src="js/chosen.jquery.min.js" type="text/javascript" ></script>
+    <script src="js/jquery.imagesloaded.js" type="text/javascript" ></script>
+    <script src="js/jquery.masonry.min.js"></script><!--masonry script-->
+    <script type="text/javascript">
+      $(document).ready(function() {
+          // setup ul.tabs to work as tabs for each div directly under div.panes
+          $("ul.css-tabs").tabs("div.css-panes > div");
+
+      }); 
+    </script>
+
+    <!--clicky analytics-->
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>    
+    <script type="text/javascript">try{ clicky.init(100526234); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100526234ns.gif" /></p></noscript>
+    
+    <!--goog analytics-->
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', {% block google_track %}'UA-30100162-1'{%endblock%}]);
+      _gaq.push(['_setDomainName', 'prebacked.com']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+    <!-- HitTail Code -->
+    <script type="text/javascript">
+            (function(){ var ht = document.createElement('script');ht.async = true;
+              ht.type='text/javascript';ht.src = '//102627.hittail.com/mlt.js';
+              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ht, s);})();
+    </script>
+    
+</head>
+
+<body>
+    {%block info_bar%}{%endblock%}
+    <div id="homepage{%block page%}{%endblock%}">
+        <div id="upperInfoContainer" class="color_scheme_{%block color_scheme%}default{%endblock%} color_scheme_backup">
+            
+            <div id="upperInfoInner" class="container_12">
+                <div id="linkBar" class="grid_12">
+                    <a href="/" class="piclink"><img id="homepageLogo" src="images/logo.png" alt="Start a startup and land an enterprise client in one week... without the bureaucracy."></a>
+                    <nav>
+                        <ul id="links">
+                            <li><a href="/">Home</a></li>
+                            <!--<li class=""><a class="nav_parent" id="nav_events" href="#" onclick="nav_show('#nav_events')">Get involved</a>
+                                <ul class="box">
+                                    <li class=""><a href="/apply">Apply</a></li>-->
+                                    <li class=""><a href="/ignition">Ignition</a></li>
+                                    <!--<li class=""><a href="/boostmed">BoostMed</a></li>-->
+                                    <!--<li class=""><a href="/lightninghealth">Lightning Health</a></li>-->
+                                <!--</ul>-->
+                            <!--</li>-->
+                            <li class=""><a href="http://blog.prebacked.com">Blog</a></li>
+                            <li class="last"><a href="/people">People</a></li>
+                            <!--<li class="last"><a href="/other_events">Events</a></li>-->
+                            
+                        </ul>
+                    </nav>
+                </div>
+                <div id="header_text" class="grid_12">
+                    {% block upper_info %}{% endblock %}
+                </div>
+
+            </div>
+            
+            {% block upper_bg %}{% endblock %}
+            
+            <!--<div id="headerImg"></div>-->
+            
+        </div>
+        
+        <div id="middleInfoContainer">
+            <div id="middleInfoInner" class="container_24">
+                <div class="col_1">
+                    {%block middle_info%} {%endblock%}
+                </div><!--end of grid_24-->
+                
+            </div>
+        </div>
+        
+        {% include 'footer.html'%}
+    </div>
+    
+{% block unrestricted_bottom %}{% endblock %}
+
+<script type="text/javascript" >
+function nav_show(parent_class){
+    
+    child_class = parent_class + '+ ul.box';
+    $(parent_class).toggleClass('showme');
+    $(child_class).toggleClass('showme');
+};
+
+</script>
+
+<script type="text/javascript">
+    //keeps onlick from being triggered by the inner div
+    
+    $(document).ready(function(){
+       $("#modal div").click(function(e) {
+            e.stopPropagation();
+       });
+       
+       $("#info_bar").delay(800).show('slow');
+       
+       $("body").click(function() {
+            $(".showme").removeClass('showme');
+        });
+        
+        $(".showme").click(function(e) {
+            e.stopPropagation();
+        });
+    });
+    
+
+</script>
+
+</body>
+
+</html>

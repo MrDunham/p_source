@@ -1,0 +1,29 @@
+{%extends 'adminadd.html'%}
+
+{%block content%}
+    {%if message%}{{message}} <br/><br/>{%endif%}
+    <h2>FAQ add</h2>
+    <form action="/admin_add/faq_add" method="post" id="faq_add">
+        <h4>Vertical:</h4><b style="color:#f00">CLICKING THIS MAKES IT LIVE ON SITE.</b><br/>
+        Ignition<input type="radio" name="vert" value="ignition">
+        MedHack<input type="radio" name="vert" value="medhack">
+        Home<input type="radio" name="vert" value="home">
+        <h4>Language</h4>English<input type="radio" name="language" value="english" checked="true"><br/>
+        <h3>Mentor Info</h3>
+        Question <br/><textarea rows="2" cols="90" name="question"></textarea><br/>
+        Answer <br/><textarea rows="5" cols="90" name="answer"></textarea><br/>
+        Link <input type="text" name="link">any one word <em>unique</em> thing. Eg. who_ip<br/>
+        Section <input type="text" name="section">section1 = event questions, section2 = program questions, section3 = general questions<br/>
+        Subsection <input type="text" name="subsection"><br/>
+        Order <input type="text" name="order">Numbers only.<br/>
+        <input type="submit" class="orange button">
+    </form>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var page = "faq";
+        var the_id = "#" + page + "_link";
+        $(the_id).addClass("active");
+    });
+</script>
+{%endblock%}

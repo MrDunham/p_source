@@ -1,0 +1,100 @@
+/*Mixins*/
+/*standards*/
+/*The two text shadows should be merged asap*/
+/*for backwards compatibility only, deprecated*/
+h1 {
+  font-size: 32px; }
+
+h2 {
+  font-size: 27.2px; }
+
+h3 {
+  font-size: 24px; }
+
+h4 {
+  font-size: 20.8px; }
+
+h5 {
+  font-size: 17.6px; }
+
+p, div, ul, ol, li, span {
+  font-size: 16px; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-family: "helvetica neue"; }
+
+p, div, span, li, ol, ul {
+  font-family: "helvetica neue"; }
+
+div, ul, ol, li, span {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box; }
+
+/**********************************/
+/********   Head Links   **********/
+/**********************************/
+#head_links {
+  background: #404746; }
+  #head_links #head_links_inner {
+    height: 40px; }
+    #head_links #head_links_inner img {
+      height: 30px;
+      float: left;
+      display: block;
+      margin-top: 5px; }
+    #head_links #head_links_inner ul {
+      float: right; }
+      #head_links #head_links_inner ul li {
+        float: left;
+        display: block;
+        margin-right: 10px; }
+        #head_links #head_links_inner ul li a {
+          display: block;
+          position: relative;
+          height: 25px;
+          margin: 10px 5px 0;
+          font-size: 18px;
+          text-decoration: none;
+          color: white;
+          border-bottom: 3px transparent solid; }
+          #head_links #head_links_inner ul li a.active {
+            border-bottom: 3px whitesmoke solid; }
+
+#event_edit input, #event_edit select, #mentor_edit input, #mentor_edit select, #problem_edit input, #problem_edit select, #edit input, #edit select {
+  display: inline-block;
+  width: auto; }
+  #event_edit input.thin, #event_edit select.thin, #mentor_edit input.thin, #mentor_edit select.thin, #problem_edit input.thin, #problem_edit select.thin, #edit input.thin, #edit select.thin {
+    width: 2.5rem; }
+#event_edit form, #mentor_edit form, #problem_edit form, #edit form {
+  background: #ddd;
+  padding: 10px;
+  margin: 2px 0; }
+
+#mentor_edit form, #problem_edit form, #edit form {
+  position: relative; }
+#mentor_edit span, #problem_edit span, #edit span {
+  position: absolute;
+  top: 10px; }
+#mentor_edit input[type="submit"], #problem_edit input[type="submit"], #edit input[type="submit"] {
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+  border: none;
+  border-radius: 0; }
+  #mentor_edit input[type="submit"]:active, #problem_edit input[type="submit"]:active, #edit input[type="submit"]:active {
+    background: #e14f12; }
+#mentor_edit .edit_bio em, #problem_edit .edit_bio em, #edit .edit_bio em {
+  /*position: absolute;*/
+  /*right: 5px;*/
+  /*bottom: 5px;*/ }
+
+input[type="submit"] {
+  background: #f15f20;
+  padding: 4px 7px;
+  font-weight: 400;
+  color: white; }

@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %} Registration and ticket purchase | Prebacked {% endblock %}
+
+
+
+{% block styles %}
+<link rel="stylesheet" href="css/pages.css" type="text/css" media="screen" />
+{% endblock %}
+
+
+
+{%block content%}
+
+<div id="page_wrap" class="container_12">
+    
+    
+    
+    <div id="have_invite" class="grid_12 alpha omega">
+        <!--Eventbrite registration-->
+        <!--<div id="eventbrite" class="grid_7">
+            <div style="width:100%; text-align:left;">
+                <iframe  src="http://www.eventbrite.com/tickets-external?eid=3059748791&ref=etckt" frameborder="0" height="436" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe><div style="font-family:Helvetica, Arial; font-size:10px; padding:5px 0 5px; margin:2px; width:100%; text-align:left;" ><a style="color:#ddd; text-decoration:none;" target="_blank" href="http://www.eventbrite.com/r/etckt" >Online Ticketing</a><span style="color:#ddd;" > for </span><a style="color:#ddd; text-decoration:none;" target="_blank" href="http://prebacked.eventbrite.com?ref=etckt" >Prebacked</a><span style="color:#ddd;" > powered by </span><a style="color:#ddd; text-decoration:none;" target="_blank" href="http://www.eventbrite.com?ref=etckt" >Eventbrite</a></div>
+            </div>
+        </div>--> <!--End of Eventbrite registration-->
+    </div>
+    
+    <div id="need_invite" class="grid_7 section top">
+        <h3>Hey hackers, need an invite?<p>(Not ready yet? <a href="/info">Get more info</a>)</p></h3>
+        
+        <div id="invite">
+            <iframe height="1070" allowTransparency="true" frameborder="0" scrolling="no" style="width:100%;border:none"  src="http://eventsoriginate.wufoo.com/embed/m7x3s5/"><a href="http://eventsoriginate.wufoo.com/forms/m7x3s5/">Fill out my Wufoo form!</a></iframe>
+        </div>
+    <br class="clear"/>
+    </div>
+    
+    <div class="grid_4 push_1">
+        {% for f in faq %}
+        <div id="" class="faq section">
+            <h3>{{f.header}}</h3>
+            {{f.content}}
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+<script type="text/javascript"/>
+    var showreasons = function() {
+        $('.important_list').fadeOut('fast');
+        $('#need_invite').fadeIn('slow');
+    }
+</script>
+
+
+
+{% endblock %}

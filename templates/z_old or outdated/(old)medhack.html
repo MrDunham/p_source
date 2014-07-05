@@ -1,0 +1,385 @@
+{% extends 'homepage_base.html' %}
+
+{% block title %} 22 hour health hackathon | MedHack by Prebacked {% endblock %}
+{% block description %} At MedHack, doctors, health professionals, and hackers come together for a 22 hour hackathon in Silicon Valley {% endblock %}
+{%block head_links%}{%endblock%}
+{% block headerImg %}
+    <img id="header_img" class="grid_6" src='/images/icon_medhack.png' alt = "22 hour health hackathon Medhack main icon, by Prebacked">
+{% endblock %}
+{%block google_track%}'UA-30100162-2'{%endblock%}
+{%block content%}
+<!--Main blurbs, everything centered between header and more info areas-->
+
+
+<div id="upper_content" class="">
+    <!--<img src="/images/seal.png" id="seal">-->
+    <div id="teaser">
+        <div id="location" class="grid_3 push_1 cover_info">
+            <h3>{{city}}</h3>
+        </div>
+        <div id="vc_money_container">
+            <div id="my-slideshow" class="grid_3 push_1 alpha">
+                <ul class="bjqs">
+                    <li>
+                        <div class="grid_3 vc_money">
+                            <!--<img class="vc" src="/images/hippocrates.png">-->
+                            <a href="http://www.ted.com/speakers/daniel_kraft.html" target="_blank">
+                                <img class="vc" src="/images/money_daniel_kraft.png">
+                                <div class="grid_2 ribbon">
+                                    <img src="/images/ribbon_daniel.png" alt="MedHack Keynote Speaker Daniel Kraft" style="">
+                                </div>
+                            </a>
+                            <!--<div class="grid_2 ribbon">-->
+                            <!--    <img src="/images/ribbon_rob.png" style="">-->
+                            <!--</div>-->
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <noscript><!--In case they don't have javascript, this helps everything align still-->
+            <div class="grid_3 push_1 alpha">&nbsp</div>
+        </noscript>
+        
+        <div id="date" class="grid_4 cover_info push_1">
+            <h3>{{date}}</h3>
+        </div>
+        <br class="clear"/>
+    </div>
+    <div id="main_blurbs" class="grid_12">
+        <h1>22 hour health innovation sprint.</h1>
+        <p>MedHack is a 22 hour health hackathon for intense collaboration and innovation between designers, doctors, and engineers interested in disrupting health.
+        It's time for innovative solutions to doctors' big problems.  <!--<a href="{{register}}">Register</a> | --> <a href="#info">Tell me more</a></p>
+    </div><!--end of main blurbs-->
+    
+    <!--Pair of buttons-->
+    <div id="register_buttons" class="grid_12">
+        <a href="{{register}}" class="large fat green register button grid_3 push_1 build_things"><span>I build things</span><p class="line a"></p></a>
+        <a href="{{register}}" class="large fat red register button grid_3 push_4 fix_people"><span>I fix people</span><p class="line b"></p></a>
+        <div class="grid_6 push_3 idea_guy"><a href="http://37signals.com/svn/posts/2188-theres-no-room-for-the-idea-guy" class="idea_guy_link">Not a doctor, engineer, or designer - but I have a great idea</a></div>
+    </div>
+    <br class="clear"/>
+</div><!--end of upper content and container 12-->
+
+<script type="text/javascript" >
+    $(document).ready(function(){
+    $('#my-slideshow').bjqs({
+    'width' : 280,
+    'height' : 250,
+    'showMarkers' : false,
+    'showControls' : false,
+    'hoverPause' : false,
+    'centerMarkers' : false,
+    'rotationSpeed' : 4000,
+    });
+    });
+</script>
+{% endblock %}
+
+
+{% block lowerContent %}
+<div id="lowerContent">
+    <div class="container_12">
+        <div id = 'medhack_info' class='section grid_6'>
+            <a name="info"></a>
+            <h2>{{info.content2}}</h2>
+            <p>{{info.content}}</p>
+            {{info.alt1}}
+        </div>
+        
+        <div id="vcs" class="grid_6 section">
+            <div id="vcs_header" class="section_head">
+                <h2>Judges</h2>
+                <!--<p>(<a href="/vc_apply">Join this list</a>)</p>-->
+            </div><!--end of vc's header-->
+            
+            
+            {%for j in judges%}
+            {% if forloop.counter|divisibleby:4 %}<br class="clear"/>{% endif %}
+            <div class="vc grid_2
+            {% if forloop.counter|divisibleby:3 %}omega{%else%}
+                    {% if forloop.counter|divisibleby:2 %}''{% endif %}
+                    {% endif %}
+            {% if forloop.counter|divisibleby:4 or forloop.first %}alpha{% endif %}">
+                
+                {%if j.link%}<a href="{{j.link}}" target="_blank"> {%endif%}
+                    <span class="vc_image judge"><!--why, this is the VC's picture of course!-->
+                        <img src="images/{{j.img1}}" alt="{{j.alt1}}"/>
+                    </span><!--end of vc_image (VC's picture)-->
+                    <span class="vc_tag"><!--tag below vc's image-->
+                        <h4>{{j.header}}</h4>
+                        {%if j.content%}
+                            <p>{{j.content}}</p>
+                        {%endif%}
+                    </span><!--end of vc_tag-->
+                {%if j.link%}</a>{%endif%}
+            </div><!--end of VC's special section-->
+            {%endfor%}
+
+        </div>
+    </div>
+    <div class="container_12">
+        <div id="more_info_lower" class="section grid_4 " style="">    
+            <div id="schedule" class="section" style="display:none">
+                <h2>Schedule</h2>
+                
+                
+                <ul id="medhack_tabs" class="css-tabs skin2">
+                        <li class="friday tab"><a id="t1"><div class="tabLabel">Fri</div></a></li>
+                        <li class="saturday tab"><a id="t2"><div class="tabLabel">Sat</div></a></li>
+                </ul>
+                
+                <!-- tab "panes" -->
+                <div class="css-panes skin2 grid_5 alpha omega sched_sheet_1">
+                    <div class="friday med_sched" style="display: none">
+                        <div id="sched_day_1" class="day">
+                            <h4>Friday</h4>
+                            <div class="grid_4">
+                                <ul class="schedule_specifics">
+                                    <li>6:30pm
+                                        <span>Arrival, signin, dinner</span></li>
+                                    <li>7
+                                        <span>Dinner - Sponsored by Zurb</span></li>
+                                    <li>7
+                                        <span>Keynote - Daniel Kraft</span></li>
+                                    <li>7:30
+                                        <span>Pitches Start</span></li>
+                                    <li>8
+                                        <span>Start hacking</span></li>
+                                    <li>Midnight
+                                        <span>Venue closed</span></li>
+                                </ul>
+                            </div>
+                          
+                            <br class="clear"/>
+                        </div><!--end of sched_day_1-->
+                    </div><!--end of friday tab-->
+                    <div class="saturday med_sched" style="display: none">
+                        <div id="sched_day_2" class="day">
+                            <h4>Saturday</h4>
+                            <div class="grid_4"><!--column 1-->
+                                <ul class="schedule_specifics">
+                                    <li>10 am
+                                        <span>Doors open</span></li>
+                                    <li>12:30
+                                        <span>Lunch - Sponsored by Peak</span></li>
+                                    <li>6
+                                        <span>Submissions due</span></li>
+                                    <li>6
+                                        <span>Dinner - Sponsored by Palantir</span></li>
+                                    <li>6:15
+                                        <span>Pitching & Judging</span></li>
+                                    <li>7:30
+                                        <span>Goodnight</span></li>
+                                </ul>
+                            </div><!--end of grid_4 / saturday schedule-->
+                            <br class="clear"/>
+                        </div><!--end of sched_day_2-->
+                    </div><!--end of saturday tab-->
+                </div><!--end panes-->
+                
+                                    
+                <div class="sheet sched_sheet_2"></div>
+                <div class="sheet sched_sheet_3"></div>
+                    
+            </div><!--end of schedule-->
+            
+            <!------------------------------------------------------------->
+            
+            <noscript>
+                <div id="schedule" class="section" style="">
+                <h2>Schedule</h2>
+                
+                
+                <!-- tab "panes" -->
+                <div class="grid_5 alpha omega sched_sheet_1">
+                    <div class="friday med_sched" style="">
+                        <div id="sched_day_1" class="day">
+                            <h4>Friday</h4>
+                            <div class="grid_4">
+                                <ul class="schedule_specifics">
+                                    <li>6:30pm
+                                        <span>Arrival, signin, dinner</span></li>
+                                    <li>7
+                                        <span>Dinner - Sponsored by Zurb</span></li>
+                                    <li>7
+                                        <span>Keynote - Daniel Kraft</span></li>
+                                    <li>7:30
+                                        <span>Pitches Start</span></li>
+                                    <li>8
+                                        <span>Start hacking</span></li>
+                                    <li>Midnight
+                                        <span>Venue closed</span></li>
+                                </ul>
+                            </div>
+                          
+                            <br class="clear"/>
+                        </div><!--end of sched_day_1-->
+                    </div><!--end of friday tab-->
+                    <div class="saturday med_sched" style="">
+                        <div id="sched_day_2" class="day">
+                            <h4>Saturday</h4>
+                            <div class="grid_4"><!--column 1-->
+                                <ul class="schedule_specifics">
+                                    <li>10 am
+                                        <span>Doors open</span></li>
+                                    <li>12:30
+                                        <span>Lunch - Sponsored by Peak</span></li>
+                                    <li>6
+                                        <span>Submissions due</span></li>
+                                    <li>6
+                                        <span>Dinner - Sponsored by Palantir</span></li>
+                                    <li>6:15
+                                        <span>Pitching & Judging</span></li>
+                                    <li>7:30
+                                        <span>Goodnight</span></li>
+                                </ul>
+                            </div><!--end of grid_4 / saturday schedule-->
+                            <br class="clear"/>
+                        </div><!--end of sched_day_2-->
+                    </div><!--end of saturday tab-->
+                </div><!--end panes-->
+                    
+            </div><!--end of schedule-->
+            </noscript>
+        </div><!--end of more_info_lower-->
+        
+        <div id="medhack_location" class="section grid_4 push_3">
+            <h2>Venue</h2>
+            <h4>{{venue}}</h4>
+            <h4>{{city}}</h4>
+            <div class="spacer ">
+                <a href="https://maps.google.com/maps?q=Institute+for+the+Future,+University+Avenue,+Palo+Alto,+CA&hl=en&sll=37.0625,-95.677068&sspn=42.85226,99.84375&oq=institute+for+the+fut&hq=Institute+for+the+Future,+University+Avenue,+Palo+Alto,+CA&t=m&z=15&iwloc=A">
+                    <img src="/images/map_institute_for_the_future.jpg" alt="Map of Institute for the Future">
+                </a>
+            </div>
+            <div class="spacer">
+                <a href="/faq#parking"><b>Parking information</b></a>
+            </div>
+        </div>
+        
+        <div id = 'medhack_register' class='section grid_9'>
+            <a name="register"></a>
+            <h2>Register</h2>
+<!------------------------------------------------------------------------------------------>            
+            <h4>We want to thank everyone who signed up! We're full,
+            but will be doing this again soon.  <br/></br>Register for the waitlist or the
+            <a href="#footer">mailing list</a> to be notified of the next event!</h4>
+<!------------------------------------------------------------------------------------------>   
+            <div style="width:100%; text-align:left;" ><iframe  src="http://www.eventbrite.com/tickets-external?eid=3942837132&ref=etckt" frameborder="0" height="352" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"></iframe><div style="font-family:Helvetica, Arial; font-size:10px; padding:5px 0 5px; margin:2px; width:100%; text-align:left;" ><a style="color:#ddd; text-decoration:none;" target="_blank" href="http://www.eventbrite.com/r/etckt">Event Registration Online</a><span style="color:#ddd;"> for </span><a style="color:#ddd; text-decoration:none;" target="_blank" href="http://http://medhack1.eventbrite.com?ref=etckt">MedHack</a> <span style="color:#ddd;">powered by</span> <a style="color:#ddd; text-decoration:none;" target="_blank" href="http://www.eventbrite.com?ref=etckt">Eventbrite</a></div></div>
+        </div>
+        
+        <a name="sponsors"></a>
+        <div id="sponsors" class="">
+            
+            {%if corporate_sponsors%}
+                <div id="corporate_sponsors" class="sponsor_container section">
+                    <h2>Corporate Sponsors</h2>
+                    <p><a href="mailto:garrett@prebacked.com">Be a sponsor</a></p>
+                        <div id="corporate_sponsor_container">
+                        {%for s in corporate_sponsors%}
+                        <div class="tile sponsor">
+                            <a href="{{s.link}}" target=:"_blank" class="sponsor_big_link">
+                                <!--<h4>{{s.header}}</h4>-->
+                                <img src="/images/{{s.img1}}" alt="{{s.alt1}}">
+                                <p>{{s.content}}</p>
+                            </a>
+                        </div>
+                        {%endfor%}
+                        </div>
+
+                </div><!--end of corporate sponsors-->
+            {%endif%}
+            
+            
+
+            
+            {%if service_sponsors%}
+                <div id="service_sponsors" class="sponsor_container section">
+                    <h2>Honorary Sponsors</h2>
+                    <p><a href="mailto:garrett@prebacked.com">Be a sponsor</a></p>
+                        <div id="service_sponsor_container">
+                            {%for s in service_sponsors%}
+                                <div class="sponsor tile">
+                                    <a href="{{s.link}}" target="_blank" class="sponsor_big_link">
+                                        <!--<h4>{{s.header}}</h4>-->
+                                        <img src="/images/{{s.img1}}" alt="{{s.alt1}}">
+                                        <p>{{s.content}}</p>
+                                    </a>
+                                </div>
+                            {%endfor%}
+                        </div>
+                </div><!--end of service providers-->
+            {%endif%}
+            
+            {%if api_sponsors%}
+                <div id="api_sponsors" class="sponsor_container section">
+                    <h2>API and Hardware Sponsors</h2>
+                    <p><a href="mailto:garrett@prebacked.com">Be a sponsor</a></p>
+                        <div id="service_sponsor_container">
+                        {%for s in api_sponsors%}
+                        <div class="tile sponsor">
+                            <a href="{{s.link}}" target=:"_blank" class="sponsor_big_link">
+                                <!--<h4>{{s.header}}</h4>-->
+                                <img src="/images/{{s.img1}}" alt="{{s.alt1}}">
+                                <p>{{s.content}}</p>
+                                
+                            </a>
+                        </div>
+                        {%endfor%}
+                        </div>
+                <br class="clear"/>
+                </div><!--end of api sponsors-->
+            {%endif%}
+        </div><!--end of sponsors-->
+        
+        {% if team %}
+        <div id="team" class="grid_9 push_1 section">
+            <div class="div_center">
+                <h2>Team</h2>
+                {% for i in team %}
+                {% if forloop.counter|divisibleby:4 %}<br class="clear"/>{% endif %}
+                <div class="member grid_3
+                {% if forloop.counter|divisibleby:3 %}omega{%else%}
+                        {% if forloop.counter|divisibleby:2 %}''{% endif %}
+                        {% endif %}
+                {% if forloop.counter|divisibleby:4 or forloop.first %}alpha{% endif %}">
+                    
+                    {%if i.link%}<a href="{{i.link}}" target="_blank"> {%endif%}
+                        <span class="member_image">
+                            <img src="images/{{i.img1}}" alt="{{i.alt1}}"/>
+                        </span><!--end of .member_image (Team member's picture)-->
+                        <span class="member_tag"><!--tag below team member's image-->
+                            <h4>{{i.header}}</h4>
+                            {%if i.content%}
+                                <p>{{i.content}}</p>
+                            {%endif%}
+                        </span><!--end of .member_tag-->
+                    {%if i.link%}</a>{%endif%}
+                </div>
+                {%endfor%}
+            </div>
+        </div><!--end of #team-->
+        {%endif%}
+        <br class="clear"/>
+    </div><!--end of container 12-->
+</div><!--end of #lowerContent-->
+
+<script type="text/javascript">  
+    $('#schedule').show();
+</script>
+
+<script type="text/javascript">    
+    var $container = $('#service_sponsor_container');
+    $container.imagesLoaded(function(){
+      $container.masonry({
+        itemSelector : '.tile',
+        columnWidth : 230,
+        isFitWidth: true
+      });
+});
+</script>
+
+
+{% endblock %}

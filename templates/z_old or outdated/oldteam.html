@@ -1,0 +1,14 @@
+{% if team%}
+{% for t in team %}
+    {%if not forloop.first %}{% if forloop.counter|add:3|divisibleby:4 %}<br class="clear"/>{% endif %}{% endif %} <!--Every 4th time through break to a new line-->
+    <div class="partner col_4 {%if forloop.counter|add:3|divisibleby:4%}alpha{%endif%} {%if forloop.counter|divisibleby:4%}omega{%endif%}">
+        {%if t.link%}<a href="{{t.link}}" target="_blank">{%endif%}
+            <img src="/images/{{t.img1}}" alt="{{t.alt1}} Headshot" class=""/>
+            <span>
+                <p>{{t.header}}</p>
+                {%if t.content%}<p class="partner_employer">{{t.content}}</p>{%endif%}
+            </span>
+        {%if t.link%}</a>{%endif%}
+</div>
+{%endfor%}
+{%endif%}

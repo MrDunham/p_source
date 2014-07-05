@@ -1,0 +1,96 @@
+{% extends 'homepage_base.html' %}
+
+{% block styles %}
+  <link rel="stylesheet" href="css/pages.css" media="screen" type="text/css"/>
+{% endblock %}
+
+{%block color_scheme%}default{%endblock%}
+
+
+
+{%block upper_bg%}<!--<img src="/images/bgs/ignition_room.jpg" id="headerImg" alt="Hackers starting a startup">-->{% endblock%}
+
+{%block page%}_medhack{%endblock%}
+
+{% block upper_info%}
+<div class="row" style="min-height: 40rem;">
+    <h1 class="medium-12 columns">A 24 hour health hackathon.</h1>
+    <p class="medium-12 columns">Coming very soon to Silicon Valley, DC, and Boston. Until then you might want to <a href="/accelerate" style="color:white;border-bottom: 1px solid #fff;">check out our healthcare accelerator</a>.</p>
+</div>
+{% endblock %}
+
+
+{% block middle_info %}
+<!--<div id="event_home" class="row">-->
+<!---->
+<!--    -->
+<!--    <div id="programs" class="small-12 columns grid_24 alpha omega data">-->
+<!--        <h4>Where?</h4>-->
+<!--        <div id="" name="upcomingPrograms" class="grid_20 alpha omega">-->
+<!---->
+<!--            -->
+<!--            {% if upcoming_events %}-->
+<!--                {% for e in upcoming_events%}-->
+<!--                    -->
+<!--                    <div class="upcoming_event grid_6 alpha small-6 large-4 columns">-->
+<!--                        <div class="upcoming_event_inner">-->
+<!--                            <img src="/images/city_images/{{e.city.lower|cut:" "}}.jpg" alt="Gorgeous view of {{e.city}}"/>-->
+<!--                            <p class="city_overlay">{{e.city}}</p>-->
+<!--                            <!--<p class="industry"><span class=""></span>{{e.companies}}</p>-->-->
+<!--                            <p class="location"><span class=""></span>{{e.city}}</p>-->
+<!--                            <p class="date"><span class=""></span><span>Starts:</span> {{e.month}}/{{e.day}}/{{e.year}}</p>-->
+<!--                            <a class="green button" href="/ignition/{{e.event_id}}">Learn More</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    -->
+<!--                {%endfor%}-->
+<!--            {% else %}-->
+<!--                <div class="upcoming_event grid_6 small-6 large-4 columns alpha">-->
+<!--                <div class="upcoming_event_inner">-->
+<!--                    <img src="/images/city_images/stanford.jpg" alt="New event coming soon"/>-->
+<!--                    <p class="city_overlay">Coming soon</p>-->
+<!--                    <p class="industry"><span class=""></span>Coming soon</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            -->
+<!--            {%endif%}    -->
+            
+            <!--end active events-->
+           
+            
+            <!--Previous events-->
+<!--            -->
+<!--        </div>-->
+<!--    </div>-->
+<!--    -->
+<!---->
+<!--    -->
+<!---->
+<!--</div>-->
+
+{% endblock %}
+
+{%block unrestricted_bottom%}
+
+
+
+<!--Bottom of page scripts go here-->
+
+<!--toggles show/hide of modal box-->
+<script type="text/javascript" >
+function overlay() {
+	el = document.getElementById("modal");
+	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+}
+</script>
+
+<!--keeps onlick from being triggered by the inner div-->
+<script type="text/javascript" >
+$(document).ready(function(){
+   $("#modal div").click(function(e) {
+        e.stopPropagation();
+   });
+});
+</script>
+
+{%endblock%}

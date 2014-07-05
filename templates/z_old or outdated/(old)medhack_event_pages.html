@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset= "utf-8">
+    <title>MedHack: Healthcare Hackathon</title>
+    {%if url != "/"%}
+    <link rel="canonical" href="http://medhack.prebacked.com">
+    {%endif%}
+
+    <meta http-equiv="description" content="A 24 hour healthcare hackathon."/>
+
+    {# Stylesheets #}
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!--Open Graph (facebook) Properties-->
+    <meta property="og:site_name" content="MedHack, by Prebacked"/>
+    <meta property="og:url" content="http://prebacked.com/medhack/{{url}}"/>
+    <meta property="og:description" content="A 24 hour healthcare hackathon."/>
+    <meta property="og:title" content="Health Hackday for preseed startups | MedHack"/>
+
+    <!--clicky analytics-->
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>    
+    <script type="text/javascript">try{ clicky.init(100526234); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100526234ns.gif" /></p></noscript>
+    
+    <!--goog analytics-->
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30100162-2']);
+      _gaq.push(['_setDomainName', 'prebacked.com']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    
+    <script src="../js/jquery-1.6.1.min.js" type="text/javascript" ></script>
+
+  </head>
+
+  <body>
+
+    {# Tests #}
+    <script type="text/javascript">
+      $(document).ready(function(){
+        console.log("Url variable is {{url}}");
+      
+      });
+      
+    </script>
+
+
+
+    <div class="container">
+      <section>
+        <header>
+          <img src="" alt="">
+          <h1>MedHack {{city}}</h1>
+        </header>
+        
+        <section id="featured-sponsors">
+          <strong>Featured Sponsors</strong>
+          <img/>          
+        </section>
+
+      </section>
+      <section>
+        <div>
+          
+          <header>
+            <h3>Introducing the MedHackathon Competition</h3>
+            <p>We're bringing talented developers and medical experts together fo a weekend-long hackathon to spark new innovations in healthcare technology.</p>
+          </header>
+
+          <div>
+            <h3>Learn</h3>
+            <p>Get hands on training with the technologies shaping the landscape of healthcare from the leading experts who built them</p>
+          </div>
+
+          <div>
+            <h3>Build</h3>
+            <p>Work with like-minded professionals to develop exciting new healthcare products for web, mobile, and desktop platforms</p>
+          </div>
+
+          <div>
+            <h3>Compete</h3>
+            <p>Gather your team and go head to head with your peers to see who can build the most amazing new products in health tech</p>
+          </div>
+
+        </div>
+        
+        <img src="" alt="MedHack Event Location Marker">
+        <h3>{%if venue%}{{venue}}{%endif%}</h3>
+        <p>{%if address%}{{address}}{%endif%}</p>
+        
+        {%if ticketing%}
+          <img src="" alt="Ticketing by Eventbrite"/>
+          {{ticketing|safe}}
+        {%endif%}
+      </section>
+
+      {%if prizes%}
+      <section id="Prizes">
+        <h2>Grand Prize</h2>
+        <em>$10,000 Footrub From Garrett</em>
+        <strong>With $50,000 In Additional Prizes From Our Partners</strong>
+
+        <div id="sponsors"></div>
+      </section>
+      {%endif%}
+      
+      <section>
+        <header><h3>Our Judges</h3></header>
+        
+        
+        {%for m in mentors%}
+        <div class="judge">
+          <img src="/img?mentor_id={{m.mentor.mentor_id}}" alt="{{m.mentor.name}} headshot" />
+          <p>{{m.mentor.name}}: {{m.mentor.title}}, {{m.mentor.company}}</p>
+          <p>{{m.mentor.bio}}</p>
+        </div>
+        {%endfor%}
+
+      </section>
+      
+
+
+      
+      <section id="schedule">
+        <h3>Order of Events</h3>
+        <ul class="table">
+          <li><strong>10:00 am</strong> - Doors Open/ Meet and Mingle</li>
+          <li><strong>10:30 am</strong> - Pitches &amp; Team Formations</li>
+          <li><strong>12:30 am</strong> - Lunch Served / Speaker Sessions</li>
+          <li><strong>01:00 pm</strong> - Hacking Begins</li>
+          <li><strong>06:00 pm</strong> - Dinner is served</li>
+        </ul>
+
+        <ul class="table">
+          <li><strong>08:00 am</strong> - Light breakfast &amp; coffee</li>
+          <li><strong>01:00 pm</strong> - Hacking Ends / Setup Presentations</li>
+          <li><strong>01:30 pm</strong> - Lunch Served</li>
+          <li><strong>02:00 pm</strong> - Judging / Happy Hour</li>
+          <li><strong>04:00 pm</strong> - Awards Ceremony</li>
+        </ul>
+      </section>
+      
+      <section id="hardware">
+        <h3>Hardware &amp; Equipment</h3>
+        <p>Contestants are responsible for supplying the equipment needed to build their projects.  Recommended hardware includes, though isn't limited to: laptops, mobile devices, e-readers, desktops and benign robots</p>
+
+        <strong>General Restrictions</strong>
+        <p>The following are prohibited from use in the competition:</p>
+        <ul>
+          <li>- Medicines or controlled substances</li>
+          <li>- Radioactive materials</li>
+          <li>- Untested, unstable, or otherwise unproven "home brew" hardware</li>
+          <li>- Lasers devices designated Class II or higher</li>
+          <li>- Surgical Instruments intended for use in incising, scoring, or otherwise cutting into organic tissue</li>
+        </ul>
+
+        <strong>Homebrew Hardware</strong>
+        <p>We allow the use of home made hardware and software products in the competition on the condition that they are fully functional and proven safe for use in public environment.  You may not bring incomplete, unstable, or unproven products to be finished or tested during the competition.</p> 
+
+      </section>
+      <section id="FAQ">
+        
+        {% for f in all_faq_categories %}
+          <strong>{{f.question}}</strong>
+          <p>{{f.answer}}</p>
+        {%endfor%}
+
+        {# <strong>What can we build?</strong> #}
+        {# <p>Anything relating to computers and healthcare, including mobile, web, and desktop platforms. We’re also open to robotics and alternative uses for existing products, however competitors need to keep in mind that build time is purposefully limited.</p> #}
+      
+        {# <strong>I've already got a crew. can we enter as a team?</strong> #}
+        {# <p>No, Medhackathons are about driving innovation through collaboration, so we want you to come ready to meet and work with new people, and be open to new ideas.</p> #}
+
+        {# <strong>Will we be able to stay over night?</strong> #}
+        {# <p>No, we are not currently able to accommodate competitors over night at our venues.</p> #}
+      </section>
+
+      <section>
+        <strong>Still have questions?  Ask us anything about the event at</strong>
+        <em>info@prebacked.com</em>
+      </section>
+    <footer>Footer</footer>
+    </div><!-- end container -->
+  </body>

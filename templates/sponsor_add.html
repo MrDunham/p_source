@@ -1,0 +1,127 @@
+{%extends 'adminadd.html'%}
+    
+{%block content%}
+    <style>
+        .over {
+            color: red;
+        }
+        #add_current{
+            min-height: 310px;
+            margin-bottom: 30px;
+        }
+        .disabled{
+            background: #333 !important;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div class="container_12">
+        <a href="/admin_add">Admin Home</a> <br/><br/>
+        
+        {%if message%}{{message}}{%endif%}
+        
+        
+        <h1>Sponsor add</h1>
+        <br/><br/><br/>
+        
+        <div id="add_current">
+            <h2>Add Existing Sponsor</h2>
+            <form action="/admin_add/sponsor_add" method="post">
+                
+                
+                <h4>Event</h4>
+                {%for e in events%}
+                    {{e.name|capfirst}}, {{e.full_date}}<input type="radio" name="event" value="{{e.event_id}}" {% if forloop.last %}checked="true"{%endif%} ><br/>
+                {% endfor %}
+                
+                <!--BCBS Spring 2013 (don't use in production)<input type="radio" name="event" value="BCBS Spring 2013" checked="true"><br/>-->
+                
+                <h4>Sponsors</h4>
+                <select name="name">
+                    {%for s in sponsors %}    
+                        <option value="{{s.name}}">{{s.name}}</option>
+                    {%endfor%}
+                </select>
+                <br/>
+                
+                <h4>Sponsor type</h4>
+                <select name="subtype">
+                    <option value="corporate sponsor">Corporate Sponsor / Tier 1</option>
+                    <option value="service provider sponsor">Service Provider Sponsor / Tier 2</option>
+                    <option value="api sponsor">API Sponsor / Tier 3</option>
+                    <option value="media partner">Media Partner</option>
+                </select>
+                
+                <br/><br/>
+                <input type="submit" class="orange button submit" />
+            </form>
+        </div>
+        
+        
+        <h2>Add new sponsor</h2>
+        <form action="/admin_add/sponsor_add" method="post" enctype="multipart/form-data">
+            
+            Name <input type="text" name="name"/><br/>
+            Homepage <input type="text" name="homepage"/>"zurb.com" or "www.zurb.com"<br/>
+            Blurb <br/><textarea maxlen="100" rows="5" cols="90" name="blurb"></textarea><strong><em id="count"></em> characters remaining</strong><br/>
+            <!--Longer Blurb <br/><textarea maxlength="150" rows="5" cols="90" name="blurb_long"></textarea> (150 max chars)<br/>-->
+            Corporate logo <input type="file" name="logo"/>
+            <input type="submit" class="orange button submit"/>
+        </form>
+        <br/><br/>
+        
+        <h2>Edit sponsor</h2>
+        <div id="edit">
+            {%for s in sponsors%}
+            <form action="/admin_add/sponsor_add" method="post" enctype="multipart/form-data">
+                <input type="text" name="edit" value="true" style="display: none"/>
+                Name: {{s.name}} <input type="text" name="name" value="{{s.name}}" style="display: none"/><br/>
+                Homepage <input type="text" name="homepage" value="{{s.homepage}}"/>"zurb.com" or "www.zurb.com"<br/>
+                Blurb <br/><textarea maxlen="100" rows="5" cols="90" name="blurb">{{s.blurb}}</textarea><br/>
+                <!--Longer Blurb <br/><textarea maxlength="150" rows="5" cols="90" name="blurb_long"></textarea> (150 max chars)<br/>-->
+                <img src="/partners?partner_id={{s.sponsor_id}}"/> <input type="file" name="logo"/>
+                <input type="submit" class="orange button submit"/>
+            </form>
+            {%endfor%}
+        </div>
+        
+        <br/><br/><br/>
+    </div>
+
+<script type="text/javascript">
+maxCharacters = 75;
+
+$('#count').text(maxCharacters);
+
+$('textarea').bind('keyup keydown', function() {
+    var count = $('#count');
+    //var submit = $('.submit');
+    var submit = $('input[type="submit"]');
+    var characters = $(this).val().length;
+
+    if (characters > maxCharacters) {
+        count.addClass('over');
+        //submit.hide();
+        submit.attr('disabled','disabled');
+        submit.addClass('disabled')
+    } else {
+        count.removeClass('over');
+        //submit.show();
+        submit.removeAttr('disabled');
+        submit.removeClass('disabled')
+    }
+
+    count.text(maxCharacters - characters);
+});
+</script>
+
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var page = "sponsor";
+        var the_id = "#" + page + "_link";
+        $(the_id).addClass("active");
+    });
+</script>
+{%endblock%}

@@ -1,0 +1,154 @@
+{%extends 'adminadd.html'%}
+
+{%block content%}
+
+{%if message%}{{message}}{%endif%}
+        
+        <h1>Mentor / Judge add</h1>
+        <br/>
+        
+        <div id="add_current">
+            <h2>Add Current Mentor</h2>
+            <form action="/admin_add" method="post" id="mentor_add" >
+                
+                
+                <h4>Event</h4>
+                {%for e in events%}
+                    {{e.name|capfirst}}, {{e.full_date}}<input type="radio" name="event" value="{{e.event_id}}" {% if forloop.last %}checked="true"{%endif%} ><br/>
+                {% endfor %}
+                
+                <!--BCBS Spring 2013 (don't use in production)<input type="radio" name="event" value="BCBS Spring 2013" checked="true"><br/>-->
+                
+                <h4>Mentors</h4>
+                
+                <select name="id" class="">
+                    {%for m in mentors %}
+                        <option value="{{m.id}}">{{m.name}}</option>
+                    {%endfor%}
+                </select>
+                
+                <br class="clear"/>
+                
+                
+                <select name="mentor_type" class="">
+                    <option selected="selected" disabled="disabled">Mentor, judge, or both/executive panel?</option>
+                    <option value="1">Mentor</option>
+                    <option value="2">Judge</option>
+                    <option value="3">Executive Panel (Ignition) / Both (non-ignition)</option>
+                </select><br/>
+                Note <strong>'executive panel' is for sponsoring company employees ONLY.</strong> A non-sponsoring corporate employee is a judge or mentor.
+                
+                <br/>
+                <input type="submit" class="orange button submit">
+            </form>
+        </div>
+        
+        
+        <h2>Add new mentor</h2>
+        <form action="/admin_add" method="post" id="mentor_add" enctype="multipart/form-data">
+            
+            <h3>New Mentor</h3>
+            Name<span class="required">*</span>
+            <input type="text" name="name" required="yes" id="new_mentor_name" value="John Smith" style="color: #666" onfocus="if (this.value == 'John Smith') {this.style.color='#000'; this.value=''}">First and Last<br/>
+            Title<span class="required">*</span> <input type="text" name="title" maxlength="25" required="yes" id="new_mentor_title">Chessmaster, CEO, Director of Biz Dev, etc.<br/>
+            Company<span class="required">*</span> <input type="text" name="company" required="yes">Just corporate name, if you write 'Inc' we'll kill you<br/>
+
+            <div><label>Image:</label><input type="file" name="img"/></div>
+            Bio <br/><textarea maxlen="350" rows="5" cols="90" name="bio" class="bio"></textarea><strong><em class="count"></em> characters remaining</strong>
+            (3 sentences or less.)<br/><br/>
+
+            Help Tags (finish the sentence: "I can help with:"), separate with semicolons or commas <br/><textarea maxlen="150" rows="2" cols="90" name="tags"></textarea>(eg: "Marketing; Biz Dev; Physician prospective")<br/>
+            
+            ID <input type="text" name="id" id="new_mentor_id" style="display: none;">
+            Importance <input type="text" name="order">Numbers only. EX: 1-10 - corporate sponsors, 10-100 - mega names, 100-1000 Mentors<br/>
+            <br/>
+            Designation, does this person play a special role at Prebacked?<br/>
+                <input type="checkbox" name="designation" value="client">Employee for executive sponsor</input><br/>
+                <input type="checkbox" name="designation" value="mentor">Accelerator mentor (non corporate partner)</input><br/>
+                <input type="checkbox" name="designation" value="advisor">Prebacked advisor</input><br/>
+            <br/>
+
+            <input type="submit" class="orange button submit">
+        </form>
+        
+        <br/><br/><br/>
+        
+        <h2>Edit current mentor</h2>
+        
+        <div id="mentor_edit">
+        {% for e in mentors %}
+            <form action="/admin_add" method="post" enctype="multipart/form-data">
+                <input type="text" name="edit" value="true" style="display: none;"/>
+                
+                <img src="img?mentor_id={{e.mentor_id}}" alt="{{e.name}}" style="height: 35px;" onclick="$('.img_{{forloop.counter}}').toggle()"/>
+                <input type="file" name="img" class="img_{{forloop.counter}}" style="display:none;"/>
+                <span style="font-weight: 500">{{e.name}}</span> <input type="text" name="name" value="{{e.name}}" style="display: none"/>
+                Title: <input type="text" name="title" value="{%if e.title%}{{e.title}}{%else%}{%endif%}"/>
+                Company: <input type="text" name="company" value="{%if e.company%}{{e.company}}{%else%}{%endif%}"/>
+                Order: <input type="text" name="order" value="{{e.order}}" class="thin"/><br/>
+
+                Designation:<br/>
+                <input type="checkbox" name="designation" value="client" {% if 'client' in e.designation %}checked="true"{% endif %}>
+                    Employee for executive sponsor
+                </input>
+                <input type="checkbox" name="designation" value="mentor" {% if 'mentor' in e.designation %}checked="true"{% endif %}>Accelerator mentor (non corporate partner)</input>
+                <input type="checkbox" name="designation" value="advisor" {% if 'advisor' in e.designation %}checked="true"{% endif %}>Prebacked advisor</input>
+
+                <a href="javascript:void(0);" onclick="$('#edit_bio_{{forloop.counter}}').toggle()"> Edit Bio</a>
+                <a href="javascript:void(0);" onclick="$('#edit_tags_{{forloop.counter}}').toggle()"> Edit Tags</a>
+                <div id="edit_bio_{{forloop.counter}}" class="edit_bio" style="display: none;">Bio: <textarea rows="5" cols="90" maxlen="350" class="bio" name="bio" >{{e.bio}}</textarea><em class="count"></em></div>
+                <textarea rows="3" cols="90" maxlen="350" id="edit_tags_{{forloop.counter}}" name="tags" style="display: none;">{{e.tags}}</textarea>
+                <input type="submit"/>
+            </form>
+            {% endfor %}
+        </div>
+        
+        <br/><br/><br/>
+
+{%endblock%}
+
+{%block scripts%}
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var page = "mentor";
+        var the_id = "#" + page + "_link";
+        $(the_id).addClass("active");
+        
+        //Updates the ID with name but allows for editing (in case of titles: "MD", "MBA", etc.)
+        $('#new_mentor_name').blur(function () {
+            $('#new_mentor_id').val($("#new_mentor_name").val().toLowerCase().split(' ').join('_'));
+        });
+        
+    });
+</script>
+
+
+
+
+<script type="text/javascript">
+maxCharacters = 340;
+
+$('.count').text(maxCharacters);
+
+$('textarea.bio').bind('keyup keydown', function() {
+    var count = $('.count');
+    //var submit = $('.submit');
+    var submit = $('input[type="submit"]');
+    var characters = $(this).val().length;
+
+    if (characters > maxCharacters) {
+        count.addClass('over');
+        //submit.hide();
+        submit.attr('disabled','disabled');
+        submit.addClass('disabled')
+    } else {
+        count.removeClass('over');
+        //submit.show();
+        submit.removeAttr('disabled');
+        submit.removeClass('disabled')
+    }
+
+    count.text(maxCharacters - characters);
+});
+</script>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %} Vote for the next event | Prebacked {% endblock %}
+
+
+
+{% block styles %}
+<link rel="stylesheet" href="css/pages.css" type="text/css" media="screen" />
+{% endblock %}
+
+
+
+{%block content%}
+<div id="page_wrap" class="container_12">
+    <div class="grid_10 push_1">
+        <iframe src="https://docs.google.com/spreadsheet/embeddedform?formkey=dEFIcVJ0eXNKcXdRWVR6MEowQ0M5b2c6MQ" width="760" height="686" frameborder="0" marginheight="0" marginwidth="0">Loading...</iframe>
+    </div>
+
+    <div class=" grid_12 spacer_2">    
+        <div class="grid_4 push_2"><a href="/register" class="medium orange button">Back to Registration</a></div>
+        <div class="grid_4 push_2"><a href="/vc_apply" class="medium orange button">Back to VC Application</a></div>
+    </div>
+</div>
+{% endblock %}

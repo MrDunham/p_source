@@ -1,0 +1,1520 @@
+/*
+*****************************************************
+*                    Prebacked                      *
+*                                                   *
+* My code might not be great, but I'm a rehabbing   *
+* idea guy.  Want to make it awesome? Join us!      *
+*                                                   *
+*               garrett@prebacked.com               *
+*                                                   *
+*****************************************************
+*/
+
+///*****Variables*****/
+///*BG colors*/
+$main_bg_color: #202740;
+$mid_bg_color: #37467d;
+$lt_bg_color: #B1BEEF;
+
+$text_color: #ffffff;
+$main_z: 15;
+
+$white: #f5f5f5;
+$white_trans: rgba(240,240,240,.8);
+$black: #000000;
+$green: #1e8b36;
+$lt_green: #639F70;
+$grey: #cecece;
+$grey_dark: #2c2c2c;
+$orange: #D1541E;
+
+$blue_white: #F8FBFF;
+
+$blue_lt: #93a7bb; //#3792b6 
+$blue_med: #567; //#006295
+$blue_dark: #414a59; // #465059; //#005375;
+
+
+
+
+$bg_lt_green: #C1D1C4;
+$bg_med_green: #7B857D;
+$bg_dark_green: #4C524D;
+
+$spacer: 10px;
+$bar_space: 75px;
+
+
+
+
+/*CSS Preload*/
+@import "standard-import";
+
+
+/*Mixins*/
+@import "standard-mixins";
+
+
+/*++++++++++++++Main++++++++++++++*/
+
+h1, h2, h3,h4,h5,h6,h7,h8,p,li,ul, div, sub, sup, input{
+    font-family: 'helvetica neue', helvetica, ariel, sans-serif;
+}
+
+
+h1, h2, h3, #head_links li{
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    
+}
+h1, h2, h3, h4, h5, h6, h7 {
+    color: $white;
+    /*color: #f5f5f5;*/
+    line-height: 1.3em;
+    font-weight: 100;
+    letter-spacing: 1px;
+}
+p, ul, ol, li, label, div, span {
+    color: $white;
+    /*color: #e5e5e5;*/
+    line-height: 1.2em;
+    font-weight: 300;
+}
+
+/*Sizes for legal tender fonts*/
+h1{font-size:24px;}
+h2{font-size:20px;}
+h3{font-size:18px;}
+h4{font-size:20px;}
+h5{font-size:16px;}
+h6{font-size:16px;}
+p {font-size:16px;}
+
+/*Sizes for museo slab*/
+h1{font-size:30px;}
+h2{font-size:24px;}
+h3{font-size:20px;}
+h4{font-size:18px;}
+h5{font-size:16px;}
+h6{font-size:16px;}
+p {font-size:16px;}
+
+* {
+	margin: 0;
+}
+html, body {
+    height: 100%;
+}
+body{
+    background: #002f48;
+    /*background: #e9d9b8;*/
+}
+::selection {
+	background: #fff6ff; /* Safari */
+	color: #000;
+}
+::-moz-selection {
+	background: #fff6ff; /* Firefox */
+	color: #000;
+}
+::-webkit-selection {
+	background: #fff6ff; /* Firefox */
+	color: #000;
+}
+a:link, a.link, a:visited, a:active, a.link:active, a:hover, a.link:hover {
+    //color: #fff;
+    //color: #1E8B36;
+    color: #93A7BB
+}
+a:link, a.link {
+    text-decoration:none;
+    /*font-weight: lighter;*/
+    border-bottom: 1px solid #666;
+}
+a:visited {
+    text-decoration:none;
+    border-bottom: 1px solid #666;
+}
+a:active, a.link:active {
+    text-decoration:none;
+    border-bottom: 1px solid #aaa;
+    background: rgba(255,255,255,0.2);
+}
+a:hover, a.link:hover {
+    border-bottom: 1px solid #aaa;
+    text-shadow: 0 0 13px rgba(224,224,224,0.8);
+    transition: text-shadow 0.2s;
+    -moz-transition:text-shadow 0.2s; /* Firefox 4 */
+    -webkit-transition:text-shadow 0.2s; /* Safari and Chrome */
+    -o-transition:text-shadow 0.2s; /* Opera */
+    cursor: pointer;
+}
+
+strong{
+    color: inherit;
+    font-variant: small-caps;
+}
+small{
+    display:none;
+}
+.clearfix:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+ 
+.clearfix {
+	display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+	display: block;
+}
+ 
+* html .clearfix {
+	height: 1%;
+}
+
+/********************************************************/
+/*	 		Applies to all 			*/
+/********************************************************/
+#404{
+    padding: 120px 0;
+}
+#page_wrap{
+    padding: 40px 0;
+}
+
+.register_button{
+	margin: 10px auto 10px;
+	text-align: center;
+	a.button{
+	    font-size: 24px;
+	    span{
+		font-size: 14px;
+	    }
+	    @include big_button($orange, 16px);
+	}
+    }
+/***************** Sections ****************/
+
+#top{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#main_content{
+    margin-top: $bar_space;
+    background: $white url('/images/bgs/ignition_room.jpg') center center no-repeat;
+    background-size: cover;
+    /*border-top: 10px solid #e2e5cf;*/
+    /*border-bottom: 10px solid #e2e5cf;*/
+    box-shadow: 0 0px 4px 2px rgba(106, 101, 66, .5);
+    -moz-box-shadow: 0 0px 4px 2px rgba(106, 101, 66, .5);
+    -webkit-box-shadow: 0 0px 4px 2px rgba(106, 101, 66, .5);
+    -o-box-shadow: 0 0px 4px 2px rgba(106, 101, 66, .5);
+    position: relative;
+    z-index:3;
+    #main_content_inner{
+        width: 960px;
+        margin: auto;
+	position: relative;
+    }
+}
+
+
+
+
+#mid_content, #lowerContent{
+    background: $blue_white;
+    position: relative;
+    z-index: 1;
+    min-height: 42px;
+}
+#mid_content{
+    padding-bottom:10px;
+    z-index: 2;
+    @include box_shadow(inset 0px -2px 4px -1px rgba(106, 101, 66, .5));
+    
+}
+#lowerContent{
+    @include box_shadow(inset 0px -4px 5px -4px black);
+}
+
+.section{
+    /*padding-top:60px;*/
+    padding-top:60px;
+    padding-bottom:30px;
+}
+.section.top, .faq.section{
+    padding-top:30px;
+}
+
+.faq.section{
+    padding-bottom: 60px;
+}
+
+.section h1, .section h2, .section h3{}
+.section h2, .section h3{
+    margin-bottom: 20px;
+}
+.section_head h3, .section_head p {
+    text-align: center;
+    margin-bottom: 0;
+}
+#vcs .section_head{
+    margin-bottom:10px;
+}
+
+/***************** Other ****************/
+.negspace{
+    position: relative;
+    top: -20px;
+}
+.spacer{
+    padding-top:20px;
+}
+.spacer_2{
+    padding-top:40px;
+}
+.spacer_3{
+    padding-top:60px;
+}
+/********************************************************/
+/*	 		  Header 			*/
+/********************************************************/
+ /************* Info Bar *************/
+#info_bar{
+    background: #EB593C;
+    /*background: #006295;*/
+    position: relative;
+    /*z-index: 4;*/
+    text-align: center;
+    padding: 8px 0 11px;
+    /*border-bottom: solid 2px #fff;*/
+    @include box_shadow;
+    min-width: 100%;
+    @include gradient;
+    top: 75px;
+    
+    span, a{
+        display: inline-block;
+        font-size: 18px;
+    }
+    span{
+        color: #fff;
+        margin-right: 15px;
+    }
+    a{
+        font-weight: bold;
+        color: #ffffff;
+        &.button{padding: 5px 10px;}
+    }
+}
+
+$dist: 15px;
+
+
+#header_wrap{
+    background-color: #f8fbff;
+    min-height: $bar_space;
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    width: 100%;
+    /*border-bottom: 2px solid #7E7F73;*/
+    box-shadow: 0 1px 3px 0 #7E7F73;
+    /*@include gradient;*/
+    #header{
+        position: relative;
+        top: $dist;
+	ul#head_links{
+	    position:absolute;
+	    right: 8px;
+	    font-size:18px;
+	    li{
+		/*color: $white;*/
+		/*padding: 20px 5px 3px;*/
+		position: relative;
+		margin-right: 1px;
+		text-align: center;
+		list-style-type: none;
+		display: inline-block;
+		top: 5px;
+		
+		a{
+		    color: $black;
+		    padding: $dist + 10px 10px;
+		    padding-top: $dist + 10px;
+		    border-bottom: none;
+		    font-weight: 300;
+		    text-shadow: none;
+		    font-size: 20px;
+		    border-radius: 0;
+		    
+		    &:hover{
+			background-color: #c5c5c5;
+			background-color: rgba(5,5,5,.1);
+		    }
+		    
+		    &.button{
+			padding: 8px 10px;
+			border-radius: 0;
+			color:$white;
+			&:hover{
+			    background-color: $orange;
+			}
+		    }
+		}
+	    }
+	}
+    }
+
+}
+
+@media only screen and (max-device-width: 480px){
+    #header_wrap{
+    	position: absolute;
+	top: -$bar_space;
+	#header{
+	    ul#head_links{
+		li{
+		    margin-right: 16px;
+		    font-size: 24px;
+		}
+	    }
+	}
+    }
+}
+
+
+
+#header_img{
+    margin-left: 5px;
+    position: relative;
+    z-index: 5;
+    top: 3px;
+}
+
+#header_img p{
+    text-indent:-10000px;
+}
+
+#header a{
+    border-bottom: none;
+}
+
+/***********************************************/
+/***************** Upper Content ***************/
+/***********************************************/
+#upper_content{
+    
+}
+
+#upper_content{
+    position: relative;
+    clear:both;
+    overflow: auto;
+  
+    #top_blurb{
+        text-align: center;
+        position: relative;
+    
+        h1, h2{
+            color: $black;
+            font-weight: 100;
+            line-height: 1.2em;
+            margin: 20px auto 10px;
+	    font-size: 36px;
+	    a{
+		color: $black;
+	    }
+        }
+        
+        p{
+            line-height: 1.3em;
+        }
+	> p{ //applies to header p text
+	    margin-bottom: 20px;
+	    color: $black;
+	    text-shadow: 0 0 5px $white;
+	    font-size: 18px;
+	}
+    }
+    
+    #teaser{
+        position: relative;
+        /*top:10px;*/
+        margin-bottom: 20px;
+        min-height:240px;
+        clear: both;
+        overflow: auto;
+        
+	#problem_teasers{
+            #my-slideshow{
+		.problem_teaser{
+		    background-color: #666;
+		    background-color: rgba(0,0,0,.7);
+		    /*background-image: url("/images/ignition/bxbs.png");*/
+		    background-repeat: no-repeat;
+		    background-position: 92% 8%;
+		    padding: 15px;
+		    position: relative;
+		    
+		    .problem_value{
+			margin-top: 10px;
+		    }
+		    
+		    .upper_problem_value p {
+			
+			background: rgb(47, 67, 87);
+			background: rgba(147,167,187,0.4);
+			/*background: rgba(255,255,255,0.6);*/
+			display: inline-block;
+			padding: 10px 10px 10px 15px;
+			margin-left: -15px;
+			margin-top: 15px;
+			
+			span{
+			    font-size: 26px;
+			    font-weight: 100;
+			}
+		    }
+		    
+                    
+		    @include box-sizing;
+		    
+		    p, div, span, li, ul, h1,h2,h3,h4,h5 {
+			color: $white;
+		    }
+		    .problem_header, h2,h3,h4,h5{
+			margin: 0px 0 10px;
+			font-size: 28px;
+		    }
+		    .problem_header p{
+			font-size: 12px;
+			color: #bbb;
+			font-weight: 300;
+		    }
+		    
+		    .pricetag{
+			position: relative;
+			min-height: 88px;
+			z-index: 3;
+			left: 50px;
+		    }
+		    p.value{
+			position: relative;
+			z-index: 4;
+			top: 40px;
+			left: 100px;
+			font-size: 24px;
+			color: $white;
+			max-height: 12px;
+			width: 100px;
+			text-align: center;
+			@include text_shadow_open(0 0 3px #000)
+		    }
+                }
+            }
+        }
+        
+        
+        #details{
+            > div{
+                /*@include modal_bg_blk;*/
+                background: #000;
+		background: rgba(0,0,0,0.7);
+		padding:10px;
+                margin-bottom: 10px;
+                p{
+                    font-size: 22px;
+		    font-weight: 100;
+                }
+            }
+            .date_loc{
+                padding-left: 45px;
+		background-repeat: no-repeat;
+		background-position: left center;
+            }
+	    #date{
+		background-image: url('/images/ignition/calendar_2.png');
+	    }
+	    #location{
+		background-image: url('/images/ignition/pin.png');
+	    }
+	    .corporate_partner{
+		$corp_partner_spacing: 10px;
+		margin-top: $corp_partner_spacing;
+		height: 45px;
+		background: rgb(47, 67, 87);
+		background: rgba(147, 167, 187, 0.4);
+		padding: 5px;
+		margin-left: -$corp_partner_spacing;
+		padding-left: $corp_partner_spacing;
+		
+	    }
+        }
+    }
+}
+
+
+
+
+#teaser .vc_image img{
+    padding:10px;
+    background:#E8E8E8;
+    z-index: 5;
+    position: relative;
+    max-height:200px;
+    width:200px;
+}
+
+
+.cover_info{
+    top:70px;
+}
+
+
+#bottom_blurb{
+    margin-bottom: 20px;
+}
+.value_disclaimer p {
+    font-size: 14px;
+    text-shadow: 0 1px 3px black, 0 0 9px black;
+}
+/***************** Banner ****************/
+
+#banner{
+    margin: 100px auto 0;
+    line-height: 60px;
+    width: 845px;
+}
+#banner:before, #banner:after {
+    content: "";
+    float: left;
+    display: block;
+    width: 0;
+    height: 0;
+    border-bottom: 30px solid #eee;
+    border-top: 30px solid #eee;
+}
+#banner:before {
+    border-right: 15px solid #eee;
+    border-left: 30px solid transparent;
+    margin-right: -5px;
+}
+#banner:after {
+    border-right: 30px solid transparent;
+    border-left: 15px solid #eee;
+    margin-left: -5px;
+}
+
+#banner_content{
+    display: block;
+    background: #eee;
+    float: left;
+    padding: 0 40px;
+}
+#banner_content a, #banner_content h2{
+    display: inline-block;
+    position: relative;
+}
+.banner_register.button{
+    top: 2px;
+    font-size: 20px;
+    padding-top: 14px;
+    padding-bottom: 12px;
+}
+.banner_register.button span{
+    font-size: 11px;
+}
+.banner_register.button.orange:active{
+    top: 3px;
+}
+#banner h2{
+    color: #252525;
+    font-size:18px;
+    width: 420px;
+}
+
+#tell_me_more{
+    clear: both;
+    padding-top: 5px;
+    padding-right: 5px;
+    padding-bottom: 50px;
+    text-align: right;
+    width: 620px;
+    margin: auto;
+}
+
+div.skin2 > div {
+	/*min-height:315px;*/
+}
+
+/***********************************************/
+/*****************   More Info   ***************/
+/***********************************************/
+#more_info_upper{
+    /*background: #EEEEEE url("/images/bg_linen_dark.png") repeat;*/
+    /*border-top: 10px solid #e2e5cf;*/
+    margin-bottom: 40px;
+}
+
+/***************** Reasons to attend ****************/
+
+#teaser_line em{
+    font-style: italic;
+    color: #fff;
+}
+#teaser_line h2{
+    text-align: left;
+}
+#teaser_line #info_para{
+    font-size: 22px;
+}
+#reasons_to_attend{
+    position: relative;
+}
+#reasons_to_attend #arrow{
+    position: absolute;
+    top: 110px;
+    left: 220px;
+}
+#reasons_to_attend #money{
+    position: absolute;
+    top: 400px;
+    left: 120px;
+}
+#reasons_to_attend .em{
+    font-size: 28px;
+    color: #E84B07;
+    font-weight: 700;
+}
+#reasons_to_attend p {
+    font-size: 22px;
+}
+#reasons_to_attend .spacer{
+    padding-top: 40px;
+}
+#your_team{
+    padding-left: 80px;
+}
+.indent {
+    padding-left: 15px;
+}
+
+/*TEMPORARY ID ... until more vcs register*/
+#reasons_to_attend_temp{
+    padding-top: 20px;
+}
+#reasons_to_attend_temp .em{
+    font-size: 24px;
+    color: #E84B07;
+    font-weight: 700;
+}
+#reasons_to_attend_temp p {
+    font-size: 16px;
+}
+
+
+/***********************************************/
+/*************** More Info Lower ***************/
+/***********************************************/
+#more_info_lower{
+    /*border-top: 10px solid #e2e5cf;*/
+    padding-bottom: 40px;
+    min-height: 360px;
+}
+
+#more_info_lower .section{
+    padding-top: 0;
+}
+
+
+/***************** Prizes ****************/
+
+#prizes{}
+.prize{
+    clear:both;
+    margin-top: 25px;
+    overflow:auto;
+    
+}
+.prize p{
+    font-size: 24px;
+    margin-left: 40px;
+}
+.prize img{
+    max-width: 120px;
+}
+.prize img, .prize p{
+    display: inline;
+    vertical-align: middle;
+}
+
+/***************** Schedule ****************/
+#schedule{
+    position: relative;
+}
+
+.schedule_specifics{
+    text-align:left;
+}
+.schedule_specifics p{
+    display:inline-block;
+    /*width: 75px;*/
+    vertical-align: top;
+}
+.schedule_specifics span{
+    text-align:right;
+    color: #999;
+    /*width: 200px;*/
+    display: inline-block;
+}
+
+.schedule_specifics li:nth-child(odd){
+    background-color: rgb(35,35,35);
+    background-color: rgba(35,35,35,.5);
+    }
+/*.schedule_specifics li:nth-child(even)    { background-color:#fff; }*/
+
+.day h4{
+    border-bottom: 1px solid #f5f5f5;
+    padding-top: 10px;
+}
+.day li{
+    padding-top:15px;
+}
+.med_sched .day{
+    li{
+    padding: 10px;
+    }
+    h4, li, p, span{
+	color: $white;
+    }
+}
+
+.day .hour{
+    text-align: right;
+}
+
+
+.sheet{
+    position: absolute;
+    min-height:246px;
+    padding:5px 30px;
+    -moz-box-shadow: 1px 1px 2px #000;
+    -webkit-box-shadow: 1px 1px 2px #000;
+    box-shadow: 1px 1px 2px #000;
+    border:1px solid #666;
+    border-width:0 1px 1px 1px;
+    background: rgb(0,0,0);
+    background: rgba(0,0,0,.7);
+    
+    @include border_radius_4(0,0,6px,6px);
+    
+}
+.sched_sheet_1{
+    position: relative;
+    bottom:0;
+    z-index: 9;
+}
+.sched_sheet_2{
+    bottom: -3px;
+    z-index: 5;
+    left: 2px;
+    width: 314px;
+}
+.sched_sheet_3{
+    bottom: -5px;
+    z-index: 3;
+    left: 4px;
+    width: 310px;
+}
+
+/***************** End tagline ****************/
+#info_line{
+    padding: 45px 0 45px;
+}
+#info_line p{
+    font-size: 22px;
+    text-align: center;
+}
+
+/***************** Special Buttons ****************/
+#mid_button, #final_button{
+    margin: auto;
+}
+
+/***************** Sponsors ****************/
+
+#sponsorFold{
+    margin-top: 10px;
+    sponsor-fold-inner{
+	margin-top: 5px;
+    }
+    h2{
+	display: block;
+	font-size:18px;
+	color: $black;
+	font-weight: 300;
+	margin-bottom: 10px;
+    }
+    ul{
+	display: inline-block;
+	/*margin-top:5px;*/
+	li{
+	    display: inline-block;
+	    padding-left: 10px;
+	    /*height: 60px;*/
+	    /*display: table-cell;*/
+	    display: inline-block;
+	    vertical-align: middle;
+	    width:140px;
+	    
+	    img{
+		max-height: 75px;
+		max-width: 130px;
+	    }
+	}
+    }
+    a{
+	border-bottom: none;
+    }
+}
+
+
+
+#sponsors{
+    background: $blue_med;
+    clear:both;
+    text-align: center;
+    padding-top: 20px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sponsor {
+    width: 220px;
+    background: $blue_lt;
+    border-radius: 1px;
+    padding: 5px 0;
+    margin-top: 10px;
+    float: left;
+
+    @include box_shadow(0px 1px rgba(150,150,150,.5));
+    a{
+	padding: 5px 0;
+	border-bottom: none;
+    }   
+    p{
+	padding: 0 10px;
+	color: $black;
+    }
+}
+
+
+.sponsor .sponsor_big_link{
+    color: inherit;
+}
+.sponsor h5{
+    font-weight: bold;
+}
+.sponsor_container{
+    margin: 10px auto 0;
+    overflow: auto;
+}
+.sponsor img{
+    max-width: 200px;
+    max-height: 110px;
+    margin: auto;
+    padding: 5px 0;
+}
+.top.sponsorBlock{
+    margin-top:0;
+}
+.sponsorBlock, .sponsor_block{
+    /*margin-top:40px;*/
+}
+
+
+/*Venue*/
+#venue .map a{
+    border-bottom:none;
+}
+
+#venue img{
+    -moz-box-shadow: 0px 1px #999;
+    -webkit-box-shadow: 0px 1px #999;
+    -o-box-shadow: 0px 1px #999;
+    box-shadow: 0px 1px #999;
+}
+
+
+/*Quote*/
+#quote_block{
+    margin-top: 40px;
+    /*background: rgba(0, 0, 0, .25);*/
+}
+#quote{
+    padding: 10px 0;
+}
+
+#quote span{
+    font-size: 16px;
+    color: #AAA;
+    font-weight: 300;
+}
+
+
+/******************************************/
+/* Lower content*/
+/******************************************/
+
+#lowerContent{
+    .section{
+	h3{
+	    font-size: 80px;
+	    text-align: center;
+	}
+    }
+    
+    #info_upper{
+	background: $blue_lt;
+	.three_part{
+	    margin-bottom: 40px;
+	    img{max-width: 300px}
+	    h4{
+		font-size: 30px;
+		margin-bottom: 7px;
+		letter-spacing: 1px;
+	    }
+	    p {
+		color: #252A30;
+	    }
+	}
+    }
+    
+    #info{
+	background: $blue_med;
+	.info_block{
+	    background: $blue_dark;
+	    margin-top: 30px;
+	    &.top{margin-top: 0px;}
+	    
+	    @include box_shadow;
+	    .info_text{
+		padding-top: 10px;
+		padding-bottom: 10px;
+	    }
+	    &.left_block{
+		.info_text{padding-right: 20px;}
+	    }
+	    &.right_block{
+		.info_text{padding-left: 20px;}
+	    }
+	    
+	    h3, h4, h5{
+		font-size: 28px;
+		@include text_shadow_lt;
+		margin-bottom: 15px;
+	    }
+	    p{
+		br { display:block; margin-top:10px; line-height:22px; content: " ";}
+	    }
+	    
+	}
+    }
+    
+    #problems{
+	background: $blue_dark;
+	
+	.problem_outer{
+	    $p_pad: 20px;
+	    background: $white_trans;
+	    padding:$p_pad / 2 $p_pad;
+	    /*padding-bottom: 65px;*/  //needed for tag style
+	    /*@include border_radius(6px);*/
+	    margin-bottom: $p_pad;
+	    min-height: 90px;
+	    position: relative;
+	    
+	    .problem_teaser{
+		h4{
+		    font-size: 26px;
+		    color: $blue_med;
+		}
+		p.problem_number{
+		    text-shadow: 0 0px 1px #666;
+		    color: #fff;
+		}
+		p.problem_statement{
+		    color: $grey_dark;
+		    margin-top: $p_pad / 4;
+		}
+		p.problem_value{
+		    margin-left: -20px;
+		    padding: 10px 20px;
+		    background: rgba(147, 167, 187, 1);
+		    margin-top: 15px;
+		    font-size: 22px;
+		    font-weight: 100;
+		}
+		
+		p.value{ // old style tag for value
+		    $tag_dist: 24px; //Sets the tag height, width, and borders.
+		    $tag_dist_2: $tag_dist * .91;
+		    $tag_bg: #3b76bc;
+		    /*position: absolute;*/
+		    /*bottom: $p_pad / 2;*/
+		    /*right: $p_pad;*/
+		    
+		    
+		    /*font-size: 14px;*/
+		    /*color: #666666;*/
+		    /*margin-top: $p_pad;*/
+		    /*text-align: right;*/
+		    
+		    
+		    .tag_wrap{
+			margin-left: $tag_dist + 10px;
+                        position: relative;
+                        display: inline-block;
+			font-size: $tag_dist;
+			
+                        .tag{
+                            padding: $tag_dist - $tag_dist * 0.71;
+                            padding-left: 8px;
+			    padding-right: $tag_dist * 0.7;
+                            display: inline-block;
+                            background: $tag_bg;
+                            color: $white;
+                            text-shadow: none;
+                            @include box-shadow;
+                            margin-bottom: 5px;
+			    @include border_radius_4(0, 6px, 6px, 0);
+                        }
+                        &:before{
+                            content:"";
+                            /*float:left;*/
+                            display: inline-block;
+                            position: absolute;
+                            left:-$tag_dist_2 + 1;
+                            width:0;
+                            height:0;
+                            border-color:transparent $tag_bg transparent transparent;
+                            border-style:solid;
+                            border-width: $tag_dist_2 $tag_dist_2 $tag_dist_2 0;		
+                        }
+                        &:after{
+                            content:"";
+                            position:absolute;
+                            top:$tag_dist_2;
+                            left:-$tag_dist * 0.22;
+                            float:left;
+                            width:4px;
+                            height:4px;
+                            -moz-border-radius:2px;
+                            -webkit-border-radius:2px;
+                            border-radius:2px;
+                            background:#fff;
+                            -moz-box-shadow:-1px -1px 2px #004977;
+                            -webkit-box-shadow:-1px -1px 2px #004977;
+                            box-shadow:-1px -1px 2px #004977;
+                            display: inline-block;
+                        }
+		    }
+		}
+	    }
+	}
+	.register_button{
+	    margin: 20px auto 0px;
+	    text-align: center;
+	    a.button{
+		font-size: 24px;
+		span{
+		    font-size: 14px;
+		}
+		@include big_button($orange, 16px);
+	    }
+	}
+	
+	.value_disclaimer{
+	    margin-bottom: 10px;
+	}
+    }
+
+    #schedule{
+	background: $blue_lt;
+	#schedules_container{
+	    position: relative;
+	    $tmln_sze: 20px;
+	    
+	    
+	    p.timeline_number{
+		
+		position: absolute;
+		top: 12px;
+		left: 12px;
+		width: $tmln_sze + 10;
+		height: $tmln_sze + 10;
+		line-height: $tmln_sze + 10; //Vertically aligns text
+		text-align: center;
+		font-size: $tmln_sze;
+		color: $black;
+		background: $white;
+		@include border_radius($tmln_sze + 10 / 2);
+		@include box_shdw(0, 1px, 0, inset);
+		z-index: 2;
+		
+	    }
+	    h4{
+		position: relative;
+		padding-left: $tmln_sze + 5;
+	    }
+	    div.skin2 > div{
+		@include border_radius(0px);
+		margin-top: 30px;
+		border: none;
+	    }
+	    .schedule_specifics{
+		p, span{
+		    display: block;
+		    text-align: left;
+		}
+		p{
+		    color: $grey_dark + 40;
+		    font-size: 14px;
+		}
+		.day{
+		    padding-bottom: 0px;
+		    li{
+			padding: 0px;
+		    }
+		}
+	    }
+	}
+    }
+    
+    /*********************************************/
+    /*************** 	Judges	   ***************/
+
+    #judges{
+	z-index: $main_z - 3;
+	background: $blue_med;
+	
+	#judges_inner{
+	    .mentor{
+		position: relative;
+		padding:5px;
+		background: #fff;
+		margin-bottom: 20px;
+		img{
+		    width:100%;
+		    
+		}
+		span{
+		    position: absolute;
+		    bottom: 5px;
+		    left: 0px;
+		    padding: 5px 10px;
+		    @include modal_bg_blk;
+		    .judge_name, .mentor_name{
+			font-size: 20px;
+		    }
+		    .judge_employer, .mentor_employer{
+			font-size: 14px;
+		    }
+		}
+	    }
+	    
+	    .full_mentor_details{
+		margin-bottom: 20px;
+		min-width: 100%;
+		img{
+		    background: #fff;
+		    padding:5px;
+		}
+		.mentor_details_info{
+		    .name{
+		    font-size: 36px;
+		    }
+		    .bio{
+			font-size: 16px;
+		    }
+		    
+		    h5{
+			margin-top: 20px;
+			font-size: 24px;
+		    }
+		}
+	    }
+	}
+    }
+
+
+    
+    #faq{
+	display: relative;
+	background: $blue_dark;
+	#faq_container{
+	    background: $white;
+	    padding: $spacer*4;
+	    .faq_col{
+		margin-top: $spacer*4;
+		&.top{margin-top: 0}
+	    }
+	    h4{
+		font-size: 24px;
+		color: $black;
+		@include text_shadow_lt;
+		margin-bottom: $spacer*2;
+	    }
+	    a, a:hover, a:active, a:visited{color:#252A30; text-shadow: none;}
+	    .question{
+		font-weight: bold;
+		margin-top: $spacer*2;
+	    }
+	    .answer p{
+		color: $black;
+		@include text_shadow_lt;
+		margin-top: $spacer;
+	    }
+	}
+    }
+    
+    #apply{
+	background-color: $blue_med;
+    }
+}
+/********************************************************/
+/*	 		Footer	 			*/
+/********************************************************/
+#footer{
+    background: #111;
+    text-align: left;
+    position: relative;
+    line-height: 40px;
+    padding: 40px 0 60px;
+}
+#footer p, #footer label{
+    padding-bottom: 10px;
+    color: #f5f5f5;
+}
+/*All MC items refer to embedded Mail Chimp form*/
+#mc_embed_signup{
+    background:transparent;
+    clear:left;
+    font-size:14px;
+    color: #aaa;
+    line-height: 1.2em;
+}
+#mc_embed_signup form{padding: 0; margin-bottom:0}
+#mc_embed_signup input.button{background-color: #060; background-color: #1E8B36; margin-bottom: 0; padding: 0 10px;}
+#mc_embed_signup input.button:hover{background-color: #007600; background-color: #25A258}
+#mc_embed_signup input.email{margin-bottom:0}
+#mc_embed_signup span{
+    background: url("/images/lock.png") no-repeat center left;
+    float: left;
+    padding-left: 20px;
+    margin-top:5px;
+}
+
+
+/******************************************/
+/*Footer bar (aka floating signup)*/
+/******************************************/
+
+.footer_bar{
+    margin-top: 20px;    
+}
+
+.footer_bar.floater.fixed{
+    position: fixed;
+    top: 0;
+}
+
+.footer_bar.floater{
+    background: #333 url('/images/bg_crosshatch_trans.png') repeat;
+    -moz-box-shadow: 0 1px 3px 0px #666;
+    -webkit-box-shadow: 0 1px 3px 0px #666;
+    -o-box-shadow: 0 1px 3px 0px #666;
+    box-shadow: 0 1px 3px 0px #666;
+    top: 0px;
+    left: 0px;
+    z-index: 2;
+    margin-top: 0;
+    position: relative;
+    width: 100%;
+    border-top: #999 solid 1px;
+}
+.footer_bar_inner{
+    width: 960px;
+    margin: 0 auto;
+}
+.floater .footer_bar_inner{
+    padding: 5px 10px;
+    /*height: 20px;*/
+}
+.email_form{
+    width: 60%;
+    display: inline-block;
+    position: relative;
+    left: 70px;
+}
+.cant_make{
+    /*margin-left: 10%;*/
+}
+.foot_bar_item{
+    display: inline-block;
+    margin-right: 10px;
+}
+.floater .foot_bar_item{
+    color: #F4F4F4;
+}
+
+.foot_bar_email{
+    width: 70%;
+    display: inline-block;
+}
+#attend_register{
+    display: inline-block;
+}
+.register.button.foot_bar_item{
+    padding: 8px 18px 8px 18px;
+}
+.footer_bar #mc_embed_signup input.email{width: 59%; min-width: 160px;}
+.footer_bar #mc_embed_signup input.button{background-color: #999; margin-bottom: 0; width: 35%; min-width: 140px;}
+.footer_bar #mc_embed_signup input.button:hover{background-color: #aaa; }
+
+
+
+/******************************************/
+/* Sponsor Carousel*/
+/******************************************/
+
+ol.bjqs-markers {
+    position: absolute;
+    bottom: 10px;
+    li a {
+        display: block;
+        height: 10px;
+        width: 10px;
+        border: 2px solid white !important;
+        overflow: hidden;
+        text-indent: -9999px;
+        background: #CEC9AD;
+        background:none;
+        /*border-radius: 10px;*/
+        border-radius: 0;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    }
+    
+    li.active-marker a{
+        background: #060;
+    }
+}
+
+
+
+.padder.spacer{
+    min-height:42px;
+    padding-top: 0;
+}
+
+a.piclink{
+    border-bottom:none;
+}
+
+
+
+
+
+/*********************************************/
+/********* Modal   *********/
+#modal{
+    visibility: hidden;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width:100%;
+    height:100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, .8);
+    
+    
+    > div {
+        @media only screen and (max-device-width: 480px){
+            left: 5%%;
+            width: 90%;
+            top: 5%;
+            
+            a, a:active, a:hover, a:active{
+                &:first-of-type{font-size: 20px}
+            }
+            h1{font-size: 48px}
+            h2{font-size: 40px}
+            h3{font-size: 34px}
+            h4{font-size: 28px}
+            p, div, span{font-size: 20px}
+            #eventbrite_tix{
+                h1{font-size: 48px}
+                h2{font-size: 40px}
+                h3{font-size: 34px}
+                h4{font-size: 28px}
+                p, div, span{font-size: 20px}
+            }
+        }
+        
+        // Desktop
+        @media only screen and (min-device-width: 481px){
+            left: 15%;
+            width: 70%;
+            top: 20%;
+            
+            a{
+                &:first-of-type{font-size: 12px}
+            }
+        }
+        
+        
+        background-color: #f8f8f8;
+        border: 1px solid black;
+        padding: 15px;
+        border-radius: 6px;
+        
+        position: relative;
+        ;
+        min-width: 160px;
+        color: $black;
+        
+        p, h1,h2,h3,h4, a, a:active, a:hover, a:active{
+            color:$black;
+            @include text_shadow_lt;
+        }
+        #eventbrite_tix{
+            margin-top: $spacer*2;
+            
+            a, a:visited, a:active, a:hover, p, span{
+                color: $black !important;
+                text-shadow: none;
+            }
+        }
+        
+        
+    }
+}
+
+.modal_close a{
+    color: #999;
+    font-size: 14px;
+    text-align:right;
+    border-bottom: none;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}

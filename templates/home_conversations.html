@@ -1,0 +1,109 @@
+{% extends 'homepage_base.html' %}
+
+{% block styles %}
+  <link rel="stylesheet" href="css/pages.css" media="screen" type="text/css"/>
+{% endblock %}
+
+{%block color_scheme%}default{%endblock%}
+
+{%block sub_link_bar%}
+    <!--{%include 'partials/sublinkbar_events.html'%}    -->
+{%endblock%}
+
+{% block upper_info%}
+
+<h1 class="small-12 large-12 columns">
+    Conversations
+</h1>
+
+<p class="small-12 large-8 columns end">
+    A monthly event featuring a panel of experienced industry experts discussing the future of health technology and how startups can thrive. 
+</p>
+    
+{% endblock %}
+
+{%block upper_bg%}<img class="show-for-medium-up" src="images/bgs/ignition_kickoff.jpg" id="headerImg" alt="Startup Conversations Event">{% endblock%}
+
+{% block middle_info%}
+
+{% if conversations %}
+{% for e in conversations %}
+<script type="text/javascript">console.log("{{e}}")</script>
+<div class="row" id="upcoming_event">
+    {% if e.0.ticketing %}<a href="#" data-reveal-id="{{e.0.event_id}}_modal" data-reveal>{%endif%}
+        <h2 class="small-12 show-for-small-only columns event_title">{{e.0.header}}</h2>
+        <div class="small-12 show-for-small-only columns boxed_info" id="time"><p>{{e.0.full_date|date:'M d'}}</p></div>
+        <div class="small-12 show-for-small-only columns boxed_info end" id="place"><p>{{e.0.city}}</p></div>
+    {% if e.0.ticketing %}</a>{%endif%}
+    <div class="small-12 medium-6 columns">
+        <ul id="" class="small-block-grid-2 speaker_list">
+            {% for m in e.1 %}
+            <li>
+                <img src="/img?mentor_id={{m.mentor.mentor_id}}" alt="{{m.mentor.name}} headshot" />
+                <span class="small-12 columns">
+                    <p>{{m.mentor.name}}</p>
+                    <p>{%if m.mentor.title%}{{m.mentor.title}}{%endif%}{%if m.mentor.title and m.mentor.company%}: {%endif%}{%if m.mentor.company%}{{m.mentor.company}}{%endif%}</p>
+                </span>
+            </li>
+            {%endfor%}
+            
+        </ul><!--end picture grid-->
+    </div>
+    
+    <div class="show-for-medium-up medium-2 columns boxed_info" id="time"><p>{{e.0.full_date|date:'M d'}}</p></div>
+    <div class="show-for-medium-up small-8 medium-4 columns boxed_info end" id="place"><p>{{e.0.city}}</p></div>
+    
+    <div class="medium-6 columns">
+        <h2 class="show-for-medium-up event_title">{{e.0.header}}</h2>
+        <p class="event_info">
+            {{e.0.description}}
+        </p>
+        {% for m in e.1 %}
+        <p>
+            {{m.mentor.bio}}
+        </p>
+        {% endfor %}
+        
+        {% if e.0.ticketing %}
+            <p><a href="#" data-reveal-id="{{e.0.event_id}}_modal" data-reveal>RSVP here</a></p>
+            <div id="{{e.0.event_id}}_modal" class="reveal-modal" data-reveal>
+                {{ e.0.ticketing|safe}}
+            </div>
+        {% endif %}
+        
+    </div>
+    
+</div>
+{%endfor%}
+
+{%endif%}
+
+
+
+<div id="stay_connected" class="">
+    <div id="stay_connected_inner" class="row">
+        <div id="connected_text" class="small-12 large-7 columns">
+            <h2>Stay in the loop</h2>
+            <p>Learn about future startup conversations and other events before your friends. Expect about an email a month.</p>
+        </div>
+        
+        <div id="connected_form" class="small-12 medium-7 large-5 end columns">
+            
+                <form action="http://prebacked.us5.list-manage.com/subscribe/post?u=3572fa1f9d829a0cc324cce2a&amp;id=f29adcde57" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                        <!------Auto loads the Explicit group tag.  Tested on Chrome and FF 11 ------>
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <input type="checkbox" checked="checked" id="group_1" name="group[7405][1]" value="1" style="-webkit-appearance: checkbox;display: inline !important;margin: 0;padding: 5px;border: 0;background: none;width: auto !important;font-family: Helvetica;font-size: 18;color: #F5F5F5;">
+                            <label for="group_1" style="float: none;clear: none;display: inline;width: auto;margin-top: 8px;text-align: left;font-weight: normal;position: relative;line-height: 150%;font-family: Helvetica;font-size: 14px;color: #333333;padding: 0 30px 0 3px;">Explicit Signups</label>
+                        </li>
+                        <!------/Load tag-------->
+                        <input id="" class="email large-12" type="email" value="" style="" name="EMAIL"  placeholder="email address" required>
+                        <input id="" class=" button large-8 end" type="submit" style="" value="Stay in the loop" name="subscribe"/>
+                </form>
+            
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+           

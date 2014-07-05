@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link rel="stylesheet" href="../css/font.css" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="../css/homepage.css" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="../css/buttons.css" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="../css/foundation.css" />
+    <link rel="stylesheet" href="../css/admin.css" media="screen" type="text/css"/>
+    
+    <!--<script src="../js/jquery-1.6.1.min.js" type="text/javascript" ></script>-->
+    <!--<script src="http://cdn.jquerytools.org/1.2.5/full/jquery.tools.min.js" type="text/javascript"></script>-->
+    <!--<script src="../js/jquery.tools.min.js" type="text/javascript" ></script>-->
+    
+    <script src="../js/vendor/modernizr.js"></script>
+    
+    <style>
+        .over, .required {
+            color: red;
+        }
+        #add_current{
+            min-height: 310px;
+            margin-bottom: 30px;
+        }
+        .disabled{
+            background: #333 !important;
+        }
+    </style>
+    
+</head>
+
+<body>
+    <div id="head_links">
+        <div id="head_links_upper" class="row">
+            <div id="head_links_inner" class="large-12 columns">
+                <a href="/admin_add"><img src="../images/prebacked_logo_white.png"/></a>
+                <ul>
+                    <li><a href="/admin_add" id="mentor_link">Mentor Add</a></li>
+                    <li><a href="/admin_add/faq_add" id="faq_link">FAQ Add</a></li>
+                    <li><a href="/admin_add/event_add" id="event_link">Event Add</a></li>
+                    <li><a href="/admin_add/sponsor_add" id="sponsor_link">Sponsor Add</a></li>
+                    <li><a href="/admin_add/ignition" id="ignition_link">Ignition</a></li>
+                </ul>
+            </div>
+        </div>
+        {% if ignition %}
+        <!--plan is to make a sub-bar for control of ignition    -->
+        
+        <!--<div id="head_links_lower">-->
+        <!--    <div id="head_links_inner" class="container_12">-->
+        <!--        <img src="../images/prebacked_logo_white.png"/>-->
+        <!--        <ul>-->
+        <!--            -->
+        <!--        </ul>-->
+        <!--    </div>-->
+        <!--</div>-->
+        {% endif %}
+    </div>
+    
+    
+    <div class="row">
+        <br/>
+        {%block content%}{% endblock %}
+        
+    </div>
+
+</body>
+
+<script src="../js/vendor/jquery.js"></script>
+<script src="../js/foundation.min.js"></script>
+<script>
+    $(document).foundation();
+</script>
+
+{% block scripts %}{%endblock%}
+
+</html>

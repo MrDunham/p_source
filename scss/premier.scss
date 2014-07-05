@@ -1,0 +1,177 @@
+// Modules & Variables
+@import "partials/core";
+
+// Third-party - Reset
+@import "vendor/normalize";
+
+// Partials - Full SCSS environment 
+@import "partials/all";
+
+
+// Global content layout
+
+#container { width:100%; line-height:1.5em; } // 18px baseline grid
+
+// For general content
+.content, .inner {
+  max-width: 58.75em; // = 940 / 16
+  margin: 0 auto;
+}
+
+// For text-heavy content
+.content-text {
+  max-width: 50em; //= 800px / 16px
+  margin: 0 auto;
+
+  @media screen and (max-width: 540px) {
+    width:80%;
+    margin: 0 auto;
+  }
+}
+
+.content-info {
+  max-width: 38.75em; //= 620px / 16
+  margin: 0 auto;
+
+  // @media screen and (max-width: 1100px){
+  //   max-width: 56.3636364%; //= 620 / 1100
+  // }
+}
+
+@media screen and ( max-width: 800px ){
+ .content, 
+ .content-text, 
+ .content-info,
+ .inner { 
+    max-width: 100%; 
+    padding: 0 0.625em; //= 10/16
+  } 
+}
+
+// Layout utility selectors
+
+.half { width:50%; display: inline-block; }
+
+
+.fourty { width:40%; display: inline-block; }
+
+
+.quarter { width:25%; display: inline-block; }
+
+
+.third { width: 33%; display: inline-block; }
+
+
+.middle { margin: 0 auto; }
+
+
+.left { float: left; }
+
+
+.right { float: right; }
+
+
+.clear { clear: both; }
+
+
+.centered { text-align: center; }
+
+
+@media screen and ( max-width: 800px ) {
+  .left, 
+  .right {
+    float: none; 
+    margin: 0 auto; }
+  
+  .half,
+  .fourty,
+  .quarter,
+  .third,
+  .middle {
+    width: 100%;
+    overflow: none; }
+  }
+
+// Specific layout selectors
+
+.program { max-width: 23.333333333em; } // 280px / 12px
+
+.event {  
+  display:inline-block;
+  width: 31.25%; // 300px / 960px
+  border-radius: 8px;
+  margin: 0 0 1.5625% 1.5625%; //= 15px / 960px
+  background: #F0F0F0;
+  color: $purple_dark;
+  border: 1px solid rgba(151,151,151,0.20);
+  text-align: center;
+  background-color: white;
+
+  img {
+    display: block;
+    position:relative;
+    margin: 13.3333333% auto 6%; // 40px / 300px, 18px / 300px
+  }
+
+}
+
+.event-schedule-left { float: left; } 
+
+.event-schedule-right { float: right; }
+
+.event-schedule-left, .event-schedule-right {
+  display: block;
+  position: relative;
+  width: 50%; 
+  font-size: 1em; // 16
+  
+  ul { 
+    display: block;
+    position: relative;
+    text-align: left;    
+  }
+
+  @media screen and ( max-width: 768px ){ 
+    float:none;
+    width: 63%;
+    font-size: 1.125em;//= 18/20
+    padding: 0 0 0 10.5540897%;
+    margin: 0 auto ; //= 80 / 768
+
+    
+    ul { 
+      padding: 0; 
+      overflow: visible;   
+    }
+  }
+
+  @media screen and ( max-width: 600px ){
+    padding: 0;
+    margin: 0;
+    width: 70%;
+    margin: 0 auto;
+
+    ul { padding: 0 40px 0 0;}
+
+    li { width: 100% }
+  }
+
+  @media screen and ( max-width: 540px ){
+    padding: 0;
+    margin: 0;
+    width: 78%;
+    margin: 0 auto;
+
+    ul { 
+      width: 100%;
+      font-size: 0.777777778em; //= 14/18
+
+    } //= 14 / 18
+
+    li { width: 100% }
+  }
+
+}
+
+
+

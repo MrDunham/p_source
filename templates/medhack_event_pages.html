@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset= "utf-8">
+    <title>MedHack: Healthcare Hackathon</title>
+    
+    <!-- Set the width of the browser's viewport to the 
+
+    width of a device's screen -->
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+
+    {%if url != "/"%} 
+      
+      <link rel="canonical" href="http://medhack.prebacked.com">
+    
+    {%endif%}
+
+    <meta http-equiv="description" content="A 24 hour healthcare hackathon."/>
+
+    {# Stylesheets #}
+    <link rel="stylesheet" href="../css/premier.css">
+
+    <!--Open Graph (facebook) Properties-->
+    <meta property="og:site_name" content="MedHack, by Prebacked"/>
+    <meta property="og:url" content="http://prebacked.com/medhack/{{url}}"/>
+    <meta property="og:description" content="A 24 hour healthcare hackathon."/>
+    <meta property="og:title" content="Health Hackday for preseed startups | MedHack"/>
+
+  </head>
+
+  <body>
+
+
+    <div id="container">
+
+      <header id="event-header" class="purp-dark">
+      
+        <nav>
+          <div class="nav-inner">
+            <a href="/">MedHack</a>
+            <ul class="nav-list">
+              <a class="nav-link" href="#"><li>sponsors</li></a>
+            </ul>
+          </div>
+        </nav> 
+
+        <div class="content centered">
+       
+          <div id="event-logo">
+       
+            <img src="/images/medhack/medhack-logo.png" alt="MedHack Logo">
+       
+          </div> <!-- end logo container -->
+       
+          <h1>MedHack <span class="i">{{city}}</span></h1>
+         
+          <p class="date">{{e.full_date|date:'M dS'}} - {{e.full_date|add_a_day|date:'M dS, Y'}}</p>
+       
+        </div> <!-- end content -->
+
+        <a class="twitter" href="#">twitter</a>
+
+        <a class="facebook" href="#">facebook</a></span>
+
+      </header>
+      
+<!-- featured sponsors ================== -->
+
+      <section id="featured-sponsors" class="silver">
+
+        <header><h3>Featured Sponsors</h3></header>
+
+        <div class="content centered">
+                 
+          <div class="featured-event-sponsor">
+            <img src="/images/sponsors/stand-in.png" alt="sponsor">
+          </div>
+
+          <div class="featured-event-sponsor">
+            <img src="/images/sponsors/stand-in.png" alt="sponsor">
+          </div>
+
+          <div class="featured-event-sponsor">
+            <img src="/images/sponsors/stand-in.png" alt="sponsor">
+          </div>
+
+        </div>
+
+      </section> <!-- end featured sponsors -->
+
+
+<!-- Overview ==================== -->
+
+      <section id="overview" class="white">
+
+        <header>
+          <h3>Introducing the MedHackathon</h3>
+          <p>We're bringing talented developers and medical experts together for a weekend-long hackathon to spark new innovations in healthcare technology.</p>
+        </header>
+
+        <div class="content">
+
+          <div class="third centered">
+            <h3><span class="i">Learn</span></h3>
+            <p>Get hands on training with the technologies shaping the landscape of healthcare from the leading experts who built them</p>
+          </div>
+
+          <div class="third centered">
+            <h3><span class="i">Build</span></h3>
+            <p>Work with like-minded professionals to develop exciting new healthcare products for web, mobile, and desktop platforms</p>
+          </div>
+
+          <div class="third centered">
+            <h3><span class="i">Compete</span></h3>
+            <p>Gather your team and go head to head with your peers to see who can build the most amazing new products in healthcare tech</p>
+          </div>
+
+        </div> <!-- end content -->
+
+      </section><!-- end overview -->
+
+
+<!-- Ticketing  ======================= -->
+
+      <main role="main" class="white">
+        
+        <div class="content centered">
+          
+          <header class="venu left">
+            <span class="venu-img"><img src="/images/icons/medhack-event-location.png" alt="MedHack Event Location">
+            </span>
+    
+            <h3>{%if venue%}{{venue}}{%endif%}</h3>
+            <p>{%if address%}{{address}}{%endif%}</p>           
+          <div class="clear"></div>
+
+          </header>
+          
+          <div id="eventbrite">
+
+
+            {%if ticketing%}
+              {{ticketing|safe}}
+            {%endif%}
+
+          </div> <!-- end eventbrite -->
+
+        </div> <!-- end content -->
+          
+      </main><!-- end ticketing -->
+
+
+<!-- Prizes  ===================================== -->
+
+      <section id="Prizes" class="purp-dark">
+
+        
+        <header>
+          <h3>Grand Prize</h3>
+          <span span class="i">$10,000 Footrub From Garrett</span>
+          <b>With $50,000 In Additional Prizes From Our Partners</b>
+        </header>
+        
+        <div class="content centered">
+          {%for s in all_sponsors%}
+
+            <div class="sponsor">
+              <a href="{{s.sponsor.homepage}}" target="_blank">
+                <img src="/partners?partner_id={{s.sponsor.sponsor_id}}" class="tier_two_sponsor" alt="Prebacked partner {{s.sponsor.name}}"/>
+              </a>
+            </div>
+
+          {% endfor %}
+
+        </div> <!-- end content -->
+
+      
+      </section> <!-- end prizes -->
+
+
+<!-- Judges  ===================================== -->
+
+      <section id ="judges" class="purp-black">
+
+        <header><h3>{{city}} Judges</h3></header>
+
+        <div class="content centered">
+          
+          {%for m in mentors%} 
+          
+            <div class="judge">
+              <img src="/img?mentor_id={{m.mentor.mentor_id}}" alt="{{m.mentor.name}} " />    
+              <div class="label">{{m.mentor.name}}: {{m.mentor.title}}, {{m.mentor.company}}</div>
+              <p class="description">{{m.mentor.bio|safe}}</p>
+            </div>  <!-- end judge -->
+          
+          {%endfor%}
+ 
+        </div> <!-- end content -->
+
+      </section><!-- end judges -->
+      
+      <section class="silver">
+
+        <header>
+          <h3>Order of Events</h3>
+        </header>
+
+        <div class="content centered">
+          
+          <div class="event-schedule-left">
+            <ul>
+              <li class="i"><strong>Day 1</strong></li>
+
+              <li><strong>10:00 am</strong> - Doors Open/ Meet and Mingle</li>
+
+              <li><strong>10:30 am</strong> - Pitches &amp; Team Formations</li>
+
+              <li><strong>12:30 am</strong> - Lunch Served / Speaker Sessions</li>
+
+              <li><strong>01:00 pm</strong> - Hacking Begins</li>
+
+              <li><strong>06:00 pm</strong> - Dinner is served</li>
+
+            </ul>
+          </div>
+
+        <div class="event-schedule-right">
+            
+            <ul>
+              <li class="i"><strong>Day 2</strong></li>
+
+              <li><strong>08:00 am</strong> - Light breakfast &amp; coffee</li>
+
+              <li><strong>01:00 pm</strong> - Hacking Ends / Setup Presentations</li>
+
+              <li><strong>01:30 pm</strong> - Lunch Served</li>
+
+              <li><strong>02:00 pm</strong> - Judging / Happy Hour</li>
+
+              <li><strong>04:00 pm</strong> - Awards Ceremony</li>
+
+            </ul>
+          </div>
+          
+          <div class="clear"></div>
+        
+        </div> <!-- end content -->
+
+        
+
+      </section>
+      
+      <section id="hardware" class="white">
+        <header>
+
+        <h3>Hardware &amp; Equipment</h3>
+
+        </header>
+
+        <div class="content-text">
+
+          <p>
+            Contestants are responsible for supplying the equipment needed to build their projects.  Recommended hardware includes, though isn't limited to: laptops, mobile devices, e-readers, desktops and benign robots.
+          </p>
+
+          <h4><span class="i">General Restrictions</span></h4>
+          
+          <p>The following are prohibited from use in the competition:</p>
+          
+          <ul>
+            <li>- Medicines or controlled substances</li>
+            <li>- Radioactive materials</li>
+            <li>- Untested, unstable, or otherwise unproven "home brew" hardware</li>
+            <li>- Laser devices designated Class II or higher</li>
+            <li>- Surgical Instruments intended for incising, scoring, or otherwise cutting into organic tissue</li>
+          </ul>
+
+          <h4><span class="i">Homebrew Hardware</span></h4>
+
+          <p>
+            We allow the use of home made hardware and software products in the competition on the condition that they are fully functional and proven safe for use in public environment.  You may not bring incomplete, unstable, or unproven products to be finished or tested during the competition.
+          </p> 
+        </div> <!-- end content --> 
+
+      </section> <!-- end hardware -->
+
+
+<!-- FAQ =================================== -->
+
+      <section  id="FAQ" class="purp-dark">
+
+        <header>
+          <h3>Frequently Asked Questions</h3>
+        </header>
+        
+        <div class="content-text">
+
+
+        {% for f in all_faq_categories%} 
+          
+          <h4><b>{{f.question}}</b></h4>
+          
+          <p class="answer">{{f.answer}}</p>
+        
+        {%endfor%}
+
+          <div class="call-email">            
+            <p>
+              <strong>Still have questions?  Ask us anything about the event at</strong>
+            </p>
+            <span class="i">medhack@prebacked.com</span>
+          </div> <!-- end Questions call to action -->
+        
+        </div> <!-- end content -->
+
+      </section>
+
+    </div> <!-- end container -->
+
+    <footer>
+
+      <div class="content">
+          
+        <div id="company-info" class="left">
+          <p>Medhack: Healthcare Hackathon Events 
+          <br /> &copy; 2014 Prebacked</p>
+        </div>
+        
+        <div class= "right">
+          <a href="mailto:medhack@prebacked.com">medhack@prebacked.com</a>
+          
+        </div>
+
+        <div class="clear"></div>
+
+      </div> <!-- end content -->
+        
+    </footer>
+
+    <!-- Vendor Scripts -->
+
+    <!--clicky analytics-->
+    <script src="//static.getclicky.com/js" type="text/javascript"></script>    
+    <script type="text/javascript">try{ clicky.init(100526234); }catch(e){}</script>
+    <noscript><p><img alt="Clicky" width="1" height="1" src="//in.getclicky.com/100526234ns.gif" /></p></noscript>
+    
+    <script src="../js/jquery-1.6.1.min.js" type="text/javascript" ></script>
+
+    <!--goog analytics-->
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30100162-2']);
+      _gaq.push(['_setDomainName', 'prebacked.com']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+  </body>

@@ -1,0 +1,358 @@
+{%extends 'adminadd.html'%}
+{%block content%}
+        
+        {%if message%}{{message}}{% if eventLink%}, <a href="{{eventLink}}" target="_blank">go there</a>{%endif%}{%endif%}
+        
+        <h1>Event add</h1>
+        
+        <form action="/admin_add/event_add" method="post" id="event_add">
+            <h2>New event</h2>
+            
+            Event Name
+            <select name="type" id="type" onchange="optionCheck()">
+                <option value="" disabled="disabled" selected="selected">Event type</option>
+                <option value="ignition">Prebacked Ignition</option>
+                <option value="medhack">Medhack</option>
+                <option value="conversations">Conversations [broken]</option>
+                <option value="accelerator">Accelerator (Public) [broken]</option>
+                <option value="partner_event">Partner Event [broken]</option>
+                <option value="prebacked_other">Other / One-off Prebacked event [broken]</option>
+            </select><br/>
+            
+            <div id="name" style="display: none">
+                Event Title
+                <input type="text" name="name"/><br/>
+            </div>
+            
+            <div id="header" style="display: none">
+                Catchy headline
+                <input type="text" name="header" style="width: 100%"/><br/>
+            </div>
+            
+            <div id="description" style="display: none">
+                Event description
+                <br/><textarea maxlen="350" rows="5" cols="90" name="description" class="bio"></textarea><strong><em class="count"></em> characters remaining</strong>
+                (3 sentences or less.)<br/><br/>
+            </div>
+            
+            <div id="link" style="display: none">
+                Event / Registration / Eventbrite Link
+                <input type="text" name="link" value="http://"/><br/>
+            </div>
+            
+            <div id="ticketing" style="display: none">
+                Ticket Form (get from Eventbrite):
+                <input type="text" name="ticketing" value=""/>
+                <div id="ticketing_conversations">
+                    <em>Should look like:</em><code>&lt;div style="width:100%; text-align:left;" &gt;&lt;iframe  src="https://www.eventbrite.com/tickets-external?eid=5501274460&ref=etckt" frameborder="0" height="214" width="100%" vspace="0" hspace="0" marginheight="5" marginwidth="5" scrolling="auto" allowtransparency="true"&gt;&lt;/iframe&gt;&lt;div style="font-family:Helvetica, Arial; font-size:10px; padding:5px 0 5px; margin:2px; width:100%; text-align:left;" &gt;&lt;a style="color:#ddd; text-decoration:none;" target="_blank" href="http://www.eventbrite.com/r/etckt"&gt;Online Ticketing&lt;/a&gt;&lt;span style="color:#ddd;"&gt; for &lt;/span&gt;&lt;a style="color:#ddd; text-decoration:none;" target="_blank" href="https://www.eventbrite.com/e/a-test-tickets-5501274460?ref=etckt"&gt;A test!&lt;/a&gt; &lt;span style="color:#ddd;"&gt;powered by&lt;/span&gt; &lt;a style="color:#ddd; text-decoration:none;" target="_blank" href="http://www.eventbrite.com?ref=etckt"&gt;Eventbrite&lt;/a&gt;&lt;/div&gt;&lt;/div&gt;</code>
+                </div>
+                
+                <br/>
+            </div>
+            
+            Vertical: Health<input type="radio" name="vertical" value="health" checked="true"><br/>
+            <div id="company_sponsor" style="display: none">Company sponsor(s): <input type="text" name="company" /> Separate by commas.</div>
+            
+            <h3>Venue Info</h3>
+            Venue Name:<input type="text" name="venue"> <em>eg. "Zurb HQ, Microsoft BizSpark"</em><br/>
+            Address:<input type="text" name="address"> <em>Street address only</em><br/>
+            
+            <h4>City:</h4>
+            <select name="city">
+                <option value="" disabled="disabled" selected="selected">City</option>
+                
+                <option value="Silicon Valley">Silicon Valley</option>
+                <option value="San Francisco">SF</option>
+                <option value="Boston">Boston</option>
+                <option value="Washington">Washington DC</option>
+                
+            </select><br/>
+            
+            
+            <h4>State:</h4>
+                California<input type="radio" name="state" value="CA" checked="true"><br/>
+                MA<input type="radio" name="state" value="MA"><br/>
+                District of Columbia<input type="radio" name="state" value="DC"><br/>
+                
+            
+            <h3>Time Info</h3>
+            Start Day:<input type="text" name="day"> <em>Whole numbered date, eg: 5</em><br/>
+            <select name="month">
+                <option value="" disabled="disabled" selected="selected">Month</option>
+                {%for i in 123456789111|make_list %}
+                    <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                {% endfor %}
+                
+            </select>
+            <select name="year">
+                <option value="" disabled="disabled" selected="selected">Year</option>
+                
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                
+            </select>
+            
+            <!--<select name="quarter">
+                <option value="" disabled="disabled" selected="selected">Quarter</option>
+                
+                <option value="Spring">Spring</option>
+                <option value="Summer">Summer</option>
+                <option value="Fall">Fall</option>
+                <option value="Winter">Winter</option>
+                
+            </select><br/>-->
+            
+            
+            <br/><br/>
+            <input type="submit">
+        </form>
+        
+        
+        <h2>Event edit</h2>
+        <div id="event_edit">
+            {% for e in event_edit %}
+            <form action="/admin_add/event_add" method="post">
+                <input type="text" style="display:none;" value="true" name="edit"/>
+                
+                <input type="text" style="display:none;" value="{{e.event_id}}" name="event_id"/>
+                <input type="text" style="display:none;" value="{{e.name}}" name="name"/>
+                <input type="text" style="display:none;" value="{{e.event_num}}" name="event_num"/>
+                <input type="text" style="display:none;" value="{{e.vertical}}" name="vertical"/>
+                
+                <div class="large-12">
+                    {{ e.name.capitalize}}, {{e.month}}/{{e.day}}/{{e.year}} | {{e.city}} | <a href="/{{e.name}}/{{e.event_id}}">Link</a> |
+                    Published? <input name="publish" type="checkbox" {%if e.publish%}checked{%endif%}/>
+                </div>
+                
+                <div class="large-12 date_edit">
+                    Date:
+                    
+                    <select name="month">
+                        <option value="{{e.month}}" selected="selected">{{e.month}}</option>
+                        {%for i in 123456789111|make_list %}
+                            <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                        {% endfor %}
+                        
+                    </select>
+                    /
+                    <input type="text" name="day" value="{{e.day}}" class="thin"/>
+                    /
+                    <select name="year">
+                        <option value="{{e.year}}" selected="selected">{{e.year}}</option>
+                        
+                        <option value="2014">2014</option>
+                        <option value="2015">2015</option>
+                        <option value="2016">2016</option>
+                        
+                    </select>
+                    
+                    
+                </div>
+                
+                Address: <input type="text" name="address" value="{{e.address}}"/>
+                City:
+                <select name="city">
+                    <option value="{{e.city}}" selected="selected">{{e.city}}</option>
+                    
+                    <option value="Silicon Valley">Silicon Valley</option>
+                    <option value="San Francisco">SF</option>
+                    <option value="Boston">Boston</option>
+                    <option value="Washington DC">Washington DC</option>
+                    <option value="Mexico City">Mexico City</option>
+                    <option value="Minneapolis">Minneapolis</option>
+                    
+                    
+                </select>
+                State: <input type="text" name="state" value="{{e.state}}" class="thin"/>
+                <input type="text" name="venue" value="{{e.venue}}"/>
+                
+                {% if e.header %}
+                <br/>
+                Catchy headline: <input type="text" style="width: 80%" value="{{e.header}}" name="header"/>
+                {% endif %}
+            
+                {% if e.description %}
+                <br/>
+                Description:<br/>
+                <input type="text" style="width: 80%" value="{{e.description}}" name="description"/>
+                {% endif %}
+                
+                
+                <input type="submit">
+                    
+                <br/>
+            </form>
+            {% endfor %}
+            
+            
+            {% if past_events %}
+                <br/><br/>
+                <a id="past_show">Show past events</a>
+                <br/><br/>
+                <div id="past_events" style="display: none">
+                    <h2>Past events</h2>
+                    
+                    {% for e in past_events %}
+                        
+                        <form action="/admin_add/event_add" method="post">
+                            <input type="text" style="display:none;" value="true" name="edit"/>
+                            
+                            <input type="text" style="display:none;" value="{{e.event_id}}" name="event_id"/>
+                            <input type="text" style="display:none;" value="{{e.name}}" name="name"/>
+                            <input type="text" style="display:none;" value="{{e.event_num}}" name="event_num"/>
+                            <input type="text" style="display:none;" value="{{e.vertical}}" name="vertical"/>
+                            
+                            <div class="large-12">
+                                {{ e.name.capitalize}}, {{e.month}}/{{e.day}}/{{e.year}} | {{e.city}} | <a href="/{{e.name}}/{{e.event_id}}">Link</a> |
+                                Published? <input name="publish" type="checkbox" {%if e.publish%}checked{%endif%}/>
+                            </div>
+                            
+                            <div class="large-12 date_edit">
+                                Date:
+                                
+                                <select name="month">
+                                    <option value="{{e.month}}" selected="selected">{{e.month}}</option>
+                                    {%for i in 123456789111|make_list %}
+                                        <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                                    {% endfor %}
+                                    
+                                </select>
+                                /
+                                <input type="text" name="day" value="{{e.day}}" class="thin"/>
+                                /
+                                <select name="year">
+                                    <option value="{{e.year}}" selected="selected">{{e.year}}</option>
+                                    
+                                    <option value="2014">2014</option>
+                                    <option value="2015">2015</option>
+                                    <option value="2016">2016</option>
+                                    
+                                </select>
+                                
+                                
+                            </div>
+                            
+                            Address: <input type="text" name="address" value="{{e.address}}"/>
+                            City:
+                            <select name="city">
+                                <option value="{{e.city}}" selected="selected">{{e.city}}</option>
+                                
+                                <option value="Silicon Valley">Silicon Valley</option>
+                                <option value="San Francisco">SF</option>
+                                <option value="Boston">Boston</option>
+                                <option value="Washington DC">Washington DC</option>
+                                <option value="Mexico City">Mexico City</option>
+                                <option value="Minneapolis">Minneapolis</option>
+                                
+                                
+                            </select>
+                            State: <input type="text" name="state" value="{{e.state}}" class="thin"/>
+                            <input type="text" name="venue" value="{{e.venue}}"/>
+                            
+                            {% if e.header %}
+                            <br/>
+                            Catchy headline: <input type="text" style="width: 80%" value="{{e.header}}" name="header"/>
+                            {% endif %}
+                        
+                            {% if e.description %}
+                            <br/>
+                            Description:<br/>
+                            <input type="text" style="width: 80%" value="{{e.description}}" name="description"/>
+                            {% endif %}
+                            
+                            
+                            <input type="submit">
+                                
+                            <br/>
+                        </form>
+                    {% endfor %}
+                </div>
+            {%endif%}
+            
+    
+        </div>
+    
+
+        
+    </div>
+{%endblock%}
+
+{% block scripts%}
+<script type="text/javascript">
+    $( document ).ready(function() {
+        var page = "event";
+        var the_id = "#" + page + "_link";
+        $(the_id).addClass("active");
+        
+        $("#past_show").click(function(){
+            console.log('triggered')
+            $("#past_events").toggle()
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    function optionCheck(){
+        var option = document.getElementById("type").value;
+        if(option == "ignition"){
+            $("#company_sponsor").show();
+            $("#name").hide();
+            $("#header").hide();
+            $("#description").hide();
+            $("#link").hide();
+        }
+        else{
+            $("#company_sponsor").hide();
+            $("#name").hide();
+            $("#header").hide();
+            $("#description").hide();
+            $("#link").hide();
+            
+            if(option == "medhack"){
+                $("#ticketing").show();
+            }
+
+            if(option == "conversations"){
+                $("#header").show();
+                $("#description").show();
+                $("#ticketing").show();
+            }
+            
+            if(option == "partner_event"){
+                $("#name").show();
+                $("#description").hide();
+                $("#link").show();
+                $("#ticketing").hide();
+            }
+        }
+    }
+</script>
+
+<script type="text/javascript">
+maxCharacters = 340;
+
+$('.count').text(maxCharacters);
+
+$('textarea.bio').bind('keyup keydown', function() {
+    var count = $('.count');
+    //var submit = $('.submit');
+    var submit = $('input[type="submit"]');
+    var characters = $(this).val().length;
+
+    if (characters > maxCharacters) {
+        count.addClass('over');
+        //submit.hide();
+        submit.attr('disabled','disabled');
+        submit.addClass('disabled')
+    } else {
+        count.removeClass('over');
+        //submit.show();
+        submit.removeAttr('disabled');
+        submit.removeClass('disabled')
+    }
+
+    count.text(maxCharacters - characters);
+});
+</script>
+{%endblock%}

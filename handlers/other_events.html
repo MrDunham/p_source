@@ -1,0 +1,48 @@
+{% extends 'homepage_base.html' %}
+
+{% block styles %}
+  <link rel="stylesheet" href="css/pages.css" media="screen" type="text/css"/>
+    
+{% endblock %}
+
+{%block color_scheme%}white{%endblock%}
+
+{% block upper_info%}
+
+<h1>Team</h1>
+    
+{% endblock %}
+
+{%block upper_bg%}<!--<img src="images/headerimg2.jpg" id="headerImg" alt="Hackers starting a startup">-->{% endblock%}
+
+{% block middle_info%}
+
+{% if team %}
+    <div id="team" class="grid_6 push_3 section">
+        <div class="div_center">
+            <h2>Team</h2>
+            {% for i in team %}
+            {% if forloop.counter|divisibleby:4 %}<br class="clear"/>{% endif %}
+            <div class="member grid_3
+            {% if forloop.counter|divisibleby:"2" %}omega{% endif %}
+            {% if forloop.counter|add:2|divisibleby:"3" or forloop.first %}alpha{% endif %}">
+                
+                {%if i.link%}<a href="{{i.link}}" target="_blank"> {%endif%}
+                    <span class="member_image">
+                        <img src="images/{{i.img1}}" alt="{{i.alt1}}"/>
+                    </span><!--end of .member_image (Team member's picture)-->
+                    <span class="member_tag"><!--tag below team member's image-->
+                        <h4>{{i.header}}</h4>
+                        {%if i.content%}
+                            <p>{{i.content}}</p>
+                        {%endif%}
+                    </span><!--end of .member_tag-->
+                {%if i.link%}</a>{%endif%}
+            </div>
+            {%endfor%}
+        </div>
+    </div><!--end of #team-->
+{%endif%}
+
+{% endblock %}
+

@@ -1,0 +1,90 @@
+{% extends 'homepage_base.html' %}
+
+{% block styles %}
+  <link rel="stylesheet" href="css/pages.css" media="screen" type="text/css"/>
+    
+{% endblock %}
+
+{%block color_scheme%}default{%endblock%}
+
+{%block sub_link_bar%}
+    {%include 'partials/sublinkbar_events.html'%}    
+{%endblock%}
+
+{% block upper_info%}
+
+<h1 class="small-12 columns">Event Board</h1>
+<p class="small-12 large-8 columns end">All events we're hosting or our partners are holding.</p>
+
+    
+{% endblock %}
+
+{%block upper_bg%}<!--<img src="images/headerimg2.jpg" id="headerImg" alt="Hackers starting a startup">-->{% endblock%}
+
+{% block middle_info%}
+
+    {%include '_event_list.html'%}
+{% endblock %}
+
+
+{% block unrestricted_bottom %}
+
+
+
+
+
+<script type="text/javascript" >
+function overlay() {
+	el = document.getElementById("modal");
+        vid = document.getElementById("modal_vid");
+	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+        //vid.style.display = (vid.style.display == "block") ? "none" : "block";
+        vid.style.display = (vid.style.display == "block") ? $('iframe#modal_vid').attr('src','') : $('iframe#modal_vid').attr('src','http://player.vimeo.com/video/68069117?title=0&byline=0&portrait=0');
+        vid.style.display = (vid.style.display == "block") ? "none" : "block";
+        
+        
+}
+
+</script>
+
+<script type="text/javascript" >
+    
+$(document).ready(function(){
+    
+    
+    $('.descr').click(function() {
+        var cl = $(this).nextAll();        
+        cl.toggle();
+    });
+
+    //sets height to match window (plus shows footer) for anything taller than 400 px.
+    var window_h = $(window).height()
+    var upper_info_h = $("#upperInfoContainer").height()
+    var middle_info_h = $("#middleInfoInner").height()
+    var footer_h = $("#footer").height()
+
+
+
+    var h = window_h - footer_h
+
+    console.log("predelta height = " + h);
+
+    if (upper_info_h > 1 && middle_info_h > 1) {
+        var h_delta = h - upper_info_h;
+        h = h_delta;
+    };
+    
+    console.log("final height = " + h);
+
+
+    if (h > 1){
+        $("#middleInfoInner").css("min-height", h +"px")
+    }
+    
+});
+</script>
+
+{% endblock %}
+
+
+

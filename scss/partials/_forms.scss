@@ -1,0 +1,37 @@
+// ===========================================================
+
+//  Author: Patrick Siren ( @patsiren )
+//  Document: MedHack form styles
+
+// ===========================================================
+
+
+#mc_embed_signup {
+  display: block;
+  position:relative;
+  text-align: left;
+  margin: 0 auto; 
+  padding: 1.125em; // = 18px / 16px
+  border: 1px solid rgba(151,151,151,0.20);
+  border-radius: $default_border_radius;
+  background-color: white;
+
+}
+
+#mc-embedded-subscribe-form {}
+
+#mce-EMAIL {
+  display: inline-block;
+  width: 61.7021277%; //= 580px / 940px
+  padding: 1.66666667% 0; //= 50px / 300px 
+  font-size: 1.25em; // = 20px / 16px
+  border-radius: $default_border_radius;
+  border-style: none; // reset default border
+  border: solid 2px #BCBCBC;
+  background-color: #ECEBEB;
+  color: #BCBCBC;
+  padding-left: 10px;
+
+}
+
+#mce-embedded-subscribe{ width: 31.25%; } // = 300px / 960px = 0.3125em 

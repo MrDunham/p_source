@@ -1,0 +1,144 @@
+/*---------------------*/
+/*	Tabs 	       */
+/*---------------------*/
+
+/* root element for tabs  */
+ul.css-tabs {
+	-webkit-box-shadow: 1px 1px 2px #000;
+	-moz-box-shadow: 1px 1px 2px #000;
+	-o-box-shadow: 1px 1px 2px #000;
+	box-shadow: 1px 1px 2px #000;
+	position: relative;
+	margin: auto;
+	height: 38px;
+	/*width: 458px;*/
+	border: 1px solid #666;
+	background: #7e7e7e;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(25,25,25,.01)), to(rgba(0,0,0,0.5)));
+	background-image: -webkit-linear-gradient(top, rgba(25,25,25,0.01), rgba(0,0,0,0.5));
+	background-image:    -moz-linear-gradient(top, rgba(25,25,25,0.01), rgba(0,0,0,0.5));
+	background-image:     -ms-linear-gradient(top, rgba(25,25,25,0.01), rgba(0,0,0,0.5));
+	background-image:      -o-linear-gradient(top, rgba(25,25,25,0.01), rgba(0,0,0,0.5));
+	-moz-border-radius: 3px 3px 0 0;
+	-webkit-border-radius: 3px 3px 0 0;
+	-o-border-radius: 3px 3px 0 0;
+	border-radius: 3px 3px 0 0;
+}
+
+/* single tab */
+ul.css-tabs li {  
+	float:left;	 
+	padding:0; 
+	margin:0;  
+	list-style-type:none;
+	position: relative;
+}
+
+/* link inside the tab */
+ul.css-tabs a { 
+	float:left;
+	font-size:13px;
+	display:block;
+	/*padding: 5px 17px 7px;	this sets a fixed width*/
+	padding: 5px 0 7px; /*Dont include if using the fixed width via padding*/
+	width: 100%; /*Dont include if using the fixed width via padding*/
+	text-decoration:none;
+	border-bottom:0px;
+	height:25px;
+	color:#333;
+	border-right: solid thin #333;
+	position:relative;
+	/*width: 91px;*/
+	outline:0;
+	cursor: pointer;
+	z-index:5;
+}
+ul.css-tabs .sunday a{
+	border-right: none;
+}
+.tab{
+	height: 37px;
+	width: 33.33333333%;
+}
+#medhack_tabs .tab{
+	width: 50%;
+}
+.tabLabel{
+	position: relative;
+	padding: 5px 0px 10px;
+	margin: 0 0 0 0;
+	text-align:center;
+	font-weight: bold;
+	z-index: 3 !important;
+	font-size: 20px;
+}
+.tabLabel:hover{
+	cursor: pointer;
+}
+
+.tabLabel.current:hover{
+	cursor: default;
+}	
+/* selected tab */
+ul.css-tabs a.current {
+	cursor: default;
+	/*background: rgba(80,80,80,.7);*/
+	text-shadow: none !important;
+	color: #f5f5f5;
+}
+
+/* tab pane */
+.css-panes > div {
+	position: relative;
+	min-height:246px;
+	padding:5px 30px;
+	background-color: #000;
+	/*-moz-border-radius:6px 6px 6px 6px;*/
+	/*-webkit-border-radius: 6px 6px 6px 6px;*/
+	/*border-radius: 6px 6px 6px 6px;*/
+	-moz-box-shadow: 1px 1px 2px #000;
+	-webkit-box-shadow: 1px 1px 2px #000;
+	box-shadow: 1px 1px 2px #000;
+	border:1px solid #666;
+	border-width:0 1px 1px 1px;
+	
+}
+
+div.skin2 > div{
+	color: #f5f5f5;
+	background: rgba(0,0,0,.7);
+	border-radius: 0 0 6px 6px;
+	-moz-border-radius: 0 0 6px 6px;
+	-webkit-border-radius: 0 0 6px 6px;
+	-o-border-radius: 0 0 6px 6px;
+	background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0, 0, 0, 1)), to(rgba(15, 15, 15, 1)));
+	background-image:    -webkit-linear-gradient(top, rgba(0, 0, 0, 1), rgba(15, 15, 15, 1));
+	background-image:    -moz-linear-gradient(top, rgba(0, 0, 0, 1), rgba(15, 15, 15, 1));
+	background-image:     -ms-linear-gradient(top, rgba(0, 0, 0, 1), rgba(15, 15, 15, 1));
+	background-image:      -o-linear-gradient(top, rgba(0, 0, 0, 1), rgba(15, 15, 15, 1));
+}
+
+.skin2 > a, .skin2 > a:hover, .skin2 > a.current {
+	background: #333;
+}
+
+
+/* Tab colors */
+
+.mainTab > a, .mainTab > a:hover, .mainTab > a.current{
+	background: url(/images/tab-plastic.png) repeat-x scroll transparent;
+	background-position: 0 0;
+}
+.mainTab > a.current{
+	z-index: 11;
+}
+
+
+.css-tabs .right{
+	float: right;
+	margin: 0 4px 0 0;
+}
+
+/* tab pane with background gradient */
+
+/*end tabs*/

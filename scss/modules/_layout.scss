@@ -1,0 +1,30 @@
+@mixin border-box-sizing(){
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@mixin user-select($option: none) {
+  -webkit-user-select: $option;
+  -moz-user-select: $option;
+  -ms-user-select: $option;
+  -o-user-select: $option;
+  user-select: $option;
+}
+
+@mixin linear_gradient($first_color: rgba(0,0,0,0), $second_color:rgba(0,0,0,.25), $fallback_color: rgba(0,0,0,.3)){
+  background: -moz-linear-gradient(top,  $first_color 0%, $second_color 100%), $fallback_color; /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$first_color), color-stop(100%,$second_color)), $fallback_color; /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  $first_color 0%, $second_color 100%), $fallback_color; /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  $first_color 0%, $second_color 100%), $fallback_color; /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  $first_color 0%, $second_color 100%), $fallback_color; /* IE10+ */
+  background: linear-gradient(to bottom,  $first_color 0%, $second_color 100%), $fallback_color; /* W3C */
+}
+ 
+@mixin background-size-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  background-size: cover;
+}
+

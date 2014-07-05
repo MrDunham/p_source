@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block title %} Frequently Asked Questions and Information | MedHack by Prebacked {% endblock %}
+{% block description %} Learn more information about MedHack. Frequently asked questions.{% endblock %}
+{%block head_links%}{%endblock%}
+{% block headerImg %}
+    <img id="header_img" class="grid_6" src='/images/icon_medhack.png' alt = "22 hour health hackathon Medhack main icon, by Prebacked">
+{% endblock %}
+{%block google_track%}'UA-30100162-2'{%endblock%}
+{% block styles %}
+<link rel="stylesheet" href="css/pages.css" type="text/css" media="screen" />
+{% endblock %}
+
+
+{% block content %}
+
+<div id="more_info_upper">
+    <div class="container_12">
+        <div id="faq_columns" class="section grid_12">
+            
+        <!--Each column should have a for loop iterating across items-->
+            <!--column 1-->
+                <!--header-->
+                <!--<a href="#{{f.link}}">{{f.header}}</a>-->
+                <h2>Frequently Asked Questions</h2>
+                {%if col1%}
+                    <ul id="faq_col1" class="faq_col grid_4">
+                        {%for f in col1%}
+                        <li><a href="#{{f.link}}" class="faq_link">{{f.header}}</a></li>
+                        {%endfor%}
+                    </ul>
+                {%endif%}
+                <!--question w/ link to answer-->
+            <!--column 2-->
+                {%if col2%}
+                    <ul id="faq_col2" class="faq_col grid_4">
+                        {%for f in col2%}
+                        <li><a href="#{{f.link}}" class="faq_link">{{f.header}}</a></li>
+                        {%endfor%}
+                    </ul>
+                {%endif%}
+            <!--column 3-->
+                {%if col3%}
+                    <ul id="faq_col3" class="faq_col grid_4">
+                        {%for f in col3%}
+                        <li><a href="#{{f.link}}" class="faq_link">{{f.header}}</a></li>
+                        {%endfor%}
+                    </ul>
+                {%endif%}
+        </div>
+        <div id="faq_answers" class="section grid_10">
+            <h2>Answers</h2>
+            {%if col1%}
+                    <!--<h3></h3> Put a subheader here when we have 3 cols-->
+                    {%for f in col1%}
+                        <div class="faq_answer grid_8 {% if forloop.first%}top{%endif%}">
+                            <a name="{{f.link}}" class="negspace"></a>
+                            <h3>{{f.header}}</h3>
+                            <p>{{f.content}}</p>
+                            <a href="#top" class="totop">To top</a>
+                        </div>
+                    {%endfor%}                
+            {%endif%}
+            {%if col2%}
+                    <!--<h3></h3> Put a subheader here when we have 3 cols-->
+                    {%for f in col2%}
+                        <div class="faq_answer grid_8">
+                            <a name="{{f.link}}" class="negspace"></a>
+                            <h3>{{f.header}}</h3>
+                            <p>{{f.content}}</p>
+                            <a href="#top" class="totop">To top</a>
+                        </div>
+                    {%endfor%}                
+            {%endif%}
+            {%if col3%}
+                    <!--<h3></h3> Put a subheader here when we have 3 cols-->
+                    {%for f in col3%}
+                        <div class="faq_answer grid_8">
+                            <a name="{{f.link}}" class="negspace"></a>
+                            <h3>{{f.header}}</h3>
+                            <p>{{f.content}}</p>
+                            <a href="#top" class="totop">To top</a>
+                        </div>
+                    {%endfor%}                
+            {%endif%}
+            <br class="clear"/>
+        </div><!--end of faq answers-->
+    </div><!--end of container 12-->
+</div><!--End of more_info_upper-->
+
+
+{%endblock%}

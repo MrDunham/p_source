@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <link rel="stylesheet" href="../css/ignition.css" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="../css/nametags.css" type="text/css" media="screen" />
+</head>
+
+<body>
+    <h1>Judge Tags</h1>
+    
+    
+    {% for j in judges %}
+        <div class="judge_nametag">
+            <h2>{{j.name.split.0}}<br>{{j.name.split.1}}</h2>
+            <p class="judge_employer">{{j.title}}</p>
+        </div>
+    {%endfor%}
+    
+
+</body>

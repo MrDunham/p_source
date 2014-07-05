@@ -1,0 +1,655 @@
+/*Medhack SCSS*/
+
+/*****Variables*****/
+/*BG colors*/
+$main_bg_color: #202740;
+$mid_bg_color: #37467d;
+$lt_bg_color: #B1BEEF;
+
+$text_color: #ffffff;
+$main_z: 15;
+
+$white: #f5f5f5;
+$black: #000000;
+$green: #1e8b36;
+
+$spacer: 10px;
+
+/*Imports*/
+@import "standard-import";
+@import "mc";
+
+/*Mixins*/
+
+@mixin big_button{
+    $button-z: 3px;
+    
+    padding-top: 8px;
+    /*box-shadow: 0 $button-z $green - 80, inset 0 1px rgba(255,255,255,.4), 0 $button-z + $button-z * 0.2 2px rgba(0,0,0,.6); // Pretty's up the button.  Big shadow as button 'side', top white shadow and bottom black shadow for lighting effects.*/
+    
+    &:active{
+        /*top: 3px;*/
+        box-shadow: 0 -1px rgba(0,0,0,.4);
+    }
+        p{
+            @include text_shadow_lt;
+        }
+        p:first-child{
+            font-size: 30px;
+            font-weight: bold;
+        }
+}
+
+div{
+    box-sizing: border-box;
+}
+
+/*****Table of contents****/
+/*Main styles*/
+/*Above Fold*/
+
+
+
+h1, h2, h3,h4,h5,h6,h7,h8,p,li,ul, div, sub, sup, input{
+    font-family: /*MuseoSans500,*/ 'helvetica neue', helvetica, ariel, sans-serif;
+}
+
+
+h1, h2, h3, #head_links li{
+    /*font-family: EngraversMT, DollarRegular, LegalTender;*/
+    /*font-family: MuseoSlab500, serif;*/
+    font-family: "Helvetica Neue", Arial, Helvetica, sans-serif;
+    text-shadow: 0 1px 1px #E3E5CF;
+    text-shadow: 0 1px 1px rgba(200,200,200,.6);
+    
+}
+h1, h2, h3, h4, h5, h6, h7 {
+    color: #252525;
+    /*color: #f5f5f5;*/
+    line-height: 1.3em;
+}
+p, ul, ol, li, label {
+    color: #353535;
+    /*color: #e5e5e5;*/
+    line-height: 1.2em;
+}
+
+
+/*Sizes for museo slab*/
+h1{font-size:30px;}
+h2{font-size:24px;}
+h3{font-size:20px;}
+h4{font-size:18px;}
+h5{font-size:16px;}
+h6{font-size:16px;}
+p {font-size:16px;}
+
+#medhack h1{font-size:24px;}
+#medhack h2{font-size:20px;}
+#medhack h3{font-size:18px;}
+#medhack h4{font-size:20px;}
+#medhack h5{font-size:16px;}
+#medhack h6{font-size:16px;}
+#medhack p {font-size:16px;}
+
+
+
+/*********************************************/
+/*********       Main Styles         *********/
+
+body{
+    background-color: $main_bg_color;
+}
+
+.inner_container{
+    h3{
+        margin-top: 40px;
+        margin-bottom: 20px;
+        text-align: center;
+        font-size: 60px;
+    }
+    padding-bottom: 60px;
+}
+
+h1, h2, h3, h4, h5, h6, p, div, ul, li, span{
+    color: $text_color;
+    @include text_shadow_open(0 2px 3px rgba(0,0,0,.6));
+}
+
+.main_section{
+    @include box_shadow;
+    position: relative;
+}
+
+.pic_bg{
+    background-size: cover;
+}
+
+/*********************************************/
+/*********       Above Fold         *********/
+#above_fold{
+    background-image: url('/images/medhack/stanford_palm_drive_2.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    /*background-size: cover;*/
+    z-index: $main_z;
+    #above_fold_inner{
+        text-align: center;
+        h1{
+            font-size: 64px;
+            margin: 40px auto 10px;
+        }
+        h2{
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+        #header_info_boxes{
+            margin-top: 10px;
+            margin-bottom: 200px;
+        }
+        .large.button{
+            @include big_button;
+        }
+        
+        .header_info_box{
+            @include modal_bg_blk;
+            $box_pad_align: 50px;  // Local variable. Meant to keep moving parts of the info boxes aligned (text forces size changes).
+            padding: 10px;
+            text-align: left;
+            padding-left: $box_pad_align;
+            p{font-size: 24px;}
+            &#header_date{
+                background-image: url(/images/medhack/images/calendar.png);
+                background-repeat: no-repeat;
+                background-position: 5px center;
+                padding-left: $box_pad_align+10px;
+            }
+            &#header_location{
+                background-image: url(/images/medhack/images/pin.png);
+                background-repeat: no-repeat;
+                background-position: left center;
+                a, a:visited, a:hover, a:active{
+                    color: $white;
+                }
+            }
+        }
+    }
+    
+    .inner_container{
+        padding-bottom: 60px;
+    }
+}
+
+/*********************************************/
+/********* Sponsors (above fold)     *********/
+
+#top_sponsors{
+    z-index: $main_z - 1;
+    background: $white url('/images/bg_crosshatch_trans.png') repeat;
+    #top_sponsors_inner{
+        #sponsorFold{
+            margin: 0;
+        }
+        h3{
+            margin-top: 10px;
+            margin-bottom: 0px;
+            text-align: left;
+            font-size: 18px;
+            color: $black;
+            @include text_shadow_lt;
+        }
+        &.inner_container{
+            padding-bottom: 20px;
+        }
+    }
+}
+
+/*********************************************/
+/********* Selling points   *********/
+
+#selling_points{
+    z-index: $main_z - 2;
+    background-image: url('/images/medhack/medhack_daniel_keynote.jpg');
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    #selling_points_inner{
+        /*padding-top: 40px;*/
+        min-height: 500px;
+        .selling_point{
+            @include modal_bg_blk;
+            padding:10px;
+            h4{
+                font-size: 24px;
+                font-family: MuseoSans500;
+            }
+            a, a:active, a:visited, a:hover{color: $white;}
+            p{padding-top: 10px;}
+        }
+    }
+}
+
+
+/*********************************************/
+/********* mentors   *********/
+
+$mentor-color: rgba(30,132,52,.6);
+$judge-color: rgba(30,52,132,.6);
+$mentor-judge-color: rgba(30,185,185,.6);
+$judge-mentor-color: rgba(30,185,185,.6);
+
+#mentors{
+    z-index: $main_z - 3;
+    #key_outer{
+        //"color key" - tells visitors which color means what
+        margin-bottom: 10px;
+        
+        #mentor_key{ background-color: $mentor-color;}
+        #judge_key{ background-color: $judge-color;}
+        #both_key{ background-color: $mentor-judge-color;}
+        .key{
+            padding: 8px 10px;
+            text-align: center;
+        }
+    }
+    #mentors_inner{
+        .mentor{
+            position: relative;
+            padding:5px;
+            background: $lt_bg_color;
+            margin-bottom: 20px;
+            img{
+                width:100%;
+                
+            }
+            span{
+                position: absolute;
+                bottom: 5px;
+                left: 0px;
+                padding: 5px 10px;
+                @include modal_bg_blk;
+                &.type_1{ /*mentor only*/ background-color: $mentor-color;}
+                &.type_2{ /*judge only*/ background-color: $judge-color;}
+                &.type_3{ /*both mentor and judge*/ background-color: $mentor-judge-color;}
+                
+                .mentor_name{
+                    font-size: 20px;
+                }
+                .mentor_employer{
+                    font-size: 14px;
+                }
+                
+            }
+        }
+        
+        .full_mentor_details{
+            margin-bottom: 20px;
+            min-width: 100%;
+            img{
+                background: $lt_bg_color;
+                padding:5px;
+            }
+            .mentor_details_info{
+                .name{
+                font-size: 36px;
+                }
+                .bio{
+                    font-size: 16px;
+                }
+                
+                h5{
+                    margin-top: 20px;
+                    font-size: 24px;
+                }
+                
+                $tag_dist: 16px; //Sets the tag height, width, and borders.
+                .tags{
+                    margin-top: 10px;
+                    .tag_wrap{
+                        margin-left: $tag_dist + 10px;
+                        position: relative;
+                        display: inline-block;
+                        .tag{
+                            padding: $tag_dist - 8;
+                            padding-left: 8px;
+                            display: inline-block;
+                            background: $white;
+                            color:$black;
+                            text-shadow: none;
+                            @include box-shadow;
+                            margin-bottom: 5px;
+                        }
+                        &:before{
+                            content:"";
+                            /*float:left;*/
+                            display: inline-block;
+                            position: absolute;
+                            left:-$tag_dist;
+                            width:0;
+                            height:0;
+                            border-color:transparent $white transparent transparent;
+                            border-style:solid;
+                            border-width:$tag_dist $tag_dist $tag_dist 0;		
+                        }
+                        &:after{
+                            content:"";
+                            position:absolute;
+                            top:15px;
+                            left:0;
+                            float:left;
+                            width:4px;
+                            height:4px;
+                            -moz-border-radius:2px;
+                            -webkit-border-radius:2px;
+                            border-radius:2px;
+                            background:#fff;
+                            -moz-box-shadow:-1px -1px 2px #004977;
+                            -webkit-box-shadow:-1px -1px 2px #004977;
+                            box-shadow:-1px -1px 2px #004977;
+                            display: inline-block;
+                        }
+                    }
+                }
+            }
+            
+            
+            
+            
+
+        }
+        
+        .button{
+            @include big_button;
+            margin-top: 40px;
+        }
+    }
+}
+
+
+
+/*********************************************/
+/*********   Venue   *********/
+
+#venue{
+    background-color: $mid_bg_color;
+    text-align: center;
+    z-index: $main_z - 4;
+    display: relative;
+    p{
+        /*color:black;*/
+        /*text-shadow: none;*/
+        font-size: 20px;
+        font-weight: bold;
+    }
+    img{
+        margin-top: 20px;
+    }
+    a{
+        color: $white;
+        &:active{}
+        &:visited{}
+    }
+}
+
+
+/*********************************************/
+/********* Sponsors   *********/
+
+#sponsor_list{
+    z-index: $main_z - 5;
+    text-align: center;
+    .sponsor{
+        text-align: center;
+        background: $white;
+        a, a:visited, a:active, a:hover{
+            border-bottom: none !important;
+            text-decoration: none;
+        }
+        p{
+            color: $black;
+            text-shadow: none;
+        }
+        img{
+            max-width: 200px;
+            max-height: 110px;
+            margin: auto;
+            padding: 5px 0;
+        }
+    }
+}
+
+.wraptocenter {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 140px;
+    height: 60px;
+    img{
+        text-align: center;
+        display: inline-block;
+        width: 99%%;
+        max-height: 60px;
+    }
+}
+.wraptocenter * {
+    vertical-align: middle;
+}
+
+.wraptocenter {
+    display: inline-block;
+}
+.wraptocenter span {
+    display: inline-block;
+    height: 100%;
+    width: 1px;
+}
+
+
+
+/*********************************************/
+/********* FAQ   *********/
+
+#faq{
+    z-index: $main_z - 6;
+    display: relative;
+    background-color: $mid_bg_color;
+    #faq_container{
+        background: $lt_bg_color;
+        padding: $spacer*4;
+        .faq_col{
+            margin-top: $spacer*4;
+            &.top{margin-top: 0}
+        }
+        h4{
+            font-size: 24px;
+            color: $black;
+            @include text_shadow_lt;
+            margin-bottom: $spacer*2;
+        }
+        a, a:hover, a:active, a:visited{color:$green; text-shadow: none;}
+        .question{
+            font-weight: bold;
+            margin-top: $spacer*2;
+        }
+        .answer p{
+            color: $black;
+            @include text_shadow_lt;
+            margin-top: $spacer;
+        }
+    }
+}
+
+/*********************************************/
+/********* Apply   *********/
+#apply{
+    /*background-color: $mid_bg_color;*/
+    #apply_inner{
+        #application_form{
+            background-color: $lt_bg_color;
+            padding:25px 15px 0;
+        }
+    }
+}
+
+
+/*********************************************/
+/********* Footer   *********/
+#footer{
+    padding: 20px 0 0;
+    background: #111;
+    text-align: left;
+    position: relative;
+    line-height: 40px;
+    p, label, a{
+        padding-bottom: 10px;
+        color: #f5f5f5;
+    }
+    .inner_container{
+        padding-bottom: 40px;
+    }
+}
+
+/********************************************************/
+/*	 		Footer	 			*/
+/********************************************************/
+
+
+/*All MC items refer to embedded Mail Chimp form*/
+#mc_embed_signup{
+    background:transparent;
+    clear:left;
+    font-size:14px;
+    color: #aaa;
+    line-height: 1.2em;
+}
+#mc_embed_signup form{padding: 0; margin-bottom:0}
+#mc_embed_signup input.button{background-color: #060; background-color: #1E8B36; margin-bottom: 0; padding: 0 10px;}
+#mc_embed_signup input.button:hover{background-color: #007600; background-color: #25A258}
+#mc_embed_signup input.email{margin-bottom:0}
+#mc_embed_signup span{
+    background: url("/images/lock.png") no-repeat center left;
+    float: left;
+    padding-left: 20px;
+    margin-top:5px;
+}
+
+
+
+
+
+/*********************************************/
+/********* Modal   *********/
+#modal{
+    visibility: hidden;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width:100%;
+    height:100%;
+    z-index: 1000;
+    background: rgba(0, 0, 0, .8);
+    
+    
+    > div {
+        @media only screen and (max-device-width: 480px){  //mobile only
+            left: 5%;
+            width: 90%;
+            top: 5%;
+            
+            a, a:active, a:hover, a:active{
+                &:first-of-type{font-size: 20px}
+            }
+            h1{font-size: 48px}
+            h2{font-size: 40px}
+            h3{font-size: 34px}
+            h4{font-size: 28px}
+            p, div, span{font-size: 20px}
+            #eventbrite_tix{
+                h1{font-size: 48px}
+                h2{font-size: 40px}
+                h3{font-size: 34px}
+                h4{font-size: 28px}
+                p, div, span{font-size: 20px}
+            }
+        }
+        
+        // Desktop
+        @media only screen and (min-device-width: 481px){
+            left: 15%;
+            width: 70%;
+            top: 20%;
+            
+            a{
+                &:first-of-type{font-size: 12px}
+            }
+        }
+        
+        
+        background-color: #f8f8f8;
+        border: 1px solid black;
+        padding: 15px;
+        border-radius: 6px;
+        
+        position: relative;
+        ;
+        min-width: 160px;
+        color: $black;
+        
+        p, h1,h2,h3,h4, a, a:active, a:hover, a:active{
+            color:$black;
+            @include text_shadow_lt;
+        }
+        #eventbrite_tix{
+            margin-top: $spacer*2;
+            
+            a, a:visited, a:active, a:hover, p, span{
+                color: $black !important;
+                text-shadow: none;
+            }
+        }
+        
+        
+    }
+}
+
+.modal_close a{
+    color: #999;
+    font-size: 14px;
+    text-align:right;
+    border-bottom: none;
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+
+
+ /************* Info Bar *************/
+#info_bar{
+    background: #EB593C;
+    /*background: #006295;*/
+    position: relative;
+    z-index: 4;
+    text-align: center;
+    padding: 8px 0 11px;
+    /*border-bottom: solid 2px #fff;*/
+    @include box_shadow;
+    min-width: 100%;
+    @include gradient;
+    
+    span, a{
+        display: inline-block;
+        font-size: 18px;
+    }
+    span{
+        color: #fff;
+        margin-right: 15px;
+    }
+    a{
+        font-weight: bold;
+        color: #ffffff;
+        &.button{padding: 5px 10px;}
+    }
+}
+ 
+
+
+

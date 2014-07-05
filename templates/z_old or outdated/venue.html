@@ -1,0 +1,15 @@
+{% if venue %}
+    
+    <h2>Venue</h2>
+    <p>{{venue}}, {{city}}</p>
+    
+    <div class="spacer map">
+        <a href="https://maps.google.com/maps?q=151+University+Avenue,+Palo+Alto,+CA&hl=en&ll=37.444199,-122.163576&spn=0.001322,0.003039&sll=37.269174,-119.306607&sspn=10.781315,24.89502&oq=151+univer&hnear=151+University+Ave,+Palo+Alto,+California+94301&t=m&z=19">
+            <img src="/images/map_palantir.jpg" alt="Map to Palantir">
+        </a>
+    </div>
+    <div class="spacer">
+        <a href="/info#parking"><b>Parking information</b></a>
+    </div>
+
+{% endif %}

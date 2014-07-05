@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %} Investor and company registration to pitch problems | Prebacked {% endblock %}
+
+
+
+{% block styles %}
+<link rel="stylesheet" href="css/pages.css" type="text/css" media="screen" />
+{% endblock %}
+
+
+
+{%block content%}
+
+<div id="page_wrap" class="container_12">
+    <div id="signup_header" class="grid_10 push_1">
+        <h3>This event is focused on <strong>{{industry}}</strong></h3>
+        <p>Not your cup of tea?  <a href="/vote">Vote for the next one.</a></p>
+        <p id="vc_what_to_do">If you haven't heard from us directly, it isn't because we don't like you, it's because we don't know you
+        (yet). Please fill out this form so we can get to know you better.
+        </p>
+    </div>
+</div>
+{%endblock%}
+
+{%block lowerContent%}
+    <div class="grid_10 push_1">
+        <iframe class="section" src="https://docs.google.com/spreadsheet/embeddedform?formkey=dHZMZkdLb05LVzlvLUNMeUJrN0YwUHc6MQ&bc=CED2BA&ttl=0" allowtransparency="true" width="760" height="712" frameborder="0" marginheight="0" marginwidth="0" style="background:none !important;">Loading...</iframe>
+    </div>
+
+{%endblock%}
