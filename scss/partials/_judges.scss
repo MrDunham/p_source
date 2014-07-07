@@ -15,13 +15,13 @@
     background-color: $silver;
     
     @include transition(all, 0.16s, linear);
-    
-    &:hover{
-      img {top: -12.5em; } //= 200 / 16
-      .label { bottom: 200px; } //= 200 / 12
-      .description { color: $silver; }
-    }
 
+  }
+  
+  &:hover {
+    img { top: -12.5em; } //= 200 / 16
+    .label { bottom: 16.666666667em; } //= 200 / 12
+    .description { color: $silver; }
   }
 
   @media screen and (max-width: 800px) {
@@ -32,7 +32,7 @@
     max-height: 100%;
     margin: 2.5% auto; // 20 / 800
 
-    width: 38.75em; //= 620/16
+    width: 38.75em; //= 620 / 16
 
     img { 
       top: auto;
@@ -40,23 +40,23 @@
       width: 12.5em;
     }
 
+    &:hover {
+    img { top: 0em; } //= 200 / 16
+    .label { bottom: 0em; } //= 200 / 12
+    .description { color: $silver; }
+  }
+
     @include transition(none);
 
     @media screen and (max-width: 520px){
       width: 90% !important;//= 500/ 520
-      padding: 3.8461538%; //= 20/520
+      padding: 3.8461538%; //= 20 / 520
       
       img, .label, .description { 
         display:block;
         position: relative;
         float: none;
         text-align: center;
-      }
-
-      .label {
-        font-size: 1.25em; //= 20 / 16
-        margin: 6.9230769% auto; // 36 / 520
-        line-height: 0; //= 24 / 20
       }
     }
   }
@@ -68,9 +68,9 @@
    bottom: 0em;
    z-index: 2;
    width: 100%; 
-   padding: 03.1914894% 0; //= 30 / 16
+   padding: 1.5625em 0; //= 25 / 16
    font-size: 0.75em; //= 12 / 11
-   line-height: 5.416666667em; //= 65 / 12
+   // height: 5.416666667em; //= 65 / 12
    font-weight: bold;
    color: $silver;
    
@@ -91,20 +91,24 @@
     color: $purple_light;
     background-color: transparent;
 
+    @include transition(none);
   
   }
 }
 
 .description { 
   position:relative;
-  top: -12.5em; // -200 / 16
-  padding: 0.625em; //= 10 / 16
+  top: -14.285714286em; //= -200 / 14
+  z-index:0; 
+  padding: 0.714285714em; //= 10 / 14
   margin: 0 auto;
-  height: 12.5em; //= 200 / 16 
+  height: 14.285714286em; //= 200 / 14 
   color: $purple_dark;
   background-color: $purple_dark;
+  font-size: 0.875em;
+  text-align: left;
 
-  z-index:0; 
+
   
   @include transition(all, 0.16s, linear);
   
@@ -121,6 +125,9 @@
     text-align: left;
     font-size: 1em;
     color: $silver;
+
+    @include transition(none);
+
   }
 }
 

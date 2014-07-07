@@ -46,10 +46,9 @@
     display:block;
     padding: 0 0 3.75%; //= 54 / 1440
     width:100%;
-    
-    
-    } 
-  }
+        
+  } 
+}
 
 
 // Buttons =====================================
@@ -64,6 +63,7 @@
   &:hover { color: $color_primary; }
 
 }
+
 
 // Static button Styles
 
@@ -87,10 +87,8 @@
     display: block;
     position: relative;
     font-size: 0.875em; // = 14px / 16px
-    border-radius: 6px;
+    border-radius: 5px;
     text-decoration: none;
-    // letter-spacing: 0.083333333em;
-    
     outline: none;
     cursor: pointer;
 
@@ -100,7 +98,6 @@
 
   }
 }
-
 
 
 // Placeholder Engine
