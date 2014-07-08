@@ -15,14 +15,13 @@
     background-color: $silver;
     
     @include transition(all, 0.16s, linear);
-    
-    &:hover{
-      img {top: -12.5em; } //= 200 / 16
-      .label { bottom: 200px; } //= 200 / 12
-      .description { color: $silver; }
-    }
 
   }
+     &:hover{
+      img {top: -12.5em; } //= 200 / 16
+      .label { bottom: 16.666666667em; } //= 200 / 12
+      .description { color: $silver; }
+    }
 
   @media screen and (max-width: 800px) {
     // block reset
@@ -68,7 +67,7 @@
    bottom: 0em;
    z-index: 2;
    width: 100%; 
-   padding: 03.1914894% 0; //= 30 / 16
+   padding: 1% 0; //= 20 / 200
    font-size: 0.75em; //= 12 / 11
    line-height: 5.416666667em; //= 65 / 12
    font-weight: bold;

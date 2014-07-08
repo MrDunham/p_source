@@ -18,8 +18,6 @@ img { max-width: 100%; }
 
 } 
 
-
-
 %sponsor {
   display: inline-block;
   margin: 0 0 0 1.0638298%; // = 10px / 940px
@@ -33,11 +31,8 @@ img { max-width: 100%; }
   @extend %sponsor; 
   display: inline-block;  
   position: relative;
-  max-width: 14.375; //= 230px / 16px
-  
-  // @media screen and (max-width: 768px){
-  //   width: 
-  // }
+  max-width: 14.375em; //= 230px / 16px
+
 }
 
 .featured-sponsor {
@@ -60,7 +55,7 @@ img { max-width: 100%; }
   @extend %sponsor;
   display: inline-block;  
   position: relative;
-  max-width: 14.375; //= 230px / 16px
+  max-width: 14.375em; //= 230px / 16px
   background-color: black;
 }
 
