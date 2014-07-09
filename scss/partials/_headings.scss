@@ -1,0 +1,84 @@
+
+header {
+  margin-bottom: 2.5%; // = 36px / 1440px
+  padding-top: 1.9148936%; // = 18px / 940px
+  text-align:center; 
+
+} 
+ 
+h1 { 
+  font-size: 3em; // = 36px / 16px
+  line-height: 1em; // = 54px / 54px
+  margin: 0 0 0.19148936%; //  = 18px / 940
+
+} 
+
+
+h2 { 
+  font-size: 1.25em; // = 24px / 16px
+  line-height: 1.5em;
+  margin: 0 0 0.5em; // = 18px / 36px  
+} 
+
+
+h3 { 
+  font-size: 1.125em; // = 18px / 16px
+  line-height: 1.5em; // = 24px / 16px
+ } 
+
+
+h4 { 
+  margin: 0; 
+  font-size: 1em;
+  line-height: 1.5em; 
+}
+
+
+// Unique 
+
+#banner, #event-header {
+  margin: 0; // reset special header margin
+  padding: 0 0 3.75%; //= 54 / 1440
+}
+
+
+#banner {
+  width: 100%;
+  background: url('../images/photos/medhack-welcome-banner.jpg') no-repeat center;
+  background-size: cover;
+  color: $silver;
+
+  p { font-size: 1.25em; } //= 20px / 16px 
+  
+  @media screen and (max-width: 700px) {
+    background-image: none;
+    background-color: $purple_dark;
+  }
+
+}
+
+
+#event-header { 
+           
+    .date { 
+      color: $purple_light; 
+      font-size: 1.125em; } //= 18 / 16
+    
+    h1, h2 { 
+      margin-top: 0em; 
+      .i { color: $purple_mid; }
+    }
+
+    h1 { font-size: 2.25em; } //= 36 / 16 
+}
+
+
+#featured-sponsors {
+  header { font-size: 0.6em; }
+}
+
+
+#overview{
+  header {font-size: 1.25em;}
+}
+

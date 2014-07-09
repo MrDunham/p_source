@@ -1,0 +1,23 @@
+.venu { 
+  display: block;
+  position: relative;
+  width: 100%;
+  text-align: left; 
+  margin: 0 0 2.1276596%; //= 20 / 940
+  
+  h3 { 
+    font-size: 1.5em; //= 24 / 16 
+    padding: 0.416666667em 0 0; // = 10 / 24
+    margin: 0; // reset h3 margin
+  } 
+  
+  p { margin: 0; } // reset p margin
+  
+}
+
+.venu-img {
+  display: inline-block;
+  position: relative;
+  float: left;
+  margin: 0 2.1276596%; //= 16 / 940
+}

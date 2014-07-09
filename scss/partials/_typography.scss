@@ -1,0 +1,61 @@
+// Baseline Grid:  font: 16px | line-height: 24px
+
+body { 
+  font-size: 100%; 
+  font-family: $font_stack_primary; 
+  color:$font_primary_color;
+}
+
+p { 
+  font-size: 1em; 
+  line-height: 1.5em; //= 24px / 16px
+}
+
+a { 
+  color: $action_orange;
+  text-decoration:none;
+
+  &:hover { color: $action_blue; } 
+  // &:visited { color: $visited_orange; }  
+}
+
+
+li { list-style: none; }
+
+.i { text-decoration: none; }
+
+b { font-size: 1.125em; }
+
+.contact-us{ 
+  margin: 0 auto;
+  
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    font-size: 1.5em; // 24px/16px
+  }
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    font-size: 0.833333333em; // 20px/24px
+  }
+}
+
+
+// Specific
+
+
+.text-left { text-align: left; }
+
+.call-email {
+  margin: 6.75% auto 0 ; //= 54px / 800px;
+  text-align: center;
+  color: $silver;
+  .i { font-size: 2em; color: $purple_light; }
+
+  @media screen and (max-width: 768px){
+    .i { font-size: 1.5em; }
+  }
+}
+
+
+

@@ -1,0 +1,73 @@
+// ===========================================================
+
+//  Author: Patrick Siren ( @patsiren )
+//  Document: Setup variables and mixins
+
+// ===========================================================
+
+// Global 
+
+$Placeholder: (); 
+
+// Color
+
+$black:            rgba(18, 18, 18, 1);      // #121212
+$black-cool:       rgba(41, 44, 48, 1);      // #292C30
+$silver:           rgba(236, 235, 235, 1);   // #ECEBEB
+
+$purple_black:     rgba(0, 15, 52, 1);       // #000F34
+$purple_darker:    rgba(66, 57, 128, 1);     // #423980
+$purple_dark:      rgba(80, 69, 155, 1);     // #50459B         
+$purple_mid:       rgba(132, 114, 249, 1);   // #8472F9
+$purple_light:     rgba(199, 191, 255, 1);   // #C7BFFF
+
+$action_red:       rgba(223, 50, 120, 1);    // #DF3278
+$action_blue:      rgba(95, 133, 254, 1);    // #5F85FE
+$action_orange:    rgba(245, 166, 35, 1);
+$visited_orange:   rgba(207, 151, 58, 1);
+
+$footer_yellow:    rgba(160, 153, 146, 1);   // A09992
+
+
+// Typography
+
+$font_stack_primary: "Helvetica", sans-serif; 
+$font_primary_color: $purple_dark;
+
+
+// Font weights
+
+$light: 100;
+$regular: 400;
+$bold: 600;
+
+
+// Base Font
+
+$base_font_family: sans_serif;
+$base_font_weight: $regular;
+$base_font_size: 13px;
+$base_line_height: 1.4;
+
+
+// Fixed Font
+
+$fixed_font_family: monospace;
+$fixed_font_size: 85%;
+$fixed_line_height: $base_line_height;
+
+
+// Headings
+
+$header_primary_color: darken($purple_dark, 5%);
+$header_font_weight: $bold;
+
+// Layout style
+
+$default_border_radius: 9px;
+
+
+// Get Modules
+@import "../modules/all";
+
+
