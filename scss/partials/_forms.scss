@@ -11,14 +11,17 @@
   position:relative;
   text-align: left;
   margin: 0 auto; 
-  padding: 1.125em; // = 18px / 16px
+  padding: 1.25%; // = 18 / 1440
   border: 1px solid rgba(151,151,151,0.20);
   border-radius: $default_border_radius;
   background-color: white;
-
 }
 
-#mc-embedded-subscribe-form {}
+#mc-embedded-subscribe-form {
+    @media screen and (max-width: 768px) {
+    text-align:center;
+  }
+}
 
 #mce-EMAIL {
   display: inline-block;
@@ -32,6 +35,25 @@
   color: #BCBCBC;
   padding-left: 10px;
 
+  @media screen and (max-width: 768px) {
+    display: block;
+    width: 93.75%; //= 720 / 768
+    padding: 2.6041667%; //= 20 / 768 
+    margin: 0 auto;
+  }
+
 }
 
-#mce-embedded-subscribe{ width: 31.25%; } // = 300px / 960px = 0.3125em 
+#mce-embedded-subscribe { 
+  width: 31.9148936%; //= 300px / 940px
+
+  @media screen and (max-width: 768px) {
+    display: block;
+    position: relative;
+    width: 100% !important;
+    margin: 0 auto;
+
+  }
+
+} 
+  

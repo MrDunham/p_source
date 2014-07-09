@@ -49,6 +49,26 @@ img { max-width: 100%; }
     line-height: 1.5em;
     // margin: 0 0 0 3.4375em;
      }
+
+  @media screen and (max-width: 768px) {
+    img { 
+      float: none; 
+      margin: 0 auto; }
+
+    p { width: 53.3854167% ;}//= 410 / 768 
+
+  }
+
+  @media screen and (max-width: 600px) {
+    
+    p { width: 68.3333333% ;}//= 410 / 600 
+  }
+
+  @media screen and (max-width: 520px) {
+    
+    p { width: 78.8461538% ;}//= 410 / 520 
+  }  
+
 }
 
 .featured-event-sponsor {
