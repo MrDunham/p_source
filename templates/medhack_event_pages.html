@@ -77,13 +77,13 @@
           -->
           {%for f in featured_sponsors%}
 
-            <div class="sponsor">
-              <a href="{{f.sponsor.homepage}}" target="_blank">
-                <div class="featured-event-sponsor">
-                  <img src="/partners?partner_id={{f.sponsor.sponsor_id}}" alt="Prebacked partner {{f.sponsor.name}}"/>
-                </div>
-              </a>
+            
+          <a href="{{f.sponsor.homepage}}" target="_blank">
+            <div class="featured-event-sponsor">
+              <img src="/partners?partner_id={{f.sponsor.sponsor_id}}" alt="Prebacked partner {{f.sponsor.name}}"/>
             </div>
+          </a>
+            
 
           {% endfor %}
 
