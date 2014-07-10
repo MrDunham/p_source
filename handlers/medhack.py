@@ -21,12 +21,15 @@ class MedHackPagesHandler(BaseRequestHandler):
         tier_one_sponsors = []
         tier_two_sponsors = []
         tier_three_sponsors = []
+        featured_sponsors = []
         col1 = [] 
         col2 = [] 
         col3 = []
         faqs = []
         problems = {}
         mentors=[]
+        judges = []
+        panelists = []
         mlist=[]
 
         
@@ -75,9 +78,16 @@ class MedHackPagesHandler(BaseRequestHandler):
         
           #Used here on out
         
-        # Gather mentors for this event
+        # Gather mentors, judges, and panelists for this event
         mentors_events = db.GqlQuery("SELECT * FROM Mentors_Events WHERE event_id = :1 ORDER BY mentor_type DESC, mentor_id ASC", current_event_id)
-        mentors = mentors_events
+        
+        for m in mentors_events:
+            if m.mentor_type == 1:
+                mentors.append(m)
+            if m.mentor_type == 2:
+                judges.append(m)
+            if m.mentor_type == 3:
+                panelists.append(m)
 
         
         all_faq_categories = Faq.gql("WHERE vertical = :1 ORDER BY order", "medhack").fetch(100) #Eventually will want to parse this out by city someone is looking at for event FAQs.
@@ -123,7 +133,8 @@ class MedHackPagesHandler(BaseRequestHandler):
         tier_three_sponsors = Sponsors_Events.gql("WHERE event_name = :1 AND subtype = :2", url,"api sponsor").fetch(20)
 
         media_partners = Sponsors_Events.gql("WHERE event_name = :1 AND subtype= :2", url, "media partner").fetch(20)
-            
+        
+        featured_sponsors = tier_one_sponsors + tier_two_sponsors    
         all_sponsors = tier_one_sponsors + tier_two_sponsors + tier_three_sponsors
         
         date_is_passed = date_passed(year, month, day)

@@ -115,7 +115,7 @@ class Mentors_Events(db.Model):
     event = db.ReferenceProperty(Events,
                                   required=False,
                                   collection_name='events')
-    mentor_type = db.IntegerProperty() # 1 = mentor, 2 = judge, 3 = both
+    mentor_type = db.IntegerProperty() # 1 = mentor, 2 = judge, 3 = both / panelist / VIP
     order = db.IntegerProperty() #used for sorting, is pulled from Mentor.order
 
 class Cities_Events(db.Model):

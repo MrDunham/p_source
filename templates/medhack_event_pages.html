@@ -70,18 +70,22 @@
         <header><h3>Featured Sponsors</h3></header>
 
         <div class="content centered">
-                 
+          <!--       
           <div class="featured-event-sponsor">
             <img src="/images/sponsors/stand-in.png" alt="sponsor">
           </div>
+          -->
+          {%for f in featured_sponsors%}
 
-          <div class="featured-event-sponsor">
-            <img src="/images/sponsors/stand-in.png" alt="sponsor">
-          </div>
+            <div class="sponsor">
+              <a href="{{f.sponsor.homepage}}" target="_blank">
+                <div class="featured-event-sponsor">
+                  <img src="/partners?partner_id={{f.sponsor.sponsor_id}}" alt="Prebacked partner {{f.sponsor.name}}"/>
+                </div>
+              </a>
+            </div>
 
-          <div class="featured-event-sponsor">
-            <img src="/images/sponsors/stand-in.png" alt="sponsor">
-          </div>
+          {% endfor %}
 
         </div>
 
@@ -155,9 +159,25 @@
 
         
         <header>
-          <h3>Grand Prize</h3>
+          <h3>Awards {%if prizes%} and Prizes {%endif%}</h3>
+          <div class="content centered">
+            <div class="third">
+              <h4>Most Practical Solution</h4>
+              <p>How did we ever live without this? Industry needs it... yesterday.</p>
+            </div>
+            <div class="third">
+              <h4>Most Fundable Solution</h4>
+              <p>Great team, big market, innovative approach. Take my money already.</p>
+            </div>
+            <div class="third">
+              <h4>Best Hack</h4>
+              <p>Scan brainwaves with a phone? Measure temperature from a pickle? Well played.</p>
+            </div>
+          </div>
+<!--
           <span span class="i">$10,000 Footrub From Garrett</span>
           <b>With $50,000 In Additional Prizes From Our Partners</b>
+-->
         </header>
         
         <div class="content centered">
@@ -180,17 +200,39 @@
 <!-- Judges  ===================================== -->
 
       <section id ="judges" class="purp-black">
+        {% if panelists %}
+
+          <header><h3>Challenge Pannel</h3></header>
+
+          <div class="content centered">
+            {%for p in panelists%} 
+            
+              <div class="judge">
+                <img src="/img?mentor_id={{p.mentor.mentor_id}}" alt="{{p.mentor.name}} " />    
+                <div class="label">
+                  {{p.mentor.name}} <br/> 
+                  {{p.mentor.title}}, {{p.mentor.company}}
+                </div>
+                <p class="description">{{p.mentor.bio|safe}}</p>
+              </div>  <!-- end judge -->
+            
+            {%endfor%}
+          </div>
+        {% endif %}
 
         <header><h3>{{city}} Judges</h3></header>
 
         <div class="content centered">
           
-          {%for m in mentors%} 
+          {%for j in judges%} 
           
             <div class="judge">
-              <img src="/img?mentor_id={{m.mentor.mentor_id}}" alt="{{m.mentor.name}} " />    
-              <div class="label">{{m.mentor.name}}: {{m.mentor.title}}, {{m.mentor.company}}</div>
-              <p class="description">{{m.mentor.bio|safe}}</p>
+              <img src="/img?mentor_id={{j.mentor.mentor_id}}" alt="{{j.mentor.name}} " />    
+              <div class="label">
+                {{j.mentor.name}} <br/>
+               {{j.mentor.title}}, {{j.mentor.company}}
+             </div>
+              <p class="description">{{j.mentor.bio|safe}}</p>
             </div>  <!-- end judge -->
           
           {%endfor%}
