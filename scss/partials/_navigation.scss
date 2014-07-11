@@ -7,11 +7,6 @@ nav {
   font-weight:bold;
   background-color: rgba(250, 250, 250, 0);
   transition: background-color 0.4s, color 0.5s;
-  
-  // .i {
-  //   color: $purple_darker; 
-  //   transition: color 0.4s;
-  // }
 
   a { 
     color: $silver;
@@ -31,13 +26,58 @@ nav {
       &:hover { color: $silver; }
     }
   }
+
+  @media screen and (max-width: 520px) {
+    
+    width:100%;
+    height: 10.5769231%; //= 55 / 520
+    line-height: 3.4375em; //= 55px / 16px
+    color: $purple-dark;
+    font-size:1.25em; // = 20px / 16px
+    font-weight:bold;
+    background-color: $silver;
+    transition: none;
+  
+    a { 
+     color: $purple_dark;
+     transition: none;
+    }
+
+    &:hover {
+      background-color: $silver;
+      color: $purple_dark;
+      
+      a { 
+        color: $purple_dark; 
+        
+        &:hover { color: $purple_dark; }
+      }
+    }
+  }
 }
 
 .nav-inner {
   max-width: 66.6666667%; /*  960px / 1440px = 48em; */
   text-align: left;
   margin:0 auto; 
+
+  @media screen and ( max-width: 960px ){
+    max-width: 100%; 
+    padding: 0 0.625em; //= 10/16
+  }
+
+
+  @media screen and ( max-width: 768px ){
+    max-width: 91.1458333%; //= 700/768
+  }
+
+  @media screen and ( max-width: 520px ){
+    max-width: 92.3076923%; //= 480/520
+  }
+
 }
+
+
 
 
 .nav-list{

@@ -21,10 +21,7 @@ img { max-width: 100%; }
 %sponsor {
   display: inline-block;
   margin: 0 0 0 1.0638298%; // = 10px / 940px
-  line-height: 0;
-  background-color: black;
-  
-    
+  line-height: 0;   
 }
 
 .sponsor { 
@@ -36,12 +33,13 @@ img { max-width: 100%; }
 }
 
 .featured-sponsor {
-  margin: 0 0 5.7446809% ; //= 54px / 940px
+  margin: 0 0 5.7446809%; //= 54px / 940px
   
   img { 
     float: left;
-    max-width: 25.625em; } //= 410px / 16px 
-
+    max-width: 25.625em;  //= 410px / 16px 
+    width: 100%;
+  }
   p { 
     width: 31.25%; 
     display: inline-block; 
