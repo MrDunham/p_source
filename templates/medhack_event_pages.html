@@ -208,13 +208,18 @@
             {%for p in panelists%} 
             
               <div class="judge">
-                <img src="/img?mentor_id={{p.mentor.mentor_id}}" alt="{{p.mentor.name}} " />    
-                <div class="label">
-                  {{p.mentor.name}} <br/> 
-                  {{p.mentor.title}}, {{p.mentor.company}}
-                </div>
-                <p class="description">{{p.mentor.bio|safe}}</p>
-              </div>  <!-- end judge -->
+              <img src="/img?mentor_id={{p.mentor.mentor_id}}" alt="{{p.mentor.name}} " />   
+               
+              <div class="label">
+                  <p class="name">{{p.mentor.name}} </p>
+                  <p class="details">{{p.mentor.title}}, {{p.mentor.company}}</p>
+              </div>  <!-- end label -->
+              
+              <div class="description">
+                <p>{{j.mentor.bio|safe}}</p>
+              </div> <!-- end description -->
+            
+            </div>  <!-- end judge -->
             
             {%endfor%}
           </div>
@@ -227,12 +232,17 @@
           {%for j in judges%} 
           
             <div class="judge">
-              <img src="/img?mentor_id={{j.mentor.mentor_id}}" alt="{{j.mentor.name}} " />    
+              <img src="/img?mentor_id={{j.mentor.mentor_id}}" alt="{{j.mentor.name}} " />   
+
               <div class="label">
-                {{j.mentor.name}} <br/>
-               {{j.mentor.title}}, {{j.mentor.company}}
-             </div>
-              <p class="description">{{j.mentor.bio|safe}}</p>
+                  <p class="name">{{j.mentor.name}} </p>
+                  <p class="details">{{j.mentor.title}}, {{j.mentor.company}}</p>
+              </div>  <!-- end label -->
+              
+              <div class="description">
+                <p>{{j.mentor.bio|safe}}</p>
+              </div> <!-- end description -->
+            
             </div>  <!-- end judge -->
           
           {%endfor%}
@@ -359,6 +369,8 @@
 
     </div> <!-- end container -->
 
+    <!-- Page footer ====================== -->
+
     <footer>
 
       <div class="content">
@@ -379,7 +391,8 @@
         
     </footer>
 
-    <!-- Vendor Scripts -->
+
+<!-- Scripts ====================== -->
 
     <!--clicky analytics-->
     <script src="//static.getclicky.com/js" type="text/javascript"></script>    
