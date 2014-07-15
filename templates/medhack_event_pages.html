@@ -184,11 +184,11 @@
         <div class="content centered">
           {%for s in all_sponsors%}
 
-            <div class="sponsor">
-              <a href="{{s.sponsor.homepage}}" target="_blank">
-                <img src="/partners?partner_id={{s.sponsor.sponsor_id}}" class="tier_two_sponsor" alt="Prebacked partner {{s.sponsor.name}}"/>
-              </a>
-            </div>
+            <a href="{{s.sponsor.homepage}}" target="_blank">
+              <div class="sponsor">
+                  <img src="/partners?partner_id={{s.sponsor.sponsor_id}}" class="tier_two_sponsor" alt="Prebacked partner {{s.sponsor.name}}"/>
+              </div>
+            </a>
 
           {% endfor %}
 
