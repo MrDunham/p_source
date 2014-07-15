@@ -57,17 +57,18 @@
        
         </div> <!-- end content -->
 
-        <a class="twitter" href="#">twitter</a>
+        <a class="twitter" href="https://twitter.com/prebacked" target="_blank">twitter</a>
 
-        <a class="facebook" href="#">facebook</a></span>
+        <a class="facebook" href="https://facebook.com/prebacked" target="_blank">facebook</a></span>
 
       </header>
       
 <!-- featured sponsors ================== -->
 
+{% if featured_sponsors %}
       <section id="featured-sponsors" class="silver">
 
-        <header><h3>Featured Sponsors</h3></header>
+        <header><h3>Featured Sponsor{{featured_sponsors|pluralize}}</h3></header>
 
         <div class="content centered">
           <!--       
@@ -90,7 +91,7 @@
         </div>
 
       </section> <!-- end featured sponsors -->
-
+{%endif%}
 
 <!-- Overview ==================== -->
 
@@ -216,7 +217,7 @@
               </div>  <!-- end label -->
               
               <div class="description">
-                <p>{{j.mentor.bio|safe}}</p>
+                <p>{{p.mentor.bio|safe}}</p>
               </div> <!-- end description -->
             
             </div>  <!-- end judge -->
