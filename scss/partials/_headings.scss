@@ -74,9 +74,12 @@ h4 {
 
 
 #featured-sponsors {
-  header { font-size: 0.6em; }
+  header { font-size: 0.6em; padding-bottom: 0; margin-bottom: 0;}
 }
 
+#judges {
+  header { padding-bottom: 0; margin-bottom: 0;}
+}
 
 #overview{
   header {font-size: 1.25em;}

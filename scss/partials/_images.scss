@@ -39,7 +39,7 @@ img { max-width: 100%; }
   @extend %sponsor; 
   display: inline-block;  
   position: relative;
-  max-width: 14.375em; //= 230px / 16px
+  width: 14.375em; //= 230px / 16px
 }
 
 .featured-sponsor {
@@ -47,8 +47,10 @@ img { max-width: 100%; }
   
   img { 
     float: left;
-    max-width: 25.625em;  //= 410px / 16px 
+    max-width: 18.625em; // max-width: 25.625em;  //= 410px / 16px - Created HUGE images and looked strange
     width: 100%;
+    padding-right: 1.625em;
+
   }
   p { 
     width: 31.25%; 
@@ -84,6 +86,7 @@ img { max-width: 100%; }
   display: inline-block;  
   position: relative;
   max-width: 14.375em; //= 230px / 16px
+  margin-right: 0;
 }
 
 .past-sponsor {

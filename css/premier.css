@@ -495,7 +495,13 @@ h4 {
   font-size: 2.25em; }
 
 #featured-sponsors header {
-  font-size: 0.6em; }
+  font-size: 0.6em;
+  padding-bottom: 0;
+  margin-bottom: 0; }
+
+#judges header {
+  padding-bottom: 0;
+  margin-bottom: 0; }
 
 #overview header {
   font-size: 1.25em; }
@@ -550,14 +556,15 @@ img {
 .sponsor {
   display: inline-block;
   position: relative;
-  max-width: 14.375em; }
+  width: 14.375em; }
 
 .featured-sponsor {
   margin: 0 0 5.7446809%; }
   .featured-sponsor img {
     float: left;
-    max-width: 25.625em;
-    width: 100%; }
+    max-width: 18.625em;
+    width: 100%;
+    padding-right: 1.625em; }
   .featured-sponsor p {
     width: 31.25%;
     display: inline-block;
@@ -579,7 +586,8 @@ img {
 .featured-event-sponsor {
   display: inline-block;
   position: relative;
-  max-width: 14.375em; }
+  max-width: 14.375em;
+  margin-right: 0; }
 
 .past-sponsor {
   width: 26.5957447%;

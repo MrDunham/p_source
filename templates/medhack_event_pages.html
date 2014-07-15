@@ -38,7 +38,7 @@
           <div class="nav-inner">
             <a href="/">MedHack</a>
             <ul class="nav-list">
-              <a class="nav-link" href="#"><li>sponsors</li></a>
+              <a class="nav-link" href="/medhack/sponsor"><li>Sponsorship opportunities</li></a>
             </ul>
           </div>
         </nav> 
@@ -97,7 +97,7 @@
 
       <section id="overview" class="white">
 
-        <header>
+        <header class="content">
           <h3>Introducing the MedHackathon</h3>
           <p>We're bringing talented developers and medical experts together for a weekend-long hackathon to spark new innovations in healthcare technology.</p>
         </header>
@@ -135,7 +135,7 @@
             </span>
     
             <h3>{%if venue%}{{venue}}{%endif%}</h3>
-            <p>{%if address%}{{address}}{%endif%}</p>           
+            <p>{%if address%}{{address}}, {{city}}{%endif%}</p>           
           <div class="clear"></div>
 
           </header>
@@ -203,7 +203,7 @@
       <section id ="judges" class="purp-black">
         {% if panelists %}
 
-          <header><h3>Challenge Pannel</h3></header>
+          <header><h3>{%if city %}{{city}}{%endif%} Challenge Pannel</h3></header>
 
           <div class="content centered">
             {%for p in panelists%} 
@@ -226,7 +226,7 @@
           </div>
         {% endif %}
 
-        <header><h3>{{city}} Judges</h3></header>
+        <header><h3>{%if city %}{{city}}{%endif%} Judges</h3></header>
 
         <div class="content centered">
           
