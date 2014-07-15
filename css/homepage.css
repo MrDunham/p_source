@@ -28,14 +28,12 @@
   src: url("/fonts/Museo_Slab_500-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/Museo_Slab_500-webfont.woff") format("woff"), url("/fonts/Museo_Slab_500-webfont.ttf") format("truetype"), url("/fonts/Museo_Slab_500-webfont.svg#MuseoSlab500") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 @font-face {
   font-family: 'MuseoSans500';
   src: url("/fonts/MuseoSans_500-webfont.eot");
   src: url("/fonts/MuseoSans_500-webfont.eot?#iefix") format("embedded-opentype"), url("/fonts/MuseoSans_500-webfont.woff") format("woff"), url("/fonts/MuseoSans_500-webfont.ttf") format("truetype"), url("/fonts/MuseoSans_500-webfont.svg#MuseoSans500") format("svg");
   font-weight: normal;
   font-style: normal; }
-
 /*@import "reset";*/
 /*@import "960_12_col";*/
 /*no longer using 960 grid*/
@@ -59,7 +57,7 @@
   font-size: 1.4em; }
 
 #mc_embed_signup input {
-  border: 1px solid #999999;
+  border: 1px solid #999;
   -webkit-appearance: none; }
 
 #mc_embed_signup input[type=checkbox] {
@@ -127,7 +125,7 @@
 #mc_embed_signup div#mce-responses {
   float: left;
   top: -1.4em;
-  padding: 0em 0.5em 0em 0.5em;
+  padding: 0em .5em 0em .5em;
   overflow: hidden;
   width: 90%;
   margin: 0 5%;
@@ -135,7 +133,7 @@
 
 #mc_embed_signup div.response {
   margin: 1em 0;
-  padding: 1em 0.5em 0.5em 0;
+  padding: 1em .5em .5em 0;
   font-weight: bold;
   float: left;
   top: -1.5em;
@@ -155,7 +153,7 @@
   width: auto;
   margin-left: 1.05em;
   text-align: left;
-  padding: 0.5em 0; }
+  padding: .5em 0; }
 
 /*Mixins*/
 /*standards*/
@@ -217,8 +215,8 @@ p, div, span, a {
   width: 100%;
   min-height: 100%;
   bottom: 0;
-  opacity: 0.65;
-  filter: alpha(opacity=65);
+  opacity: 0.45;
+  filter: alpha(opacity=45);
   /* For IE8 and earlier */
   z-index: 0; }
 
@@ -493,7 +491,7 @@ p, div, span, a {
 /***Credibility***/
 .partner {
   position: relative;
-  box-shadow: #666666 0px 1px 1px;
+  box-shadow: #666 0px 1px 1px;
   padding: 5px;
   background: #fff;
   margin-bottom: 15px; }
@@ -666,7 +664,7 @@ p, div, span, a {
     .unlockable_city .unlockable_city_inner p {
       color: #f8f8f8;
       font-size: 26px;
-      text-shadow: 0 0 6px black; }
+      text-shadow: 0 0 6px #000; }
       .unlockable_city .unlockable_city_inner p.city {
         font-size: 18px; }
     .unlockable_city .unlockable_city_inner .text {
@@ -677,7 +675,7 @@ p, div, span, a {
       padding-left: 30px;
       background: url("../images/lock_2.png") no-repeat transparent left top; }
   .unlockable_city #mc_embed_signup {
-    font: 14px Helvetica, Arial, sans-serif;
+    font: 14px Helvetica, Arial,sans-serif;
     z-index: 4;
     position: relative;
     margin-top: 30px;
@@ -690,7 +688,7 @@ p, div, span, a {
   padding: 9px 0;
   min-width: 160px;
   background: rgba(255, 255, 255, 0.8);
-  color: black !important; }
+  color: #000 !important; }
 
 .unlockable_city #mc_embed_signup input.email::-webkit-input-placeholder {
   color: #000; }
