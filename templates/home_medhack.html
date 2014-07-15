@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <head>
     <meta charset= "utf-8">
-    <title>Medhack: Corporate Sponsorship</title>
+    <title>Medhack Hackathon Platform</title>
     
     <!-- Set the width of the browser's viewport to the width of a device's screen -->
     <meta name= "viewport" content="initial-scale=1.0, width=device-width" />
@@ -18,9 +18,23 @@
     <!--Open Graph (facebook) Properties-->
     <meta property="og:site_name" content="MedHack, by Prebacked"/>
     <meta property="og:url" content="http://prebacked.com/medhack/{{url}}"/>
-    <meta property="og:description" content="A 24 hour healthcare hackathon."/>
-    <meta property="og:title" content="A 24 Hour Health Hackathons | MedHack"/>
+    <meta property="og:description" content="Build technology that changes lives at a MedHack"/>
+    <meta property="og:title" content="24 Hour Health Hackathons | MedHack"/>
 
+    <!--goog analytics, must be in header-->
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-30100162-2']);
+      _gaq.push(['_setDomainName', 'prebacked.com']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
   </head>
   
   <body>
