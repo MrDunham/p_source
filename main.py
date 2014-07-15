@@ -132,8 +132,8 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
             seen_sponsors = set()
             
 
-            upcoming_events = db.GqlQuery("SELECT * FROM Events Where event_num = :1 AND full_date > :2 ORDER BY full_date DESC", event_num, datetime.date.today())
-            previous_events = db.GqlQuery("SELECT * FROM Events Where event_num = :1 AND full_date < :2 ORDER BY full_date DESC LIMIT 3", event_num, datetime.date.today())
+            upcoming_events = db.GqlQuery("SELECT * FROM Events Where event_num = :1 AND full_date > :2 AND publish = :3 ORDER BY full_date DESC", event_num, datetime.date.today(), True)
+            previous_events = db.GqlQuery("SELECT * FROM Events Where event_num = :1 AND full_date < :2 AND publish = :3 ORDER BY full_date DESC LIMIT 3", event_num, datetime.date.today())
 
             try:
                 test = upcoming_events[0]

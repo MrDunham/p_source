@@ -65,6 +65,13 @@ indexes:
 
 - kind: Events
   properties:
+  - name: event_num
+  - name: publish
+  - name: full_date
+    direction: desc
+
+- kind: Events
+  properties:
   - name: publish
   - name: full_date
 

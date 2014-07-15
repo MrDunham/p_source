@@ -56,9 +56,9 @@
 
       <section id="Cities" class="silver">
         <div class="content centered">
-          
+          {% if upcoming_events%}
           <header><h3>Upcoming events</h3></header>
-            
+          {% endif %}
           {%for e in upcoming_events%}
             <div class="event">
               <img src="/images/icons/medhack-event-location.png" alt="MedHack Event Location">
