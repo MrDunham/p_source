@@ -40,8 +40,7 @@
     <!--End open graph properties-->
     
     <link rel="stylesheet" href="css/chosen.css" media="screen" type="text/css"/>
-    <!--<link rel="stylesheet" href="css/960_24_col.css" type="text/css" media="screen" />-->
-    <!--<link rel="stylesheet" href="css/jquery_tabs.css" type="text/css" media="screen" />-->
+
     <link rel="stylesheet" href="css/style.css" media="screen" type="text/css"/>
     <link rel="stylesheet" href="css/foundation.css" /> <!--foundation - included for debugging, remove when finished (included in standard_import.scss)-->
     <link rel="stylesheet" href="css/homepage.css" media="screen" type="text/css"/>
@@ -76,17 +75,11 @@
       })();
     </script>
     
-    <!-- HitTail Code -->
-    <script type="text/javascript">
-            (function(){ var ht = document.createElement('script');ht.async = true;
-              ht.type='text/javascript';ht.src = '//102627.hittail.com/mlt.js';
-              var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ht, s);})();
-    </script>
-    
+
 </head>
 
 <body>
-<div class="off-canvas-wrap">
+<div class="off-canvas-wrap" data-offcanvas>
 <div class="inner-wrap">
     {%block info_bar%}{%endblock%}
     
@@ -95,17 +88,16 @@
 <section class="main-section">
     <div id="homepage{%block page%}{%endblock%}">
         <div id="upperInfoContainer" class="color_scheme_{%block color_scheme%}default{%endblock%} color_scheme_backup">
-            
             <div id="upperInfoInner" class="">
                 <div id="linkBar" class="">
                     <div id="" class="linkBarInner row">
-                        
                         <div id="" class="logoarea small-12 medium-12 large-4 large-uncentered columns">
-                            <a href="/" class="piclink show-for-medium-up"><img id="" src="images/logo.png" class="" alt="Prebacked, accelerating enterprise innovations and startup contracts."></a>
-                            <a href="/" class="piclink show-for-small-only left-off-canvas-toggle"><span></span><img id="" src="images/prebacked_logo_white_small.png" class="" alt="Prebacked, accelerating enterprise innovations and startup contracts."></a>
+                            <a href="/" class="piclink show-for-medium-up"><img src="images/logo.png" class="" alt="Prebacked, accelerating enterprise innovations and startup contracts."/></a>
+                            <a href="#" class="piclink show-for-small-only left-off-canvas-toggle"><span></span></a>
+                            <img src="images/prebacked_logo_white_small.png" class="show-for-small-only left-off-canvas-toggle" alt="Prebacked, accelerating enterprise innovations and startup contracts."/>
+                            
                         </div>
-                        <a class="left-off-canvas-toggle menu-icon show-for-small-only" ><span class=""></span></a>
-                        
+                        <a class="left-off-canvas-toggle menu-icon show-for-small-only" href="#"><span class=""></span></a>
                         {% include 'partials/main_menu.html' %}
                     </div>
                     
@@ -144,13 +136,17 @@
 
 
 
+    
+    
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
+
     <script>
         $(document).foundation();
     </script>
-    
-    <script src="js/smoothScroll.js" type="text/javascript" ></script>
+
+    <!--<script src="js/smoothScroll.js" type="text/javascript" ></script>-->
+    <!-- 
     <script type="text/javascript" >
     function nav_show(parent_class){
         
@@ -158,9 +154,10 @@
         $(parent_class).toggleClass('showme');
         $(child_class).toggleClass('showme');
     };
-    
     </script>
+    -->
     
+    <!--
     <script type="text/javascript">
                
         $(document).ready(function(){
@@ -187,6 +184,7 @@
         
     
     </script>
+-->
     
     <script type = "text/javascript">
         // Handles header link highlighting
@@ -209,9 +207,11 @@
         if (path == "conversations" || path == "medhack" || path == "event_board"){$("#link_events").addClass("active");};
         
     </script>
+
     {%block scripts%}{%endblock%}
     {% block unrestricted_bottom %}{% endblock %}
-</body>
+
+    </body>
 
 
 </html>
