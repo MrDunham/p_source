@@ -120,8 +120,22 @@ indexes:
   properties:
   - name: event_id
   - name: mentor_type
+  - name: mentor.order
+    direction: desc
+
+- kind: Mentors_Events
+  properties:
+  - name: event_id
+  - name: mentor_type
   - name: order
   - name: mentor_id
+
+- kind: Mentors_Events
+  properties:
+  - name: event_id
+  - name: mentor_type
+  - name: order
+    direction: desc
 
 - kind: Mentors_Events
   properties:
@@ -137,6 +151,21 @@ indexes:
   - name: mentor_type
     direction: desc
   - name: mentor_id
+
+- kind: Mentors_Events
+  properties:
+  - name: event_id
+  - name: mentor_type
+    direction: desc
+  - name: order
+
+- kind: Mentors_Events
+  properties:
+  - name: event_id
+  - name: mentor_type
+    direction: desc
+  - name: order
+    direction: desc
 
 - kind: Mentors_Events
   properties:
@@ -147,6 +176,12 @@ indexes:
   properties:
   - name: event_id
   - name: order
+
+- kind: Mentors_Events
+  properties:
+  - name: event_id
+  - name: order
+    direction: desc
 
 - kind: Mentors_Events
   properties:

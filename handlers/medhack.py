@@ -4,6 +4,7 @@ from google.appengine.api import urlfetch
 
 from functions.getlots import *
 from functions.getSponsors import *
+from operator import itemgetter
 
 from handlers.basehandler import *
 import datetime
@@ -79,8 +80,9 @@ class MedHackPagesHandler(BaseRequestHandler):
           #Used here on out
         
         # Gather mentors, judges, and panelists for this event
-        mentors_events = db.GqlQuery("SELECT * FROM Mentors_Events WHERE event_id = :1 ORDER BY mentor_type DESC, mentor_id ASC", current_event_id)
         
+        #### Proper way, but not sorting correctly
+        mentors_events = db.GqlQuery("SELECT * FROM Mentors_Events WHERE event_id = :1 ORDER BY mentor_type DESC, order ASC", current_event_id)
         for m in mentors_events:
             if m.mentor_type == 1:
                 mentors.append(m)
@@ -88,6 +90,8 @@ class MedHackPagesHandler(BaseRequestHandler):
                 judges.append(m)
             if m.mentor_type == 3:
                 panelists.append(m)
+        ####
+        
 
         
         all_faq_categories = Faq.gql("WHERE vertical = :1 ORDER BY order", "medhack").fetch(100) #Eventually will want to parse this out by city someone is looking at for event FAQs.

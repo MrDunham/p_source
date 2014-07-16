@@ -1,7 +1,7 @@
 <!DOCTYPE html>
   <head>
     <meta charset= "utf-8">
-    <title>{%if city%}{{city}} {%endif%}MedHack| A 24 Hour Healthcare Hackathon</title>
+    <title>{%if city%}{{city}} {%endif%}MedHack| A 24 Hour Health Care Hackathon</title>
     
     <!-- Set the width of the browser's viewport to the 
 
@@ -14,7 +14,7 @@
     
     {%endif%}
 
-    <meta http-equiv="description" content="A 24 hour healthcare hackathon."/>
+    <meta http-equiv="description" content="A 24 hour health care hackathon."/>
 
     {# Stylesheets #}
     <link rel="stylesheet" href="../css/premier.css">
@@ -22,7 +22,7 @@
     <!--Open Graph (facebook) Properties-->
     <meta property="og:site_name" content="MedHack, by Prebacked"/>
     <meta property="og:url" content="http://prebacked.com/medhack/{{url}}"/>
-    <meta property="og:description" content="A 24 hour healthcare hackathon {%if city%}in {{city}}{%endif%}."/>
+    <meta property="og:description" content="A 24 hour health care hackathon {%if city%}in {{city}}{%endif%}."/>
     <meta property="og:title" content="24 Hour Health Hackathon | MedHack"/>
 
     <script type="text/javascript">
@@ -112,24 +112,27 @@
 
         <header class="content">
           <h3>Introducing the MedHackathon</h3>
-          <p>We're bringing talented developers and medical experts together for a weekend-long hackathon to spark new innovations in healthcare technology.</p>
+          <p>We're bringing talented developers and medical experts together for a weekend-long hackathon to spark new innovations in health care technology.</p>
         </header>
 
         <div class="content">
 
           <div class="third centered">
             <h3><span class="i">Learn</span></h3>
-            <p>Get hands on training with the technologies shaping the landscape of healthcare from the leading experts who built them</p>
+            <p>
+              Learn challenges facing the health care industry from the industry executives that face challenges every day
+              {# Get hands on training with the technologies shaping the landscape of health care from the leading experts who built them #}
+            </p>
           </div>
 
           <div class="third centered">
             <h3><span class="i">Build</span></h3>
-            <p>Work with like-minded professionals to develop exciting new healthcare products for web, mobile, and desktop platforms</p>
+            <p>Work with like-minded professionals to develop exciting new health care products for web, mobile, and desktop platforms</p>
           </div>
 
           <div class="third centered">
             <h3><span class="i">Compete</span></h3>
-            <p>Gather your team and go head to head with your peers to see who can build the most amazing new products in healthcare tech</p>
+            <p>Gather your team and go head to head with your peers to see who can build the most amazing new products in health care tech</p>
           </div>
 
         </div> <!-- end content -->
@@ -189,8 +192,8 @@
             </div>
           </div>
 <!--
-          <span span class="i">$10,000 Footrub From Garrett</span>
-          <b>With $50,000 In Additional Prizes From Our Partners</b>
+          {# <span span class="i">$10,000 Footrub From Garrett</span> #}
+          {# <b>With $50,000 In Additional Prizes From Our Partners</b> #}
 -->
         </header>
         
@@ -216,7 +219,7 @@
       <section id ="judges" class="purp-black">
         {% if panelists %}
 
-          <header><h3>{%if city %}{{city}}{%endif%} Challenge Pannel</h3></header>
+          <header><h3>{%if city %}{{city}}{%endif%} Challenge Panel</h3></header>
 
           <div class="content centered">
             {%for p in panelists%} 
@@ -364,9 +367,9 @@
 
         {% for f in all_faq_categories%} 
           
-          <h4><b>{{f.question}}</b></h4>
+          <h4><b>{{f.question|safe}}</b></h4>
           
-          <p class="answer">{{f.answer}}</p>
+          <p class="answer">{{f.answer|safe}}</p>
         
         {%endfor%}
 
@@ -390,7 +393,7 @@
       <div class="content">
           
         <div id="company-info" class="left">
-          <p>Medhack: Healthcare Hackathon Events 
+          <p>Medhack: Health care Hackathon Events 
           <br /> &copy; 2014 Prebacked</p>
         </div>
         

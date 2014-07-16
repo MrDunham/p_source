@@ -143,6 +143,7 @@ class AdminAddHandler(webapp2.RequestHandler):
                 mentor_event.event_id = event_id #Mostly depreciated, used to easily read entries
                 mentor_event.mentor = the_mentor
                 mentor_event.mentor_id = mentor_id #Mostly depreciated, used to easily read entries
+                mentor_event.order = the_mentor.order
                 mentor_event.mentor_type = int(self.request.get('mentor_type'))
                 
                 message = mentor.mentor_id + " added to " + mentor_event.event_id
