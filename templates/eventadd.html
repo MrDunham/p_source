@@ -177,6 +177,12 @@
                 Description:<br/>
                 <input type="text" style="width: 80%" value="{{e.description}}" name="description"/>
                 {% endif %}
+
+                {% if e.ticketing %}
+                <br/>
+                Ticketing:<br/>
+                <input type="text" style="width: 80%" value="{{e.ticketing}}" name="ticketing"/>
+                {% endif %}
                 
                 
                 <input type="submit">
