@@ -1169,16 +1169,56 @@ nav {
   .inner {
     max-width: 100%;
     padding: 0 0.625em; } }
+.ninty {
+  width: 89%;
+  display: inline-block; }
+
+.eighty {
+  width: 79%;
+  display: inline-block; }
+
+.seventy {
+  width: 69%;
+  display: inline-block; }
+
+.sixty {
+  width: 59%;
+  display: inline-block; }
+
+.fifty {
+  width: 49%;
+  display: inline-block; }
+
+.fourty {
+  width: 39%;
+  display: inline-block; }
+
+.thirty {
+  width: 29%;
+  display: inline-block; }
+
+.twenty {
+  width: 19%;
+  display: inline-block; }
+
+.ten {
+  width: 9%;
+  display: inline-block; }
+
 .half {
   width: 50%;
   display: inline-block; }
 
-.fourty {
-  width: 40%;
+.three-quarter {
+  width: 75%;
   display: inline-block; }
 
 .quarter {
   width: 25%;
+  display: inline-block; }
+
+.two-third {
+  width: 66%;
   display: inline-block; }
 
 .third {
@@ -1200,16 +1240,32 @@ nav {
 .centered {
   text-align: center; }
 
+.text-left {
+  text-align: left; }
+
+.text-right {
+  text-align: right; }
+
 @media screen and (max-width: 800px) {
   .left,
   .right {
     float: none;
     margin: 0 auto; }
 
-  .half,
+  .ninty,
+  .eighty,
+  .seventy,
+  .sixty,
+  .fifty,
   .fourty,
+  .thirty,
+  .twenty,
+  .ten,
+  .three-quarter,
+  .half,
   .quarter,
   .third,
+  .two-third,
   .middle {
     width: 100%;
     overflow: none; } }
