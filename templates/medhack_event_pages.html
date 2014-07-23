@@ -235,7 +235,13 @@
               </div>  <!-- end label -->
               
               <div class="description">
-                <p>{{p.mentor.bio|safe}}</p>
+                <p>
+                  {%if p.mentor.bio %}
+                    {{p.mentor.bio|safe}}
+                  {%else%}
+                    My bio will be available shortly...
+                  {%endif%}
+                </p>
               </div> <!-- end description -->
             
             </div>  <!-- end judge -->
@@ -259,7 +265,12 @@
               </div>  <!-- end label -->
               
               <div class="description">
-                <p>{{j.mentor.bio|safe}}</p>
+                <p>{%if p.mentor.bio %}
+                    {{p.mentor.bio|safe}}
+                  {%else%}
+                    My bio will be available shortly...
+                  {%endif%}
+                </p>
               </div> <!-- end description -->
             
             </div>  <!-- end judge -->
