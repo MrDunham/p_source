@@ -138,6 +138,20 @@
     overflow: none; }
   }
 
+// Size based visability selectors
+  .hide-for-small-only{
+    @media screen and (max-width: 540px) {
+      display: none !important;
+    }
+  }
+  .hide-for-large-only{
+    @media screen and (min-width: 800px) {
+      display: none !important;
+
+    }
+
+  }
+
 // Specific layout selectors
 
 .program { max-width: 23.333333333em; } // 280px / 12px
