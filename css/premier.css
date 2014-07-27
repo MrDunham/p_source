@@ -1269,6 +1269,14 @@ nav {
   .middle {
     width: 100%;
     overflow: none; } }
+@media screen and (max-width: 540px) {
+  .hide-for-small-only {
+    display: none !important; } }
+
+@media screen and (min-width: 800px) {
+  .hide-for-large-only {
+    display: none !important; } }
+
 .program {
   max-width: 23.333333333em; }
 
