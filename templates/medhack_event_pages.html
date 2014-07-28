@@ -143,14 +143,8 @@
 
 <!-- Images / Gallery  ======================= -->
     <section id="gallery" class="white">
-      <div class="third">
-        <img src="/images/medhack/working-on-a-computer.jpeg" alt="" /></div>
-      <div class="third hide-for-small-only">
-        <img src="/images/medhack/hacker-room.jpg" alt="" class="hide-for-small-only"/>
-      </div>
-      <div class="third hide-for-small-only">
-        <img src="/images/medhack/post-its.jpg" alt="" class=""/>
-      </div>
+        <img src="/images/medhack/working-on-a-computer.jpg" alt="" class="third"/><img src="/images/medhack/hacker-room.jpg" alt="" class="third hide-for-small-only"/><img src="/images/medhack/post-its.jpg" alt="" class="third hide-for-small-only"/>
+      
     </section>
 
 <!-- Ticketing  ======================= -->
@@ -276,8 +270,8 @@
               </div>  <!-- end label -->
               
               <div class="description">
-                <p>{%if p.mentor.bio %}
-                    {{p.mentor.bio|safe}}
+                <p>{%if j.mentor.bio %}
+                    {{j.mentor.bio|safe}}
                   {%else%}
                     My bio will be available shortly...
                   {%endif%}
