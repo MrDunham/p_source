@@ -1094,6 +1094,52 @@ nav {
       margin: 3.8709677% auto;
       font-size: 1em; } }
 
+.content .quote {
+  width: 80%;
+  padding-left: 10%;
+  padding-top: 1.3888889%; }
+  .content .quote img, .content .quote div {
+    vertical-align: middle;
+    display: inline-block;
+    position: relative; }
+  .content .quote img {
+    width: 10%;
+    position: relative;
+    border-radius: 5rem; }
+  .content .quote div {
+    width: 88%;
+    margin-left: 1%; }
+    .content .quote div .attributed {
+      font-weight: 100;
+      font-style: italic;
+      color: #c7bfff; }
+  .content .quote.right {
+    padding-right: 10%; }
+    .content .quote.right img {
+      left: 90%; }
+    .content .quote.right div {
+      right: 10%;
+      margin-left: 0;
+      margin-right: 1%;
+      text-align: right; }
+  @media screen and (max-width: 520px) {
+    .content .quote {
+      width: 95%;
+      padding: 5% 3%; }
+      .content .quote img {
+        width: 23%; }
+      .content .quote div {
+        margin-top: 0;
+        width: 70%;
+        margin-left: 4%; }
+      .content .quote.right img {
+        left: 74%; }
+      .content .quote.right div {
+        right: 25%;
+        margin-left: 0; } }
+.content > :first-child.quote {
+  padding-top: 0%; }
+
 .program {
   width: 36.5853659%;
   margin: 0 0 0 9.7560976%; }
