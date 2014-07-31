@@ -1,7 +1,7 @@
 .judge {
   overflow: hidden;
   display:inline-block;
-  max-height: 20.8em; //old was 31.25em; //= 500 / 16
+  max-height: 31.25em; //= 500 / 16
   width: 15.625em; //= 250 / 16
   margin: 0.5319149%; //= 5 / 940
   
@@ -72,15 +72,14 @@
   display: inline-block;
   position: relative;
   width: 100%;
-  padding: 1.25em 0; //= 20 / 16 
+  padding: 0.9375em 0; //= 15 / 16 
   color: $silver;
   text-align: center;
   background-color: $purple_mid;
 
   p {
     margin: 0 auto;
-    padding: 0 0.625em; //= 10 / 16
-    font-size: 0.875; //= 14 / 16
+    font-size: 0.875em; //= 14 / 16
   }
   
   .name { font-weight: bold }
@@ -124,14 +123,13 @@
 .description { 
   display: block;
   position:relative;
-  top: -18.75em; //= -300 / 16
-  z-index:0; 
-  height: 16.125em; //= 258 / 16 
-  padding: 1.25em; //= 20 / 16
+  top: -20.9375em; //= -335 / 16
+  z-index: 0; 
+  height: 19.6875em; //= 315 / 16 
+  padding: 0.625em; //= 10 / 16
   margin: 0 auto;
   background-color: $purple_dark;
-  
-  font-size: 0.875em;
+  font-size: 0.75em; //=12 / 16 
   text-align: left;
   color: $silver;
   
