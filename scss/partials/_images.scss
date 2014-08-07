@@ -21,8 +21,7 @@ img { max-width: 100%; }
 %sponsor {
   display: inline-block;
   margin: 0 0 0 1.0638298%; // = 10px / 940px
-  line-height: 0;
-
+  line-height: 0;   
 }
 
 .sponsor { 
@@ -30,20 +29,6 @@ img { max-width: 100%; }
   display: inline-block;  
   position: relative;
   max-width: 14.375em; //= 230px / 16px
-
-    // I added the code below back, it is meant for the below-the-line images and to protect against large images
-
-  vertical-align: middle;
-  height: 100%;
-  height: 125px;
-  line-height: 125px;
-  background: $silver;
-  margin: 0 0.5319149% 1.0638298% 0;
-  img {
-    vertical-align: middle;
-    padding: 0 10%;
-    max-width: 80%;
-  }
 
 }
 
@@ -89,7 +74,7 @@ img { max-width: 100%; }
   display: inline-block;  
   position: relative;
   max-width: 14.375em; //= 230px / 16px
-  // background-color: black;
+  background-color: black;
 }
 
 .past-sponsor {
