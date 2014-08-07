@@ -113,6 +113,25 @@
 .text-right { text-align: right}
 
 
+.ninty,
+.eighty,
+.seventy,
+.sixty,
+.fifty,
+.fourty,
+.thirty,
+.twenty,
+.ten,
+.three-quarter,
+.half,
+.quarter,
+.third,
+.two-third,
+.middle {
+  vertical-align: top;
+  }
+
+
 @media screen and ( max-width: 800px ) {
   .left, 
   .right {
@@ -135,7 +154,8 @@
   .two-third,
   .middle {
     width: 100%;
-    overflow: none; }
+    overflow: none; 
+    }
   }
 
 // Size based visability selectors
@@ -235,4 +255,7 @@
 
 #gallery .third{
   width: 33.33%;
+  @media screen and ( max-width: 540px ) {
+  width: 100%;
+  }
 }

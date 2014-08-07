@@ -1,6 +1,6 @@
 
 header {
-  margin: 0 0 0 2.5%; // = 36px / 1440px
+  margin: 0 2.5% 0 2.5%; // = 36px / 1440px // Garrett update: I added 2.5% to each side to keep it in the middle, was skewing right.
   padding: 1.9148936% 1.9148936%; // = 18px / 940px
   text-align: center; 
 
@@ -31,6 +31,7 @@ h4 {
   margin: 0; 
   font-size: 1em;
   line-height: 1.5em; 
+  
 }
 
 
