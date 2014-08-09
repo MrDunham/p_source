@@ -22,7 +22,7 @@
     <!--Open Graph (facebook) Properties-->
     <meta property="og:site_name"   content="MedHack, by Prebacked"/>
     <meta property="og:url"         content="http://prebacked.com/medhack/{{url}}"/>
-    <meta property="og:description" content="A 24 hour health care hackathon {%if city%}in {{city}}{%endif%}."/>
+    <meta property="og:description" content="Learn challenges from industry experts, form teams, and hack to spark new innovations in health care technology {%if city%}in {{city}}{%endif%}{%if e.fulldate%}, {{e.full_date|date:'D, M jS'}} - {{e.full_date|add_a_day|date:'jS, Y'}}{%endif%} ."/>
     <meta property="og:title"       content="MedHack, a 24 Hour Health Hackathon"/>
     <meta property="og:image"       content="http://www.prebacked.com/images/medhack/working-on-a-computer.jpg" /> 
 
@@ -41,8 +41,10 @@
     </script>
   </head>
 
-  <body>
 
+
+  <body>
+   
 
     <div id="container">
 
@@ -71,14 +73,13 @@
        
         </div> <!-- end content -->
 
-        <a class="twitter" href="https://twitter.com/intent/tweet?text=%23MedHack%2C+Medhackathon+in+{{city}}.+Starts+{{e.full_date|date:'D, M jS'}}%2E+http://prebacked.com/medhack/{{url}}%2C+by+%40prebacked" target="_blank">twitter</a> 
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=Hack+on+industry+challenges+at+%23MedHack+hackathon+in+{{city}}.+{{e.full_date|date:'D, M jS'}}+and+{{e.full_date|add_a_day|date:'jS'}}%2E+http://prebacked.com/medhack/{{url}}%2C+by+%40prebacked" target="_blank" >twitter</a> 
 
 {# <!-- Create custom twitter message tailored for each city --> #}
-        <a class="facebook"id="facebookbtn-link" href="https://www.facebook.com/dialog/share?
-  app_id=145634995501895
-  &display=popup
-  &href=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F
-  &redirect_uri=https://developers.facebook.com/tools/explorer" target="_blank">facebook</a></span>
+        
+        <a class="fb-share-button facebook" href="http://www.facebook.com/sharer.php?s=100&p[title]=titlehere&p[url]=www.prebacked.com/medhack/{{url}}&p[images][0]=http://www.prebacked.com/images/medhack/working-on-a-computer.jpg" target="_blank">facebook</a>
+
+        
 
       </header>
       
@@ -456,6 +457,9 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+    
+
+
 
     <!-- Facebook share -->
     
