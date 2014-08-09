@@ -535,20 +535,20 @@ img {
 .sponsor, .featured-event-sponsor, .past-sponsor {
   display: inline-block;
   margin: 0 0 0 1.0638298%;
-  line-height: 0; }
+  line-height: 0;
+  vertical-align: middle;
+  height: 100%;
+  height: 7.8125em;
+  line-height: 7.8125em;
+  background: #ecebeb; }
+  .sponsor img, .featured-event-sponsor img, .past-sponsor img {
+    vertical-align: middle; }
 
 .sponsor {
   display: inline-block;
   position: relative;
-  max-width: 14.375em;
-  vertical-align: middle;
-  height: 100%;
-  height: 125px;
-  line-height: 125px;
-  background: #ecebeb;
-  margin: 0 0.5319149% 1.0638298% 0; }
+  max-width: 14.375em; }
   .sponsor img {
-    vertical-align: middle;
     padding: 0 10%;
     max-width: 80%; }
 
@@ -556,7 +556,7 @@ img {
   margin: 0 0 5.7446809%; }
   .featured-sponsor img {
     float: left;
-    max-width: 25.625em;
+    max-width: 16.625em;
     width: 100%; }
   .featured-sponsor p {
     width: 31.25%;
