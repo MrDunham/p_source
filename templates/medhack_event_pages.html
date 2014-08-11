@@ -8,12 +8,6 @@
     width of a device's screen -->
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
 
-    {# {%if url != "/"%} 
-      
-      <link rel="canonical" href="http://medhack.prebacked.com">
-    
-    {%endif%} #}
-
     <meta http-equiv="description" content="A 24 hour health care hackathon."/>
 
     {# Stylesheets #}
@@ -22,8 +16,8 @@
     <!--Open Graph (facebook) Properties-->
     <meta property="og:site_name"   content="MedHack, by Prebacked"/>
     <meta property="og:url"         content="http://www.prebacked.com/medhack/{{url}}"/>
-    <meta property="og:description" content="Learn challenges from industry executives, form teams, and hack to spark new innovations in health care technology {%if city%}in {{city}}{%endif%}{%if e.fulldate%}, {{e.full_date|date:'D, M jS'}} - {{e.full_date|add_a_day|date:'jS, Y'}}{%endif%} ."/>
-    <meta property="og:title"       content="MedHack, a 24 Hour Health Hackathon"/>
+    <meta property="og:description" content="Join 150 developers and doctors, learn challenges from industry executives, form teams, and hack to spark innovations in health tech {%if city%}in {{city}}{%endif%}{%if e.full_date%}, {{e.full_date|date:'M jS'}} - {{e.full_date|add_a_day|date:'jS'}}{%endif%}."/>
+    <meta property="og:title"       content="MedHack {%if city%}in {{city}}{%endif%}: 24 Hour Health Hackathon{%if e.full_date%}, {{e.full_date|date:'M jS'}} - {{e.full_date|add_a_day|date:'jS'}}{%endif%}"/>
     <meta property="og:image"       content="http://www.prebacked.com/images/medhack/working-on-a-computer.jpg" /> 
 
     <script type="text/javascript">
