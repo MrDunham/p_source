@@ -49,7 +49,7 @@ img { max-width: 100%; }
 }
 
 .featured-sponsor {
-  margin: 0 0 5.7446809%; //= 54px / 940px
+  margin: 0 0 5.7446809% 11.4893617%;  //= 54px, 108px / 940px
   
   img { 
     float: left;
@@ -61,7 +61,7 @@ img { max-width: 100%; }
     display: inline-block; 
     text-align: left; 
     line-height: 1.5em;
-    // margin: 0 0 0 3.4375em;
+    margin: 0 0 0 3.4375em;  // leave this for balance
      }
 
   @media screen and (max-width: 768px) {
