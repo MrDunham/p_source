@@ -553,7 +553,7 @@ img {
     max-width: 80%; }
 
 .featured-sponsor {
-  margin: 0 0 5.7446809%; }
+  margin: 0 0 5.7446809% 11.4893617%; }
   .featured-sponsor img {
     float: left;
     max-width: 16.625em;
@@ -562,7 +562,8 @@ img {
     width: 31.25%;
     display: inline-block;
     text-align: left;
-    line-height: 1.5em; }
+    line-height: 1.5em;
+    margin: 0 0 0 3.4375em; }
   @media screen and (max-width: 768px) {
     .featured-sponsor img {
       float: none;
@@ -1179,6 +1180,9 @@ nav {
 
   .price {
     margin: 0 0 10px; } }
+#faq p.answer {
+  padding-bottom: 1em; }
+
 #container {
   width: 100%;
   line-height: 1.5em; }
