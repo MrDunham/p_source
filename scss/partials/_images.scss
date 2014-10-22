@@ -20,11 +20,8 @@ img { max-width: 100%; }
 
 %sponsor {
   display: inline-block;
-  margin: 0 0 0 1.0638298%; // = 10px / 940px
+  margin: 0 0 0.6383%; // Updated to give slight padding for when we have > 4 sponsors. //margin: 0 0 0 1.0638298%; // = 10px / 940px
   line-height: 0;
-
-  // I added the code below back, it is meant to protect against large images and center them
-
   vertical-align: middle;
   height: 100%;
   height: 7.8125em;
@@ -89,8 +86,11 @@ img { max-width: 100%; }
   @extend %sponsor;
   display: inline-block;  
   position: relative;
-  max-width: 14.375em; //= 230px / 16px
+  width: 14.375em; //= 230px / 16px //// max-width: 14.375em; //= 230px / 16px
   // background-color: black;
+    img{
+      max-width: 13.75em; // = 14.375 (div) - 10px / 16px/em (=0.65em)
+    }
 }
 
 .past-sponsor {

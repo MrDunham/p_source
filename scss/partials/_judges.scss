@@ -1,7 +1,7 @@
 .judge {
   overflow: hidden;
   display:inline-block;
-  max-height: 20em; //= 320/ 16
+  max-height: 21em; // band-aid for 3 line judge labels // max-height: 20em; //= 320/ 16
   width: 15.625em; //= 250 / 16
   margin: 0.5319149%; //= 5 / 940
   
@@ -22,7 +22,7 @@
   .label {
     bottom: 0em;
     z-index: 2;
-
+    height:3.5em; // band-aid for 3 line judge titles
     @include transition(all, 0.16s, linear);
   }
 

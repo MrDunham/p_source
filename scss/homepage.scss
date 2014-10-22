@@ -127,7 +127,7 @@ border-bottom: none !important;
                     display: inline-block;
                 }
                 li{ // Main links (always desplayed / top line, etc.)
-                    display: inline-block;
+                    display: inline-block !important;
                     
                     a{
                         color: #333;
@@ -196,8 +196,14 @@ border-bottom: none !important;
     #sub_link_bar{
         background: rgba(65,74,89,.55);
         padding: 0;
-        
-        h2{
+        p:first-child{
+            font-size: 1.5rem;
+            color: $white;
+            margin-bottom: 0;
+            margin-top: 0.50rem;
+        }
+
+        h2, h3, h4{
             color: $white;
             
         }
@@ -205,7 +211,8 @@ border-bottom: none !important;
             margin-top: 0.2rem;
             ul{
                 li{
-                    margin-top: 0.7rem;
+                    margin: 0.7rem 0;
+                    font-size: 1rem;
                     a{
                         color: $white;
                         padding: 0.1rem 0.8rem;

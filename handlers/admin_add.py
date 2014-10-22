@@ -19,7 +19,7 @@ class AdminAddHandler(webapp2.RequestHandler):
         mentor_id = None
         template_values = {}
         mentors = db.GqlQuery("SELECT * FROM Mentors ORDER BY name ASC")        
-        events = db.GqlQuery("SELECT * FROM Events WHERE full_date > :1 and event_num in :2 ORDER BY full_date ASC", datetime.date.today(), [1,2,3,4,5,6,7,8,9])
+        events = db.GqlQuery("SELECT * FROM Events WHERE full_date >= :1 and event_num in :2 ORDER BY full_date ASC", datetime.date.today()-datetime.timedelta(days=2), [1,2,3,4,5,6,7,8,9])
         
         
         try:
@@ -197,12 +197,12 @@ class EventAddHandler(webapp2.RequestHandler):
         template_values = {}
         
         try:
-            event_edit = Events.gql("WHERE full_date > :1 ORDER BY full_date", datetime.date.today())
+            event_edit = Events.gql("WHERE full_date >= :1 ORDER BY full_date", datetime.date.today()-datetime.timedelta(days=2))
         except:
             event_edit = {}
         
         try:
-            past_events = Events.gql("WHERE full_date < :1 ORDER BY full_date", datetime.date.today())
+            past_events = Events.gql("WHERE full_date < :1 ORDER BY full_date", datetime.date.today()-datetime.timedelta(days=2))
         except:
             past_events = {}    
             

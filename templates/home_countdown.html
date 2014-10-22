@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Title of the document</title>
+    <title>Repeating countdown timer, by Prebacked</title>
 
     <link rel="stylesheet" href="../css/buttons.css" media="screen" type="text/css"/>
     <link rel="stylesheet" href="../css/basic-jquery-slider.css" type="text/css" media="screen" />
@@ -25,6 +25,13 @@
         body.warning_red{
             background: #f00;
         }
+        body.cooldown{
+            background: #00f;
+        }
+        body.cooldown.warning_red{
+            background: #123;
+        }
+        .cooldown #countdown{color:#def;}
         
         #countdown {
             margin: auto;
@@ -54,7 +61,8 @@
     </audio>
     
     <div id="timing">
-        Time in Minutes: <input type="text" id="timing_input"> <br/>
+        Time in Minutes: <input type="text" id="timing_input"/> <br/>
+        Cooldown Time in Minutes: <input type="text" id="cool_timing_input"/> <br/>
         <button>Start timer</button>
     </div>
     <!---->
@@ -64,22 +72,27 @@
 <script type = "text/javascript">
 
 var timeInSecs;
+var coolTimeInSecs;
 var ticker;
 var warning = 60; //Time before timer runs out for a warning, in seconds
+var cooldown = 0;
 
 $('button').click(function(){
     timing = $("#timing_input").val() * 60;
-    startTimer(timing); 
+    coolTiming = $("#cool_timing_input").val() * 60;
+    startTimer(timing, coolTiming); 
     $('#timing').hide()
 });
 
-function startTimer(secs) {
+function startTimer(secs, coolsecs) {
 timeInSecs = parseInt(secs);
+coolTimeInSecs = parseInt(coolsecs);
 ticker = setInterval("tick()", 1000); 
 }
 
 function tick( ) {
 var secs = timeInSecs;
+var coolsecs = coolTimeInSecs;
 if (secs > 0) {
     timeInSecs--; 
     if (secs == warning){
@@ -89,14 +102,27 @@ if (secs > 0) {
     if (secs == 10){
         $('body').addClass("warning_red");
     }
-} else {
-    // time's up!
+} else if (cooldown == 0) {
+    // start cooldown
+    
     document.getElementById('timeup').play();
     $('body').removeClass("warning");
     $('body').removeClass("warning_red");
+    $('body').addClass("cooldown");
+    
+    cooldown = 1;
+    secs = coolsecs;
+    timeInSecs = coolsecs;
+} else {
+    // Time to start again!
+    // document.getElementById('timeup').play();  // this should be a "start" sound
+    $('body').removeClass("warning");
+    $('body').removeClass("warning_red");
+    $('body').removeClass("cooldown");   
 
+    cooldown = 0;
     clearInterval(ticker);
-    startTimer(timing);  // start again
+    startTimer(timing, coolTiming);  // start again
 }
 
 var hours= Math.floor(secs/3600);

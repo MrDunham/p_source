@@ -49,6 +49,21 @@ class Events(db.Model):
     ticketing = db.TextProperty() # eventbrite ticketing information
     companies = db.StringProperty()
     publish = db.BooleanProperty()
+
+class Challenges(db.Model): #Used for Monthly Challenges
+    challege_title = db.StringProperty()
+    story = db.StringProperty()
+    challenge = db.StringProperty()
+    value = db.StringProperty()
+    schedule = db.ListProperty(basestring, default=[]) #See what StringListProperty does and if it's the right thing to do here
+    advantages = db.StringProperty()
+    approaches = db.StringProperty()
+    unique_id = db.StringProperty()
+    wrapup = db.StringProperty()
+    post_img = db.BlobProperty() #a place to upload a hero image of the event post-dinner. Check if working, left unfinished.
+    publish = db.BooleanProperty()
+
+    
     
 class Mentors(db.Model):
     id = db.StringProperty() # Semi duct taped.  Currently firstname_lastname.  Could cause issues for 2 people of same name, but unlikely for a while.
@@ -82,7 +97,13 @@ class Problems(db.Model):
     #vertical_num = db.IntegerProperty()
     #quarter_num = db.IntegerProperty()
     
-    
+class Teams(db.Model): #Used for winning teams in Monthly Challenges and MedHack
+    team_id = db.StringProperty()
+    name = db.StringProperty()
+    homepage = db.StringProperty()
+    img_file = db.BlobProperty() 
+    blurb = db.StringProperty()
+
 class Sponsors(db.Model):
     sponsor_id = db.StringProperty()
     name = db.StringProperty()

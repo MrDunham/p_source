@@ -71,6 +71,7 @@ class HomepageHandler(BaseRequestHandler):
 
 class PeopleHandler(BaseRequestHandler):
     def get(self):
+        url = "People"
         template_values = {}
         dup_list = [] #list used to avoid duplicates for "friends"
         mentors = []
@@ -132,8 +133,8 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
             seen_sponsors = set()
             
 
-            upcoming_events = db.GqlQuery("SELECT * FROM Events Where event_num = :1 AND full_date > :2 AND publish = :3 ORDER BY full_date DESC", event_num, datetime.date.today(), True)
-            previous_events = db.GqlQuery("SELECT * FROM Events Where event_num = :1 AND full_date < :2 AND publish = :3 ORDER BY full_date DESC LIMIT 3", event_num, datetime.date.today())
+            upcoming_events = db.GqlQuery("SELECT * FROM Events Where event_num = :1 AND full_date > :2 AND publish = :3 ORDER BY full_date DESC", event_num, datetime.date.today()-timedelta(days=2), True)
+            previous_events = db.GqlQuery("SELECT * FROM Events Where event_num = :1 AND full_date <= :2 AND publish = :3 ORDER BY full_date DESC LIMIT 3", event_num, datetime.date.today()-timedelta(days=2), True)
 
             try:
                 test = upcoming_events[0]
@@ -266,30 +267,44 @@ class OtherEventsHandler(BaseRequestHandler):
         self.response.out.write(template.render(path, template_values))
 
 class ImageHandler(BaseRequestHandler):
-  def get(self):
-    mentor_id = self.request.get('mentor_id')
-    mentor = getMentor(mentor_id)
-    if mentor is None:
-        self.response.out.write("No Image")
-    elif mentor.img_file:
-        self.response.headers['Content-Type'] = 'image/jpeg'
-        self.response.out.write(mentor.img_file)
-    else:
-        self.response.out.write("No Image")
-    
+    def get(self):
+
+        mentor_id = self.request.get('mentor_id')
+        mentor = getMentor(mentor_id)
+        
+        if mentor is None:
+            self.response.out.write("No Image")
+        elif mentor.img_file:
+            self.response.headers['Content-Type'] = 'image/jpeg'
+            self.response.out.write(mentor.img_file)
+        else:
+            self.response.out.write("No Image")
+
+class TeamImageHandler(BaseRequestHandler):
+    def get(self):
+        team_id = self.request.get('team_id')
+        team = getTeam(team_id)
+        
+        if team is None:
+            self.response.out.write("No Image")
+        elif team.img_file:
+            self.response.headers['Content-Type'] = 'image/jpeg'
+            self.response.out.write(team.img_file)
+        else:
+            self.response.out.write("No Image")    
 
 class CorporateImageHandler(BaseRequestHandler):
-  def get(self):
-    partner_id = self.request.get('partner_id')
-    sponsor = getCorporate(partner_id)
-    
-    if sponsor is None:
-        self.response.out.write("No Image")
-    elif sponsor.img_file:
-        self.response.headers['Content-Type'] = 'image/png'
-        self.response.out.write(sponsor.img_file)
-    else:
-        self.response.out.write("No image found")
+    def get(self):
+        partner_id = self.request.get('partner_id')
+        sponsor = getCorporate(partner_id)
+        
+        if sponsor is None:
+            self.response.out.write("No Image")
+        elif sponsor.img_file:
+            self.response.headers['Content-Type'] = 'image/png'
+            self.response.out.write(sponsor.img_file)
+        else:
+            self.response.out.write("No image found")
     
     
 
@@ -317,16 +332,13 @@ def getCorporate(partner_id):
     else:
         return None
 
-
-def split_name(self):
-    the_name = self.split();
-    return the_name[0] + '<br/>' + the_name[1];
-
-def getTeam():  #function was to gather Prebacked employees (team members). Old, ugly, and likely broken
-    vert = pickVert()
-    team = Content.gql("WHERE subtype='team'" "ORDER BY order").fetch(10)
-#    old included: WHERE vertical = :1 AND page='index' AND 
-    return team
+def getTeam(team_id):  #Used to get startup information from Teams table
+    result = db.GqlQuery("SELECT * FROM Teams WHERE team_id = :1 LIMIT 1",
+                    team_id).fetch(1)
+    if (len(result) > 0):
+        return result[0]
+    else:
+        return None
 
 def getVCS(page):  #another old function. Don't believe we're using Content table anymore
     vert = pickVert()
@@ -352,6 +364,12 @@ def getSponsors():
             api_sponsors.append(s)
     
     return {'corporate_sponsors':corporate_sponsors, 'service_sponsors':service_sponsors, 'api_sponsors':api_sponsors}
+
+
+
+def split_name(self):
+    the_name = self.split();
+    return the_name[0] + '<br/>' + the_name[1];
 
 ### Not sure if needed anymore ###
 def getPrizes():
@@ -379,8 +397,9 @@ application = webapp2.WSGIApplication([
     # routes.DomainRoute('prehack.prebacked.com', MedHackForwarderHandler),
     webapp2.Route(r'/', handler=HomepageHandler, name='home-main'),
     webapp2.Route(r'/img', handler=ImageHandler),
-    webapp2.Route(r'/people', handler=PeopleHandler, name='home-people'),
     webapp2.Route(r'/partners', handler=CorporateImageHandler),
+    webapp2.Route(r'/teams', handler=TeamImageHandler),
+    webapp2.Route(r'/people', handler=PeopleHandler, name='home-people'),
     webapp2.Route(r'/ignition/sillicon_valley_winter_2013', handler=MisspellHandler, name='ignition-mispelling'),
     webapp2.Route(r'/ignition/<:.*>', handler=IgnitionPagesHandler, name='ignition-main-catchall'),
     #webapp2.Route(r'/ignition', handler=IgnitionHandler, name='ignition-home'),

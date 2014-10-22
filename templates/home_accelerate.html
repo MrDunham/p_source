@@ -10,6 +10,9 @@
     {%include 'partials/sublinkbar_accelerate.html'%}    
 {%endblock%}
 
+
+
+
 {% block upper_info%}
 
 
@@ -21,7 +24,8 @@
 
 {% endblock %}
 
-{%block upper_bg%}{% endblock%}
+
+{%block upper_bg%}<img class="show-for-medium-up" alt="Bridging startups and enterprise corporations" src="images/bgs/bridge_and_lights.jpg" id="headerImg" alt="" />{% endblock%}
 
 {% block middle_info%}
 
@@ -233,12 +237,33 @@
         <div id="connected_form" class="small-12 medium-7 large-5 end columns">
             
                 <form action="http://prebacked.us5.list-manage.com/subscribe/post?u=3572fa1f9d829a0cc324cce2a&amp;id=f29adcde57" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-                        <!------Auto loads the Explicit group tag.  Tested on Chrome and FF 11 ------>
+                        {### Auto-load hidden tags ###}
+                        {# Explicit tag  #}
                         <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
                             <input type="checkbox" checked="checked" id="group_1" name="group[7405][1]" value="1" style="-webkit-appearance: checkbox;display: inline !important;margin: 0;padding: 5px;border: 0;background: none;width: auto !important;font-family: Helvetica;font-size: 18;color: #F5F5F5;">
                             <label for="group_1" style="float: none;clear: none;display: inline;width: auto;margin-top: 8px;text-align: left;font-weight: normal;position: relative;line-height: 150%;font-family: Helvetica;font-size: 14px;color: #333333;padding: 0 30px 0 3px;">Explicit Signups</label>
                         </li>
-                        <!------/Load tag-------->
+                        {# Prebacked monthly subscription #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <label class="checkbox" for="group_4194304">
+                                <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_4194304" name="group[17685][4194304]" value="1" class="av-checkbox"><span>Monthly challenges (3 emails a month)</span> 
+                            </label>
+                        </li>
+
+                        {# Prebacked accelerator subscription #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <label class="checkbox" for="group_8388608">
+                                <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_8388608" name="group[17685][8388608]" value="1" class="av-checkbox"><span>Accelerator program (4 emails a year)</span> 
+                            </label> 
+                        </li>
+
+                        {# Prebacked hackathons subscription #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <label class="checkbox" for="group_2097152">
+                                <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_2097152" name="group[17685][2097152]" value="1" class="av-checkbox"><span>Prebacked Hackathons (4 emails a year)</span> 
+                            </label> 
+                        </li>
+                        {# /Load tags #}
                         <input id="" class="email large-12" type="email" value="" style="" name="EMAIL"  placeholder="email address" required>
                         <input id="" class=" button large-8 end" type="submit" style="" value="Stay in the loop" name="subscribe"/>
                 </form>

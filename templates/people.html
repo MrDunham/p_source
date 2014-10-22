@@ -20,36 +20,10 @@
     
 {% endblock %}
 
-{%block upper_bg%}<!--<img src="images/headerimg2.jpg" id="headerImg" alt="Hackers starting a startup">-->{% endblock%}
+{%block upper_bg%}<img src="images/bgs/people.jpg" id="headerImg" alt="Prebacked loves to work with great people" class="show-for-medium-up">{% endblock%}
 
 {% block middle_info%}
 <div id="team_page">
-
-{% if team_asdf%} <!--temporarily disabled team.  Images aren't working and it needs a makeover anyways-->
-<h3>Team</h3>
-
-{% for t in team %} 
-
-<div class="team_member_container col_1 alpha omega">
-    
-    <div class="team_member_img partner grid_4 alpha">
-        <img src="images/{{t.pic}}" alt="{{t.name}} Headshot" class=""/>  
-    </div>
-    <div class="team_text">
-        <p class="headline">{{t.name}} {%if t.title%}<span class="title">{{t.title}}</span>{%endif%}</p>
-        {%if t.bio%}<p class="">{{t.bio}}</p>{%endif%}
-    </div>
-    
-    <br class="clear"/>
-    
-    {%if t.link%}<a href="{{t.link}}" target="_blank">{%endif%}
-    
-    {%if t.link%}</a>{%endif%}
-</div>
-{%endfor%}
-
-
-{%endif%}
 
 
 {% if mentors%}

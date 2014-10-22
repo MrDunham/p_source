@@ -14,10 +14,12 @@
     <link rel="stylesheet" href="../css/premier.css">
 
     <!--Open Graph (facebook) Properties-->
-    <meta property="og:site_name"   content="MedHack, by Prebacked"/>
+    <meta property="og:site_name"   content="Prebacked"/>
     <meta property="og:url"         content="http://www.prebacked.com/medhack/{{url}}"/>
     <meta property="og:description" content="Join 150 developers and doctors, learn challenges from industry executives, form teams, and hack to spark innovations in health tech {%if city%}in {{city}}{%endif%}{%if e.full_date%}, {{e.full_date|date:'M jS'}} - {{e.full_date|add_a_day|date:'jS'}}{%endif%}."/>
+    
     <meta property="og:title"       content="MedHack {%if city%}in {{city}}{%endif%}: 24 Hour Health Hackathon{%if e.full_date%}, {{e.full_date|date:'M jS'}} - {{e.full_date|add_a_day|date:'jS'}}{%endif%}"/>
+    {# <meta property="og:type" content="video.movie" /> #}
     <meta property="og:image"       content="http://www.prebacked.com/images/medhack/working-on-a-computer.jpg" /> 
 
     <script type="text/javascript">
@@ -67,11 +69,11 @@
        
         </div> <!-- end content -->
 
-        <a class="twitter" href="https://twitter.com/intent/tweet?text=Hack+on+industry+challenges+at+%23MedHack+hackathon+in+{{city}}.+{{e.full_date|date:'D, M jS'}}+and+{{e.full_date|add_a_day|date:'jS'}}%2E+http://prebacked.com/medhack/{{url}}%2C+by+%40prebacked" target="_blank" >twitter</a> 
+        <a class="twitter" href="https://twitter.com/intent/tweet?text=Hack%20on%20industry%20challenges%20at%20%23MedHack%20hackathon%20in%20{{city}}.%20{{e.full_date|date:'D, M jS'}}%20and%20{{e.full_date|add_a_day|date:'jS'}}%2E%20http://prebacked.com/medhack/{{url}}%2C%20by%20%40prebacked" target="_blank" >twitter</a> 
 
 {# <!-- Create custom twitter message tailored for each city --> #}
         
-        <a class="fb-share-button facebook" href="http://www.facebook.com/sharer.php?s=100&p[title]=titlehere&p[url]=www.prebacked.com/medhack/{{url}}&p[images][0]=http://www.prebacked.com/images/medhack/working-on-a-computer.jpg" target="_blank">facebook</a>
+        <a class="fb-share-button facebook" href="http://www.facebook.com/sharer.php?s=100&amp;p[title]=titlehere&amp;p[url]=www.prebacked.com/medhack/{{url}}&amp;p[images][0]=http://www.prebacked.com/images/medhack/working-on-a-computer.jpg" target="_blank">facebook</a>
 
         
 
@@ -91,7 +93,6 @@
           </div>
           -->
           {%for f in featured_sponsors%}
-
             
           <a href="{{f.sponsor.homepage}}" target="_blank">
             <div class="featured-event-sponsor">

@@ -242,7 +242,7 @@ p, div, span, a {
         #upperInfoInner #linkBar nav ul a, #upperInfoInner #sub_link_bar nav ul a {
           display: inline-block; }
         #upperInfoInner #linkBar nav ul li, #upperInfoInner #sub_link_bar nav ul li {
-          display: inline-block; }
+          display: inline-block !important; }
           #upperInfoInner #linkBar nav ul li a, #upperInfoInner #sub_link_bar nav ul li a {
             color: #333;
             padding: 0.6rem 1rem;
@@ -289,12 +289,18 @@ p, div, span, a {
   #upperInfoInner #sub_link_bar {
     background: rgba(65, 74, 89, 0.55);
     padding: 0; }
-    #upperInfoInner #sub_link_bar h2 {
+    #upperInfoInner #sub_link_bar p:first-child {
+      font-size: 1.5rem;
+      color: #f8f8f8;
+      margin-bottom: 0;
+      margin-top: 0.50rem; }
+    #upperInfoInner #sub_link_bar h2, #upperInfoInner #sub_link_bar h3, #upperInfoInner #sub_link_bar h4 {
       color: #f8f8f8; }
     #upperInfoInner #sub_link_bar nav {
       margin-top: 0.2rem; }
       #upperInfoInner #sub_link_bar nav ul li {
-        margin-top: 0.7rem; }
+        margin: 0.7rem 0;
+        font-size: 1rem; }
         #upperInfoInner #sub_link_bar nav ul li a {
           color: #f8f8f8;
           padding: 0.1rem 0.8rem; }

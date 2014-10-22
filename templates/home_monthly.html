@@ -1,0 +1,449 @@
+{% extends 'homepage_base.html' %}
+
+{% block title %}Prebacked Monthly: Win private meetings with corporate executives{%endblock%}
+{%block fb_title%}{%if challenge.title%}{{challenge.title}}{%else%}How can we get people to capture their blood pressure?{%endif%}{%endblock%}
+
+{%block description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}
+{%endblock%}
+
+{%block fb_description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}{%endblock%}
+
+{% block styles %}
+  <link rel="stylesheet" href="css/pages.css" media="screen" type="text/css"/>
+{% endblock %}
+
+{%block color_scheme%}default{%endblock%}
+
+{%block sub_link_bar%}
+    {%include 'partials/sublinkbar_accelerate.html'%}
+{%endblock%}
+
+{% block upper_info%}
+
+<div class="small-12 large-8 columns">
+    <h1>
+        Engage potential customers
+    </h1>
+
+    <p>
+        Every month we'll post one challenge with a corporate partner. Top teams win a private dinner with executives from their potential customer.
+    </p>
+    <a class="social" href="https://twitter.com/intent/tweet?text=Hypertension%20kills%201k/day.%20Solve%20@BlueShieldCA%20challenge,%20win%20private%20dinner%20w/%20execs%20and%20potential%20client.%20http://prebacked.com/monthly" target="_blank">
+        <img src="../images/icons/twitter.png">
+    </a>
+    <a class="social" href="https://www.facebook.com/sharer/sharer.php?s=100&p%5Btitle%5D=Track+data%2C+save+1k+people+a+day%2C+win+a+potential+client&p%5Burl%5D=www.prebacked.com%2Fmonthly&p%5Bimages%5D%5B0%5D=http%3A%2F%2Fwww.prebacked.com%2Fimages%2Fprebacked_logo.png" target="_blank">
+        <img src="../images/icons/facebook.png">
+    </a>
+</div>
+
+
+    
+{% endblock %}
+
+{%block upper_bg%}<img class="show-for-medium-up" src="images/bgs/room-of-people.jpg" id="headerImg" alt="" />{% endblock%}
+
+{% block middle_info%}
+
+<div id="upper_email" class="row">
+    <form action="http://prebacked.us5.list-manage.com/subscribe/post?u=3572fa1f9d829a0cc324cce2a&amp;id=f29adcde57" method="post" id="" name="mc-embedded-subscribe-form" class="validate " target="_blank">
+            
+            {### Auto-load hidden tags ###}
+            {# Explicit tag  #}
+            <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                <input type="checkbox" checked="checked" id="group_1" name="group[7405][1]" value="1" style="-webkit-appearance: checkbox;display: inline !important;margin: 0;padding: 5px;border: 0;background: none;width: auto !important;font-family: Helvetica;font-size: 18;color: #F5F5F5;">
+                <label for="group_1" style="float: none;clear: none;display: inline;width: auto;margin-top: 8px;text-align: left;font-weight: normal;position: relative;line-height: 150%;font-family: Helvetica;font-size: 14px;color: #333333;padding: 0 30px 0 3px;">Explicit Signups</label>
+            </li>
+            {# Prebacked monthly subscription #}
+            <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                <label class="checkbox" for="group_4194304">
+                    <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_4194304" name="group[17685][4194304]" value="1" class="av-checkbox"><span>Monthly challenges (3 emails a month)</span> 
+                </label>
+            </li>
+
+            {# Prebacked accelerator subscription #}
+            <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                <label class="checkbox" for="group_8388608">
+                    <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_8388608" name="group[17685][8388608]" value="1" class="av-checkbox"><span>Accelerator program (4 emails a year)</span> 
+                </label> 
+            </li>
+
+            {# Prebacked hackathons subscription #}
+            <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                <label class="checkbox" for="group_2097152">
+                    <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_2097152" name="group[17685][2097152]" value="1" class="av-checkbox"><span>Prebacked Hackathons (4 emails a year)</span> 
+                </label> 
+            </li>
+            {# /Load tags #}
+            <!------/Load tag-------->
+            <div class=" small-12 medium-6 large-6 large-push-1 columns">
+                <input id="" class="email" type="email" value="" style="" name="EMAIL"  placeholder="email address" required>
+            </div>
+            <div class="small-12 medium-6 large-4 columns large-push-1 end">
+                <input id="" class="button" type="submit" style="" value="Subscribe to challenge anouncements" name="subscribe"/>
+            </div>
+    </form>
+</div>
+
+{# {% if upcoming_challenge %} #}
+
+<div class="row data" id="upcoming_challenge">
+    <div class="small-12 columns">
+        <h2>Current challenge</h2>
+
+        <div class="row">
+            
+            <div class="small-12 large-10 large-push-1 columns">
+                <h3>
+                    {# Challenge overview #}
+                    How can we get people to capture their blood pressure to help them become healthier?
+                </h3>
+            </div>
+
+             
+
+            <div class="small-12 medium-12 left columns">
+                <div id="sponsor_info" class="small-12 small-only-text-center medium-4 right columns">
+                    <h4>Sponsoring partner</h4>
+                    <img src="images/partner_companies/blue_shield_of_ca.png">
+                    
+                    <p class="show-for-medium-up">
+                        BlueShield of California is one of California’s largest and most trusted grant making organizations. BSCA has 8 billion dollars in revenue, 65,000 physicians across the state, and 3.4 million health plan members.
+                    </p>
+                </div> {# end #sponsor_info #}
+                
+                <h4>The story</h4>
+                <p>
+                    {# The story goes here #}
+                    Jeffrey James (name changed), a 40 year old courier driver in Warwick, Rhode Island, did not consider himself unhealthy. Shortly before Christmas, however, he collapsed during a delivery and hospital tests confirmed he had had a stroke caused by a blood clot. For three months Jeffrey could not use his right side and lost his job. His habits of eating very salty foods had made his blood pressure rise to a dangerous level. "I wish I had known I had high blood pressure, I would have done something about it and would probably have prevented the stroke", he says.
+                </p>
+                <h4>The challenge</h4>
+                <p>
+                    We could help prevent heart diseases like Jeffrey's stroke, which make up 1 in every 4 deaths in the US, if we would have access to reliable blood pressure data from our members. Unfortunately this is not the case yet, which is why we are looking to incentivize people to take and capture their blood pressure so we can take preventive action and help them live a longer and healthier life. 
+
+                    <br/><br/>
+                    A great solution would make people want to record their blood pressure. Think about gamification, user experience, and wearables. 
+                </p>
+            </div>
+        
+             
+        </div>
+
+        <div class="row">
+
+            <div id="schedule" class="small-12 medium-6 columns">
+                <h4>Schedule</h4>
+                <table class="small-12">
+                    <thead>
+                        <th>Action</th>
+                        <th>Date</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Submissions open</td>
+                            <td>10/01/2014</td>
+                        </tr>
+                        <tr>
+                            <td>Judging begins</td>
+                            <td>10/19/2014</td>
+                        </tr>
+                        <tr>
+                            <td>Winners announcement</td>
+                            <td>10/29/2014</td>
+                        </tr>
+                        <tr>
+                            <td>Winners' dinner</td>
+                            <td>11/3/2014</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> {# end #schedule #}
+
+            <div id="value" class="small-12 medium-6 columns">
+                <h4>Value</h4>
+                <p>
+                    1 in 3 adults have high blood pressure in the US - less than half have their condition under control. 
+                    High blood pressure results in heart diseases, strokes, and kidney failure - <a href="http://www.measureuppressuredown.com/images/mupdFactsheet.jpg">causing nearly 1000 deaths a day.</a>
+                </p>
+                <p>So what can we do?</p>
+                <p>
+                    A report by the Agency for Healthcare Research and Quality shows strong evidence that <a href="http://effectivehealthcare.ahrq.gov/ehc/products/193/941/CER45_Self-Measured-Blood-Pressure_execsumm_20120124.pdf">self measurement of blood pressure plus additional support reduces overall blood pressure</a>. In fact, so much so, that in California alone blood pressure data is worth up to <b>$125 million a year</b> to insurance companies, arming them with the information to intervene, save lives, and save money.
+                </p>
+                    
+            </div>
+        </div>
+
+        <div class="row">
+        
+            <div id="advantages" class="small-12 medium-6 columns">
+                <h4>Unfair advantages</h4>
+                <ul>
+                    <li>You've cracked getting users to regularly input data. Any data, health or otherwise</li>
+                    <li>You're willing to learn from <a href="http://www.measureuppressuredown.com/">Measure Up, Pressure Down</a></li>
+                    <li>Your team has strong UX and/or gamification backgrounds</li>
+                    <li>Current relationships with Accountable Care Organizations or physicians</li>
+                </ul>
+            </div>
+            
+
+            <div id="approaches" class="small-12 medium-6 columns">
+                <h4>Possible approaches</h4>
+                <p>
+                    We are looking for a solution which is easy to use for our members, while ideally encouraging them to capture their data regularly, regardless of <em>where</em> and <em>how</em> they capture data. Data may be captured at home, in the physicians office, or in Safeway in a BP cuff and may be analogue or digital.<br/><br/>
+                    Perhaps you've built an engaging mobile app? Dead-cheap BP sensors? A passive and engaging way to track data? Just some ideas.
+                </p>
+            </div>
+        </div>
+
+        <div id="corporate_quote" class="quote row">
+            <img src="images/partners/david_parpart.jpg" class="show-for-medium-up medium-2 medium-push-1 columns" />
+            <div class="small-12 medium-8 medium-push-1 end columns">
+                <p class="quote">
+                    "The executives and mentors I met are awesome.  It is a catalyst for my creativity, opening my mind to new possibilities to improve healthcare."<br/>
+                    <span class="attributed">
+                        David Parpart, Co-founder: Silicon Valley Health2.0
+                    </span>
+                </p>
+            </div>
+
+        </div>
+
+    </div> {# end .small-12 .columns #}
+    
+</div> {# end #upcoming_challenge .row .data #}
+
+<div class="row data">
+    <div class="small-12 medium-12 text-center columns">
+        <a id="apply_button" role="button" href="" class="large button">
+            Apply to win private dinner with<br/> BlueShield of CA executives<br/>
+            <span>It just might be the best use of 5 minutes you'll spend today</span>
+        </a>                
+        <p>
+            Not ready to apply right now? <a href="#stay_connected">Declare interest and get reminders</a> about the challenge.
+        </p>
+        
+    </div>
+
+
+
+    <div id="challenge_apply" class="small-12 columns" style="display:none;">
+        {# ------------Application goes here---------------- #}
+        <div id="wufoo-w1rxchu30fkqngf" style="">
+        Fill out my <a href="https://prebackedforms.wufoo.com/forms/w1rxchu30fkqngf">online form</a>.
+        </div>
+
+    </div>
+</div>
+
+{# {%endif%} #}
+
+<div id="judging-criteria" class="row data">
+    <div class="small-12 columns">
+        <h3>Judging criteria</h3>
+        <p>Submissions are judged by the following four criteria, which are equally weighted.</p>
+        <div class="row">
+            <div class="small-6 columns">
+                <h4>Team strength and background</h4>
+                <p>
+                    How strong are the individual team members? <br/>
+                    How well do your abilities complement each other?
+                </p>
+            </div>
+            <div class="small-6 columns">
+                <h4>Technical feasibility &amp; implementation costs</h4>
+                <p>
+                    How much effort would be needed to develop a working prototype?<br/>
+                    How much would the development &amp; integration cost?
+                </p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="small-6 columns">
+                <h4>Functional fit &amp; innovativeness</h4>
+                <p>
+                    How well could your solution solve the challenge? <br/>
+                    How innovative and creative is your idea?
+                </p>
+            </div>
+        
+            <div class="small-6 columns">
+                <h4>Strategic fit</h4>
+                <p>
+                    How well can your solution be integrated in the corporate environment? <br/>
+                    What are the strategic benefits for the company?
+                </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+{# {% if past_challenges %} #}
+
+<div class="row" id="past_challenge">
+    <div class="small-12 large-10 columns">
+        <h2>Past challenges</h2>
+        {% for p in past_challenges%}
+            <div class="past_challenge">
+                <h3><a href="{# past challenges link #}">{# should pull the header from each challenge#}</a></h3>
+            </div>
+            
+        {%endfor%}
+    </div>
+    {#  #}
+</div>
+
+{# {%endif%} #}
+
+<div class="data" id="corporate">
+    <div class="row">
+        <div class="small-12 text-center columns">
+            <h2>Become a corporate partner</h2>
+        </div>
+    </div>
+
+    <div id="corporate_quote" class="quote row">
+        <img src="images/partners/sameer_sonalkar.jpg" class="show-for-medium-up medium-2 medium-push-1 columns"/>
+        <div class="small-12 medium-8 medium-push-1 end columns">
+            <p class="quote">
+                "Having access to Silicon Valley gives us a great opportunity, the sheer talent we have access to here is phenomenal. The diversity and experience of talent is something we could have never assembled."<br/>
+                <span class="attributed">
+                    Sameer Sonalkar, CTO, Wellmark BlueCross BlueShield
+                </span>
+            </p>
+            
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="small-12 medium-6 columns">
+            <h3>Why engage</h3>
+            <ul>
+                <li>Engage Silicon Valley’s brightest minds</li>
+                <li>Tailor-made and curated solutions to your needs</li>
+                <li>Minimal effort through a lean and automated process</li>
+            </ul>
+
+        </div>
+
+        <div id="ecosystem" class="small-12 medium-6 columns">
+            <h3>Be part of our innovation ecosystem</h3>
+            <ul class="small-block-grid-2 large-block-grid-3">
+                <li><span class="helper"></span><img alt="BlueShield of California" src="/images/partner_companies/blue_shield_of_ca.png"></li>
+                <li><span class="helper"></span><img alt="Cambia Health Solutions" src="/images/partner_companies/cambia_health.png"></li>
+                <li><span class="helper"></span><img alt="Wellmark BlueCross BlueShield" src="/images/partner_companies/wellmark.png"></li>
+                <li><span class="helper"></span><img alt="Validic" src="/images/partner_companies/validic.png"></li>
+                <li class="show-for-large-up"><span class="helper"></span><img alt="Wilson Sonsini Goodrich and Rosati" src="/images/partner_companies/wilson_sonsini.png"></li>
+                <li class="show-for-large-up"><span class="helper"></span><img alt="Amazon AWS" src="/images/partner_companies/aws.png"></li>
+
+            </ul>
+
+        </div>
+
+        <div id="email_us" class="small-12 text-center columns">
+            <p><a href="mailto:partner@prebacked.com">Email us</a> for more information</p>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+
+<div id="stay_connected" class="">
+    <div id="stay_connected_inner" class="row">
+        <div id="connected_text" class="small-12 large-7 columns">
+            <h2>Know upcoming challenges</h2>
+            <p>Learn about future challenges first and have more time to apply. Expect about two emails a month.</p>
+        </div>
+        
+        <div id="connected_form" class="small-12 medium-7 large-5 end columns">
+            
+                <form action="http://prebacked.us5.list-manage.com/subscribe/post?u=3572fa1f9d829a0cc324cce2a&amp;id=f29adcde57" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                        
+                        {### Auto-load hidden tags ###}
+                        {# Explicit tag  #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <input type="checkbox" checked="checked" id="group_1" name="group[7405][1]" value="1" style="-webkit-appearance: checkbox;display: inline !important;margin: 0;padding: 5px;border: 0;background: none;width: auto !important;font-family: Helvetica;font-size: 18;color: #F5F5F5;">
+                            <label for="group_1" style="float: none;clear: none;display: inline;width: auto;margin-top: 8px;text-align: left;font-weight: normal;position: relative;line-height: 150%;font-family: Helvetica;font-size: 14px;color: #333333;padding: 0 30px 0 3px;">Explicit Signups</label>
+                        </li>
+                        {# Prebacked monthly subscription #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <label class="checkbox" for="group_4194304">
+                                <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_4194304" name="group[17685][4194304]" value="1" class="av-checkbox"><span>Monthly challenges (3 emails a month)</span> 
+                            </label>
+                        </li>
+
+                        {# Prebacked accelerator subscription #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <label class="checkbox" for="group_8388608">
+                                <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_8388608" name="group[17685][8388608]" value="1" class="av-checkbox"><span>Accelerator program (4 emails a year)</span> 
+                            </label> 
+                        </li>
+
+                        {# Prebacked hackathons subscription #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <label class="checkbox" for="group_2097152">
+                                <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_2097152" name="group[17685][2097152]" value="1" class="av-checkbox"><span>Prebacked Hackathons (4 emails a year)</span> 
+                            </label> 
+                        </li>
+                        {# /Load tags #}
+                        <!------/Load tag-------->
+                        <input id="" class="email large-12" type="email" value="" style="" name="EMAIL"  placeholder="email address" required>
+                        <input id="" class=" button large-8 end" type="submit" style="" value="Tell me challenges first" name="subscribe"/>
+                </form>
+            
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{%block scripts%}
+
+
+<script type="text/javascript">
+var w1rxchu30fkqngf;(function(d, t) {
+        var s = d.createElement(t), options = {
+            'userName':'prebackedforms',
+            'formHash':'w1rxchu30fkqngf',
+            'autoResize':false,
+            'height':'1106',
+            'async':true,
+            'host':'wufoo.com',
+            'header':'hide',
+            {# challenge is auto-imported into the website below. Need to check over the variable. #}
+            {% if challenge.title %}'defaultValues':'field115={{challenge.title}}', {%endif%}
+            // 'resizeDone': hideTheBox,
+            'ssl':true};
+        s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+        s.onload = s.onreadystatechange = function() {
+        var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+        try { w1rxchu30fkqngf = new WufooForm();w1rxchu30fkqngf.initialize(options);w1rxchu30fkqngf.display(); } catch (e) {}};
+        var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+        })(document, 'script');
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {  
+    
+    $("#apply_button").click(function() {  
+         $("#challenge_apply").toggle();
+         // $("#challenge_apply").toggle();
+         return false;     
+    });  
+});
+</script>
+{% endblock %}
+
+
+
+
+           

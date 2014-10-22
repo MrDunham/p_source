@@ -22,7 +22,7 @@
     <title>{% block title %}Accelerating startups with corporate contracts | Prebacked{% endblock %}</title>
     
     
-    <meta name="description" content="{% block description %}Prebacked accelerates startups through close collaboration with healthcare enterprise companies -launching new technologies that propel the industry and improve patients' lives. {% endblock %}" />
+    <meta name="description" content="{% block description %}Prebacked helps a startup find product-market fit for their technolog and a first enterprise paying contract in 4 months flat. {% endblock %}" />
     <meta name="keywords" content="Prebacked, Prefunded, Tech, Event, entrepreneur, developer, problem, problems, solution, solutions, investor, startup, startups, code" />
     <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
     <meta http-equiv="keywords" content="Prebacked, Prefunded, Tech, Event, entrepreneur, developer, problem, problems, solution, solutions, investor, startup, startups, code"/>
@@ -31,9 +31,9 @@
     
     <!--Open Graph Properties-->
     <meta property="og:site_name" content="Prebacked"/>
-    <meta property="og:url" content="http://www.prebacked.com"/>
-    <meta property="og:description" content=""/>
-    <meta property="og:title" content="Start a startup and land a corporate client | Prebacked"/>
+    <meta property="og:url" content="http://www.prebacked.com{%if url%}/{{url|lower}}{%endif%}"/>
+    <meta property="og:description" content="{%block fb_description%}{%endblock%}"/>
+    <meta property="og:title" content="{%block fb_title%}Accelerating paid enterprise contracts from 24 months to 4 | Prebacked{%endblock%}"/>
     <meta property="og:image" content="http://www.prebacked.com/images/fb_prebacked_icon.png"/>
     <meta property="og:image:width" content="1500" /> 
     <meta property="og:image:height" content="1500" />
@@ -74,6 +74,23 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
+
+    <script>(function() {
+      var _fbq = window._fbq || (window._fbq = []);
+      if (!_fbq.loaded) {
+        var fbds = document.createElement('script');
+        fbds.async = true;
+        fbds.src = '//connect.facebook.net/en_US/fbds.js';
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(fbds, s);
+        _fbq.loaded = true;
+      }
+      _fbq.push(['addPixelId', '1503333016585016']);
+    })();
+    window._fbq = window._fbq || [];
+    window._fbq.push(['track', 'PixelInitialized', {}]);
+    </script>
+    <noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=1503333016585016&amp;ev=PixelInitialized" /></noscript>
     
 
 </head>
@@ -86,7 +103,7 @@
     
     
 <section class="main-section">
-    <div id="homepage{%block page%}{%endblock%}">
+    <div id="homepage{%block page%}{%if url%}_{{url}}{%endif%}{%endblock%}">
         <div id="upperInfoContainer" class="color_scheme_{%block color_scheme%}default{%endblock%} color_scheme_backup">
             <div id="upperInfoInner" class="">
                 <div id="linkBar" class="">
@@ -201,7 +218,7 @@
         if (path == "history" || path == "team" || path == "jobs"){$("#link_about").addClass("active");};
         
         // handles "accelerate" link getting highlighted
-        if (path == "engage" || path == "people" || path == "ignition"){$("#link_accelerate").addClass("active");};
+        if (path == "accelerate" || path == "engage" || path == "people" || path == "ignition" || path == "monthly"){$("#link_program").addClass("active");};
         
         // handles "events" link getting highlighted
         if (path == "conversations" || path == "medhack" || path == "event_board"){$("#link_events").addClass("active");};
