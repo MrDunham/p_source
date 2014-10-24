@@ -28,9 +28,9 @@ class Quarters(db.Model):
 ### Proper Views ###
 
 class Events(db.Model):
-    event_num = db.IntegerProperty() # Turns an event, meaning MedHack vs Ignition, into a number.  1 = ignition, 2 = medhack, 3 = conversation, 99 = partner
+    event_num = db.IntegerProperty() # Turns an event, meaning MedHack vs Ignition, into a number.  1 = ignition, 2 = medhack, 3 = conversation, 4 = Monthly, 99 = partner
     event_id = db.StringProperty() # Unique ID for each individual event. Will be used to populate event url.
-    name = db.StringProperty() # Event name, MedHack or Ignition for now.
+    name = db.StringProperty() # Event name, MedHack or Ignition for now. Not sure if it's used...
     vertical = db.StringProperty()
     address = db.StringProperty()
     city = db.StringProperty()
@@ -49,21 +49,6 @@ class Events(db.Model):
     ticketing = db.TextProperty() # eventbrite ticketing information
     companies = db.StringProperty()
     publish = db.BooleanProperty()
-
-class Challenges(db.Model): #Used for Monthly Challenges
-    challege_title = db.StringProperty()
-    story = db.StringProperty()
-    challenge = db.StringProperty()
-    value = db.StringProperty()
-    schedule = db.ListProperty(basestring, default=[]) #See what StringListProperty does and if it's the right thing to do here
-    advantages = db.StringProperty()
-    approaches = db.StringProperty()
-    unique_id = db.StringProperty()
-    wrapup = db.StringProperty()
-    post_img = db.BlobProperty() #a place to upload a hero image of the event post-dinner. Check if working, left unfinished.
-    publish = db.BooleanProperty()
-
-    
     
 class Mentors(db.Model):
     id = db.StringProperty() # Semi duct taped.  Currently firstname_lastname.  Could cause issues for 2 people of same name, but unlikely for a while.
@@ -88,14 +73,31 @@ class Mentors(db.Model):
 
 class Problems(db.Model):
     problem_id = db.StringProperty()
-    title = db.StringProperty()
-    statement = db.StringProperty()
+    problem_type = db.StringProperty() # 1 = monthly challenges
+    title = db.StringProperty() # summarize the challenge / problem
+    statement = db.StringProperty() # what is the challenge?
     statement_long = db.StringProperty()
     company = db.ListProperty(basestring, default=[])
-    value = db.StringProperty()
-    #city_num = db.IntegerProperty()
-    #vertical_num = db.IntegerProperty()
-    #quarter_num = db.IntegerProperty()
+    schedule = db.ListProperty(basestring, default=[]) #See what StringListProperty does and if it's the right thing to do here
+    advantages = db.StringProperty()
+    approaches = db.StringProperty()
+    value = db.StringProperty() 
+    post_img = db.BlobProperty() #a place to upload a hero image of the event post-dinner. Check if working, left unfinished.
+    publish = db.BooleanProperty()
+
+
+# class Challenges(db.Model): #Used for Monthly Challenges
+#     challege_title = db.StringProperty()
+#     story = db.StringProperty()
+#     challenge = db.StringProperty()
+#     value = db.StringProperty()
+#     schedule = db.ListProperty(basestring, default=[]) #See what StringListProperty does and if it's the right thing to do here
+#     advantages = db.StringProperty()
+#     approaches = db.StringProperty()
+#     unique_id = db.StringProperty()
+#     wrapup = db.StringProperty()
+#     post_img = db.BlobProperty() #a place to upload a hero image of the event post-dinner. Check if working, left unfinished.
+#     publish = db.BooleanProperty()
     
 class Teams(db.Model): #Used for winning teams in Monthly Challenges and MedHack
     team_id = db.StringProperty()
@@ -137,7 +139,7 @@ class Mentors_Events(db.Model):
                                   required=False,
                                   collection_name='events')
     mentor_type = db.IntegerProperty() # 1 = mentor, 2 = judge, 3 = both / panelist / VIP
-    order = db.IntegerProperty() #used for sorting, is pulled from Mentor.order
+    order = db.IntegerProperty() #used for sorting, is pulled from Mentor.order    
 
 class Cities_Events(db.Model):
     city_id = db.IntegerProperty() # 1 = Silicon Valley, 2 = SF, 3 = Boston, 4 = DC, 5 = mexico city
@@ -152,7 +154,8 @@ class Problems_Events(db.Model):
     event = db.ReferenceProperty(Events,
                                   required=False,
                                   collection_name='problems_events')
-    
+
+
 class Sponsors_Events(db.Model):
     sponsor_name = db.StringProperty()
     event_name = db.StringProperty()

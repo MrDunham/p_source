@@ -11,12 +11,13 @@
             Event Name
             <select name="type" id="type" onchange="optionCheck()">
                 <option value="" disabled="disabled" selected="selected">Event type</option>
-                <option value="ignition">Prebacked Ignition</option>
+                <option value="monthly">Prebacked Monthly</option>
                 <option value="medhack">Medhack</option>
                 <option value="conversations">Conversations [broken]</option>
                 <option value="accelerator">Accelerator (Public) [broken]</option>
                 <option value="partner_event">Partner Event [broken]</option>
                 <option value="prebacked_other">Other / One-off Prebacked event [broken]</option>
+                <option value="ignition">Prebacked Ignition</option>
             </select><br/>
             
             <div id="name" style="display: none">
@@ -55,27 +56,28 @@
             Vertical: Health<input type="radio" name="vertical" value="health" checked="true"><br/>
             <div id="company_sponsor" style="display: none">Company sponsor(s): <input type="text" name="company" /> Separate by commas.</div>
             
-            <h3>Venue Info</h3>
-            Venue Name:<input type="text" name="venue"> <em>eg. "Zurb HQ, Microsoft BizSpark"</em><br/>
-            Address:<input type="text" name="address"> <em>Street address only</em><br/>
-            
-            <h4>City:</h4>
-            <select name="city">
-                <option value="" disabled="disabled" selected="selected">City</option>
+            <div id="venue_info">
+                <h3>Venue Info</h3>
+                Venue Name:<input type="text" name="venue"> <em>eg. "Zurb HQ, Microsoft BizSpark"</em><br/>
+                Address:<input type="text" name="address"> <em>Street address only</em><br/>
                 
-                <option value="Silicon Valley">Silicon Valley</option>
-                <option value="San Francisco">SF</option>
-                <option value="Boston">Boston</option>
-                <option value="Washington">Washington DC</option>
+                <h4>City:</h4>
+                <select name="city">
+                    <option value="" disabled="disabled" selected="selected">City</option>
+                    
+                    <option value="Silicon Valley">Silicon Valley</option>
+                    <option value="San Francisco">SF</option>
+                    <option value="Boston">Boston</option>
+                    <option value="Washington">Washington DC</option>
+                    
+                </select><br/>
                 
-            </select><br/>
-            
-            
-            <h4>State:</h4>
-                California<input type="radio" name="state" value="CA" checked="true"><br/>
-                MA<input type="radio" name="state" value="MA"><br/>
-                District of Columbia<input type="radio" name="state" value="DC"><br/>
                 
+                <h4>State:</h4>
+                    California<input type="radio" name="state" value="CA" checked="true"><br/>
+                    MA<input type="radio" name="state" value="MA"><br/>
+                    District of Columbia<input type="radio" name="state" value="DC"><br/>
+            </div>    
             
             <h3>Time Info</h3>
             Start Day:<input type="text" name="day"> <em>Whole numbered date, eg: 5</em><br/>
@@ -309,6 +311,14 @@
             $("#header").hide();
             $("#description").hide();
             $("#link").hide();
+        }
+        else if(option == "monthly"){
+            $("#company_sponsor").hide();
+            $("#name").hide();
+            $("#header").show();
+            $("#description").show();
+            $("#link").hide();
+            $("#venue_info").hide();
         }
         else{
             $("#company_sponsor").hide();

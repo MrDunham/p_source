@@ -47,16 +47,18 @@ $white: #f8f8f8;
         font-weight: 500;
     }
      
-    .button{
-        margin-bottom: 0;
-        padding: 0.5625rem 2rem 0.5rem;
-        background-color: $blue_med;
-        &:hover{border-bottom: none;}
-    }
+
     
     /*&>div:last-child{   //not needed if doing all "data" elements have a built-in padding-bottom
         padding-bottom: 4rem;
     }*/
+}
+
+.button{
+    margin-bottom: 0;
+    padding: 0.5625rem 2rem 0.5rem;
+    background-color: $blue_med;
+    &:hover{border-bottom: none;}
 }
 
 p.quote{
@@ -70,6 +72,29 @@ p.quote{
         float: right;
         font-weight: 200;
         font-style: italic;
+    }
+}
+
+.helper{ // Used for spans to align images vertically
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+}
+
+a{
+    span.overlay{  // Used for making an entire block of content clickable
+          position:absolute; 
+          width:100%;
+          height:100%;
+          top:0;
+          left: 0;
+
+          /* edit: added z-index */
+          z-index: 1;
+
+          /* edit: fixes overlap error in IE7/8, 
+             make sure you have an empty gif */
+          background-image: url('../images/empty.gif');   
     }
 }
 
@@ -685,11 +710,28 @@ lg_banner.left, .lg_banner_right{
             border-bottom: 0;
         }
     }
+
     #upper_email{
         input{
             margin-bottom: 0;
         }
     }
+
+    #middleInfoInner{
+        #challenge_title{
+            margin-top: 25px;
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+            border-bottom: solid 1px $blue_lt;
+
+            h4.lead{
+                font-size: 1.125rem;
+                color: #666;
+                font-weight: 300;
+            }
+        }
+    }
+
     #sponsor_info{
         background: #fff;
         margin-left: 0.9375rem;
@@ -718,6 +760,101 @@ lg_banner.left, .lg_banner_right{
 
     }
 
+    #winners{
+
+        .winner{
+            display: inline-block;
+            text-align: left;
+            float: none;
+            margin-bottom: 0.935rem;
+            
+            .winner_inner{
+                background: #fff;
+                box-shadow: 0 0 1px $blue_dark;
+            }
+
+            a{
+                span{
+                      position:absolute; 
+                      width:100%;
+                      height:100%;
+                      top:0;
+                      left: 0;
+
+                      /* edit: added z-index */
+                      z-index: 1;
+
+                      /* edit: fixes overlap error in IE7/8, 
+                         make sure you have an empty gif */
+                      background-image: url('../images/empty.gif');   
+                }
+            }
+            p{
+                font-weight: 300;
+                margin: 0;
+                padding: 0.75rem
+            }
+            p.title{
+                font-weight: 500;
+                padding-bottom: 0;
+            }
+
+            .img_container{
+                height: 180px;
+                overflow: hidden;
+                img{
+                    width: 100%;
+                    // max-height: 100%;
+                }
+            }
+            
+        }
+    }
+    #past_challenges{
+        .past_challenge{
+            &:hover{
+                .challenge_img, .challenge_info{
+                    box-shadow: 0 0 2px $blue_dark;
+                }
+            }
+
+            .challenge_img{
+                box-shadow: 0 0 1px $blue_dark;
+                height: 180px;
+                background: #fff;
+                img {
+                    max-height: 100%;
+                    max-width: 100%;
+                }
+            }
+            .challenge_info{
+                box-shadow: 0 0 1px $blue_dark;
+                background: $blue_dark;
+                p{
+                    color: $white;
+                }
+                p.challenge_date{
+                    color: #ccc;
+                    font-size: 0.8rem;
+                    padding-bottom: 0;
+                    margin-top: 0.75rem;
+                    margin-bottom: 0.125rem;
+                }
+                p.challenge_sponsor{
+                    font-size: 1.5rem;
+                    line-height: 1.5rem;
+                    margin: 0;
+                    font-weight: 400;
+                }
+                p.challenge_blurb{
+                    margin: 0.75rem 0;
+                    font-weight: 300;
+                    line-height: 1.25rem;
+                }
+            }
+        }
+    }
+
     #ecosystem{
         $eco-img-height: 5.5rem;
         ul li{
@@ -732,12 +869,6 @@ lg_banner.left, .lg_banner_right{
                 max-height: $eco-img-height;
                 // padding: 1.25rem 0;
             }
-            .helper{
-                display: inline-block;
-                vertical-align: middle;
-                height: 100%;
-            }
-
         }
     }
 

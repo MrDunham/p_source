@@ -1,0 +1,243 @@
+{% extends 'homepage_base.html' %}
+
+{% block title %}Prebacked Monthly: Win private meetings with corporate executives{%endblock%}
+{%block fb_title%}{%if challenge.title%}{{challenge.title}}{%else%}How can we get people to capture their blood pressure?{%endif%}{%endblock%}
+
+{%block description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}
+{%endblock%}
+
+{%block fb_description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}{%endblock%}
+
+{% block styles %}
+  <link rel="stylesheet" href="../css/pages.css" media="screen" type="text/css"/>
+{% endblock %}
+
+{%block color_scheme%}default{%endblock%}
+
+{%block sub_link_bar%}
+    {%include 'partials/sublinkbar_accelerate.html'%}
+{%endblock%}
+
+{% block upper_info%}  
+{% endblock %}
+
+{%block upper_bg%}
+    {# <img class="show-for-medium-up" src="images/bgs/room-of-people.jpg" id="headerImg" alt="" /> #}
+{% endblock%}
+
+{% block middle_info%}
+
+
+
+<div class="row data" id="upcoming_challenge">
+    <div class="small-12 columns">
+        <div class="row">
+            
+            <div id="challenge_title" class="small-12 large-10 large-push-1 text-center columns">
+                <h3>
+                    {# Challenge overview #}
+                    How can we get people to capture their blood pressure to help them become healthier?
+                </h3>
+            
+                <h4 class="lead"><strong>October 2014:</strong> BlueShield of California</h4>
+            </div>
+            
+            <div id="winners" class="text-center small-centered">
+                 <div class="small-12 columns">
+                     <h3>The winners</h3>
+                     <p>Congratulations to our winners for their great solutions</p>
+                 </div>
+
+
+                <div class="winner small-12 medium-4 columns">
+                    <div class="winner_inner">
+                        <div class="img_container">
+                            <img src="../images/teams/lyfechannel.jpg"/>
+                        </div>
+                        <p class="title">Wellband</p>
+                        <p>A band for wellness that is awesome. You're welcome.</p>
+                        <a href="/monthly/{{challenge_id}}/wellband"><span></span></a>  {# need to put in team name #}
+                    </div>
+                </div><!--
+                --><div class="winner small-12 medium-4 columns">
+                    <div class="winner_inner">
+                        <div class="img_container">
+                            <img src="../images/teams/lyfechannel.jpg"/>
+                        </div>
+                        <p class="title">Wellband</p>
+                        <p>A band for wellness that is awesome. You're welcome.</p>
+                        <a href="/monthly/{{challenge_id}}/wellband"><span></span></a>  {# need to put in team name #}
+                    </div>
+                </div><!--
+                --><div class="winner small-12 medium-4 columns">
+                    <div class="winner_inner">
+                        <div class="img_container">
+                            <img src="../images/teams/lyfechannel.jpg"/>
+                        </div>
+                        <p class="title">Wellband</p>
+                        <p>A band for wellness that is awesome. You're welcome.</p>
+                        <a href="/monthly/{{challenge_id}}/wellband"><span></span></a>  {# need to put in team name #}
+                    </div>
+                </div><!--
+                --><div class="winner small-12 medium-4 columns">
+                    <div class="winner_inner">
+                        <div class="img_container">
+                            <img src="../images/teams/lyfechannel.jpg"/>
+                        </div>
+                        <p class="title">Wellband</p>
+                        <p>A band for wellness that is awesome. You're welcome.</p>
+                        <a href="/monthly/{{challenge_id}}/wellband"><span></span></a>  {# need to put in team name #}
+                    </div>
+                </div><!--
+                --><div class="winner small-12 medium-4 columns">
+                    <div class="winner_inner">
+                        <div class="img_container">
+                            <img src="../images/teams/lyfechannel.jpg"/>
+                        </div>
+                        <p class="title">Wellband</p>
+                        <p>A band for wellness that is awesome. You're welcome.</p>
+                        <a href="/monthly/{{challenge_id}}/wellband"><span></span></a>  {# need to put in team name #}
+                    </div>
+                </div><!--
+                -->
+            </div>
+
+            <div class="small-12 medium-12 left columns">
+                <div id="sponsor_info" class="small-12 small-only-text-center medium-4 right columns">
+                    <h4>Sponsoring partner</h4>
+                    <img src="../images/partner_companies/blue_shield_of_ca.png">
+                    
+                    <p class="show-for-medium-up">
+                        BlueShield of California is one of California’s largest and most trusted grant making organizations. BSCA has 8 billion dollars in revenue, 65,000 physicians across the state, and 3.4 million health plan members.
+                    </p>
+                </div> {# end #sponsor_info #}
+                
+                <h4>The story</h4>
+                <p>
+                    {# The story goes here #}
+                    Jeffrey James (name changed), a 40 year old courier driver in Warwick, Rhode Island, did not consider himself unhealthy. Shortly before Christmas, however, he collapsed during a delivery and hospital tests confirmed he had had a stroke caused by a blood clot. For three months Jeffrey could not use his right side and lost his job. His habits of eating very salty foods had made his blood pressure rise to a dangerous level. "I wish I had known I had high blood pressure, I would have done something about it and would probably have prevented the stroke", he says.
+                </p>
+                <h4>The challenge</h4>
+                <p>
+                    We could help prevent heart diseases like Jeffrey's stroke, which make up 1 in every 4 deaths in the US, if we would have access to reliable blood pressure data from our members. Unfortunately this is not the case yet, which is why we are looking to incentivize people to take and capture their blood pressure so we can take preventive action and help them live a longer and healthier life. 
+
+                    <br/><br/>
+                    A great solution would make people want to record their blood pressure. Think about gamification, user experience, and wearables. 
+                </p>
+            </div>
+        
+            
+
+        </div>
+
+       
+
+
+
+    </div> {# end .small-12 .columns #}
+    
+</div> {# end #upcoming_challenge .row .data #}
+
+
+
+{# {%endif%} #}
+
+
+
+
+
+
+
+<div id="stay_connected" class="">
+    <div id="stay_connected_inner" class="row">
+        <div id="connected_text" class="small-12 large-7 columns">
+            <h2>Know upcoming challenges</h2>
+            <p>Learn about future challenges first and have more time to apply. Expect about two emails a month.</p>
+        </div>
+        
+        <div id="connected_form" class="small-12 medium-7 large-5 end columns">
+            
+                <form action="http://prebacked.us5.list-manage.com/subscribe/post?u=3572fa1f9d829a0cc324cce2a&amp;id=f29adcde57" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                        
+                        {### Auto-load hidden tags ###}
+                        {# Explicit tag  #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <input type="checkbox" checked="checked" id="group_1" name="group[7405][1]" value="1" style="-webkit-appearance: checkbox;display: inline !important;margin: 0;padding: 5px;border: 0;background: none;width: auto !important;font-family: Helvetica;font-size: 18;color: #F5F5F5;">
+                            <label for="group_1" style="float: none;clear: none;display: inline;width: auto;margin-top: 8px;text-align: left;font-weight: normal;position: relative;line-height: 150%;font-family: Helvetica;font-size: 14px;color: #333333;padding: 0 30px 0 3px;">Explicit Signups</label>
+                        </li>
+                        {# Prebacked monthly subscription #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <label class="checkbox" for="group_4194304">
+                                <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_4194304" name="group[17685][4194304]" value="1" class="av-checkbox"><span>Monthly challenges (3 emails a month)</span> 
+                            </label>
+                        </li>
+
+                        {# Prebacked accelerator subscription #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <label class="checkbox" for="group_8388608">
+                                <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_8388608" name="group[17685][8388608]" value="1" class="av-checkbox"><span>Accelerator program (4 emails a year)</span> 
+                            </label> 
+                        </li>
+
+                        {# Prebacked hackathons subscription #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <label class="checkbox" for="group_2097152">
+                                <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_2097152" name="group[17685][2097152]" value="1" class="av-checkbox"><span>Prebacked Hackathons (4 emails a year)</span> 
+                            </label> 
+                        </li>
+                        {# /Load tags #}
+                        <!------/Load tag-------->
+                        <input id="" class="email large-12" type="email" value="" style="" name="EMAIL"  placeholder="email address" required>
+                        <input id="" class=" button large-8 end" type="submit" style="" value="Tell me challenges first" name="subscribe"/>
+                </form>
+            
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{%block scripts%}
+
+
+<script type="text/javascript">
+var w1rxchu30fkqngf;(function(d, t) {
+        var s = d.createElement(t), options = {
+            'userName':'prebackedforms',
+            'formHash':'w1rxchu30fkqngf',
+            'autoResize':false,
+            'height':'1106',
+            'async':true,
+            'host':'wufoo.com',
+            'header':'hide',
+            {# challenge is auto-imported into the website below. Need to check over the variable. #}
+            {% if challenge.title %}'defaultValues':'field115={{challenge.title}}', {%endif%}
+            // 'resizeDone': hideTheBox,
+            'ssl':true};
+        s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+        s.onload = s.onreadystatechange = function() {
+        var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+        try { w1rxchu30fkqngf = new WufooForm();w1rxchu30fkqngf.initialize(options);w1rxchu30fkqngf.display(); } catch (e) {}};
+        var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+        })(document, 'script');
+
+</script>
+
+<script type="text/javascript">
+$(document).ready(function() {  
+    
+    $("#apply_button").click(function() {  
+         $("#challenge_apply").toggle();
+         // $("#challenge_apply").toggle();
+         return false;     
+    });  
+});
+</script>
+{% endblock %}
+
+
+
+
+           

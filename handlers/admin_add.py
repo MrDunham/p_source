@@ -12,9 +12,6 @@ import datetime
 #from reportlab.lib.pagesizes import A4
 
 class AdminAddHandler(webapp2.RequestHandler):
-    ### TODO ###
-    # Build a way to update current mentors
-    ############
     def get(self):
         mentor_id = None
         template_values = {}
@@ -228,7 +225,7 @@ class EventAddHandler(webapp2.RequestHandler):
         
         #city_event = Cities_Events()
         
-        if str(self.request.get('edit')):
+        if str(self.request.get('edit')): #looks to see if we're editing, and if so, get's the proper event to edit
             event = Events.gql("WHERE event_id = :1", str(self.request.get('event_id'))).get()
         else:
             event = Events()
@@ -258,6 +255,8 @@ class EventAddHandler(webapp2.RequestHandler):
             event.name = event_type
         elif (event_type == "conversations" or event_num == 3):
             event.name = "conversations" + " - " + event.header
+        elif (event_type == "monthly" or event_num == 4):
+            event.name = "monthly" + " - " + event.header
         else:
             event.name = str(self.request.get('name')) # Catches partner events, which have varying names
             

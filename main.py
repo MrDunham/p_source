@@ -245,6 +245,14 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
         
         ###
 
+class PastMonthlyChallengesHandler(BaseRequestHandler):
+    def get(self, challenge_id):
+        template_values = {}
+        url = "monthly"
+
+        template_values.update (locals())
+        path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_old_chal.html')
+        self.response.out.write(template.render(path, template_values))
 
 class Webapp2HandlerAdapter(webapp2.BaseHandlerAdapter):
     def __call__(self, request, response, exception):
@@ -405,6 +413,7 @@ application = webapp2.WSGIApplication([
     #webapp2.Route(r'/ignition', handler=IgnitionHandler, name='ignition-home'),
     webapp2.Route(r'/medhack/sponsor', handler=MedHackSponsorHandler, name='medhack-sponsor-catchall'),
     webapp2.Route(r'/medhack/<:.*>', handler=MedHackPagesHandler, name='medhack-main-catchall'),
+    webapp2.Route(r'/monthly/<:.*>', handler=PastMonthlyChallengesHandler, name='past-monthly-main-catchall'),
     webapp2.Route(r'/admin_add', handler=AdminAddHandler, name='admin-add'),
     webapp2.Route(r'/admin_add/faq_add', handler=FaqAddHandler, name='faq-add'),
     webapp2.Route(r'/admin_add/event_add', handler=EventAddHandler, name='event-add'),
