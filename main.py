@@ -246,7 +246,7 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
         ###
 
 class PastMonthlyChallengesHandler(BaseRequestHandler):
-    def get(self, challenge_id):
+    def get(self, challenge_id, team_id=""):
         template_values = {}
         url = "monthly"
 
