@@ -287,10 +287,14 @@ class PastMonthlyChallengesHandler(BaseRequestHandler):
         s_e = Sponsors_Events.gql("WHERE event_name = :1 LIMIT 1", challenge_id).fetch(1)
         challenge = [p_e + s_e]
         
-
-        template_values.update (locals())
-        path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_old_chal.html')
-        self.response.out.write(template.render(path, template_values))
+        if challenge <> [[]]:
+            template_values.update (locals())
+            path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_old_chal.html')
+            self.response.out.write(template.render(path, template_values))
+        else:
+            self.error(404)
+            path = os.path.join(os.path.dirname(__file__), 'templates/404.html')
+            self.response.out.write(template.render(path, template_values))
 
 class Webapp2HandlerAdapter(webapp2.BaseHandlerAdapter):
     def __call__(self, request, response, exception):

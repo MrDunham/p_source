@@ -28,7 +28,7 @@
 {% block middle_info%}
 
 
-
+{% for p in challenge%}
 <div class="row data" id="upcoming_challenge">
     <div class="small-12 columns">
         <div class="row">
@@ -36,10 +36,11 @@
             <div id="challenge_title" class="small-12 large-10 large-push-1 text-center columns">
                 <h3>
                     {# Challenge overview #}
-                    How can we get people to capture their blood pressure to help them become healthier?
+                    {# How can we get people to capture their blood pressure to help them become healthier? #}
+                    {{p.0.problem.title}}
                 </h3>
             
-                <h4 class="lead"><strong>October 2014:</strong> BlueShield of California</h4>
+                <h4 class="lead"><strong>{{p.0.event.full_date|date:'F Y'}}:</strong> {{p.1.sponsor.name}}</h4>
             </div>
             
             <div id="winners" class="text-center small-centered">
@@ -105,24 +106,21 @@
             <div class="small-12 medium-12 left columns">
                 <div id="sponsor_info" class="small-12 small-only-text-center medium-4 right columns">
                     <h4>Sponsoring partner</h4>
-                    <img src="/images/partner_companies/blue_shield_of_ca.png">
+                    <img src="/partners?partner_id={{p.1.sponsor.sponsor_id}}" alt="{{p.1.sponsor.name}}, sponsoring this month's Prebacked Challenge"/>
                     
                     <p class="show-for-medium-up">
-                        BlueShield of California is one of California’s largest and most trusted grant making organizations. BSCA has 8 billion dollars in revenue, 65,000 physicians across the state, and 3.4 million health plan members.
+                        {{p.1.sponsor.blurb}}
                     </p>
                 </div> {# end #sponsor_info #}
                 
                 <h4>The story</h4>
                 <p>
                     {# The story goes here #}
-                    Jeffrey James (name changed), a 40 year old courier driver in Warwick, Rhode Island, did not consider himself unhealthy. Shortly before Christmas, however, he collapsed during a delivery and hospital tests confirmed he had had a stroke caused by a blood clot. For three months Jeffrey could not use his right side and lost his job. His habits of eating very salty foods had made his blood pressure rise to a dangerous level. "I wish I had known I had high blood pressure, I would have done something about it and would probably have prevented the stroke", he says.
+                    {{p.0.problem.story}}
                 </p>
                 <h4>The challenge</h4>
                 <p>
-                    We could help prevent heart diseases like Jeffrey's stroke, which make up 1 in every 4 deaths in the US, if we would have access to reliable blood pressure data from our members. Unfortunately this is not the case yet, which is why we are looking to incentivize people to take and capture their blood pressure so we can take preventive action and help them live a longer and healthier life. 
-
-                    <br/><br/>
-                    A great solution would make people want to record their blood pressure. Think about gamification, user experience, and wearables. 
+                    {{p.0.problem.statement}}
                 </p>
             </div>
         
@@ -138,7 +136,7 @@
     
 </div> {# end #upcoming_challenge .row .data #}
 
-
+{% endfor%}
 
 {# {%endif%} #}
 
@@ -233,6 +231,7 @@ $(document).ready(function() {
          // $("#challenge_apply").toggle();
          return false;     
     });  
+    console.log("challenge = {{challenge}}");
 });
 </script>
 {% endblock %}
