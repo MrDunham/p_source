@@ -256,7 +256,7 @@ class EventAddHandler(webapp2.RequestHandler):
         elif (event_type == "conversations" or event_num == 3):
             event.name = "conversations" + " - " + event.header
         elif (event_type == "monthly" or event_num == 4):
-            event.name = "monthly" + " - " + event.header
+            event.name = "monthly"
         else:
             event.name = str(self.request.get('name')) # Catches partner events, which have varying names
             
@@ -324,16 +324,20 @@ class EventAddHandler(webapp2.RequestHandler):
             event_num = 99
         
         
-        
+        #eventID is crucial.  URL and all joiners are dependent.  
         event.event_num = event_num
         
-        #eventID is crucial.  URL and all joiners are dependent.  
-        if (1 <= event_num <= 2):
-            eventID = city.lower().replace (" ", "-") + "-" + str(event.quarter).lower() + "-" + str(event.year) # Traslated: /event-city-quarter-year    
-        elif (event_num == 3):
-            eventID = "conversations" + "-" + city.lower().replace (" ", "-") + "-" + str(event.month) + "-" + str(event.year) # Traslated: /conversations-city-month-year
-        elif (event_num == 99):
-            eventID = event.name.lower().replace (" ", "-") + "-" + city.lower().replace (" ", "-") + "-" + str(event.month) + "-" + str(event.day) + "-" + str(event.year) # Traslated: /conversations-city-month-day-year    
+        if event.event_id:
+            eventID = event.event_id
+        else:
+            if (1 <= event_num <= 2):
+                eventID = city.lower().replace (" ", "-") + "-" + str(event.quarter).lower() + "-" + str(event.year) # Translated: /event-city-quarter-year    
+            elif (event_num == 3):
+                eventID = "conversations" + "-" + city.lower().replace (" ", "-") + "-" + str(event.month) + "-" + str(event.year) # Traslated: /conversations-city-month-year
+            # elif (event_num == 4): # ID for monthly
+                # eventID = 
+            elif (event_num == 99):
+                eventID = event.name.lower().replace (" ", "-") + "-" + city.lower().replace (" ", "-") + "-" + str(event.month) + "-" + str(event.day) + "-" + str(event.year) # Traslated: /conversations-city-month-day-year    
         
         event.event_id = eventID
         
@@ -344,16 +348,18 @@ class EventAddHandler(webapp2.RequestHandler):
         
         
 
-        # sets link to be shown on event_add page (for easy reference, not public facing)
+        # sets link to be shown on event_add page to quickly find the page (for easy reference, not public facing)
         if (1 <= event_num <= 2):
             eventLink = "/" + event.name + "/" + eventID
             event.link = eventLink
         elif (event_num == 3):
             eventLink = "/conversations"
+        elif (event_num == 4):
+            eventLink = "/monthly" + "/" + eventID
         elif 11<= event_num <=19 :
             eventLink = "/events"
         elif event_num == 99 :
-            eventLink = "/events"    
+            eventLink = "/events" 
         
 
         event.put()
@@ -467,7 +473,7 @@ class ProblemAddHandler(webapp2.RequestHandler):
     def get(self):
         template_values = {}
         page = "../templates/problem_add.html"
-        events = db.GqlQuery("SELECT * FROM Events WHERE event_num = :1 AND full_date > :2 ", 1, datetime.date.today())
+        events = db.GqlQuery("SELECT * FROM Events WHERE event_num = :1 AND full_date > :2 ", 4, datetime.date.today())  # Specifies only monthly challenges (event_num = 4)
         companies = db.GqlQuery("SELECT * FROM Sponsors ORDER BY name ASC")
         
         problems = db.GqlQuery("SELECT * FROM Problems")
@@ -508,8 +514,7 @@ class ProblemAddHandler(webapp2.RequestHandler):
                 problem_event.put()
                 message = "Linked " + problem_id + " to " + event_id
                 
-        elif self.request.get('statement'): #create a new problem or updates an old one
-            
+        elif self.request.get('statement'):     #create a new problem or updates an old one
             
             title = str(self.request.get('title'))
             company_list = self.request.get_all('company')
@@ -522,25 +527,55 @@ class ProblemAddHandler(webapp2.RequestHandler):
                     company = company + ';  ' + c
             
             # Determine if we're creating a new problem or updating an old one.
+            # Update
             if (Problems.gql("WHERE problem_id = :1", str(self.request.get("problem_id"))).get()) is not None:
                 problem_id = str(self.request.get("problem_id"))
                 problem = Problems.gql("WHERE problem_id = :1", problem_id).get()
                 message = "Problem updated: " + title
+            # Create new
             else:
                 message = "New problem created: " + title + " " + company
-            
+                new_monthly_challenge_event = True
+                # Create new event // Need to make it _not_ create new event for Ignition... if we ever do another one
+                
+
+            ## (unfinished) Collect all dates for schedule, put into list. Also chose one to put into the event
+            submissions_open = str(self.request.get('submissions_open'))
+            judging_begins = str(self.request.get('judging_begins'))
+            winners_announcement = str(self.request.get('winners_announcement'))
+            winners_dinner = str(self.request.get('winners_dinner'))
+
+
             
             problem.title = title
-            problem.statement = str(self.request.get('statement'))
+            problem.story = str(self.request.get('story'))
+            statement = str(self.request.get('statement'))
+            problem.statement = statement
+            problem.value = str(self.request.get("value"))
+            problem.advantages = str(self.request.get('advantages'))
+            problem.approaches = str(self.request.get('approaches'))
             problem.company = company_list
-            dollars = self.request.get("value").replace("$", "")
-            problem.value = dollars
+
+            #problem id
+            if (str(self.request.get('problem_id')) is not None):
+                problem_id = str(self.request.get('problem_id'))
+            else:
+                problem_id = title.lower().replace(" ", "_") + "_" + company.lower().replace(" ", "_")
+
+            if new_monthly_challenge_event:
+                event = Events()
+                event.event_id = problem_id
+                event.header = title
+                event.description = statement
+                event.event_num = 4 # this states that the "event" is a monthly challenge. Will need to be dynamic if we add challenges that are NOT monthly challenges
+                event.name = "monthly"
+
             
             
-            problem_id = title.lower().replace(" ", "_") + "_" + company.lower().replace(" ", "_")
             problem.problem_id = problem_id
             
             problem.put()
+            event.put()
             
         else:
             message = "There was an error"

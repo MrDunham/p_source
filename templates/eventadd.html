@@ -19,6 +19,10 @@
                 <option value="prebacked_other">Other / One-off Prebacked event [broken]</option>
                 <option value="ignition">Prebacked Ignition</option>
             </select><br/>
+
+            <div id="monthly_disclaimer" style="display:none">
+                <h4>Just go to "Challenges" link to add a monthly challenge. An "event" will be auto-created for linking sponsors, mentors, etc.</h4>
+            </div>
             
             <div id="name" style="display: none">
                 Event Title
@@ -53,7 +57,7 @@
                 <br/>
             </div>
             
-            Vertical: Health<input type="radio" name="vertical" value="health" checked="true"><br/>
+            <div id="vertical" style="display:none">Vertical: Health<input type="radio" name="vertical" value="health" checked="true"><br/></div>
             <div id="company_sponsor" style="display: none">Company sponsor(s): <input type="text" name="company" /> Separate by commas.</div>
             
             <div id="venue_info">
@@ -78,41 +82,43 @@
                     MA<input type="radio" name="state" value="MA"><br/>
                     District of Columbia<input type="radio" name="state" value="DC"><br/>
             </div>    
-            
-            <h3>Time Info</h3>
-            Start Day:<input type="text" name="day"> <em>Whole numbered date, eg: 5</em><br/>
-            <select name="month">
-                <option value="" disabled="disabled" selected="selected">Month</option>
-                {%for i in 123456789111|make_list %}
-                    <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
-                {% endfor %}
+            <div id="time_info">
+                <h3>Time Info</h3>
+                Start Day:<input type="text" name="day"> <em>Whole numbered date, eg: 5</em><br/>
+                <select name="month">
+                    <option value="" disabled="disabled" selected="selected">Month</option>
+                    {%for i in 123456789111|make_list %}
+                        <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
+                    {% endfor %}
+                    
+                </select>
+                <select name="year">
+                    <option value="" disabled="disabled" selected="selected">Year</option>
+                    
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    
+                </select>
                 
-            </select>
-            <select name="year">
-                <option value="" disabled="disabled" selected="selected">Year</option>
-                
-                <option value="2014">2014</option>
-                <option value="2015">2015</option>
-                <option value="2016">2016</option>
-                
-            </select>
-            
-            <!--<select name="quarter">
-                <option value="" disabled="disabled" selected="selected">Quarter</option>
-                
-                <option value="Spring">Spring</option>
-                <option value="Summer">Summer</option>
-                <option value="Fall">Fall</option>
-                <option value="Winter">Winter</option>
-                
-            </select><br/>-->
+                <!--<select name="quarter">
+                    <option value="" disabled="disabled" selected="selected">Quarter</option>
+                    
+                    <option value="Spring">Spring</option>
+                    <option value="Summer">Summer</option>
+                    <option value="Fall">Fall</option>
+                    <option value="Winter">Winter</option>
+                    
+                </select><br/>-->
+            </div>
             
             
             <br/><br/>
             <input type="submit">
         </form>
         
-        
+{# Editing an event #}
+
         <h2>Event edit</h2>
         <div id="event_edit">
             {% for e in event_edit %}
@@ -311,14 +317,25 @@
             $("#header").hide();
             $("#description").hide();
             $("#link").hide();
+            $("#ticketing").hide();
+            $("#monthly_disclaimer").hide();
+            $("#venue_info").show();
+            $("#time_info").show();
+            $("input[type=submit]").show();
         }
         else if(option == "monthly"){
             $("#company_sponsor").hide();
             $("#name").hide();
-            $("#header").show();
-            $("#description").show();
+            $("#header").hide();
+            $("#description").hide();
             $("#link").hide();
             $("#venue_info").hide();
+            $("#time_info").hide();
+            $("#description").hide();
+            $("#link").hide();
+            $("#ticketing").hide();
+            $("#monthly_disclaimer").show();
+            $("input[type=submit]").hide();
         }
         else{
             $("#company_sponsor").hide();
@@ -326,7 +343,11 @@
             $("#header").hide();
             $("#description").hide();
             $("#link").hide();
-            
+            $("#monthly_disclaimer").hide();
+            $("#venue_info").show();
+            $("#time_info").show();
+            $("input[type=submit]").show();
+
             if(option == "medhack"){
                 $("#ticketing").show();
             }

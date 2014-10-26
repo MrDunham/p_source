@@ -87,7 +87,9 @@
 
 
 
-{% if upcoming_challenge %}
+{% if upcoming_challenges %}
+{% for p in challenges %}
+\
 
 <div class="row data" id="upcoming_challenge">
     <div class="small-12 columns">
@@ -98,7 +100,8 @@
             <div class="small-12 large-10 large-push-1 columns">
                 <h3>
                     {# Challenge overview #}
-                    How can we get people to capture their blood pressure to help them become healthier?
+                    {# (static info) How can we get people to capture their blood pressure to help them become healthier? #}
+                    {{p.0.problem.title}}
                 </h3>
             </div>
 
@@ -107,24 +110,21 @@
             <div class="small-12 medium-12 left columns">
                 <div id="sponsor_info" class="small-12 small-only-text-center medium-4 right columns">
                     <h4>Sponsoring partner</h4>
-                    <img src="images/partner_companies/blue_shield_of_ca.png">
+                    <img src="/partners?partner_id={{p.1.sponsor.sponsor_id}}" alt="{{p.1.sponsor.name}}, sponsoring this month's Prebacked Challenge"/>
                     
                     <p class="show-for-medium-up">
-                        BlueShield of California is one of California’s largest and most trusted grant making organizations. BSCA has 8 billion dollars in revenue, 65,000 physicians across the state, and 3.4 million health plan members.
+                        {{p.1.sponsor.blurb}}
                     </p>
                 </div> {# end #sponsor_info #}
                 
                 <h4>The story</h4>
                 <p>
                     {# The story goes here #}
-                    Jeffrey James (name changed), a 40 year old courier driver in Warwick, Rhode Island, did not consider himself unhealthy. Shortly before Christmas, however, he collapsed during a delivery and hospital tests confirmed he had had a stroke caused by a blood clot. For three months Jeffrey could not use his right side and lost his job. His habits of eating very salty foods had made his blood pressure rise to a dangerous level. "I wish I had known I had high blood pressure, I would have done something about it and would probably have prevented the stroke", he says.
+                    {{p.0.problem.story}}
                 </p>
                 <h4>The challenge</h4>
                 <p>
-                    We could help prevent heart diseases like Jeffrey's stroke, which make up 1 in every 4 deaths in the US, if we would have access to reliable blood pressure data from our members. Unfortunately this is not the case yet, which is why we are looking to incentivize people to take and capture their blood pressure so we can take preventive action and help them live a longer and healthier life. 
-
-                    <br/><br/>
-                    A great solution would make people want to record their blood pressure. Think about gamification, user experience, and wearables. 
+                    {{p.0.problem.statement}}
                 </p>
             </div>
         
@@ -164,12 +164,7 @@
             <div id="value" class="small-12 medium-6 columns">
                 <h4>Value</h4>
                 <p>
-                    1 in 3 adults have high blood pressure in the US - less than half have their condition under control. 
-                    High blood pressure results in heart diseases, strokes, and kidney failure - <a href="http://www.measureuppressuredown.com/images/mupdFactsheet.jpg">causing nearly 1000 deaths a day.</a>
-                </p>
-                <p>So what can we do?</p>
-                <p>
-                    A report by the Agency for Healthcare Research and Quality shows strong evidence that <a href="http://effectivehealthcare.ahrq.gov/ehc/products/193/941/CER45_Self-Measured-Blood-Pressure_execsumm_20120124.pdf">self measurement of blood pressure plus additional support reduces overall blood pressure</a>. In fact, so much so, that in California alone blood pressure data is worth up to <b>$125 million a year</b> to insurance companies, arming them with the information to intervene, save lives, and save money.
+                   {{p.0.problem.value}}
                 </p>
                     
             </div>
@@ -179,21 +174,13 @@
         
             <div id="advantages" class="small-12 medium-6 columns">
                 <h4>Unfair advantages</h4>
-                <ul>
-                    <li>You've cracked getting users to regularly input data. Any data, health or otherwise</li>
-                    <li>You're willing to learn from <a href="http://www.measureuppressuredown.com/">Measure Up, Pressure Down</a></li>
-                    <li>Your team has strong UX and/or gamification backgrounds</li>
-                    <li>Current relationships with Accountable Care Organizations or physicians</li>
-                </ul>
+                <p>{{p.0.problem.advantages}}</p>
             </div>
             
 
             <div id="approaches" class="small-12 medium-6 columns">
                 <h4>Possible approaches</h4>
-                <p>
-                    We are looking for a solution which is easy to use for our members, while ideally encouraging them to capture their data regularly, regardless of <em>where</em> and <em>how</em> they capture data. Data may be captured at home, in the physicians office, or in Safeway in a BP cuff and may be analogue or digital.<br/><br/>
-                    Perhaps you've built an engaging mobile app? Dead-cheap BP sensors? A passive and engaging way to track data? Just some ideas.
-                </p>
+                <p>{{p.0.problem.approaches}}</p>
             </div>
         </div>
 
@@ -212,9 +199,7 @@
 
     </div> {# end .small-12 .columns #}
     
-</div> {# end #upcoming_challenge .row .data #}
 
-<div class="row data">
     <div class="small-12 medium-12 text-center columns">
         <a id="apply_button" role="button" href="" class="large button">
             Apply to win private dinner with<br/> BlueShield of CA executives<br/>
@@ -235,7 +220,31 @@
         </div>
 
     </div>
+
+    <script type="text/javascript">
+    var w1rxchu30fkqngf;(function(d, t) {
+            var s = d.createElement(t), options = {
+                'userName':'prebackedforms',
+                'formHash':'w1rxchu30fkqngf',
+                'autoResize':false,
+                'height':'1106',
+                'async':true,
+                'host':'wufoo.com',
+                'header':'hide',
+                {# challenge is auto-imported into the website below. Need to check over the variable. #}
+                {% if p.0.problem.problem_id %}'defaultValues':'field115={{p.0.problem.problem_id}}', {%endif%}
+                // 'resizeDone': hideTheBox,
+                'ssl':true};
+            s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+            s.onload = s.onreadystatechange = function() {
+            var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+            try { w1rxchu30fkqngf = new WufooForm();w1rxchu30fkqngf.initialize(options);w1rxchu30fkqngf.display(); } catch (e) {}};
+            var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+            })(document, 'script');
+
+    </script>
 </div>
+{% endfor %}
 
 <div id="judging-criteria" class="row data">
     <div class="small-12 columns">
@@ -281,38 +290,31 @@
 {%endif%}
 
 
-{# {% if past_challenges %} #}
+{% if past_challenges %}
 
 <div class="row" id="past_challenges">
     <div class="small-12 columns">
         <h2 class="text-center">Learn from past challenges</h2> {# don't forget to make this plural! (use pluralize tag & if statement) #}
             <div class="row">
-                <div class="past_challenge  small-12 medium-4 columns">
+                {% for p in past_challenges%}
+                <div class="past_challenge small-12 medium-4 columns">
                         <div class="challenge_img text-center small-12 columns">
-                            <span class="helper"></span><img alt="BlueShield of California" src="/images/partner_companies/blue_shield_of_ca.png">
+                            <span class="helper"></span><img src="/partners?partner_id={{p.1.sponsor.sponsor_id}}" alt="{{p.1.sponsor.name}}, a Prebacked Monthly Chalenge sponsor"/>
                         </div>
 
                         <div class="challenge_info small-12 columns">
-                            <p class="challenge_date">October 2014</p>
-                            <p class="challenge_sponsor">Blue Shield of CA</p>
-                            <p class="challenge_blurb">How can we get people to capture blood pressure to become healthier?</p>
+                            <p class="challenge_date">{{p.0.event.full_date|date:'F Y'}}</p>
+                            <p class="challenge_sponsor">{{p.1.sponsor.name}}</p>
+                            <p class="challenge_blurb">{{p.0.problem.title}}</p>
                         </div>
-                    <a href="/monthly/oct2014"><span class="overlay"></span></a> {# Links to past challenge page #}
+                    <a href="/monthly/{{p.0.problem.problem_id}}"><span class="overlay"></span></a> {# Links to past challenge page #}
                 </div>
-              
+                {% endfor %}
             </div>
-
-
-        {# {% for p in past_challenges%} #}
-            {# <div class="past_challenge"> #}
-                <!--<h3><a href="{# past challenges link #}">{# should pull the header from each challenge#}</a></h3>-->
-            {# </div> #}
-        {# {%endfor%} #}
     </div>
-    {#  #}
 </div>
 
-{# {%endif%} #}
+{%endif%}
 
 <div class="data" id="corporate">
     <div class="row">
@@ -425,28 +427,7 @@
 {%block scripts%}
 
 
-<script type="text/javascript">
-var w1rxchu30fkqngf;(function(d, t) {
-        var s = d.createElement(t), options = {
-            'userName':'prebackedforms',
-            'formHash':'w1rxchu30fkqngf',
-            'autoResize':false,
-            'height':'1106',
-            'async':true,
-            'host':'wufoo.com',
-            'header':'hide',
-            {# challenge is auto-imported into the website below. Need to check over the variable. #}
-            {% if challenge.title %}'defaultValues':'field115={{challenge.title}}', {%endif%}
-            // 'resizeDone': hideTheBox,
-            'ssl':true};
-        s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
-        s.onload = s.onreadystatechange = function() {
-        var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
-        try { w1rxchu30fkqngf = new WufooForm();w1rxchu30fkqngf.initialize(options);w1rxchu30fkqngf.display(); } catch (e) {}};
-        var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
-        })(document, 'script');
 
-</script>
 
 <script type="text/javascript">
 $(document).ready(function() {  
@@ -455,9 +436,18 @@ $(document).ready(function() {
          $("#challenge_apply").toggle();
          // $("#challenge_apply").toggle();
          return false;     
+
     });  
+
+    {% for p in challenges %}
+        console.log("challenges = {{p}}");
+        console.log("challenges.0 = {{p.0}}");
+        console.log("challenges.0.title = {{p.0.problem.title}}");
+        // console.log("upcoming_events = "{{upcoming_events}});
+    {%endfor%}
 });
 </script>
+
 {% endblock %}
 
 

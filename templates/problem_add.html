@@ -7,17 +7,56 @@
         
         <form action="/admin_add/problem_add" method="post" id="problem_add">
             <h2>Create new problem</h2>
-                Problem Title <input type="text" name="title" required="yes" id="problem_title" value="Price Transparency" style="color: #666" onfocus="if (this.value == 'Price Transparency') {this.style.color='#000'; this.value=''}"><br/>
-                Problem Statement <br/><textarea maxlen="200" rows="5" cols="90" name="statement"></textarea><strong><em id="count"></em> characters remaining</strong>
-                (3 sentences or less.)<br/><br/>
-                Company (companies) pitching <br/> <!--need to do a query for all companies and have it list here to be able to link-->
+                Problem Title <input type="text" name="title" required="yes" id="problem_title" value="How do we get people to capture their blood pressure to make them happier?" style="color: #666" onfocus="if (this.value == 'How do we get people to capture their blood pressure to make them happier?') {this.style.color='#000'; this.value=''}"><br/>
+                
+                The story <br/><textarea maxlen="" rows="20" cols="90" name="story"></textarea><br/><br/>
+                
+                The problem statement <br/><textarea maxlen="" rows="10" cols="90" name="statement"></textarea><br/><br/>
+                
+                Super short description of challenge (used for unique ID & url)<br/>
+                <input type="text" name="problem_id" class="" style =""/>
+                
+                Unfair advantages <br/><textarea maxlen="" rows="15" cols="90" name="advantages"></textarea>
+                
+                Possible approaches <br/><textarea maxlen="" rows="15" cols="90" name="approaches"></textarea>
+                
+                Company (companies) pitching <br/> 
                 {%for c in companies%}
                     <input type="checkbox" name="company" value = "{{c.name}}"/>{{c.name}} <br/>
-                {%endfor%}
-            <br/>
+                {%endfor%}<br/>
                 
+                Schedule
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Item</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Submissions open</td>
+                            <td><input type="text" name="submissions_open" value="mm/dd/yy" class="thin" style="color: #666" onfocus="if (this.value == 'mm/dd/yy') {this.style.color='#000'; this.value=''}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Judging begins</td>
+                            <td><input type="text" name="judging_begins" value="mm/dd/yy" class="thin" style="color: #666" onfocus="if (this.value == 'mm/dd/yy') {this.style.color='#000'; this.value=''}"/></td>
+                            
+                            
+                        </tr>
+                        <tr>
+                            <td>Winners announcement</td>
+                            <td><input type="text" name="winners_announcement" value="mm/dd/yy" class="thin style="color: #666" onfocus="if (this.value == 'mm/dd/yy') {this.style.color='#000'; this.value=''}""/></td>
+                        </tr>
+                        <tr>
+                            <td>Winners' Dinner</td>
+                            <td><input type="text" name="winners_dinner" value="mm/dd/yy" class="thin" style="color: #666" onfocus="if (this.value == 'mm/dd/yy') {this.style.color='#000'; this.value=''}"/></td>
+                        </tr>
+                    </tbody>
+                </table>
+
                 <!--<input type="text" name="company" required="yes" id="company" value="Wellmark Blue Cross Blue Shield" style="color: #666" onfocus="if (this.value == 'Wellmark Blue Cross Blue Shield') {this.style.color='#000'; this.value=''}">Separate by commas<br/>-->
-                Value <input type="text" name="value" id="value"> <em>Estimated dollars a co would pay a vendor for a solution</em>
+                Value <br/><textarea maxlen="" rows="10" cols="90" name="value" id="value"></textarea>
                 <input type="submit" class="orange button submit">
                 
                 <br class="clear"/>

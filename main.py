@@ -117,6 +117,8 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
             event_num = 2
         elif url == 'conversations': 
             event_num = 3
+        elif url == 'monthly': 
+            event_num = 4
         elif url == 'events' or url =='event_board': 
             event_num = 9 
         
@@ -150,7 +152,7 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
 
                     if sponsor_t1:
                         
-                         ###?? Why the F did I do this below? ??### -- I think this is just for Ignition, not MedHack
+                    ###?? Why the F did I do this below? ??### -- I think this is just for Ignition, not MedHack
                         companies = sponsor_t1[0].sponsor.name
                         for s in sponsor_t1[1:]:
                             companies = companies + "<br/>" + s.sponsor.name
@@ -204,7 +206,7 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
 
                 upcoming_events_length = upcoming_events.count()
 
-                        
+        ### Conversations            
         elif (event_num == 3): #code for conversations page
             try:
                 upcoming_events = Events.gql("WHERE full_date > :1 AND publish = True AND event_num = :2 ORDER BY full_date", datetime.date.today(), event_num)
@@ -215,12 +217,37 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
                 for e in upcoming_events:
                     mentors = db.GqlQuery("SELECT * FROM Mentors_Events WHERE event_id = :1 ORDER BY mentor_type ASC, order ASC, mentor_id ASC", e.event_id)
                     conversations.append([e , mentors])
-        
+        ### Monthly
+        elif (event_num == 4): #code for Monthly page
+            problems_events = []
+            a_challenge = []
+            challenges = []
+            past_challenges = []
+            # Need to make the next line into a try / except
+            upcoming_challenges = Events.gql("WHERE full_date >= :1 AND publish = True AND event_num = :2 ORDER BY full_date", datetime.date.today(), event_num)
+            prev_challenges = Events.gql("WHERE full_date < :1 AND publish = True AND event_num = :2 ORDER BY full_date", datetime.date.today(), event_num)
+
+            for e in upcoming_challenges:
+                p_e = Problems_Events.gql("WHERE event_name = :1 LIMIT 1", e.event_id).fetch(1) # gather joiner about current event
+                s_e = Sponsors_Events.gql("WHERE event_name = :1 LIMIT 1", e.event_id).fetch(1)
+                a_challenge = [p_e + s_e]
+                challenges = challenges + a_challenge
+            
+            for e in prev_challenges:
+                past_p_e = Problems_Events.gql("WHERE event_name = :1 LIMIT 1", e.event_id).fetch(1) # gather joiner about current event
+                past_s_e = Sponsors_Events.gql("WHERE event_name = :1 LIMIT 1", e.event_id).fetch(1)
+                a_past_challenge = [past_p_e + past_s_e]
+                past_challenges = past_challenges + a_past_challenge
+################  (left off here) 
+
         elif (event_num == 9):
             try:
                 upcoming_events = Events.gql("WHERE full_date > :1 AND publish = True ORDER BY full_date", datetime.date.today())
             except:
                 upcoming_events = {}
+
+            for e in upcoming_events:
+                challenge = Problems_Events.gql("WHERE event_name = :1", e.event_id).fetch(10)
             
         
          
@@ -249,6 +276,17 @@ class PastMonthlyChallengesHandler(BaseRequestHandler):
     def get(self, challenge_id, team_id=""):
         template_values = {}
         url = "monthly"
+
+        problems_events = []
+        a_challenge = []
+        challenges = []
+        past_challenges = []
+        # Need to make the next line into a try / except
+    
+        p_e = Problems_Events.gql("WHERE event_name = :1 LIMIT 1", challenge_id).fetch(1) # gather joiner about current event
+        s_e = Sponsors_Events.gql("WHERE event_name = :1 LIMIT 1", challenge_id).fetch(1)
+        challenge = [p_e + s_e]
+        
 
         template_values.update (locals())
         path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_old_chal.html')
@@ -419,7 +457,7 @@ application = webapp2.WSGIApplication([
     webapp2.Route(r'/admin_add/event_add', handler=EventAddHandler, name='event-add'),
     webapp2.Route(r'/admin_add/sponsor_add', handler=SponsorAddHandler, name='sponsor-add'),
     webapp2.Route(r'/admin_add/problem_add', handler=ProblemAddHandler, name='ignition-add'),
-    webapp2.Route(r'/admin_add/ignition', handler=ProblemAddHandler, name='problem-add'),
+    webapp2.Route(r'/admin_add/challenge', handler=ProblemAddHandler, name='problem-add'),
     webapp2.Route(r'/admin_add/print_names', handler=PrintNameHandler, name='print-name'),
     
     # webapp2.Route(r'/events', handler=TempEventsPageReroute, name='event-reroute'),

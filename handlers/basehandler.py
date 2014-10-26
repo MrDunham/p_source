@@ -42,6 +42,7 @@ class Events(db.Model):
     year = db.IntegerProperty()
     quarter = db.StringProperty()
     full_date = db.DateProperty()
+    schedule = db.ListProperty(basestring, default=[]) #See what StringListProperty does and if it's the right thing to do here
     header = db.StringProperty()  #look into purpose of this
     subheader = db.StringProperty()  #look into purpose of this
     description = db.StringProperty()
@@ -75,15 +76,14 @@ class Problems(db.Model):
     problem_id = db.StringProperty()
     problem_type = db.StringProperty() # 1 = monthly challenges
     title = db.StringProperty() # summarize the challenge / problem
-    statement = db.StringProperty() # what is the challenge?
+    statement = db.TextProperty() # what is the challenge?
+    story = db.TextProperty()
     statement_long = db.StringProperty()
     company = db.ListProperty(basestring, default=[])
-    schedule = db.ListProperty(basestring, default=[]) #See what StringListProperty does and if it's the right thing to do here
     advantages = db.StringProperty()
     approaches = db.StringProperty()
     value = db.StringProperty() 
     post_img = db.BlobProperty() #a place to upload a hero image of the event post-dinner. Check if working, left unfinished.
-    publish = db.BooleanProperty()
 
 
 # class Challenges(db.Model): #Used for Monthly Challenges
