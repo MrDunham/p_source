@@ -30,6 +30,10 @@ import os
 from google.appengine.ext.webapp import util, template
 
 import webapp2
+# from webapp2 import redirect
+# import json, base64
+import base64
+import json
 #from google.appengine.api import images
 from google.appengine.ext import db
 from webapp2_extras import routes
@@ -223,22 +227,45 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
             a_challenge = []
             challenges = []
             past_challenges = []
+
+            #Get wufoo json
+            # wufoo_url = "https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json"
+            result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
+            json_data = json.loads(result.content) #get content of response from wufoo
+            all_entries = json_data['Entries']
+
             # Need to make the next line into a try / except
             upcoming_challenges = Events.gql("WHERE full_date >= :1 AND publish = True AND event_num = :2 ORDER BY full_date", datetime.date.today(), event_num)
             prev_challenges = Events.gql("WHERE full_date < :1 AND publish = True AND event_num = :2 ORDER BY full_date", datetime.date.today(), event_num)
 
-            for e in upcoming_challenges:
-                p_e = Problems_Events.gql("WHERE event_name = :1 LIMIT 1", e.event_id).fetch(1) # gather joiner about current event
-                s_e = Sponsors_Events.gql("WHERE event_name = :1 LIMIT 1", e.event_id).fetch(1)
-                a_challenge = [p_e + s_e]
-                challenges = challenges + a_challenge
+            if upcoming_challenges is None:
+###!            #do nothing
+                nothing = True
+            else:
+                for e in upcoming_challenges:
+                    p_e = Problems_Events.gql("WHERE event_name = :1 LIMIT 1", e.event_id) #.fetch(1) # gather joiner about current event
+                    p_e_info = p_e.get()
+                    p_e = p_e.fetch(1)
+                    s_e = Sponsors_Events.gql("WHERE event_name = :1 LIMIT 1", e.event_id).fetch(1)
+                    try:
+                        challenge_id = p_e_info.problem.problem_id
+                    except:
+                        challenge_id = ""
+                    
+                    challenge_entries = []
+                    for entry in all_entries: # Get challenge entries from Wufoo
+                        if entry['Field115'] == challenge_id:
+                            challenge_entries.append(entry)
+
+                    a_challenge = [p_e + s_e + [challenge_entries]] #Create list of lists for one challenge
+                    challenges = challenges + a_challenge #Append this challenge to a list of all upcoming challenges
             
             for e in prev_challenges:
                 past_p_e = Problems_Events.gql("WHERE event_name = :1 LIMIT 1", e.event_id).fetch(1) # gather joiner about current event
                 past_s_e = Sponsors_Events.gql("WHERE event_name = :1 LIMIT 1", e.event_id).fetch(1)
                 a_past_challenge = [past_p_e + past_s_e]
                 past_challenges = past_challenges + a_past_challenge
-################  (left off here) 
+
 
         elif (event_num == 9):
             try:
@@ -250,17 +277,18 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
                 challenge = Problems_Events.gql("WHERE event_name = :1", e.event_id).fetch(10)
             
         
-         
         ###
         template_values.update (locals())
         path_url = 'templates/home_' + url + '.html'
-    
+
+        
                         
 # !!!!!   HUGE BUG ALERT!  Below is meant to catch 404's, but it uses the path_url above and throws only 500's.  Means if you're getting a 404
         # and know the file exists that it's throwing a 500 instead.  No idea how to fix.
         # Update 3/2/2014 - seems fixed?
         # Update again - nope, now it throws a 404 when it's supposed to toss a 500. Better than before though
         
+
         try:
             path = os.path.join(os.path.dirname(__file__), path_url)
             self.response.out.write(template.render(path, template_values))
@@ -272,25 +300,120 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
         
         ###
 
+class PaulMonthlyHandler(BaseRequestHandler):
+    def get(self,challenge_id="", team_id=""):
+        template_values = {} #here we need to inject the backend values for the challenge!
+        path_url = 'templates/home_monthly.html'
+        path = os.path.join(os.path.dirname(__file__), path_url)
+
+        #Get wufoo json
+        url = "https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json"
+        result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")})
+        json_data = json.loads(result.content)
+        all_entries = json_data['Entries']
+
+
+        #if just monthly is requested return the normal template and return
+        if not challenge_id: #url looks like prebacked.com/monthly
+            #do fancy database to get template values and challenge id
+            challenge_id = "BP-oct14"
+            challenge_entries = []
+            for entry in all_entries:
+                if entry['Field115'] == challenge_id:
+                    challenge_entries.append(entry)
+            #Render the new template with winners in it! (TODO)!!!!
+            template_values['entries'] = challenge_entries
+            self.response.out.write(template.render(path, template_values))
+            return 
+
+        #check if we can find a matching past challenge
+        #url looks like prebacked.com/monthly/<challenge_id>
+        if not team_id:
+            winners = []
+            for entry in all_entries:
+                if entry['Field115'] == challenge_id and entry['Field123'] == 'winner':
+                    winners.append(entry)
+            if winners:
+                template_values['winners'] = winners
+                path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_old_chal.html')
+                self.response.out.write(template.render(path, template_values))
+                return
+            else:
+                return redirect('/monthly')
+
+        #check if we can find a matching team
+        #url looks like prebacked.com/monthly/<challenge_id>/<team>
+        if team_id and challenge_id:
+            team = ""
+            for entry in all_entries:
+                if entry['Field115'] == challenge_id and entry['EntryId'] == team_id:
+                    team = entry
+            if team:
+                path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_team.html')
+                template_values['team'] = team
+                self.response.out.write(template.render(path, template_values))
+            
+            else:
+                return redirect('/monthly')
+
+
 class PastMonthlyChallengesHandler(BaseRequestHandler):
     def get(self, challenge_id, team_id=""):
         template_values = {}
         url = "monthly"
+
+        result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
+        json_data = json.loads(result.content) #get content of response from wufoo
+        all_entries = json_data['Entries']
 
         problems_events = []
         a_challenge = []
         challenges = []
         past_challenges = []
         # Need to make the next line into a try / except
-    
-        p_e = Problems_Events.gql("WHERE event_name = :1 LIMIT 1", challenge_id).fetch(1) # gather joiner about current event
+
+        p_e = Problems_Events.gql("WHERE event_name = :1 LIMIT 1", challenge_id) # gather joiner about current event
+        p_e_info = p_e.get() # export p_e into an object so we can get the challenge_id
+        p_e = p_e.fetch(1)
         s_e = Sponsors_Events.gql("WHERE event_name = :1 LIMIT 1", challenge_id).fetch(1)
-        challenge = [p_e + s_e]
         
+        challenge = [p_e + s_e]
+
+
+        # check to make sure page exists
         if challenge <> [[]]:
-            template_values.update (locals())
-            path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_old_chal.html')
-            self.response.out.write(template.render(path, template_values))
+
+            # check if the event is currently running
+            if p_e_info.event.full_date >= datetime.date.today():
+                live_event = True
+
+            #check if we can find a matching past or current challenge
+            #url looks like prebacked.com/monthly/<challenge_id>
+            if not team_id:
+                challenge_entries = []
+                for entry in all_entries: # Get challenge entries from Wufoo
+                    if entry['Field115'] == challenge_id:
+                        challenge_entries.append(entry)
+
+                winners = []
+                for entry in all_entries:
+                    if entry['Field115'] == challenge_id and entry['Field123'] == 'winner':
+                        winners.append(entry)
+                template_values.update (locals())
+                path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_old_chal.html')
+                self.response.out.write(template.render(path, template_values))
+            #check if we can find a matching team
+            #url looks like prebacked.com/monthly/<challenge_id>/<team>
+            elif team_id and challenge_id:
+                team = ""
+                for entry in all_entries:
+                    if entry['Field115'] == challenge_id and entry['EntryId'] == team_id:
+                        team = entry
+
+                path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_team.html')
+                template_values.update (locals())
+                self.response.out.write(template.render(path, template_values))
+        # if page doesn't exist, throw a 404
         else:
             self.error(404)
             path = os.path.join(os.path.dirname(__file__), 'templates/404.html')
@@ -455,6 +578,7 @@ application = webapp2.WSGIApplication([
     #webapp2.Route(r'/ignition', handler=IgnitionHandler, name='ignition-home'),
     webapp2.Route(r'/medhack/sponsor', handler=MedHackSponsorHandler, name='medhack-sponsor-catchall'),
     webapp2.Route(r'/medhack/<:.*>', handler=MedHackPagesHandler, name='medhack-main-catchall'),
+    webapp2.Route(r'/monthly/<:.*>/<:.*>', handler=PastMonthlyChallengesHandler, name='monthly-teams'),
     webapp2.Route(r'/monthly/<:.*>', handler=PastMonthlyChallengesHandler, name='past-monthly-main-catchall'),
     webapp2.Route(r'/admin_add', handler=AdminAddHandler, name='admin-add'),
     webapp2.Route(r'/admin_add/faq_add', handler=FaqAddHandler, name='faq-add'),

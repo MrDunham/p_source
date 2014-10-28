@@ -42,14 +42,42 @@
             
                 <h4 class="lead"><strong>{{p.0.event.full_date|date:'F Y'}}:</strong> {{p.1.sponsor.name}}</h4>
             </div>
+
+            {# Safety catch in case we haven't selected any winners after the anouncement #}
+            {% if not live_event and not winners %}
+                <div class="small-12 text-center columns">
+                    <p>Thank you everyone who applied for this months' challenge. Winners will be announced very shortly.</p>
+                </div>
+            {% endif %}
+
+            {# if the event is over and at least one winner has been declared #}
             
+            {% if not live_event and winners %} 
+
             <div id="winners" class="text-center small-centered">
                  <div class="small-12 columns">
                      <h3>The winners</h3>
                      <p>Congratulations to our winners for their great solutions</p>
                  </div>
 
+                {% for e in winners %}
+                    {% if not forloop.first %}-->{%endif%}<div class="winner small-12 medium-4 columns">
+                        <div class="winner_inner">
+                            {% comment %} {# This is in case we have an image upload #}
+                            <div class="img_container">
+                                <img src="/images/teams/lyfechannel.jpg"/>
+                            </div>
+                            {% endcomment %}
 
+                            <p class="title">{{e.Field2}}</p>
+                            <p>Tagline (To be implemented)</p>
+                            <a id="{{e.EntryId}}" href="/monthly/{{challenge_id}}/{{e.EntryId}}"><span></span></a>
+                        </div>
+                    </div>{%if not forloop.last%}<!--{%endif%} {# the strange HTML commenting is due to whitespace issues caused by disply:inline-block #}
+                {% endfor %}
+                <!-- --> {# this comment is just so color matching work again #}
+
+                {% comment %}
                 <div class="winner small-12 medium-4 columns">
                     <div class="winner_inner">
                         <div class="img_container">
@@ -70,40 +98,15 @@
                         <a href="/monthly/{{challenge_id}}/wellband"><span></span></a>  {# need to put in team name #}
                     </div>
                 </div><!--
-                --><div class="winner small-12 medium-4 columns">
-                    <div class="winner_inner">
-                        <div class="img_container">
-                            <img src="/images/teams/lyfechannel.jpg"/>
-                        </div>
-                        <p class="title">Wellband</p>
-                        <p>A band for wellness that is awesome. You're welcome.</p>
-                        <a href="/monthly/{{challenge_id}}/wellband"><span></span></a>  {# need to put in team name #}
-                    </div>
-                </div><!--
-                --><div class="winner small-12 medium-4 columns">
-                    <div class="winner_inner">
-                        <div class="img_container">
-                            <img src="/images/teams/lyfechannel.jpg"/>
-                        </div>
-                        <p class="title">Wellband</p>
-                        <p>A band for wellness that is awesome. You're welcome.</p>
-                        <a href="/monthly/{{challenge_id}}/wellband"><span></span></a>  {# need to put in team name #}
-                    </div>
-                </div><!--
-                --><div class="winner small-12 medium-4 columns">
-                    <div class="winner_inner">
-                        <div class="img_container">
-                            <img src="/images/teams/lyfechannel.jpg"/>
-                        </div>
-                        <p class="title">Wellband</p>
-                        <p>A band for wellness that is awesome. You're welcome.</p>
-                        <a href="/monthly/{{challenge_id}}/wellband"><span></span></a>  {# need to put in team name #}
-                    </div>
-                </div><!--
                 -->
+                {% endcomment %}
+
             </div>
 
+            {% endif %}
+
             <div class="small-12 medium-12 left columns">
+                {% if p.1.sponsor%}
                 <div id="sponsor_info" class="small-12 small-only-text-center medium-4 right columns">
                     <h4>Sponsoring partner</h4>
                     <img src="/partners?partner_id={{p.1.sponsor.sponsor_id}}" alt="{{p.1.sponsor.name}}, sponsoring this month's Prebacked Challenge"/>
@@ -112,36 +115,168 @@
                         {{p.1.sponsor.blurb}}
                     </p>
                 </div> {# end #sponsor_info #}
-                
+                {% endif %}
                 <h4>The story</h4>
                 <p>
                     {# The story goes here #}
-                    {{p.0.problem.story}}
+                    {{p.0.problem.story|safe}}
                 </p>
                 <h4>The challenge</h4>
                 <p>
-                    {{p.0.problem.statement}}
+                    {{p.0.problem.statement|safe}}
                 </p>
             </div>
-        
-            
 
         </div>
 
-       
+        {% if live_event%}
+        <div class="row">
 
+            <div id="schedule" class="small-12 medium-6 columns">
+                <h4>Schedule</h4>
+                <table class="small-12">
+                    <thead>
+                        <th>Action</th>
+                        <th>Date</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Submissions open</td>
+                            <td>{{p.0.event.schedule.0|date:"M jS Y"}}</td>
+                        </tr>
+                        <tr>
+                            <td>Judging begins</td>
+                            <td>{{p.0.event.schedule.1|date:"M jS Y"}}</td>
+                        </tr>
+                        <tr>
+                            <td>Winners announcement</td>
+                            <td>{{p.0.event.schedule.2|date:"M jS Y"}}</td>
+                        </tr>
+                        <tr>
+                            <td>Winners' dinner</td>
+                            <td>{{p.0.event.schedule.3|date:"M jS Y"}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> {# end #schedule #}
 
+            <div id="value" class="small-12 medium-6 columns">
+                <h4>Value</h4>
+                <p>
+                   {{p.0.problem.value|safe}}
+                </p>
+                    
+            </div>
+        </div>
 
+        <div class="row">
+        
+            <div id="advantages" class="small-12 medium-6 columns">
+                <h4>Unfair advantages</h4>
+                <p>{{p.0.problem.advantages|safe}}</p>
+            </div>
+            
+
+            <div id="approaches" class="small-12 medium-6 columns">
+                <h4>Possible approaches</h4>
+                <p>{{p.0.problem.approaches|safe}}</p>
+            </div>
+        </div>
+
+        <div id="corporate_quote" class="quote row">
+            <img src="/images/partners/david_parpart.jpg" class="show-for-medium-up medium-2 medium-push-1 columns" />
+            <div class="small-12 medium-8 medium-push-1 end columns">
+                <p class="quote">
+                    "The executives and mentors I met are awesome.  It is a catalyst for my creativity, opening my mind to new possibilities to improve healthcare."<br/>
+                    <span class="attributed">
+                        David Parpart, Co-founder: Silicon Valley Health2.0
+                    </span>
+                </p>
+            </div>
+
+        </div>
+        
+        {% endif %}
     </div> {# end .small-12 .columns #}
     
-</div> {# end #upcoming_challenge .row .data #}
+    {% if live_event%}
+    <div class="small-12 medium-12 text-center columns">
+        <a id="apply_button" role="button" href="" class="large button">
+            Apply to win private dinner with<br/> BlueShield of CA executives<br/>
+            <span>It just might be the best use of 5 minutes you'll spend today</span>
+        </a>                
+        <p>
+            Not ready to apply right now? <a href="#stay_connected">Declare interest and get reminders</a> about the challenge.
+        </p>
+    </div>
 
-{% endfor%}
+    <div id="challenge_apply" class="small-12 columns" style="display:none;">
+        {# ------------Application goes here---------------- #}
+        <div id="wufoo-w1rxchu30fkqngf" style="">
+        Fill out my <a href="https://prebackedforms.wufoo.com/forms/w1rxchu30fkqngf">online form</a>.
+        </div>
+    </div>
 
-{# {%endif%} #}
+    {% if challenge_entries %}
+    <div id="social-media-contest" class="row data">
+        <div class="small-12 columns">
+            <h3>Consumer's choice wildcard</h3>
+            <p>The team which is voted by our visitors will come to the dinner directly as a wildcard</p>
+            <div class="row">
+                <script type="text/javascript">
+                    console.log("p.2 = {{p.2}}")
+                </script>
+
+                {% for e in challenge_entries %}
+                    <div class="small-3 columns">
+                        <h4>{{e.Field2}}</h4>
+                        <p>Tagline (To be implemented)</p>
+                        <a id="{{e.EntryId}}" href="/monthly/{{e.Field115}}/{{e.EntryId}}" class="button"> Votes</a>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <script type="text/javascript">
+    var w1rxchu30fkqngf;(function(d, t) {
+            var s = d.createElement(t), options = {
+                'userName':'prebackedforms',
+                'formHash':'w1rxchu30fkqngf',
+                'autoResize':false,
+                'height':'1106',
+                'async':true,
+                'host':'wufoo.com',
+                'header':'hide',
+                {# challenge is auto-imported into the website below. Need to check over the variable. #}
+                {% if p.0.problem.problem_id %}'defaultValues':'field115={{p.0.problem.problem_id}}', {%endif%}
+                // 'resizeDone': hideTheBox,
+                'ssl':true};
+            s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
+            s.onload = s.onreadystatechange = function() {
+            var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+            try { w1rxchu30fkqngf = new WufooForm();w1rxchu30fkqngf.initialize(options);w1rxchu30fkqngf.display(); } catch (e) {}};
+            var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+            })(document, 'script');
+
+    </script>
+    {% endif%}
+</div>
+{% endfor %}
 
 
 
+
+
+
+
+
+
+
+
+            
 
 
 
@@ -193,6 +328,8 @@
         </div>
     </div>
 </div>
+
+
 {% endblock %}
 
 
@@ -231,7 +368,7 @@ $(document).ready(function() {
          // $("#challenge_apply").toggle();
          return false;     
     });  
-    console.log("challenge = {{challenge}}");
+    
 });
 </script>
 {% endblock %}

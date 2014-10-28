@@ -1,0 +1,135 @@
+{% extends 'homepage_base.html' %}
+
+{% block title %}Prebacked Monthly: Win private meetings with corporate executives{%endblock%}
+{%block fb_title%}{%if challenge.title%}{{challenge.title}}{%else%}How can we get people to capture their blood pressure?{%endif%}{%endblock%}
+
+{%block description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}
+{%endblock%}
+
+{%block fb_description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}{%endblock%}
+
+{% block styles %}
+  <link rel="stylesheet" href="/css/pages.css" media="screen" type="text/css"/>
+{% endblock %}
+
+{%block color_scheme%}default{%endblock%}
+
+{%block sub_link_bar%}
+    {%include 'partials/sublinkbar_accelerate.html'%}
+{%endblock%}
+
+{% block upper_info%}  
+{% endblock %}
+
+{%block upper_bg%}
+    {# <img class="show-for-medium-up" src="images/bgs/room-of-people.jpg" id="headerImg" alt="" /> #}
+{% endblock%}
+
+{% block middle_info%}
+
+
+
+<div class="row data" id="team">
+    <div class="small-12 columns">
+        <div class="row">
+            
+            <div id="challenge_title" class="small-12 large-10 large-push-1 text-center columns">
+                <h2>
+                    {# Challenge overview #}
+                    {{team.Field2}}
+                </h2>
+            
+                <p>{{team.Field112}}</p>
+                <br>
+                <br>
+                
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-text="I voted for {{team.Field2}} at Prebacked challenges" data-via="Yrrs" data-hashtags="Prebacked" >Tweet</a>
+                    <script type="IN/Share" data-counter="right"></script>
+                    <div class="fb-share-button" data-layout="button_count"></div>
+                    <g:plus action="share"></g:plus>
+              </div>
+        
+        
+        </div>
+    </div> {# end .small-12 .columns #}   
+</div> {# end #upcoming_challenge .row .data #}
+
+
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+</script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript">
+    lang: en_US
+</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<script src="https://apis.google.com/js/plusone.js"></script>
+{# {%endif%} #}
+
+
+<div id="stay_connected" class="">
+    <div id="stay_connected_inner" class="row">
+        <div id="connected_text" class="small-12 large-7 columns">
+            <h2>Know upcoming challenges</h2>
+            <p>Learn about future challenges first and have more time to apply. Expect about two emails a month.</p>
+        </div>
+        
+        <div id="connected_form" class="small-12 medium-7 large-5 end columns">
+            
+                <form action="http://prebacked.us5.list-manage.com/subscribe/post?u=3572fa1f9d829a0cc324cce2a&amp;id=f29adcde57" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+                        
+                        {### Auto-load hidden tags ###}
+                        {# Explicit tag  #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <input type="checkbox" checked="checked" id="group_1" name="group[7405][1]" value="1" style="-webkit-appearance: checkbox;display: inline !important;margin: 0;padding: 5px;border: 0;background: none;width: auto !important;font-family: Helvetica;font-size: 18;color: #F5F5F5;">
+                            <label for="group_1" style="float: none;clear: none;display: inline;width: auto;margin-top: 8px;text-align: left;font-weight: normal;position: relative;line-height: 150%;font-family: Helvetica;font-size: 14px;color: #333333;padding: 0 30px 0 3px;">Explicit Signups</label>
+                        </li>
+                        {# Prebacked monthly subscription #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <label class="checkbox" for="group_4194304">
+                                <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_4194304" name="group[17685][4194304]" value="1" class="av-checkbox"><span>Monthly challenges (3 emails a month)</span> 
+                            </label>
+                        </li>
+
+                        {# Prebacked accelerator subscription #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <label class="checkbox" for="group_8388608">
+                                <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_8388608" name="group[17685][8388608]" value="1" class="av-checkbox"><span>Accelerator program (4 emails a year)</span> 
+                            </label> 
+                        </li>
+
+                        {# Prebacked hackathons subscription #}
+                        <li class="interestgroup_row" style="visibility: hidden !important;margin: 0;padding: 0;list-style: none;position:absolute;">
+                            <label class="checkbox" for="group_2097152">
+                                <input type="checkbox" checked="checked" data-dojo-type="dijit/form/CheckBox" id="group_2097152" name="group[17685][2097152]" value="1" class="av-checkbox"><span>Prebacked Hackathons (4 emails a year)</span> 
+                            </label> 
+                        </li>
+                        {# /Load tags #}
+                        <!------/Load tag-------->
+                        <input id="" class="email large-12" type="email" value="" style="" name="EMAIL"  placeholder="email address" required>
+                        <input id="" class=" button large-8 end" type="submit" style="" value="Tell me challenges first" name="subscribe"/>
+                </form>
+            
+            
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+{%block scripts%}
+
+{% endblock %}
+
+
+
+
+           

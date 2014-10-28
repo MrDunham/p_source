@@ -88,12 +88,16 @@
 
 
 {% if upcoming_challenges %}
-{% for p in challenges %}
-\
-
-<div class="row data" id="upcoming_challenge">
+<div class="row">
     <div class="small-12 columns">
         <h2>Current challenge</h2>
+    </div>
+</div>
+{% for p in challenges %}
+
+
+<div class="row data upcoming_challenge" id="">
+    <div class="small-12 columns">
 
         <div class="row">
             
@@ -106,8 +110,9 @@
             </div>
 
              
-
+            
             <div class="small-12 medium-12 left columns">
+                {% if p.1.sponsor%}
                 <div id="sponsor_info" class="small-12 small-only-text-center medium-4 right columns">
                     <h4>Sponsoring partner</h4>
                     <img src="/partners?partner_id={{p.1.sponsor.sponsor_id}}" alt="{{p.1.sponsor.name}}, sponsoring this month's Prebacked Challenge"/>
@@ -116,18 +121,18 @@
                         {{p.1.sponsor.blurb}}
                     </p>
                 </div> {# end #sponsor_info #}
-                
+                {% endif %}
                 <h4>The story</h4>
                 <p>
                     {# The story goes here #}
-                    {{p.0.problem.story}}
+                    {{p.0.problem.story|safe}}
                 </p>
                 <h4>The challenge</h4>
                 <p>
-                    {{p.0.problem.statement}}
+                    {{p.0.problem.statement|safe}}
                 </p>
             </div>
-        
+            
              
         </div>
 
@@ -143,19 +148,19 @@
                     <tbody>
                         <tr>
                             <td>Submissions open</td>
-                            <td>10/01/2014</td>
+                            <td>{{p.0.event.schedule.0|date:"M jS Y"}}</td>
                         </tr>
                         <tr>
                             <td>Judging begins</td>
-                            <td>10/19/2014</td>
+                            <td>{{p.0.event.schedule.1|date:"M jS Y"}}</td>
                         </tr>
                         <tr>
                             <td>Winners announcement</td>
-                            <td>10/29/2014</td>
+                            <td>{{p.0.event.schedule.2|date:"M jS Y"}}</td>
                         </tr>
                         <tr>
                             <td>Winners' dinner</td>
-                            <td>11/3/2014</td>
+                            <td>{{p.0.event.schedule.3|date:"M jS Y"}}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -164,7 +169,7 @@
             <div id="value" class="small-12 medium-6 columns">
                 <h4>Value</h4>
                 <p>
-                   {{p.0.problem.value}}
+                   {{p.0.problem.value|safe}}
                 </p>
                     
             </div>
@@ -174,13 +179,13 @@
         
             <div id="advantages" class="small-12 medium-6 columns">
                 <h4>Unfair advantages</h4>
-                <p>{{p.0.problem.advantages}}</p>
+                <p>{{p.0.problem.advantages|safe}}</p>
             </div>
             
 
             <div id="approaches" class="small-12 medium-6 columns">
                 <h4>Possible approaches</h4>
-                <p>{{p.0.problem.approaches}}</p>
+                <p>{{p.0.problem.approaches|safe}}</p>
             </div>
         </div>
 
@@ -220,6 +225,27 @@
         </div>
 
     </div>
+
+    {% if challenge_entries %}
+    <div id="social-media-contest" class="row data">
+        <div class="small-12 columns">
+            <h3>Consumer's choice wildcard</h3>
+            <p>The team which is voted by our visitors will come to the dinner directly as a wildcard</p>
+            <div class="row">
+
+
+                {% for e in p.2 %}
+                    <div class="small-3 columns">
+                        <h4>{{e.Field2}}</h4>
+                        <p>Tagline (To be implemented)</p>
+                        <a id="{{e.EntryId}}" href="/monthly/{{e.Field115}}/{{e.EntryId}}" class="button"> Votes</a>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
 
     <script type="text/javascript">
     var w1rxchu30fkqngf;(function(d, t) {
@@ -438,6 +464,48 @@ $(document).ready(function() {
          return false;     
 
     });  
+});
+</script>
+
+<script type="text/javascript">
+
+jQuery.sharedCount = function(url, fn) {
+ url = encodeURIComponent(url || location.href);
+ var domain = "//free.sharedcount.com/"; /* SET DOMAIN */
+ var apikey = "958dd897eb5689d63117a86a7d9be23755e40152" /*API KEY HERE*/
+ var arg = {
+   data: {
+    url : url,
+    apikey : apikey
+   },
+ url: domain,
+ cache: true,
+ dataType: "json"
+ };
+ if ('withCredentials' in new XMLHttpRequest) {
+ arg.success = fn;
+ }
+ else {
+ var cb = "sc_" + url.replace(/\W/g, '');
+ window[cb] = fn;
+ arg.jsonpCallback = cb;
+ arg.dataType += "p";
+ }
+ return jQuery.ajax(arg);
+};
+
+$(document).ready(function() {  
+    {%for c in challenges%}
+        {% for e in c.2 %}
+        team_url = "http://betapbserver.appspot.com/monthly/" + "{{e.Field115}}" + "/" + "{{ e.EntryId }}";
+        console.log(team_url);
+        $.sharedCount(team_url, function(data){
+            total_social_count = data.Twitter + data.Facebook.share_count + data.LinkedIn + data.GooglePlusOne
+            console.log(total_social_count);
+            $("#{{e.EntryId}}").text(total_social_count);
+        });
+        {% endfor %}
+    {% endfor %}
 });
 </script>
 

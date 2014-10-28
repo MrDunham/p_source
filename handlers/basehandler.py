@@ -1,6 +1,7 @@
 from google.appengine.ext import webapp
 
 from functions.getlots import *
+from datetime import datetime
 
 ###
 # Views to add:
@@ -42,7 +43,7 @@ class Events(db.Model):
     year = db.IntegerProperty()
     quarter = db.StringProperty()
     full_date = db.DateProperty()
-    schedule = db.ListProperty(basestring, default=[]) #See what StringListProperty does and if it's the right thing to do here
+    schedule = db.ListProperty(datetime) #See what StringListProperty does and if it's the right thing to do here
     header = db.StringProperty()  #look into purpose of this
     subheader = db.StringProperty()  #look into purpose of this
     description = db.StringProperty()
@@ -78,11 +79,11 @@ class Problems(db.Model):
     title = db.StringProperty() # summarize the challenge / problem
     statement = db.TextProperty() # what is the challenge?
     story = db.TextProperty()
-    statement_long = db.StringProperty()
+    statement_long = db.TextProperty()
     company = db.ListProperty(basestring, default=[])
-    advantages = db.StringProperty()
-    approaches = db.StringProperty()
-    value = db.StringProperty() 
+    advantages = db.TextProperty()
+    approaches = db.TextProperty()
+    value = db.TextProperty() 
     post_img = db.BlobProperty() #a place to upload a hero image of the event post-dinner. Check if working, left unfinished.
 
 
