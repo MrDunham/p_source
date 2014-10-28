@@ -5,6 +5,7 @@ from google.appengine.api import images
 from functions.getlots import *
 
 from handlers.basehandler import *
+
 import datetime
 
 #  PDF stuff - not going to be used for a while, if ever
@@ -266,15 +267,21 @@ class EventAddHandler(webapp2.RequestHandler):
 
         if event_type == "conversations":
             event.link = "/conversations"
-        event.state = str(self.request.get('state'))
-        event.venue = str(self.request.get('venue'))
-        event.address = str(self.request.get('address'))
-        event.day = int(self.request.get('day'))
+        if self.request.get('state'):
+            event.state = str(self.request.get('state'))
+        if self.request.get('venue'):
+            event.venue = str(self.request.get('venue'))
+        if self.request.get('address'):
+            event.address = str(self.request.get('address'))
+        if self.request.get('day'):
+            event.day = int(self.request.get('day'))
         
-        month = int(self.request.get('month'))
-        event.month = month
+        if self.request.get('month'):
+            month = int(self.request.get('month'))
+            event.month = month
         
-        event.year = int(self.request.get('year'))
+        if self.request.get('year'):
+            event.year = int(self.request.get('year'))
         
         # select quarter for event
         quarter = None
@@ -350,12 +357,12 @@ class EventAddHandler(webapp2.RequestHandler):
 
         # sets link to be shown on event_add page to quickly find the page (for easy reference, not public facing)
         if (1 <= event_num <= 2):
-            eventLink = "/" + event.name + "/" + eventID
+            eventLink = "/" + event.name + "/" + str(eventID)
             event.link = eventLink
         elif (event_num == 3):
             eventLink = "/conversations"
         elif (event_num == 4):
-            eventLink = "/monthly" + "/" + eventID
+            eventLink = "/monthly" + "/" + str(eventID)
         elif 11<= event_num <=19 :
             eventLink = "/events"
         elif event_num == 99 :
@@ -494,27 +501,26 @@ class ProblemAddHandler(webapp2.RequestHandler):
         problem = Problems()
         problem_event = Problems_Events()
     
-    
-        if self.request.get('event_id'):                                        # Link a problem to an event
-            problem_id = str(self.request.get("problem_id"))
-            event_id = str(self.request.get("event_id"))
+        # Link a problem to an event
+    #     if self.request.get('event_id'):                                        
+    #         problem_id = str(self.request.get("problem_id"))
+    #         event_id = str(self.request.get("event_id"))
             
-            if Problems_Events.gql("WHERE event_name = :1 AND problem_id = :2", event_id, problem_id).get():       # Make sure we're not saving a duplicate
-                message = "Warning, duplicate detected!  Nothing saved"
-            else:
-    ############
-                event_link = Events.gql("WHERE event_id = :1", event_id).get()
-                problem_link = Problems.gql("WHERE problem_id = :1", problem_id).get()
+    #         if Problems_Events.gql("WHERE event_name = :1 AND problem_id = :2", event_id, problem_id).get():       # Make sure we're not saving a duplicate
+    #             message = "Warning, duplicate detected!  Nothing saved"
+    #         else:
+    #             event_link = Events.gql("WHERE event_id = :1", event_id).get()
+    #             problem_link = Problems.gql("WHERE problem_id = :1", problem_id).get()
                 
-                problem_event.problem = problem_link
-                problem_event.event = event_link
-                problem_event.problem_name = problem_id
-                problem_event.event_name = event_id
+    #             problem_event.problem = problem_link
+    #             problem_event.event = event_link
+    #             problem_event.problem_name = problem_id
+    #             problem_event.event_name = event_id
                 
-                problem_event.put()
-                message = "Linked " + problem_id + " to " + event_id
+    #             problem_event.put()
+    #             message = "Linked " + problem_id + " to " + event_id
                 
-        elif self.request.get('statement'):     #create a new problem or updates an old one
+        if self.request.get('statement'):     #create a new problem or updates an old one
             
             title = str(self.request.get('title'))
             company_list = self.request.get_all('company')
@@ -532,20 +538,15 @@ class ProblemAddHandler(webapp2.RequestHandler):
                 problem_id = str(self.request.get("problem_id"))
                 problem = Problems.gql("WHERE problem_id = :1", problem_id).get()
                 message = "Problem updated: " + title
+                new_monthly_challenge_event = False
             # Create new
             else:
-                message = "New problem created: " + title + " " + company
+                message = "New problem created: " + title + " " + company + ". But it still needs to be published (on Event Add page)"
                 new_monthly_challenge_event = True
                 # Create new event // Need to make it _not_ create new event for Ignition... if we ever do another one
                 
 
-            ## (unfinished) Collect all dates for schedule, put into list. Also chose one to put into the event
-            submissions_open = str(self.request.get('submissions_open'))
-            judging_begins = str(self.request.get('judging_begins'))
-            winners_announcement = str(self.request.get('winners_announcement'))
-            winners_dinner = str(self.request.get('winners_dinner'))
-
-
+            
             
             problem.title = title
             problem.story = str(self.request.get('story'))
@@ -555,6 +556,7 @@ class ProblemAddHandler(webapp2.RequestHandler):
             problem.advantages = str(self.request.get('advantages'))
             problem.approaches = str(self.request.get('approaches'))
             problem.company = company_list
+            
 
             #problem id
             if (str(self.request.get('problem_id')) is not None):
@@ -562,20 +564,48 @@ class ProblemAddHandler(webapp2.RequestHandler):
             else:
                 problem_id = title.lower().replace(" ", "_") + "_" + company.lower().replace(" ", "_")
 
-            if new_monthly_challenge_event:
+            # Save challenge to database
+            problem.problem_id = problem_id
+            problem.put()
+
+            if new_monthly_challenge_event: # Only create a new event if we're not editing
                 event = Events()
+                problem_event = Problems_Events()
                 event.event_id = problem_id
                 event.header = title
                 event.description = statement
                 event.event_num = 4 # this states that the "event" is a monthly challenge. Will need to be dynamic if we add challenges that are NOT monthly challenges
                 event.name = "monthly"
+                
+                
 
+                ## (unfinished) Collect all dates for schedule, put into list. Also chose one to put into the event
+                submissiontime = self.request.get('submissions_open') #.split('/')
+                
+                submissions_open = datetime.datetime.strptime(submissiontime, "%m/%d/%y")
+                
+                judgetime = self.request.get('judging_begins')
+                judging_begins = datetime.datetime.strptime(judgetime, "%m/%d/%y")
+                
+                wintime = self.request.get('winners_announcement')
+                winners_announcement = datetime.datetime.strptime(wintime, "%m/%d/%y")
+                
+                dintime = self.request.get('winners_dinner')
+                winners_dinner = datetime.datetime.strptime(dintime, "%m/%d/%y")
+                
+                schedule = [submissions_open, judging_begins, winners_announcement, winners_dinner]
+                event.schedule = schedule
+                event.full_date = winners_announcement.date()
+                event.put()
+
+                #also auto-create a joiner. If we start to have more than one challenge per "event" we'll need to remove this
+                problem_event.problem = problem
+                problem_event.event = event
+                problem_event.problem_name = problem_id
+                problem_event.event_name = problem_id
+                
+                problem_event.put()
             
-            
-            problem.problem_id = problem_id
-            
-            problem.put()
-            event.put()
             
         else:
             message = "There was an error"

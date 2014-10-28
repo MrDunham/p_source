@@ -131,7 +131,7 @@
                 <input type="text" style="display:none;" value="{{e.vertical}}" name="vertical"/>
                 
                 <div class="large-12">
-                    {{ e.name.capitalize}}, {{e.month}}/{{e.day}}/{{e.year}} | {{e.city}} | <a href="/{{e.name}}/{{e.event_id}}">Link</a> |
+                    {{ e.name.capitalize}}, {{e.full_date|date:"m/j/Y"}} | {{e.city}} | <a href="/{{e.name}}/{{e.event_id}}">Link</a> |
                     Published? <input name="publish" type="checkbox" {%if e.publish%}checked{%endif%}/>
                 </div>
                 
@@ -139,17 +139,17 @@
                     Date:
                     
                     <select name="month">
-                        <option value="{{e.month}}" selected="selected">{{e.month}}</option>
+                        <option value="{{e.full_date|date:"m"}}" selected="selected">{{e.full_date|date:"m"}}</option>
                         {%for i in 123456789111|make_list %}
                             <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
                         {% endfor %}
                         
                     </select>
                     /
-                    <input type="text" name="day" value="{{e.day}}" class="thin"/>
+                    <input type="text" name="day" value="{{e.full_date|date:"j"}}" class="thin"/>
                     /
                     <select name="year">
-                        <option value="{{e.year}}" selected="selected">{{e.year}}</option>
+                        <option value="{{e.full_date|date:"Y"}}" selected="selected">{{e.full_date|date:"Y"}}</option>
                         
                         <option value="2014">2014</option>
                         <option value="2015">2015</option>
@@ -220,7 +220,7 @@
                             <input type="text" style="display:none;" value="{{e.vertical}}" name="vertical"/>
                             
                             <div class="large-12">
-                                {{ e.name.capitalize}}, {{e.month}}/{{e.day}}/{{e.year}} | {{e.city}} | <a href="/{{e.name}}/{{e.event_id}}">Link</a> |
+                                {{ e.name.capitalize}}, {{e.full_date|date:"m/j/Y"}} | {{e.city}} | <a href="/{{e.name}}/{{e.event_id}}">Link</a> |Link</a> |
                                 Published? <input name="publish" type="checkbox" {%if e.publish%}checked{%endif%}/>
                             </div>
                             
@@ -228,17 +228,17 @@
                                 Date:
                                 
                                 <select name="month">
-                                    <option value="{{e.month}}" selected="selected">{{e.month}}</option>
+                                    <option value="{{e.full_date|date:"m"}}" selected="selected">{{e.full_date|date:"m"}}</option>
                                     {%for i in 123456789111|make_list %}
                                         <option value="{{ forloop.counter }}">{{ forloop.counter }}</option>
                                     {% endfor %}
                                     
                                 </select>
                                 /
-                                <input type="text" name="day" value="{{e.day}}" class="thin"/>
+                                <input type="text" name="day" value="{{e.full_date|date:"j"}}" class="thin"/>
                                 /
                                 <select name="year">
-                                    <option value="{{e.year}}" selected="selected">{{e.year}}</option>
+                                    <option value="{{e.full_date|date:"Y"}}" selected="selected">{{e.full_date|date:"Y"}}</option>
                                     
                                     <option value="2014">2014</option>
                                     <option value="2015">2015</option>

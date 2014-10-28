@@ -46,7 +46,7 @@
                         </tr>
                         <tr>
                             <td>Winners announcement</td>
-                            <td><input type="text" name="winners_announcement" value="mm/dd/yy" class="thin style="color: #666" onfocus="if (this.value == 'mm/dd/yy') {this.style.color='#000'; this.value=''}""/></td>
+                            <td><input type="text" name="winners_announcement" value="mm/dd/yy" class="thin" style="color: #666" onfocus="if (this.value == 'mm/dd/yy') {this.style.color='#000'; this.value=''}"/></td>
                         </tr>
                         <tr>
                             <td>Winners' Dinner</td>
@@ -66,6 +66,7 @@
         <br/><br/>
         <form action="/admin_add/problem_add" method="post" id="problem_link">    
             <h2>Link problems to events</h2>
+            <strong>THIS SHOULD NOT NEED TO BE USED. Problems should be automatically linked, this is left just in case and will be deprecated</strong>
             <h3>Events</h3>
             {%for e in events%}
                 {{e.event_id}}<input type="radio" name="event_id" value="{{e.event_id}}" {% if forloop.last %}checked="true"{%endif%}/><br/>
@@ -87,12 +88,44 @@
             <div class="problem_edit">
                 <form action="/admin_add/problem_add" method="post" id="problem_edit">        
                     <input type="text" name="problem_id" value="{{p.problem_id}}" class="" style ="display:none"/>
-                    <input type="text" name="title" value="{{p.title}}" class="" style ="display:none"/>
-                    Title: {{p.title}} | 
-                    Value: <input type="text" name="value" value="{{p.value}}" class=""/>
+                    
+                    Title: <input type="text" name="title" value="{{p.title}}" class="" style="width:90%;"/>
                     <br/>
+                    The story:<br/>
+                    <textarea maxlen="" rows="20" cols="90" name="story" style="width:90%; height: 120px;">{{p.story}}</textarea>
                     Problem Statement:
-                    <textarea rows="3" cols="90" maxlen="350" id="problem_statement_{{forloop.counter}}" name="statement">{{p.statement}}</textarea>
+                    <textarea rows="3" cols="90" id="problem_statement_{{forloop.counter}}" name="statement" style="width:90%; height: 120px;">{{p.statement}}</textarea>
+
+                    Unfair advantages: <br/><textarea maxlen="" rows="15" cols="90" name="advantages" style="width:90%; height: 120px;">{{p.advantages}}</textarea>
+                    
+                    Possible approaches: <br/><textarea maxlen="" rows="15" cols="90" name="approaches" style="width:90%; height: 120px;">{{p.approaches}}</textarea>
+
+                    Value: <br/><textarea maxlen="" rows="10" cols="90" name="value" id="value" style="width:90%; height: 80px;">{{p.value}}</textarea>
+
+                    {% comment %}
+                    Schedule:
+                    <tbody>
+                        <tr>
+                            <td>Submissions open</td>
+                            <td><input type="text" name="submissions_open" value="{{p.schedule.0}}" class="" style="color: #666"/></td>
+                        </tr>
+                        <tr>
+                            <td>Judging begins</td>
+                            <td><input type="text" name="judging_begins" value="mm/dd/yy" class="" style="color: #666"/></td>
+                            
+                            
+                        </tr>
+                        <tr>
+                            <td>Winners announcement</td>
+                            <td><input type="text" name="winners_announcement" value="mm/dd/yy" class="" style="color: #666" /></td>
+                        </tr>
+                        <tr>
+                            <td>Winners' Dinner</td>
+                            <td><input type="text" name="winners_dinner" value="mm/dd/yy" class="" style="color: #666"/></td>
+                        </tr>
+                    </tbody>
+                    {% endcomment %}
+
                     <input type="submit" class="orange button submit">
                 </form>
             </div>
