@@ -230,18 +230,23 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
 
             #Get wufoo json
             # wufoo_url = "https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json"
-            result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
-            json_data = json.loads(result.content) #get content of response from wufoo
-            all_entries = json_data['Entries']
+            try:
+                result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
+                json_data = json.loads(result.content) #get content of response from wufoo
+                all_entries = json_data['Entries']
+            except:
+                result = ""
+                json_data = ""
+                all_entries = ""
 
             # Need to make the next line into a try / except
-            upcoming_challenges = Events.gql("WHERE full_date >= :1 AND publish = True AND event_num = :2 ORDER BY full_date", datetime.date.today(), event_num)
-            prev_challenges = Events.gql("WHERE full_date < :1 AND publish = True AND event_num = :2 ORDER BY full_date", datetime.date.today(), event_num)
+            upcoming_challenges = Events.gql("WHERE full_date > :1 AND publish = True AND event_num = :2 ORDER BY full_date", datetime.date.today(), event_num).fetch(10)
+            # was trying to make it blank in case there were no upcoming challenges
+            # if upcoming_challenges == {}:
+            #     upcoming_challenges = None;
+            prev_challenges = Events.gql("WHERE full_date <= :1 AND publish = True AND event_num = :2 ORDER BY full_date DESC", datetime.date.today(), event_num)
 
-            if upcoming_challenges is None:
-###!            #do nothing
-                nothing = True
-            else:
+            if upcoming_challenges:
                 for e in upcoming_challenges:
                     p_e = Problems_Events.gql("WHERE event_name = :1 LIMIT 1", e.event_id) #.fetch(1) # gather joiner about current event
                     p_e_info = p_e.get()
@@ -253,9 +258,12 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
                         challenge_id = ""
                     
                     challenge_entries = []
-                    for entry in all_entries: # Get challenge entries from Wufoo
-                        if entry['Field115'] == challenge_id:
-                            challenge_entries.append(entry)
+                    try:
+                        for entry in all_entries: # Get challenge entries from Wufoo
+                            if entry['Field115'] == challenge_id:
+                                challenge_entries.append(entry)
+                    except:
+                        challenge_entries = []
 
                     a_challenge = [p_e + s_e + [challenge_entries]] #Create list of lists for one challenge
                     challenges = challenges + a_challenge #Append this challenge to a list of all upcoming challenges
@@ -300,61 +308,6 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
         
         ###
 
-class PaulMonthlyHandler(BaseRequestHandler):
-    def get(self,challenge_id="", team_id=""):
-        template_values = {} #here we need to inject the backend values for the challenge!
-        path_url = 'templates/home_monthly.html'
-        path = os.path.join(os.path.dirname(__file__), path_url)
-
-        #Get wufoo json
-        url = "https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json"
-        result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")})
-        json_data = json.loads(result.content)
-        all_entries = json_data['Entries']
-
-
-        #if just monthly is requested return the normal template and return
-        if not challenge_id: #url looks like prebacked.com/monthly
-            #do fancy database to get template values and challenge id
-            challenge_id = "BP-oct14"
-            challenge_entries = []
-            for entry in all_entries:
-                if entry['Field115'] == challenge_id:
-                    challenge_entries.append(entry)
-            #Render the new template with winners in it! (TODO)!!!!
-            template_values['entries'] = challenge_entries
-            self.response.out.write(template.render(path, template_values))
-            return 
-
-        #check if we can find a matching past challenge
-        #url looks like prebacked.com/monthly/<challenge_id>
-        if not team_id:
-            winners = []
-            for entry in all_entries:
-                if entry['Field115'] == challenge_id and entry['Field123'] == 'winner':
-                    winners.append(entry)
-            if winners:
-                template_values['winners'] = winners
-                path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_old_chal.html')
-                self.response.out.write(template.render(path, template_values))
-                return
-            else:
-                return redirect('/monthly')
-
-        #check if we can find a matching team
-        #url looks like prebacked.com/monthly/<challenge_id>/<team>
-        if team_id and challenge_id:
-            team = ""
-            for entry in all_entries:
-                if entry['Field115'] == challenge_id and entry['EntryId'] == team_id:
-                    team = entry
-            if team:
-                path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_team.html')
-                template_values['team'] = team
-                self.response.out.write(template.render(path, template_values))
-            
-            else:
-                return redirect('/monthly')
 
 
 class PastMonthlyChallengesHandler(BaseRequestHandler):

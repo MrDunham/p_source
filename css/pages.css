@@ -548,11 +548,23 @@ lg_banner.left, .lg_banner_right {
     padding: 1rem 0; }
   #homepage_monthly #sponsor_info p {
     margin-bottom: 0; }
-#homepage_monthly #apply_button span {
+#homepage_monthly .apply_button span {
   font-weight: 100;
   font-size: 1rem; }
-#homepage_monthly #challenge_apply {
+#homepage_monthly .challenge_apply {
   margin-top: 4rem; }
+#homepage_monthly .peoples_choice .facebook, #homepage_monthly .peoples_choice .twitter, #homepage_monthly .peoples_choice .linkedin, #homepage_monthly .peoples_choice .googleplus {
+  color: #ffffff; }
+#homepage_monthly .peoples_choice .facebook {
+  background: #3b5998; }
+#homepage_monthly .peoples_choice .twitter {
+  background: #55acee; }
+#homepage_monthly .peoples_choice .linkedin {
+  background: #007bb6; }
+#homepage_monthly .peoples_choice .googleplus {
+  background: #C63D2D; }
+#homepage_monthly .peoples_choice .votes span {
+  font-weight: 500; }
 #homepage_monthly #winners .winner {
   display: inline-block;
   text-align: left;
@@ -584,35 +596,38 @@ lg_banner.left, .lg_banner_right {
     overflow: hidden; }
     #homepage_monthly #winners .winner .img_container img {
       width: 100%; }
-#homepage_monthly #past_challenges .past_challenge:hover .challenge_img, #homepage_monthly #past_challenges .past_challenge:hover .challenge_info {
-  box-shadow: 0 0 2px #414a59; }
-#homepage_monthly #past_challenges .past_challenge .challenge_img {
-  box-shadow: 0 0 1px #414a59;
-  height: 180px;
-  background: #fff; }
-  #homepage_monthly #past_challenges .past_challenge .challenge_img img {
-    max-height: 100%;
-    max-width: 100%; }
-#homepage_monthly #past_challenges .past_challenge .challenge_info {
-  box-shadow: 0 0 1px #414a59;
-  background: #414a59; }
-  #homepage_monthly #past_challenges .past_challenge .challenge_info p {
-    color: #f8f8f8; }
-  #homepage_monthly #past_challenges .past_challenge .challenge_info p.challenge_date {
-    color: #ccc;
-    font-size: 0.8rem;
-    padding-bottom: 0;
-    margin-top: 0.75rem;
-    margin-bottom: 0.125rem; }
-  #homepage_monthly #past_challenges .past_challenge .challenge_info p.challenge_sponsor {
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    margin: 0;
-    font-weight: 400; }
-  #homepage_monthly #past_challenges .past_challenge .challenge_info p.challenge_blurb {
-    margin: 0.75rem 0;
-    font-weight: 300;
-    line-height: 1.25rem; }
+#homepage_monthly #past_challenges .past_challenge {
+  margin-bottom: 0.9375rem; }
+  #homepage_monthly #past_challenges .past_challenge:hover .challenge_img, #homepage_monthly #past_challenges .past_challenge:hover .challenge_info {
+    box-shadow: 0 0 2px #414a59; }
+  #homepage_monthly #past_challenges .past_challenge .challenge_img {
+    box-shadow: 0 0 1px #414a59;
+    height: 180px;
+    background: #fff; }
+    #homepage_monthly #past_challenges .past_challenge .challenge_img img {
+      max-height: 100%;
+      max-width: 100%; }
+  #homepage_monthly #past_challenges .past_challenge .challenge_info {
+    box-shadow: 0 0 1px #414a59;
+    background: #414a59;
+    min-height: 145px; }
+    #homepage_monthly #past_challenges .past_challenge .challenge_info p {
+      color: #f8f8f8; }
+    #homepage_monthly #past_challenges .past_challenge .challenge_info p.challenge_date {
+      color: #ccc;
+      font-size: 0.8rem;
+      padding-bottom: 0;
+      margin-top: 0.75rem;
+      margin-bottom: 0.125rem; }
+    #homepage_monthly #past_challenges .past_challenge .challenge_info p.challenge_sponsor {
+      font-size: 1.5rem;
+      line-height: 1.5rem;
+      margin: 0;
+      font-weight: 400; }
+    #homepage_monthly #past_challenges .past_challenge .challenge_info p.challenge_blurb {
+      margin: 0.75rem 0;
+      font-weight: 300;
+      line-height: 1.25rem; }
 #homepage_monthly #ecosystem ul li {
   height: 5.5rem;
   white-space: nowrap;
@@ -629,3 +644,13 @@ lg_banner.left, .lg_banner_right {
   font-size: 1.5rem; }
 #homepage_monthly #faq span {
   font-weight: 500; }
+
+#monthly_team_page #team {
+  padding: 3rem inherit; }
+#monthly_team_page .team_info, #monthly_team_page .vote_for_me {
+  padding-bottom: 1.5rem; }
+#monthly_team_page .vote_for_me {
+  box-shadow: 0 0 1px #414a59;
+  padding: 0.9375rem; }
+  #monthly_team_page .vote_for_me p {
+    font-weight: 500; }

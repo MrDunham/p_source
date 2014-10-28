@@ -748,16 +748,37 @@ lg_banner.left, .lg_banner_right{
         }
     }
 
-    #apply_button{
+    .apply_button{
         span{
             font-weight: 100;
             font-size: 1rem;
         }
     }
 
-    #challenge_apply{
+    .challenge_apply{
         margin-top: 4rem;    
 
+    }
+
+    .peoples_choice{
+        .facebook, .twitter, .linkedin, .googleplus{
+            color: #ffffff;
+        }
+        .facebook{
+            background: #3b5998;
+        }
+        .twitter{
+            background: #55acee;
+        }
+        .linkedin{
+            background: #007bb6;
+        }
+        .googleplus{
+            background: #C63D2D;    
+        }
+        .votes span{
+            font-weight: 500;
+        }
     }
 
     #winners{
@@ -812,6 +833,8 @@ lg_banner.left, .lg_banner_right{
     }
     #past_challenges{
         .past_challenge{
+            margin-bottom: 0.9375rem;
+
             &:hover{
                 .challenge_img, .challenge_info{
                     box-shadow: 0 0 2px $blue_dark;
@@ -830,6 +853,7 @@ lg_banner.left, .lg_banner_right{
             .challenge_info{
                 box-shadow: 0 0 1px $blue_dark;
                 background: $blue_dark;
+                min-height: 145px;
                 p{
                     color: $white;
                 }
@@ -889,6 +913,28 @@ lg_banner.left, .lg_banner_right{
             font-weight: 500;
         }
     }
+}
 
 
+
+#monthly_team_page{
+    #team{
+        padding: 3rem inherit;    
+    }
+    
+
+    .team_info, .vote_for_me{
+        padding-bottom: 1.5rem;
+    }
+
+    .vote_for_me{
+        box-shadow: 0 0 1px $blue_dark;
+        // background: $blue_dark;
+        padding: 0.9375rem;
+
+        p{
+            font-weight: 500;
+        }
+
+    }
 }

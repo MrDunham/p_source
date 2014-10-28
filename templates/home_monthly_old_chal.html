@@ -70,7 +70,7 @@
                             {% endcomment %}
 
                             <p class="title">{{e.Field2}}</p>
-                            <p>Tagline (To be implemented)</p>
+                            <p>{{e.Field118}}</p>
                             <a id="{{e.EntryId}}" href="/monthly/{{challenge_id}}/{{e.EntryId}}"><span></span></a>
                         </div>
                     </div>{%if not forloop.last%}<!--{%endif%} {# the strange HTML commenting is due to whitespace issues caused by disply:inline-block #}
@@ -159,17 +159,21 @@
                     </tbody>
                 </table>
             </div> {# end #schedule #}
-
-            <div id="value" class="small-12 medium-6 columns">
+        {% endif %}
+        {% if not live_event%}<div class="row">{% endif %}
+            <div id="value" class="small-12 {% if live_event%}medium-6{% endif %} columns">
                 <h4>Value</h4>
                 <p>
                    {{p.0.problem.value|safe}}
                 </p>
                     
             </div>
+        {% if not live_event%}</div>{% endif %}
+
+        {% if live_event%}
         </div>
 
-        <div class="row">
+        <div class="row data">
         
             <div id="advantages" class="small-12 medium-6 columns">
                 <h4>Unfair advantages</h4>
@@ -183,7 +187,7 @@
             </div>
         </div>
 
-        <div id="corporate_quote" class="quote row">
+        <div id="corporate_quote" class="quote data row">
             <img src="/images/partners/david_parpart.jpg" class="show-for-medium-up medium-2 medium-push-1 columns" />
             <div class="small-12 medium-8 medium-push-1 end columns">
                 <p class="quote">
@@ -200,9 +204,9 @@
     </div> {# end .small-12 .columns #}
     
     {% if live_event%}
-    <div class="small-12 medium-12 text-center columns">
-        <a id="apply_button" role="button" href="" class="large button">
-            Apply to win private dinner with<br/> BlueShield of CA executives<br/>
+    <div class="small-12 medium-12 text-center data columns">
+        <a id="apply_button" role="button" href="" class="large apply_button button">
+            Apply to win private dinner with<br/> {{p.1.sponsor.name}} executives<br/>
             <span>It just might be the best use of 5 minutes you'll spend today</span>
         </a>                
         <p>
@@ -210,32 +214,63 @@
         </p>
     </div>
 
-    <div id="challenge_apply" class="small-12 columns" style="display:none;">
+    <div id="challenge_apply" class="small-12 challenge_apply data columns" style="display:none;">
         {# ------------Application goes here---------------- #}
         <div id="wufoo-w1rxchu30fkqngf" style="">
         Fill out my <a href="https://prebackedforms.wufoo.com/forms/w1rxchu30fkqngf">online form</a>.
         </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+
     {% if challenge_entries %}
     <div id="social-media-contest" class="row data">
         <div class="small-12 columns">
-            <h3>Consumer's choice wildcard</h3>
-            <p>The team which is voted by our visitors will come to the dinner directly as a wildcard</p>
-            <div class="row">
-                <script type="text/javascript">
-                    console.log("p.2 = {{p.2}}")
-                </script>
-
-                {% for e in challenge_entries %}
-                    <div class="small-3 columns">
-                        <h4>{{e.Field2}}</h4>
-                        <p>Tagline (To be implemented)</p>
-                        <a id="{{e.EntryId}}" href="/monthly/{{e.Field115}}/{{e.EntryId}}" class="button"> Votes</a>
-                    </div>
-
-                {% endfor %}
-            </div>
+            <h3>People's choice scoreboard</h3>
+            <p>
+                The team with the most votes when judging ends will win an immediate invitation to the dinner. The sooner you apply, the better your chances to win.
+            </p>
+        
+            <table class="small-12 peoples_choice">
+                <thead>
+                    <th width="140">Team</th>
+                    <th class="">Short description</th>
+                    {# <th>Voting link</th> #}
+                    
+                    <th class="text-center show-for-medium-up facebook" width="60">FB shares</th>
+                    <th class="text-center show-for-medium-up twitter" width="60">Twitter votes</th>
+                    <th class="text-center show-for-medium-up linkedin" width="60">LinkedIn votes</th>
+                    <th class="text-center show-for-medium-up googleplus" width="60">Google+ votes</th>
+                    <th class="text-center" width="110">Total votes<br/><span>(updates daily)</span></th>
+                    
+                </thead>
+                <tbody>
+                    {% for e in challenge_entries %}
+                    <tr>
+                        <td>
+                            <a href="/monthly/{{e.Field115}}/{{e.EntryId}}"> <strong>{{e.Field2}}</strong></a>   
+                        </td> {# name #}
+                        <td class="show-for-medium-up">{{e.Field118}}</td>
+                        
+                        
+                        <td class="text-right show-for-medium-up {{e.EntryId}} facebook votes fb_votes"><span>0</span></td>
+                        <td class="text-right show-for-medium-up {{e.EntryId}} twitter votes twitter_votes"><span>0</span></td>
+                        <td class="text-right show-for-medium-up {{e.EntryId}} linkedin votes linkedin_votes"><span>0</span></td>
+                        <td class="text-right show-for-medium-up {{e.EntryId}} googleplus votes googleplus_votes"><span>0</span></td>
+                        <td class="text-right {{e.EntryId}} total_votes"><a href="/monthly/{{e.Field115}}/{{e.EntryId}}"><span>0</span> votes</a></td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
         </div>
     </div>
     {% endif %}
@@ -246,7 +281,7 @@
                 'userName':'prebackedforms',
                 'formHash':'w1rxchu30fkqngf',
                 'autoResize':false,
-                'height':'1106',
+                'height':'1206',
                 'async':true,
                 'host':'wufoo.com',
                 'header':'hide',
@@ -267,16 +302,6 @@
 {% endfor %}
 
 
-
-
-
-
-
-
-
-
-
-            
 
 
 
@@ -338,29 +363,6 @@
 
 
 <script type="text/javascript">
-var w1rxchu30fkqngf;(function(d, t) {
-        var s = d.createElement(t), options = {
-            'userName':'prebackedforms',
-            'formHash':'w1rxchu30fkqngf',
-            'autoResize':false,
-            'height':'1106',
-            'async':true,
-            'host':'wufoo.com',
-            'header':'hide',
-            {# challenge is auto-imported into the website below. Need to check over the variable. #}
-            {% if challenge.title %}'defaultValues':'field115={{challenge.title}}', {%endif%}
-            // 'resizeDone': hideTheBox,
-            'ssl':true};
-        s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'www.wufoo.com/scripts/embed/form.js';
-        s.onload = s.onreadystatechange = function() {
-        var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
-        try { w1rxchu30fkqngf = new WufooForm();w1rxchu30fkqngf.initialize(options);w1rxchu30fkqngf.display(); } catch (e) {}};
-        var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
-        })(document, 'script');
-
-</script>
-
-<script type="text/javascript">
 $(document).ready(function() {  
     
     $("#apply_button").click(function() {  
@@ -368,9 +370,59 @@ $(document).ready(function() {
          // $("#challenge_apply").toggle();
          return false;     
     });  
-    
+
+
+     
 });
 </script>
+
+<script type="text/javascript">
+
+jQuery.sharedCount = function(url, fn) {
+ url = encodeURIComponent(url || location.href);
+ var domain = "//free.sharedcount.com/"; /* SET DOMAIN */
+ var apikey = "958dd897eb5689d63117a86a7d9be23755e40152" /*API KEY HERE*/
+ var arg = {
+   data: {
+    url : url,
+    apikey : apikey
+   },
+ url: domain,
+ cache: true,
+ dataType: "json"
+ };
+ if ('withCredentials' in new XMLHttpRequest) {
+ arg.success = fn;
+ }
+ else {
+ var cb = "sc_" + url.replace(/\W/g, '');
+ window[cb] = fn;
+ arg.jsonpCallback = cb;
+ arg.dataType += "p";
+ }
+ return jQuery.ajax(arg);
+};
+
+$(document).ready(function() {  
+    {% for e in challenge_entries %}
+        team_url = "http://www.prebacked.com/monthly/" + "{{e.Field115}}" + "/" + "{{ e.EntryId }}";
+        // console.log(team_url);
+        $.sharedCount(team_url, function(data){
+            total_social_count = data.Twitter + data.Facebook.share_count + data.LinkedIn + data.GooglePlusOne
+            // console.log(total_social_count);
+            $(".{{e.EntryId}}.twitter_votes span").text(data.Twitter);
+            $(".{{e.EntryId}}.fb_votes span").text(data.Facebook.share_count);
+            $(".{{e.EntryId}}.linkedin_votes span").text(data.Linkedin);
+            $(".{{e.EntryId}}.googleplus_votes span").text(data.GooglePlusOne);
+            $(".{{e.EntryId}}.total_votes span").text(total_social_count);
+        });
+    {% endfor %}
+});
+
+
+</script>
+
+
 {% endblock %}
 
 

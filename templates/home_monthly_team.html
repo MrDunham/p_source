@@ -28,31 +28,41 @@
 {% block middle_info%}
 
 
-
-<div class="row data" id="team">
-    <div class="small-12 columns">
-        <div class="row">
-            
-            <div id="challenge_title" class="small-12 large-10 large-push-1 text-center columns">
-                <h2>
-                    {# Challenge overview #}
-                    {{team.Field2}}
-                </h2>
-            
-                <p>{{team.Field112}}</p>
-                <br>
-                <br>
+<div id="monthly_team_page">
+    <div class="row " id="team">
+        <div class="small-12 columns">
+            <div class="row">
                 
-                    <a href="https://twitter.com/share" class="twitter-share-button" data-text="I voted for {{team.Field2}} at Prebacked challenges" data-via="Yrrs" data-hashtags="Prebacked" >Tweet</a>
-                    <script type="IN/Share" data-counter="right"></script>
-                    <div class="fb-share-button" data-layout="button_count"></div>
-                    <g:plus action="share"></g:plus>
-              </div>
-        
-        
-        </div>
-    </div> {# end .small-12 .columns #}   
-</div> {# end #upcoming_challenge .row .data #}
+                <div id="" class="team_info small-12 medium-6 text-center columns">
+                    <h2>
+                        {# Challenge overview #}
+                        {{team.Field2}}
+                    </h2>
+                
+                    <p>{{team.Field118}}</p>
+                    <br>
+                    <br>
+                </div>
+                
+                <div class="vote_for_me small-12 medium-6 large-4 columns">
+                    <p>Vote for {{team.Field2}} with shares and likes to help them meet their potential enterprise customer.</p>
+
+                    <div class="row text-left">
+                        <div class="small-6 columns"><a href="https://twitter.com/share" class="twitter-share-button" data-text="I voted for {{team.Field2}} at Prebacked challenges" data-via="Yrrs" data-hashtags="Prebacked" >Tweet</a></div>
+                        <div class="small-6 columns"><script type="IN/Share" data-counter="right"></script></div>
+                    </div>
+                    <div class="row text-left">
+                        <div class="small-6 columns"><div class="fb-share-button" data-layout="button_count"></div></div>
+                        <div class="small-6 columns"><g:plus action="share" annotation="bubble"></g:plus></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <a href="/monthly/{{challenge_id}}" class="button">Read more about their challenge</a>
+            </div>
+        </div> {# end .small-12 .columns #}   
+    </div> {# end #upcoming_challenge .row .data #}
+</div>
 
 
 <script>
@@ -126,6 +136,8 @@
 
 
 {%block scripts%}
+
+
 
 {% endblock %}
 

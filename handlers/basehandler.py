@@ -46,7 +46,7 @@ class Events(db.Model):
     schedule = db.ListProperty(datetime) #See what StringListProperty does and if it's the right thing to do here
     header = db.StringProperty()  #look into purpose of this
     subheader = db.StringProperty()  #look into purpose of this
-    description = db.StringProperty()
+    description = db.TextProperty()
     link = db.StringProperty() #event link
     ticketing = db.TextProperty() # eventbrite ticketing information
     companies = db.StringProperty()

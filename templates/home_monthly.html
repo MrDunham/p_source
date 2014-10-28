@@ -93,8 +93,8 @@
         <h2>Current challenge</h2>
     </div>
 </div>
-{% for p in challenges %}
 
+{% for p in challenges %}
 
 <div class="row data upcoming_challenge" id="">
     <div class="small-12 columns">
@@ -189,7 +189,7 @@
             </div>
         </div>
 
-        <div id="corporate_quote" class="quote row">
+        <div id="corporate_quote" class="quote data row">
             <img src="images/partners/david_parpart.jpg" class="show-for-medium-up medium-2 medium-push-1 columns" />
             <div class="small-12 medium-8 medium-push-1 end columns">
                 <p class="quote">
@@ -206,8 +206,8 @@
     
 
     <div class="small-12 medium-12 text-center columns">
-        <a id="apply_button" role="button" href="" class="large button">
-            Apply to win private dinner with<br/> BlueShield of CA executives<br/>
+        <a id="" role="button" href="" class="apply_button_{{p.0.problem.problem_id}} apply_button large button">
+            Apply to win private dinner with<br/> {{p.1.sponsor.name}}'s executives<br/>
             <span>It just might be the best use of 5 minutes you'll spend today</span>
         </a>                
         <p>
@@ -218,7 +218,7 @@
 
 
 
-    <div id="challenge_apply" class="small-12 columns" style="display:none;">
+    <div id="" class="challenge_apply_{{p.0.problem.problem_id}} challenge_apply small-12 columns" style="display:none;">
         {# ------------Application goes here---------------- #}
         <div id="wufoo-w1rxchu30fkqngf" style="">
         Fill out my <a href="https://prebackedforms.wufoo.com/forms/w1rxchu30fkqngf">online form</a>.
@@ -229,20 +229,43 @@
     {% if challenge_entries %}
     <div id="social-media-contest" class="row data">
         <div class="small-12 columns">
-            <h3>Consumer's choice wildcard</h3>
-            <p>The team which is voted by our visitors will come to the dinner directly as a wildcard</p>
-            <div class="row">
+            <h3>People's choice scoreboard</h3>
+            <p>
+                The team with the most votes when judging ends will win an immediate invitation to the dinner. The sooner you apply, the better your chances to win.
+            </p>
+        
+            <table class="small-12 peoples_choice">
+                <thead>
+                    <th width="140">Team</th>
+                    <th class="">Short description</th>
+                    {# <th>Voting link</th> #}
+                    
+                    <th class="text-center show-for-medium-up facebook" width="60">FB shares</th>
+                    <th class="text-center show-for-medium-up twitter" width="60">Twitter votes</th>
+                    <th class="text-center show-for-medium-up linkedin" width="60">LinkedIn votes</th>
+                    <th class="text-center show-for-medium-up googleplus" width="60">Google+ votes</th>
+                    <th class="text-center" width="110">Total votes<br/><span>(updates daily)</span></th>
+                    
+                </thead>
+                <tbody>
+                    {% for e in p.2 %}
+                    <tr>
+                        <td>
+                            <a href="/monthly/{{e.Field115}}/{{e.EntryId}}"> <strong>{{e.Field2}}</strong></a>   
+                        </td> {# name #}
+                        <td class="show-for-medium-up">{{e.Field118}}</td>
+                        {# <td><a href="/monthly/{{e.Field115}}/{{e.EntryId}}"> Vote for me</a></td> #}
+                        <td class="text-right show-for-medium-up {{e.EntryId}} facebook votes fb_votes"><span>0</span></td>
+                        <td class="text-right show-for-medium-up {{e.EntryId}} twitter votes twitter_votes"><span>0</span></td>
+                        <td class="text-right show-for-medium-up {{e.EntryId}} linkedin votes linkedin_votes"><span>0</span></td>
+                        <td class="text-right show-for-medium-up {{e.EntryId}} googleplus votes googleplus_votes"><span>0</span></td>
+                        <td class="text-right {{e.EntryId}} total_votes"><a href="/monthly/{{e.Field115}}/{{e.EntryId}}"><span>0</span> votes</a></td>
+                    </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
 
-
-                {% for e in p.2 %}
-                    <div class="small-3 columns">
-                        <h4>{{e.Field2}}</h4>
-                        <p>Tagline (To be implemented)</p>
-                        <a id="{{e.EntryId}}" href="/monthly/{{e.Field115}}/{{e.EntryId}}" class="button"> Votes</a>
-                    </div>
-
-                {% endfor %}
-            </div>
         </div>
     </div>
     {% endif %}
@@ -253,7 +276,7 @@
                 'userName':'prebackedforms',
                 'formHash':'w1rxchu30fkqngf',
                 'autoResize':false,
-                'height':'1106',
+                'height':'1206',
                 'async':true,
                 'host':'wufoo.com',
                 'header':'hide',
@@ -287,25 +310,25 @@
             <div class="small-6 columns">
                 <h4>Technical feasibility &amp; implementation costs</h4>
                 <p>
-                    How much effort would be needed to develop a working prototype?<br/>
+                    How much effort is needed until our partner can apply your idea?<br/>
                     How much would the development &amp; integration cost?
                 </p>
             </div>
         </div>
         <div class="row">
             <div class="small-6 columns">
-                <h4>Functional fit &amp; innovativeness</h4>
+                <h4>Functional fit</h4>
                 <p>
-                    How well could your solution solve the challenge? <br/>
-                    How innovative and creative is your idea?
+                    How well does your product solve the challenge? <br/>
+                    How could our partner benefit from your product?
                 </p>
             </div>
         
             <div class="small-6 columns">
-                <h4>Strategic fit</h4>
+                <h4>Wow factor &amp; innovativeness</h4>
                 <p>
-                    How well can your solution be integrated in the corporate environment? <br/>
-                    What are the strategic benefits for the company?
+                    How innovative is your idea / product?<br/>
+                    How could your team / idea impress our partner?
                 </p>
             </div>
         </div>
@@ -320,11 +343,11 @@
 
 <div class="row" id="past_challenges">
     <div class="small-12 columns">
-        <h2 class="text-center">Learn from past challenges</h2> {# don't forget to make this plural! (use pluralize tag & if statement) #}
+        <h2 class="text-center">Learn from past challenges</h2>
             <div class="row">
                 {% for p in past_challenges%}
-                <div class="past_challenge small-12 medium-4 columns">
-                        <div class="challenge_img text-center small-12 columns">
+                <div class="past_challenge small-12 medium-6 large-4 columns {% if forloop.counter > 3 %}show-for-medium-up{% endif %} {% if forloop.last %}end{% endif %}">
+                        <div class="challenge_img show-for-medium-up text-center small-12 columns">
                             <span class="helper"></span><img src="/partners?partner_id={{p.1.sponsor.sponsor_id}}" alt="{{p.1.sponsor.name}}, a Prebacked Monthly Chalenge sponsor"/>
                         </div>
 
@@ -452,20 +475,21 @@
 
 {%block scripts%}
 
-
-
-
+{%for p in challenges %}
 <script type="text/javascript">
-$(document).ready(function() {  
-    
-    $("#apply_button").click(function() {  
-         $("#challenge_apply").toggle();
-         // $("#challenge_apply").toggle();
-         return false;     
+// when apply button is clicked, show / hide the application form
+    $(document).ready(function() {  
+        
+        $(".apply_button_{{p.0.problem.problem_id}}").click(function() {  
+             $(".challenge_apply_{{p.0.problem.problem_id}}").toggle();
+             // $("#challenge_apply").toggle();
+             return false;     
 
-    });  
-});
+        });  
+    });
 </script>
+{% endfor %}
+
 
 <script type="text/javascript">
 
@@ -497,16 +521,22 @@ jQuery.sharedCount = function(url, fn) {
 $(document).ready(function() {  
     {%for c in challenges%}
         {% for e in c.2 %}
-        team_url = "http://betapbserver.appspot.com/monthly/" + "{{e.Field115}}" + "/" + "{{ e.EntryId }}";
-        console.log(team_url);
+        team_url = "http://www.prebacked.com/monthly/" + "{{e.Field115}}" + "/" + "{{ e.EntryId }}";
+        // console.log(team_url);
         $.sharedCount(team_url, function(data){
             total_social_count = data.Twitter + data.Facebook.share_count + data.LinkedIn + data.GooglePlusOne
-            console.log(total_social_count);
-            $("#{{e.EntryId}}").text(total_social_count);
+            // console.log(total_social_count);
+            $(".{{e.EntryId}}.twitter_votes span").text(data.Twitter);
+            $(".{{e.EntryId}}.fb_votes span").text(data.Facebook.share_count);
+            $(".{{e.EntryId}}.linkedin_votes span").text(data.Linkedin);
+            $(".{{e.EntryId}}.googleplus_votes span").text(data.GooglePlusOne);
+            $(".{{e.EntryId}}.total_votes span").text(total_social_count);
         });
         {% endfor %}
     {% endfor %}
 });
+
+
 </script>
 
 {% endblock %}
