@@ -208,7 +208,11 @@ class BaseRequestHandler(webapp2.RequestHandler):
                 redirect += "?" + request.query_string
             return self.redirect(redirect, permanent=True)
         
-        
+
+class TeamVotes(db.Model):
+    team_id = db.StringProperty()
+    votes = db.IntegerProperty()
+
         
         
         
