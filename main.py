@@ -372,6 +372,27 @@ class PastMonthlyChallengesHandler(BaseRequestHandler):
             path = os.path.join(os.path.dirname(__file__), 'templates/404.html')
             self.response.out.write(template.render(path, template_values))
 
+#This handler is used for ajax requests from the team page
+class VoteHandler(BaseRequestHandler):
+    def get(self, team_id):
+        teamvotes = TeamVotes.gql("WHERE team_id = :1 ", team_id).get()
+        if teamvotes:
+            self.response.out.write(str(teamvotes.votes))
+        else:
+            self.response.out.write("0")
+
+    def post(self, team_id):
+        teamvotes = TeamVotes.gql("WHERE team_id = :1 ", team_id).get()
+        if teamvotes:
+            teamvotes.votes = teamvotes.votes + 1
+            teamvotes.put()
+            self.response.out.write(str(teamvotes.votes))
+        else:
+            votes = TeamVotes(team_id = team_id, votes = 1 )
+            votes.put()
+            self.response.out.write("1")
+
+
 class Webapp2HandlerAdapter(webapp2.BaseHandlerAdapter):
     def __call__(self, request, response, exception):
         request.route_args = {}
@@ -531,6 +552,7 @@ application = webapp2.WSGIApplication([
     #webapp2.Route(r'/ignition', handler=IgnitionHandler, name='ignition-home'),
     webapp2.Route(r'/medhack/sponsor', handler=MedHackSponsorHandler, name='medhack-sponsor-catchall'),
     webapp2.Route(r'/medhack/<:.*>', handler=MedHackPagesHandler, name='medhack-main-catchall'),
+    webapp2.Route(r'/get_votes/<:.*>', handler=VoteHandler, name='get-votes'),
     webapp2.Route(r'/monthly/<:.*>/<:.*>', handler=PastMonthlyChallengesHandler, name='monthly-teams'),
     webapp2.Route(r'/monthly/<:.*>', handler=PastMonthlyChallengesHandler, name='past-monthly-main-catchall'),
     webapp2.Route(r'/admin_add', handler=AdminAddHandler, name='admin-add'),
@@ -540,6 +562,7 @@ application = webapp2.WSGIApplication([
     webapp2.Route(r'/admin_add/problem_add', handler=ProblemAddHandler, name='ignition-add'),
     webapp2.Route(r'/admin_add/challenge', handler=ProblemAddHandler, name='problem-add'),
     webapp2.Route(r'/admin_add/print_names', handler=PrintNameHandler, name='print-name'),
+
     
     # webapp2.Route(r'/events', handler=TempEventsPageReroute, name='event-reroute'),
     webapp2.Route(r'/<:.*>', handler=HomepagesCatchAllHandler, name='homepage-main-catchall')
