@@ -395,20 +395,23 @@ jQuery.sharedCount = function(url, fn) {
 
 $(document).ready(function() {  
     {% for e in challenge_entries %}
+        
         team_url = "http://www.prebacked.com/monthly/" + "{{e.Field115}}" + "/" + "{{ e.EntryId }}";
-        // console.log(team_url);
+                
+        $.get("/get_votes/{{e.EntryId}}", function(data) {
+            $(".{{e.EntryId}}.total_votes span").text(data);
+        });
+
         $.sharedCount(team_url, function(data){
-            total_social_count = data.Twitter + data.Facebook.share_count + data.LinkedIn + data.GooglePlusOne
-            // console.log(total_social_count);
             $(".{{e.EntryId}}.twitter_votes span").text(data.Twitter);
             $(".{{e.EntryId}}.fb_votes span").text(data.Facebook.share_count);
             $(".{{e.EntryId}}.linkedin_votes span").text(data.Linkedin);
             $(".{{e.EntryId}}.googleplus_votes span").text(data.GooglePlusOne);
-            $(".{{e.EntryId}}.total_votes span").text(total_social_count);
+            //$(".{{e.EntryId}}.total_votes span").text(total_social_count);
         });
+    
     {% endfor %}
 });
-
 
 </script>
 
