@@ -29,7 +29,6 @@
 
 {% block middle_info%}
 
-
 <div id="monthly_team_page">
     <div class="row " id="team">
         <div class="small-12 columns">
@@ -43,46 +42,40 @@
                 
                     <p>{{team.Field118}}</p>
                     <br>
+                    <a id="vote" class="button">0 Votes</a>
                     <br>
                 </div>
-                
-                <div class="vote_for_me small-12 medium-6 large-4 columns">
-                    <p>Vote for {{team.Field2}} with shares and likes to help them meet their potential enterprise customer.</p>
 
-                    <div class="row text-left">
-                        <div class="small-6 columns"><a href="https://twitter.com/share" class="twitter-share-button" data-text="I voted for {{team.Field2}} at Prebacked challenges" data-via="Yrrs" data-hashtags="Prebacked" >Tweet</a></div>
-                        <div class="small-6 columns"><script type="IN/Share" data-counter="right"></script></div>
-                    </div>
-                    <div class="row text-left">
-                        <div class="small-6 columns"><div class="fb-share-button" data-layout="button_count"></div></div>
-                        <div class="small-6 columns"><g:plus action="share" annotation="bubble"></g:plus></div>
-                    </div>
-                </div>
+                
+            <div class="vote_for_me small-12 medium-6 large-4 columns">
+                    <p>Share {{team.Field2}} with your friends to help them get more votes</p>
+                    <!-- Facebook -->
+                    <a href="http://www.facebook.com/sharer.php?u=http://www.prebacked.com/monthly/{{team.Field115}}/{{team.EntryId}}" 
+                    target="_blank"><img src="/images/social/facebook.png"/></a>
+                     
+                    <!-- Twitter -->
+                    <a href="http://twitter.com/share?url=http://www.prebacked.com/monthly/{{team.Field115}}/{{team.EntryId}}&text=Check out my awesome application&hashtags=thisworks" target="_blank">
+                    <img src="/images/social/twitter.png"/></a>
+
+                        <!-- Google+ -->
+                    <a href="https://plus.google.com/share?url=http://www.prebacked.com/monthly/{{team.Field115}}/{{team.EntryId}}" 
+                    target="_blank"><img src="/images/social/google.png"/></a>
+
+                    <!-- LinkedIn -->
+                    <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.prebacked.com/monthly/{{team.Field115}}/{{team.EntryId}}" 
+                    target="_blank"><img src="/images/social/linkedin.png"/></a>
+            </div>
             </div>
             <div class="row">
                 <a href="/monthly/{{challenge_id}}" class="button">Read more about their challenge</a>
             </div>
+
         </div> {# end .small-12 .columns #}   
     </div> {# end #upcoming_challenge .row .data #}
 </div>
 
-
-<script>
-!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 </script>
-<script src="//platform.linkedin.com/in.js" type="text/javascript">
-    lang: en_US
-</script>
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 
-<script src="https://apis.google.com/js/plusone.js"></script>
 {# {%endif%} #}
 
 
@@ -138,7 +131,55 @@
 
 
 {%block scripts%}
+<script type="text/javascript">
+function setCookie(name, value, days) {
+    var expires;
 
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        expires = "; expires=" + date.toGMTString();
+    } else {
+        expires = "";
+    }
+    document.cookie = escape(name) + "=" + escape(value) + expires + ";path=/monthly/{{team.Field115}}/{{team.EntryId}}";
+}
+
+function readCookie(name) {
+    var nameEQ = escape(name) + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) === 0) return unescape(c.substring(nameEQ.length, c.length));
+    }
+    return null;
+}
+
+//Update the counter once the page is ready
+$( document ).ready(function() {
+    $.get("/get_votes/{{team.EntryId}}", function(data) {
+        $("#vote").html("Votes: " + data);
+    });
+});
+
+
+//each click fires a ajax post request to the server to update the votes
+$( "#vote" ).click(function() {
+    cookie = readCookie("v_");
+    if (cookie == "T"){
+        $("#vote").html("You voted for <br> this team already");
+    }
+    else{
+    $.post("/get_votes/{{team.EntryId}}", function(data) {
+        $("#vote").html("Votes: " + data);
+        setCookie("v_","T",30);
+    });
+
+    }
+    
+});
+</script>
 
 
 {% endblock %}
