@@ -1,12 +1,19 @@
 {% extends 'homepage_base.html' %}
 
 {% block title %}Prebacked Monthly: Win private meetings with corporate executives{%endblock%}
-{%block fb_title%}{%if challenge.title%}{{challenge.title}}{%else%}How can we get people to capture their blood pressure?{%endif%}{%endblock%}
 
-{%block description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}
+{%block fb_title%}
+    {%if p_e_info.problem.title%}{{p_e_info.problem.title}}{% endif%}
+
 {%endblock%}
 
-{%block fb_description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}{%endblock%}
+{%block description%}
+    {%if p_e_info.problem.value %}{{p_e_info.problem.value}}{% endif %}
+{%endblock%}
+
+{%block fb_description%}
+    {%if p_e_info.problem.value %}{{p_e_info.problem.value}}{% endif %}
+{%endblock%}
 
 {% block styles %}
   <link rel="stylesheet" href="/css/pages.css" media="screen" type="text/css"/>
@@ -19,6 +26,13 @@
 {%endblock%}
 
 {% block upper_info%}
+
+<script type="text/javascript">
+    console.log("p_e_info = {{challenge}}");
+    console.log("p_e_info.problem = {{p_e_info.problem|safe}}");
+    console.log("p_e_info.problem.title = {{p_e_info.problem.title}}");
+    
+</script>
 
 <div class="small-12 large-8 columns">
     <h1>
@@ -401,7 +415,7 @@
             <ul class="small-block-grid-2 large-block-grid-3">
                 <li><span class="helper"></span><img alt="BlueShield of California" src="/images/partner_companies/blue_shield_of_ca.png"></li>
                 <li><span class="helper"></span><img alt="Cambia Health Solutions" src="/images/partner_companies/cambia_health.png"></li>
-                <li><span class="helper"></span><img alt="Wellmark BlueCross BlueShield" src="/images/partner_companies/wellmark.png"></li>
+                <li><span class="helper"></span><img alt="Covidien" src="/images/partner_companies/covidien.png"></li>
                 <li><span class="helper"></span><img alt="Validic" src="/images/partner_companies/validic.png"></li>
                 <li class="show-for-large-up"><span class="helper"></span><img alt="Wilson Sonsini Goodrich and Rosati" src="/images/partner_companies/wilson_sonsini.png"></li>
                 <li class="show-for-large-up"><span class="helper"></span><img alt="Amazon AWS" src="/images/partner_companies/aws.png"></li>

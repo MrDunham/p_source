@@ -1,15 +1,23 @@
 {% extends 'homepage_base.html' %}
 
 {% block title %}Prebacked Monthly: Win private meetings with corporate executives{%endblock%}
-{%block fb_title%}{%if challenge.title%}{{challenge.title}}{%else%}How can we get people to capture their blood pressure?{%endif%}{%endblock%}
 
-{%block description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}
+{%block fb_title%}
+    {%if p_e_info.problem.title%}{{p_e_info.problem.title}}{% endif%}
+{%endblock%}
+    
+{%block fb_url%}http://www.prebacked.com/monthly/{{challenge_id}}{% endblock %}
+
+{%block description%}
+    {%if p_e_info.problem.value %}{{p_e_info.problem.value}}{% endif %}
 {%endblock%}
 
-{%block fb_description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}{%endblock%}
+{%block fb_description%}
+    {%if p_e_info.problem.value %}{{p_e_info.problem.value}}{% endif %}
+{%endblock%}
 
 {% block styles %}
-  <link rel="stylesheet" href="/css/pages.css" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="/css/pages.css" media="screen" type="text/css"/>
 {% endblock %}
 
 {%block color_scheme%}default{%endblock%}
@@ -26,6 +34,12 @@
 {% endblock%}
 
 {% block middle_info%}
+
+<script type="text/javascript">
+    console.log("p_e_info = {{challenge}}");
+    console.log("p_e_info.problem = {{p_e_info.problem}}");
+    console.log("p_e_info.problem.title = {{p_e_info.problem.title}}");
+</script>
 
 
 {% for p in challenge%}
@@ -68,38 +82,14 @@
                                 <img src="/images/teams/lyfechannel.jpg"/>
                             </div>
                             {% endcomment %}
-
                             <p class="title">{{e.Field2}}</p>
                             <p>{{e.Field118}}</p>
-                            <a id="{{e.EntryId}}" href="/monthly/{{challenge_id}}/{{e.EntryId}}"><span></span></a>
+                            {# link to winner's voting page. Currently not used #}{# <a id="{{e.EntryId}}" href="/monthly/{{challenge_id}}/{{e.EntryId}}"><span></span></a> #}
                         </div>
                     </div>{%if not forloop.last%}<!--{%endif%} {# the strange HTML commenting is due to whitespace issues caused by disply:inline-block #}
                 {% endfor %}
                 <!-- --> {# this comment is just so color matching work again #}
 
-                {% comment %}
-                <div class="winner small-12 medium-4 columns">
-                    <div class="winner_inner">
-                        <div class="img_container">
-                            <img src="/images/teams/lyfechannel.jpg"/>
-                        </div>
-                        <p class="title">Wellband</p>
-                        <p>A band for wellness that is awesome. You're welcome.</p>
-                        <a href="/monthly/{{challenge_id}}/wellband"><span></span></a>  {# need to put in team name #}
-                    </div>
-                </div><!--
-                --><div class="winner small-12 medium-4 columns">
-                    <div class="winner_inner">
-                        <div class="img_container">
-                            <img src="/images/teams/lyfechannel.jpg"/>
-                        </div>
-                        <p class="title">Wellband</p>
-                        <p>A band for wellness that is awesome. You're welcome.</p>
-                        <a href="/monthly/{{challenge_id}}/wellband"><span></span></a>  {# need to put in team name #}
-                    </div>
-                </div><!--
-                -->
-                {% endcomment %}
 
             </div>
 

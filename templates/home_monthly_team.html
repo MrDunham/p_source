@@ -8,6 +8,8 @@
 
 {%block fb_description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}{%endblock%}
 
+{%block fb_url%}http://www.prebacked.com/monthly/{{challenge_id}}{% if team_id %}/{{team_id}}{% endif %}{% endblock %}
+
 {% block styles %}
   <link rel="stylesheet" href="/css/pages.css" media="screen" type="text/css"/>
 {% endblock %}

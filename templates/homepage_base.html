@@ -31,7 +31,7 @@
     
     <!--Open Graph Properties-->
     <meta property="og:site_name" content="Prebacked"/>
-    <meta property="og:url" content="http://www.prebacked.com{%if url%}/{{url|lower}}{%endif%}"/>
+    <meta property="og:url" content="{%block fb_url%}http://www.prebacked.com{%if url%}/{{url|lower}}{%endif%}{% endblock %}"/>
     <meta property="og:description" content="{%block fb_description%}{%endblock%}"/>
     <meta property="og:title" content="{%block fb_title%}Accelerating paid enterprise contracts from 24 months to 4 | Prebacked{%endblock%}"/>
     <meta property="og:image" content="http://www.prebacked.com/images/fb_prebacked_icon.png"/>
