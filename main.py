@@ -362,6 +362,11 @@ class PastMonthlyChallengesHandler(BaseRequestHandler):
                 for entry in all_entries:
                     if entry['Field115'] == challenge_id and entry['EntryId'] == team_id:
                         team = entry
+                if team=="":#if the team_id is there, but the team doesn't exist, throw a 404
+                    self.error(404)
+                    path = os.path.join(os.path.dirname(__file__), 'templates/404.html')
+                    self.response.out.write(template.render(path, template_values))
+
 
                 path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_team.html')
                 template_values.update (locals())
