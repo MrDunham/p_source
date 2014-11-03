@@ -1,17 +1,25 @@
 {% extends 'homepage_base.html' %}
 
 {% block title %}Prebacked Monthly: Win private meetings with corporate executives{%endblock%}
-{%block fb_title%}{%if challenge.title%}{{challenge.title}}{%else%}How can we get people to capture their blood pressure?{%endif%}{%endblock%}
 
-{%block description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}
+{%block fb_title%}
+    Help my friends {{team.Field2}} win a potential client
 {%endblock%}
 
-{%block fb_description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}{%endblock%}
+{%block fb_url%}http://www.prebacked.com/monthly/{{challenge_id}}/{{team_id}}{% endblock %}
 
-{%block fb_url%}http://www.prebacked.com/monthly/{{challenge_id}}{% if team_id %}/{{team_id}}{% endif %}{% endblock %}
+{%block description%}
+    Vote for team {{team.Field2}} so they can win a private dinner with {{p_s.sponsor.name}} executives and, possibly, win a client.
+
+    {%if p_e_info.problem.value %}{{p_e_info.problem.value}}{% endif %}
+{%endblock%}
+
+{%block fb_description%}
+    {%if p_e_info.problem.value %}{{p_e_info.problem.value}}{% endif %}
+{%endblock%}
 
 {% block styles %}
-  <link rel="stylesheet" href="/css/pages.css" media="screen" type="text/css"/>
+    <link rel="stylesheet" href="/css/pages.css" media="screen" type="text/css"/>
 {% endblock %}
 
 {%block color_scheme%}default{%endblock%}

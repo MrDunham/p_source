@@ -1,14 +1,18 @@
 {% extends 'homepage_base.html' %}
 
 {% block title %}Prebacked Monthly: Win private meetings with corporate executives{%endblock%}
-{%block fb_title%}{%if challenge.title%}{{challenge.title}}{%else%}How can we get people to capture their blood pressure?{%endif%}{%endblock%}
 
-{%block description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}
+{%block fb_title%}
+    Help my friends {{team.Field2}} win a potential client
 {%endblock%}
 
-{%block fb_description%}{%if challenge.body%}{{challenge.body}}{%else%}Skilled at collecting consumer data? BlueShield of CA is concerned, hypertension causes 1k deaths a day, massively helped through tracking and intervention. If you can solve tracking, they might just be your client.{%endif%}{%endblock%}
+{%block fb_url%}http://www.prebacked.com/monthly/{{challenge_id}}/{{team_id}}{% endblock %}
 
-{%block fb_url%}http://www.prebacked.com/monthly/{{challenge_id}}{% if team_id %}/{{team_id}}{% endif %}{% endblock %}
+{%block description%}Vote for team {{team.Field2}} so they can win a private dinner with {{s_e_info.sponsor.name}} executives and, possibly, win a client.{%endblock%}
+
+{%block fb_description%}
+    {%if p_e_info.problem.value %}{{p_e_info.problem.value}}{% endif %}
+{%endblock%}
 
 {% block styles %}
   <link rel="stylesheet" href="/css/pages.css" media="screen" type="text/css"/>
@@ -54,7 +58,7 @@
                     target="_blank"><img src="/images/social/facebook.png"/></a>
                      
                     <!-- Twitter -->
-                    <a href="http://twitter.com/share?url=http://www.prebacked.com/monthly/{{team.Field115}}/{{team.EntryId}}&text=Check out my awesome application&hashtags=thisworks" target="_blank">
+                    <a href="http://twitter.com/share?url=http://www.prebacked.com/monthly/{{team.Field115}}/{{team.EntryId}}&text=Vote for {{team.Field2}} to win a private dinner with {{s_e_info.sponsor.name}} executives and a potential client"target="_blank">
                     <img src="/images/social/twitter.png"/></a>
 
                         <!-- Google+ -->
@@ -62,8 +66,7 @@
                     target="_blank"><img src="/images/social/google.png"/></a>
 
                     <!-- LinkedIn -->
-                    <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.prebacked.com/monthly/{{team.Field115}}/{{team.EntryId}}" 
-                    target="_blank"><img src="/images/social/linkedin.png"/></a>
+                    <a href="http://www.linkedin.com/shareArticle?mini=true&url=http://www.prebacked.com/monthly/{{team.Field115}}/{{team.EntryId}}" target="_blank"><img src="/images/social/linkedin.png"/></a>
             </div>
             </div>
             <div class="row">
@@ -132,6 +135,9 @@
 
 {%block scripts%}
 <script type="text/javascript">
+
+console.log("team = {{team}}")
+
 function setCookie(name, value, days) {
     var expires;
 

@@ -328,7 +328,9 @@ class PastMonthlyChallengesHandler(BaseRequestHandler):
         p_e = Problems_Events.gql("WHERE event_name = :1 LIMIT 1", challenge_id) # gather joiner about current event
         p_e_info = p_e.get() # export p_e into an object so we can get the challenge_id
         p_e = p_e.fetch(1)
-        s_e = Sponsors_Events.gql("WHERE event_name = :1 LIMIT 1", challenge_id).fetch(1)
+        s_e = Sponsors_Events.gql("WHERE event_name = :1 LIMIT 1", challenge_id)
+        s_e_info = s_e.get()
+        s_e = s_e.fetch(1)
         
         challenge = [p_e + s_e]
 
@@ -362,7 +364,7 @@ class PastMonthlyChallengesHandler(BaseRequestHandler):
                 for entry in all_entries:
                     if entry['Field115'] == challenge_id and entry['EntryId'] == team_id:
                         team = entry
-                if team=="":#if the team_id is there, but the team doesn't exist, throw a 404
+                if team=="": #if the team_id is there, but the team doesn't exist, throw a 404
                     self.error(404)
                     path = os.path.join(os.path.dirname(__file__), 'templates/404.html')
                     self.response.out.write(template.render(path, template_values))
