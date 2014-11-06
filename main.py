@@ -315,9 +315,12 @@ class PastMonthlyChallengesHandler(BaseRequestHandler):
         template_values = {}
         url = "monthly"
 
-        result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
-        json_data = json.loads(result.content) #get content of response from wufoo
-        all_entries = json_data['Entries']
+        try:
+            result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
+            json_data = json.loads(result.content) #get content of response from wufoo
+            all_entries = json_data['Entries']
+        except:
+            all_entries = []
 
         problems_events = []
         a_challenge = []

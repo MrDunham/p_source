@@ -3,6 +3,7 @@ from google.appengine.api import images
 
 
 from functions.getlots import *
+from functions.cleanString import *
 
 from handlers.basehandler import *
 
@@ -82,17 +83,19 @@ class AdminAddHandler(webapp2.RequestHandler):
             if self.request.get('edit'):                #Check if intentionally editing
                 mentor = Mentors.gql("WHERE name = :1", mentor_name).get()
             
-            if Mentors.gql("WHERE name = :1", mentor_name).get() and not self.request.get('edit'):       # Make sure we're not saving a duplicate
+            # Make sure we're not saving a duplicate
+            if Mentors.gql("WHERE name = :1", mentor_name).get() and not self.request.get('edit'):       
                 message = "Warning, duplicate detected!  Nothing saved"
+            # If not a duplicate, continue
             else:
                 mentor.name = mentor_name
-                title = str(self.request.get('title')).split(':')
+                title = str(cleanString(self.request.get('title'))).split(':')
                 if title[0] == "None":
                     mentor.title = None
                 else:
                     mentor.title = title[0]
                 
-                company = str(self.request.get('company'))
+                company = str(cleanString(self.request.get('company')))
                 if company == "None":
                     company = None
                 mentor.company = company
@@ -106,7 +109,7 @@ class AdminAddHandler(webapp2.RequestHandler):
                 except:
                     designation = {"friend"}
         
-                bio = str(self.request.get('bio').replace(u'\ufeff', "").replace("\r\n","<br/>")) #replaces a very strange, non visible space w/ blank then replaces newlines with a <br/>
+                bio = str(cleanString(self.request.get('bio')))
                 
                 mentor.bio = bio
                 
@@ -169,15 +172,18 @@ class FaqAddHandler(webapp2.RequestHandler):
         
         faq = Faq()
         
-        faq.question = str(self.request.get('question'))
-        faq.answer = str(self.request.get('answer'))
-        faq.vertical = str(self.request.get('vert'))
-        faq.language = str(self.request.get('language')) 
-        faq.section = str(self.request.get('section'))
-        faq.subsection = str(self.request.get('subsection'))
-        faq.link = str(self.request.get('link'))
+        faq.question = str(cleanString(self.request.get('question')))
+        faq.answer = str(cleanString(self.request.get('answer')))
+        faq.vertical = str(cleanString(self.request.get('vert')))
+        faq.language = str(cleanString(self.request.get('language')))
+        faq.section = str(cleanString(self.request.get('section')))
+        faq.subsection = str(cleanString(self.request.get('subsection')))
+        faq.link = str(cleanString(self.request.get('link')))
         
-        faq.order = int(self.request.get('order'))
+        try:
+            faq.order = int(self.request.get('order'))
+        except:
+            faq.order = 1000
         faq.put()
 
         
@@ -240,11 +246,11 @@ class EventAddHandler(webapp2.RequestHandler):
             event_type = event_num
         
         if self.request.get('header'):
-            event.header = str(self.request.get('header'))
+            event.header = str(cleanString(self.request.get('header')))
         else:
             event.header = ""
         if self.request.get('description'):
-            event.description = str(self.request.get('description'))
+            event.description = str(cleanString(self.request.get('description')))
         else:
             event.description = ""
         
@@ -431,9 +437,10 @@ class SponsorAddHandler(webapp2.RequestHandler):
                 if self.request.get('edit'):
                     sponsor = Sponsors.gql("WHERE name = :1", sponsor_name).get()
                 
-                sponsor.blurb = str(self.request.get('blurb')) #
+                sponsor.blurb = str(cleanString(self.request.get('blurb')))
+
                 if str(self.request.get('blurb_long')) != "":
-                    sponsor.blurb_long = str(self.request.get('blurb_long'))
+                    sponsor.blurb_long = str(cleanString(self.request.get('blurb_long')))
                 else:
                     sponsor.blurb_long = sponsor.blurb
                 
@@ -444,10 +451,14 @@ class SponsorAddHandler(webapp2.RequestHandler):
 
                 sponsor.img = sponsor.name.lower().replace (" ", "_") + ".png"
                 sponsor.img_alt = "Sponsor " + sponsor.name
-                if str(self.request.get('homepage')).split('www')[0]=='http://':
+                
+                if str(self.request.get('homepage')).split('www')[0]=='http://' or str(self.request.get('homepage')[0:7])=='http://':
                     sponsor.homepage = str(self.request.get('homepage'))
                 else:
                     sponsor.homepage = "http://" + str(self.request.get('homepage'))
+                
+
+
                 message = ("saved! " + str(sponsor.name))
                 sponsor.put()
         elif self.request.get('event'):                                                 #For adding a mentor to an event
@@ -522,7 +533,7 @@ class ProblemAddHandler(webapp2.RequestHandler):
                 
         if self.request.get('statement'):     #create a new problem or updates an old one
             
-            title = str(self.request.get('title'))
+            title = str(cleanString(self.request.get('title')))
             company_list = self.request.get_all('company')
             
             company = ""
@@ -549,12 +560,32 @@ class ProblemAddHandler(webapp2.RequestHandler):
             
             
             problem.title = title
-            problem.story = str(self.request.get('story'))
-            statement = str(self.request.get('statement'))
+            try:
+                problem.story = str(cleanString(self.request.get('story')))
+            except:
+                problem.story = ""
+            
+            try:
+                statement = str(cleanString(self.request.get('statement')))
+            except:
+                statement = ""
             problem.statement = statement
-            problem.value = str(self.request.get("value"))
-            problem.advantages = str(self.request.get('advantages'))
-            problem.approaches = str(self.request.get('approaches'))
+            
+            try:
+                problem.value = str(cleanString(self.request.get("value")))
+            except:
+                problem.value = ""
+            
+            try:
+                problem.advantages = str(cleanString(self.request.get('advantages')))
+            except:
+                problem.advantages = ""
+            
+            try:
+                problem.approaches = str(cleanString(self.request.get('approaches')))
+            except:
+                problem.approaches = ""
+
             problem.company = company_list
             
 
@@ -577,10 +608,8 @@ class ProblemAddHandler(webapp2.RequestHandler):
                 event.event_num = 4 # this states that the "event" is a monthly challenge. Will need to be dynamic if we add challenges that are NOT monthly challenges
                 event.name = "monthly"
                 
-                
-
                 ## (unfinished) Collect all dates for schedule, put into list. Also chose one to put into the event
-                submissiontime = self.request.get('submissions_open') #.split('/')
+                submissiontime = self.request.get('submissions_open')
                 
                 submissions_open = datetime.datetime.strptime(submissiontime, "%m/%d/%y")
                 
