@@ -399,7 +399,7 @@ $(document).ready(function() {
         $.sharedCount(team_url, function(data){
             $(".{{e.EntryId}}.twitter_votes span").text(data.Twitter);
             $(".{{e.EntryId}}.fb_votes span").text(data.Facebook.share_count);
-            $(".{{e.EntryId}}.linkedin_votes span").text(data.Linkedin);
+            $(".{{e.EntryId}}.linkedin_votes span").text(data.LinkedIn);
             $(".{{e.EntryId}}.googleplus_votes span").text(data.GooglePlusOne);
             //$(".{{e.EntryId}}.total_votes span").text(total_social_count);
         });
