@@ -34,6 +34,7 @@ import webapp2
 # import json, base64
 import base64
 import json
+import logging
 #from google.appengine.api import images
 from google.appengine.ext import db
 from webapp2_extras import routes
@@ -231,7 +232,7 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
             #Get wufoo json
             # wufoo_url = "https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json"
             try:
-                result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
+                result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json?Filter1=Field115+Is_equal_to+rm-nov2014",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
                 json_data = json.loads(result.content) #get content of response from wufoo
                 all_entries = json_data['Entries']
             except:
@@ -318,6 +319,7 @@ class PastMonthlyChallengesHandler(BaseRequestHandler):
         result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
         json_data = json.loads(result.content) #get content of response from wufoo
         all_entries = json_data['Entries']
+        logging.debug(str(all_entries))
 
         problems_events = []
         a_challenge = []
