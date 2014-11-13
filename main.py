@@ -34,6 +34,7 @@ import webapp2
 # import json, base64
 import base64
 import json
+import logging
 #from google.appengine.api import images
 from google.appengine.ext import db
 from webapp2_extras import routes
@@ -231,7 +232,9 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
             #Get wufoo json
             # wufoo_url = "https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json"
             try:
-                result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
+                # result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
+                ### Hardcoded patch. Result only pulls from rm-2014 right now (see filter). Must be fixed to variable
+                result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json?Filter1=Field115+Is_equal_to+rm-nov2014",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
                 json_data = json.loads(result.content) #get content of response from wufoo
                 all_entries = json_data['Entries']
             except:
@@ -304,11 +307,6 @@ class HomepagesCatchAllHandler(BaseRequestHandler):
             self.error(404)
             path = os.path.join(os.path.dirname(__file__), 'templates/404.html')
             self.response.out.write(template.render(path, template_values))
-        
-        
-        ###
-
-
 
 class PastMonthlyChallengesHandler(BaseRequestHandler):
     def get(self, challenge_id, team_id=""):
@@ -316,9 +314,11 @@ class PastMonthlyChallengesHandler(BaseRequestHandler):
         url = "monthly"
 
         try:
-            result = urlfetch.fetch("https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json",headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
+            result_url = "https://prebackedforms.wufoo.com/api/v3/forms/w1rxchu30fkqngf/entries.json?Filter1=Field115+Is_equal_to+" + challenge_id
+            result = urlfetch.fetch(result_url,headers={"Authorization": "Basic %s" % base64.b64encode("S6ZS-M87O-9CYQ-OH18:haxx")}) #Get wufoo url response
             json_data = json.loads(result.content) #get content of response from wufoo
             all_entries = json_data['Entries']
+            logging.debug(str(all_entries))
         except:
             all_entries = []
 
@@ -371,16 +371,17 @@ class PastMonthlyChallengesHandler(BaseRequestHandler):
                     self.error(404)
                     path = os.path.join(os.path.dirname(__file__), 'templates/404.html')
                     self.response.out.write(template.render(path, template_values))
-
-
-                path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_team.html')
-                template_values.update (locals())
-                self.response.out.write(template.render(path, template_values))
+                    return
+                else:
+                    path = os.path.join(os.path.dirname(__file__), 'templates/home_monthly_team.html')
+                    template_values.update (locals())
+                    self.response.out.write(template.render(path, template_values))
         # if page doesn't exist, throw a 404
         else:
             self.error(404)
             path = os.path.join(os.path.dirname(__file__), 'templates/404.html')
             self.response.out.write(template.render(path, template_values))
+            return
 
 #This handler is used for ajax requests from the team page
 class VoteHandler(BaseRequestHandler):
