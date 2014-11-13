@@ -534,14 +534,20 @@ class ProblemAddHandler(webapp2.RequestHandler):
         if self.request.get('statement'):     #create a new problem or updates an old one
             
             title = str(cleanString(self.request.get('title')))
-            company_list = self.request.get_all('company')
             
-            company = ""
-            for c in company_list:  
-                if company == "":
-                    company = c
-                else:
-                    company = company + ';  ' + c
+            
+            
+            try:
+                company_list = self.request.get_all('company')
+                company = ""
+                for c in company_list:  
+                    if company == "":
+                        company = c
+                    else:
+                        company = company + ';  ' + c
+            except:
+                company_list = ""
+
             
             # Determine if we're creating a new problem or updating an old one.
             # Update
@@ -599,7 +605,8 @@ class ProblemAddHandler(webapp2.RequestHandler):
             problem.problem_id = problem_id
             problem.put()
 
-            if new_monthly_challenge_event: # Only create a new event if we're not editing
+            # Only create a new event if we're not editing
+            if new_monthly_challenge_event: 
                 event = Events()
                 problem_event = Problems_Events()
                 event.event_id = problem_id
@@ -608,7 +615,6 @@ class ProblemAddHandler(webapp2.RequestHandler):
                 event.event_num = 4 # this states that the "event" is a monthly challenge. Will need to be dynamic if we add challenges that are NOT monthly challenges
                 event.name = "monthly"
                 
-                ## (unfinished) Collect all dates for schedule, put into list. Also chose one to put into the event
                 submissiontime = self.request.get('submissions_open')
                 
                 submissions_open = datetime.datetime.strptime(submissiontime, "%m/%d/%y")

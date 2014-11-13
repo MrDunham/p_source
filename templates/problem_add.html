@@ -36,21 +36,21 @@
                     <tbody>
                         <tr>
                             <td>Submissions open</td>
-                            <td><input type="text" name="submissions_open" value="mm/dd/yy" class="thin" style="color: #666" onfocus="if (this.value == 'mm/dd/yy') {this.style.color='#000'; this.value=''}"/></td>
+                            <td><input type="text" class="schedule_date" name="submissions_open" value="mm/dd/yy" class="thin" style="color: #666" /></td>
                         </tr>
                         <tr>
                             <td>Judging begins</td>
-                            <td><input type="text" name="judging_begins" value="mm/dd/yy" class="thin" style="color: #666" onfocus="if (this.value == 'mm/dd/yy') {this.style.color='#000'; this.value=''}"/></td>
+                            <td><input type="text" class="schedule_date" name="judging_begins" value="mm/dd/yy" class="thin" style="color: #666" /></td>
                             
                             
                         </tr>
                         <tr>
                             <td>Winners announcement</td>
-                            <td><input type="text" name="winners_announcement" value="mm/dd/yy" class="thin" style="color: #666" onfocus="if (this.value == 'mm/dd/yy') {this.style.color='#000'; this.value=''}"/></td>
+                            <td><input type="text" class="schedule_date" name="winners_announcement" value="mm/dd/yy" class="thin" style="color: #666"/></td>
                         </tr>
                         <tr>
                             <td>Winners' Dinner</td>
-                            <td><input type="text" name="winners_dinner" value="mm/dd/yy" class="thin" style="color: #666" onfocus="if (this.value == 'mm/dd/yy') {this.style.color='#000'; this.value=''}"/></td>
+                            <td><input type="text" class="schedule_date" name="winners_dinner" value="mm/dd/yy" class="thin" style="color: #666"/></td>
                         </tr>
                     </tbody>
                 </table>
@@ -134,11 +134,31 @@
         <br/><br/><br/>
 
     </div>
+{%endblock%}
+
+{%block scripts %}
 <script type="text/javascript">
     $( document ).ready(function() {
         var page = "ignition";
         var the_id = "#" + page + "_link";
         $(the_id).addClass("active");
+    });
+</script>
+
+<script type="text/javascript">
+    $('.schedule_date').focus(function() {
+        // console.log("schedule_date function ran")
+        if (this.value == 'mm/dd/yy') {
+            this.style.color='#000'; 
+            this.value='';
+        }
+    });
+    
+    $('.schedule_date').focusout(function() {
+        console.log("this.value = " + this.value)
+        var year = this.value.split("/");
+        //console.log("year = " + year[2]);
+        // now we need to check that year is only 2 characters 
     });
 </script>
 
