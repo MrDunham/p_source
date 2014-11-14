@@ -62,7 +62,7 @@ div, ul, ol, li, span {
           color: white;
           border-bottom: 3px transparent solid; }
           #head_links #head_links_inner ul li a.active {
-            border-bottom: 3px whitesmoke solid; }
+            border-bottom: 3px #f5f5f5 solid; }
 
 #event_edit input, #event_edit select, #mentor_edit input, #mentor_edit select, #problem_edit input, #problem_edit select, #edit input, #edit select {
   display: inline-block;
@@ -92,6 +92,10 @@ div, ul, ol, li, span {
   /*position: absolute;*/
   /*right: 5px;*/
   /*bottom: 5px;*/ }
+
+.schedule_date.red {
+  border: solid 2px #ff0000;
+  font-weight: 500; }
 
 input[type="submit"] {
   background: #f15f20;

@@ -155,9 +155,19 @@
     });
     
     $('.schedule_date').focusout(function() {
+        // console.log("this.value = " + this.value)
+        var input_date = this.value.split("/");
+        var year = input_date[2];
+        console.log("year = " + year);
         console.log("this.value = " + this.value)
-        var year = this.value.split("/");
-        //console.log("year = " + year[2]);
+        if (year.length != 2) {
+            $(this).addClass("red");
+            var fixed_year = year.slice(-2)
+            var fixed_date = input_date[0] + "/" + input_date[1] + "/" + fixed_year;
+            $(this).val(fixed_date);
+        } else {
+            $(this).removeClass("red");
+        }
         // now we need to check that year is only 2 characters 
     });
 </script>

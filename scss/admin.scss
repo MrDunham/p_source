@@ -114,6 +114,11 @@ div, ul, ol, li, span{
     }
 }
 
+.schedule_date.red{
+    border: solid 2px #ff0000;
+    font-weight: 500;
+}
+
 input[type="submit"]{
     background: #f15f20;
     padding: 4px 7px;
